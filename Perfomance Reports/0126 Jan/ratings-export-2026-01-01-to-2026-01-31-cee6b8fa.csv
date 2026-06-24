@@ -1,0 +1,42 @@
+sessionId,askAnswerId,machineId,configId,rating,startAt,reason,reasonText,machineName,firstQuestion,firstAnswer,language
+1769853253762,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-01-31T16:54:18.803913+07:00,,,TheMall-001-M8-BKP-01,ชื่ออะไรคะ,ฉันคือ M-Agent ค่ะ,th-TH
+1769778781505,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-01-30T21:46:03.834278+07:00,speed,Speed,TheMall-001-M8-BKP-01,quick reply: promotion,"There are several great promotions available right now.
+You can tap the cards below to see more details.",en-US
+1769757278819,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,3,2026-01-30T14:24:14.120782+07:00,,,TheMall-001-M8-BKP-01,quick reply: Directory,"You’re now at The Mall Life Store Bangkapi.
+Is there any store or brand you’d like to find? I can help you with that!",en-US
+1769683650266,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-01-29T17:47:33.695396+07:00,speed,Speed,TheMall-001-M8-BKP-01,quick reply: Directory,"You’re now at The Mall Life Store Bangkapi.
+Is there any store or brand you’d like to find? I can help you with that!",en-US
+1769683530026,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-01-29T17:46:03.082723+07:00,,,TheMall-001-M8-BKP-01,quick reply: MCard,MCard comes in various types. You can click the cards below to explore them.,en-US
+1769339552680,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,3,2026-01-25T18:12:33.939574+07:00,,,TheMall-001-M8-BKP-01,quick reply: Directory,"You’re now at The Mall Life Store Bangkapi.
+Is there any store or brand you’d like to find? I can help you with that!",en-US
+1769252698375,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,1,2026-01-24T18:05:13.560666+07:00,,,TheMall-001-M8-BKP-01,,,
+1769067445964,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,2,2026-01-22T16:49:48.044653+07:00,,,TheMall-001-M8-BKP-01,quick reply: MCard,MCard comes in various types. You can click the cards below to explore them.,en-US
+1768826144285,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,1,2026-01-19T19:36:00.514794+07:00,helpfulness,Helpfulness,TheMall-001-M8-BKP-01,What is an outcast?,"I'm sorry, I couldn't find information about what an outcast is.
+If I misunderstood your question, please ask again.",en-US
+1768812322465,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,1,2026-01-19T15:45:32.773324+07:00,,,TheMall-001-M8-BKP-01,restaurant,ที่เดอะมอลล์บางกะปิ คุณสามารถเลือกทานอาหารได้หลายร้านเลยค่ะ,th-TH
+1768638379969,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-01-17T15:26:24.994409+07:00,helpfulness,Helpfulness,TheMall-001-M8-BKP-01,BOOTS คอร์ดอยู่ไหน,"BOOTS อยู่ที่ The Mall Lifestore บางกะปิค่ะ
+อยู่ที่ชั้น G หรือชั้นล่างสุดของห้างนะคะ
+ถ้าคุณเดินเข้ามาจากทางประตูหลัก ชั้น G จะเจอร้านนี้ได้ไม่ยากเลยค่ะ",th-TH
+1768565240876,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,2,2026-01-16T19:07:23.938266+07:00,,,TheMall-001-M8-BKP-01,quick reply: MCard,MCard มีหลากหลายรูปแบบ สามารถคลิกดูได้ตาม Card ด้านล่าง,th-TH
+1768540334468,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,1,2026-01-16T12:12:19.817873+07:00,accuracy,Accuracy,TheMall-001-M8-BKP-01,quick reply: Directory,"You’re now at The Mall Life Store Bangkapi.
+Is there any store or brand you’d like to find? I can help you with that!",en-US
+1768044458578,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-01-10T18:27:40.799907+07:00,,,TheMall-001-M8-BKP-01,quick reply: Directory,"You’re now at The Mall Life Store Bangkapi.
+Is there any store or brand you’d like to find? I can help you with that!",en-US
+1768035086893,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-01-10T15:54:14.405763+07:00,,,TheMall-001-M8-BKP-01,quick reply: The Mall Lifestore The Great New Year First in Thailand,"This year, The Mall Lifestore is bringing you all the Monchhichi cuteness you can handle!",en-US
+1768035013995,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-01-10T15:50:16.642559+07:00,,,TheMall-001-M8-BKP-01,quick reply: MCard,MCard มีหลากหลายรูปแบบ สามารถคลิกดูได้ตาม Card ด้านล่าง,th-TH
+1767602842259,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-01-05T15:47:27.274489+07:00,,,TheMall-001-M8-BKP-01,Hello,"สวัสดีค่ะ
+มีอะไรให้ช่วยไหมคะ?",th-TH
+1767525359550,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,2,2026-01-04T18:16:10.78873+07:00,,,TheMall-001-M8-BKP-01,,,
+1767431006907,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,3,2026-01-03T16:03:32.437141+07:00,helpfulness,Helpfulness,TheMall-001-M8-BKP-01,quick reply: promotion,"There are several great promotions available right now.
+You can tap the cards below to see more details.",en-US
+1767328012761,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,1,2026-01-02T11:26:58.682941+07:00,helpfulness,Helpfulness,TheMall-001-M8-BKP-01,Where is BMA?,"I'm sorry, I couldn't find information about BMA.
+If I misunderstood your question, please ask again.",en-US
+1767327590586,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,1,2026-01-02T11:20:02.1142+07:00,,,TheMall-001-M8-BKP-01,Huawei,"Huawei อยู่ที่ The Mall Lifestore Bangkapi ค่ะ
+ร้านตั้งอยู่ที่ชั้น 2
+ขายโทรศัพท์มือถือและสมาร์ทวอทช์ด้วยนะคะ
+ถ้าคุณสนใจอยากดูสินค้าหรือสอบถามเพิ่มเติม ฉันช่วยได้ค่ะ",th-TH
+1767268031366,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-01-01T18:47:16.102272+07:00,speed,Speed,TheMall-001-M8-BKP-01,quick reply: promotion,"There are several great promotions available right now.
+You can tap the cards below to see more details.",en-US
+1767268012838,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-01-01T18:46:56.450472+07:00,speed,Speed,TheMall-001-M8-BKP-01,quick reply: promotion,"There are several great promotions available right now.
+You can tap the cards below to see more details.",en-US
+1767267991822,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-01-01T18:46:37.020443+07:00,helpfulness,Helpfulness,TheMall-001-M8-BKP-01,quick reply: The Mall Lifestore The Great New Year First in Thailand,ปีนี้เดอะมอลล์ไลฟ์สโตร์ชวนทุกคนมาสัมผัสความน่ารักของ Monchhichi และเปิดประสบการณ์เทศกาลคริสต์มาสแบบไม่เหมือนใคร กับแลนด์มาร์กสุดยิ่งใหญ่ครั้งแรกในเอเชียตะวันออกเฉียงใต้ที่ยกความน่ารักระดับตำนานจากญี่ปุ่น มาเป็นสัญลักษณ์แห่งความสุขให้คนไทยแบบจัดเต็ม,th-TH

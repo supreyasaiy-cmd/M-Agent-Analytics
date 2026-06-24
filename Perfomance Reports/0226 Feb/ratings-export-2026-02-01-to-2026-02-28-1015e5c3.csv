@@ -1,0 +1,51 @@
+sessionId,askAnswerId,machineId,configId,rating,startAt,reason,reasonText,machineName,firstQuestion,firstAnswer,language
+1771997989910,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-02-25T12:39:54.249099+07:00,helpfulness,Helpfulness,TheMall-001-M8-BKP-01,ตอนนี้อุณหภูมิเท่าไหร่,"ขออภัยค่ะ ฉันไม่พบข้อมูลเกี่ยวกับอุณหภูมิในขณะนี้
+ถ้าฉันเข้าใจคำถามของคุณผิดพลาด กรุณาถามอีกครั้งค่ะ",th-TH
+1771933373511,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-02-24T18:42:54.841173+07:00,accuracy,Accuracy,TheMall-001-M8-BKP-01,quick reply: promotion,"ตอนนี้มีโปรโมชั่นดี ๆ หลายรายการเลยค่ะ
+ลูกค้าสามารถแตะดูรายละเอียดจากการ์ดด้านล่างได้เลยนะคะ",th-TH
+1771923867280,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,3,2026-02-24T16:04:30.506172+07:00,,,TheMall-001-M8-BKP-01,ห้องน้ำอยู่ไหนบ้าง,"ห้องน้ำมีอยู่ทุกชั้นของ The Mall Lifestore Bangkapi ค่ะ
+ชั้น M อยู่ตรงโซนกลาง ใกล้ร้าน H&M และทางเข้าร้าน Gourmet Market
+ชั้น 1 อยู่ใกล้ร้าน Uniqlo และแผนกรองเท้าและกระเป๋า
+ชั้น 3 อยู่ใกล้โซน Bangkapi Cineplex และร้าน Starbucks ค่ะ
+สะดวกมากเลยใช่ไหมคะ?",th-TH
+1771591088504,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,3,2026-02-20T19:38:12.497299+07:00,helpfulness,Helpfulness,TheMall-001-M8-BKP-01,quick reply: promotion,"ตอนนี้มีโปรโมชั่นดี ๆ หลายรายการเลยค่ะ
+ลูกค้าสามารถแตะดูรายละเอียดจากการ์ดด้านล่างได้เลยนะคะ",th-TH
+1771580658790,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,1,2026-02-20T16:44:21.074456+07:00,accuracy,Accuracy,TheMall-001-M8-BKP-01,quick reply: Directory,"ขณะนี้ลูกค้าอยู่ที่เดอะมอลล์ไลฟ์สโตร์ บางกะปิ นะคะ
+อยากหาร้านไหนหรือแบรนด์อะไรเป็นพิเศษไหมคะ เดี๋ยวฉันช่วยดูให้ค่ะ",th-TH
+1771568241979,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,3,2026-02-20T13:17:26.235738+07:00,accuracy,Accuracy,TheMall-001-M8-BKP-01,Can I ask a question?,"Yes, you can ask me anything!
+I'm here to help you.
+What would you like to know?",en-US
+1771510956023,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,1,2026-02-19T21:22:41.368817+07:00,speed,Speed,TheMall-001-M8-BKP-01,TOP TOY,"TOP TOY is located on the Ground Floor at The Mall Lifestore Bangkapi.
+It offers lifestyle, home, gifts, specialty items, and decor products.
+You can find a variety of home decor and unique gift items there.
+It's a great spot if you're looking for something special for your home or as a present!
+Let me know if you want more details.",en-US
+1771510899102,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,1,2026-02-19T21:21:43.085918+07:00,speed,Speed,TheMall-001-M8-BKP-01,you ugly,"I'm here to help you with any questions about The Mall Bangkapi or our promotions.
+What can I assist you with today?",en-US
+1771510752267,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,1,2026-02-19T21:19:27.602252+07:00,speed,Speed,TheMall-001-M8-BKP-01,***,"I'm sorry, I couldn't find information about that.
+If I misunderstood your question, please ask again.",en-US
+1771510526102,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,1,2026-02-19T21:15:34.72144+07:00,accuracy,Accuracy,TheMall-001-M8-BKP-01,Moshi Moshi,"Moshi Moshi is a lifestyle and specialty store.
+It is located in The Mall Lifestore Bangkapi.
+You can find it on Floor 1.
+The store offers a variety of lifestyle and specialty products.
+It's a great place to explore unique items.
+Let me know if you want to know more!",en-US
+1771332676853,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-02-17T19:51:21.541578+07:00,helpfulness,Helpfulness,TheMall-001-M8-BKP-01,สวัสดีค่ะ,"ฉันคือ M-Agent ค่ะ
+ยินดีที่ได้ช่วยเหลือคุณ
+มีอะไรให้ช่วยไหมคะ?",th-TH
+1771249252705,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,1,2026-02-16T20:40:48.614+07:00,accuracy,Accuracy,TheMall-001-M8-BKP-01,quick reply: promotion,"There are several great promotions available right now.
+You can tap the cards below to see more details.",en-US
+1771059564165,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,3,2026-02-14T15:59:28.624092+07:00,,,TheMall-001-M8-BKP-01,quick reply: MCard,MCard มีหลากหลายรูปแบบ สามารถคลิกดูได้ตาม Card ด้านล่าง,th-TH
+1770955065237,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-02-13T10:57:46.732884+07:00,,,TheMall-001-M8-BKP-01,quick reply: promotion,"ตอนนี้มีโปรโมชั่นดี ๆ หลายรายการเลยค่ะ
+ลูกค้าสามารถแตะดูรายละเอียดจากการ์ดด้านล่างได้เลยนะคะ",th-TH
+1770816703176,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-02-11T20:31:45.0292+07:00,,,TheMall-001-M8-BKP-01,quick reply: Directory,"You’re now at The Mall Life Store Bangkapi.
+Is there any store or brand you’d like to find? I can help you with that!",en-US
+1770816321153,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,1,2026-02-11T20:25:25.819851+07:00,helpfulness,Helpfulness,TheMall-001-M8-BKP-01,quick reply: Directory,"You’re now at The Mall Life Store Bangkapi.
+Is there any store or brand you’d like to find? I can help you with that!",en-US
+1770815626046,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,1,2026-02-11T20:13:50.192169+07:00,speed,Speed,TheMall-001-M8-BKP-01,quick reply: Directory,"You’re now at The Mall Life Store Bangkapi.
+Is there any store or brand you’d like to find? I can help you with that!",en-US
+1770815544324,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,1,2026-02-11T20:12:28.458646+07:00,,,TheMall-001-M8-BKP-01,,,
+1770795301518,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,2,2026-02-11T14:35:14.638195+07:00,,,TheMall-001-M8-BKP-01,SOTHING,"SOTHING อยู่ที่ The Mall Lifestore Bangkapi ชั้น 1 ค่ะ
+ร้านนี้จำหน่ายพัดลมมือถือแบบพกพา
+ถ้าคุณกำลังมองหาพัดลมขนาดเล็กใช้งานสะดวก ที่นี่มีให้เลือกค่ะ",th-TH
+1770210978874,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-02-04T20:19:47.963205+07:00,,,TheMall-001-M8-BKP-01,,,

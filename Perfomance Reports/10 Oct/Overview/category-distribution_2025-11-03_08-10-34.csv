@@ -1,0 +1,15 @@
+category,total,apologetic,successful,successRate
+Misc,403,91,312,77.4
+Promotions,263,26,237,90.1
+Shop Specific,238,99,139,58.4
+Greeting & Chit-chat,134,9,125,93.3
+Products & Services,114,1,113,99.1
+Events,87,14,73,83.9
+Recommendation,79,19,60,75.9
+Facilities,44,20,24,54.5
+Map and Navigation,42,11,31,73.8
+TranscriptionError,15,7,8,53.3
+Attraction,9,9,0,0.0
+Out of Scope,5,3,2,40.0
+Feedback,2,0,2,100.0
+Hotel Transportation,1,0,1,100.0

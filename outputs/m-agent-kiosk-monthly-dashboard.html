@@ -1,0 +1,1057 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>M Agent Executive Analytics Dashboard</title>
+  <style>
+    :root{
+      color-scheme:light;
+      --bg:#f7f8fa;
+      --card:#ffffff;
+      --ink:#0f172a;
+      --muted:#667085;
+      --soft:#98a2b3;
+      --line:#e6eaf0;
+      --line-2:#f0f2f6;
+      --blue:#2563eb;
+      --blue-2:#60a5fa;
+      --blue-soft:#eff6ff;
+      --green:#12b76a;
+      --green-soft:#ecfdf3;
+      --rose:#e11d48;
+      --rose-soft:#fff1f3;
+      --amber:#f59e0b;
+      --amber-soft:#fffbeb;
+      --purple:#7c3aed;
+      --cyan:#0891b2;
+      --radius:20px;
+      --shadow:0 18px 48px rgba(15,23,42,.07),0 2px 10px rgba(15,23,42,.04);
+      --shadow-soft:0 10px 28px rgba(15,23,42,.055);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      background:var(--bg);
+      color:var(--ink);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;min-width:320px;background:var(--bg);overflow-x:hidden;line-height:1.5}
+    button,input,select{font:inherit}
+    button{cursor:pointer}
+    h1,h2,h3,p{margin:0}
+    .card,.summary-card,.sidebar,.workspace,.comparison-table-wrap{min-width:0}
+    .card *,.summary-card *,.sidebar *,.comparison-table-wrap *{min-width:0}
+    .card svg,.summary-card svg{flex:0 0 auto}
+    .brand-mark{width:52px;height:52px;border-radius:18px;background:#fff;box-shadow:0 10px 28px rgba(15,23,42,.12),inset 0 0 0 1px rgba(255,255,255,.72);overflow:hidden;flex:0 0 auto}
+    .brand-mark img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;display:block;transform:scale(1.08)}
+    .brand-name{display:block!important;color:var(--ink);font-weight:850;letter-spacing:0;white-space:nowrap}
+    .brand-name .brand-m{color:#d71920}
+    .brand-name .brand-agent{color:#111827}
+    .field{display:grid;gap:5px;color:var(--muted);font-size:11px;font-weight:750}
+    select,input{border:1px solid #d9e1ec;border-radius:14px;background:#fff;color:var(--ink);outline:none;transition:.2s ease}
+    select{height:42px;min-width:154px;padding:0 34px 0 12px}
+    input{height:46px;padding:0 14px;width:100%}
+    select:focus,input:focus{border-color:#93b4ff;box-shadow:0 0 0 4px rgba(37,99,235,.1)}
+    .hero{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(380px,.82fr);gap:24px;margin-bottom:24px}
+    .hero-copy{min-height:320px;border-radius:20px;padding:32px;background:linear-gradient(135deg,#ffffff 0%,#f8fbff 100%);box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.8);display:grid;align-content:space-between;overflow:hidden;position:relative}
+    .hero-copy:after{content:"";position:absolute;inset:auto 0 0 0;height:5px;background:linear-gradient(90deg,var(--blue),var(--cyan),var(--green))}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--blue);font-size:12px;text-transform:uppercase;font-weight:850;letter-spacing:0}
+    .pulse{width:8px;height:8px;border-radius:99px;background:var(--green);box-shadow:0 0 0 6px rgba(18,183,106,.12)}
+    h1{max-width:960px;margin-top:16px;font-size:32px;line-height:1.15;letter-spacing:0;text-wrap:balance}
+    .hero-copy p{max-width:820px;margin-top:16px;color:#475467;font-size:15px;line-height:1.6;text-wrap:pretty}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+    .hero-chip,.source-chip{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;background:#fff;padding:10px 14px;color:#344054;font-size:13px;font-weight:700;text-decoration:none;transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease,background .18s ease}
+    button.hero-chip{appearance:none}
+    .hero-chip:hover,.hero-chip:focus-visible{border-color:#93c5fd;box-shadow:0 10px 24px rgba(37,99,235,.12);transform:translateY(-1px)}
+    .hero-chip:focus-visible{outline:3px solid rgba(37,99,235,.18);outline-offset:2px}
+    .hero-chip.primary{border-color:#bfdbfe;background:var(--blue-soft);color:#1d4ed8}
+    .hero-visual{min-height:320px;border-radius:20px;background:#fff;color:var(--ink);overflow:hidden;box-shadow:var(--shadow);border:1px solid rgba(230,234,240,.92);padding:24px;display:grid;position:relative}
+    .hero-visual:before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--blue),var(--blue-2))}
+    .hero-visual-copy{display:grid;align-content:space-between;gap:22px;position:relative}
+    .hero-visual-copy b{font-size:24px;line-height:1.2;letter-spacing:0}
+    .hero-visual-copy p{margin-top:10px;color:#667085;font-size:14px;line-height:1.6;text-wrap:pretty}
+    .hero-score{border:1px solid var(--line-2);border-radius:20px;background:linear-gradient(180deg,#fbfdff,#f8fafc);padding:18px;display:grid;gap:12px}
+    .hero-score-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+    .hero-score-head span{color:var(--muted);font-size:12px;font-weight:800}
+    .hero-score-head strong{font-size:28px;line-height:1.08;letter-spacing:0}
+    .hero-mini{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .hero-mini div{border:1px solid var(--line-2);border-radius:18px;padding:14px;background:#fbfcfe;min-width:0}
+    .hero-mini strong{display:block;font-size:23px;line-height:1.05;letter-spacing:0}
+    .hero-mini span{display:block;margin-top:7px;color:var(--muted);font-size:12px;line-height:1.35}
+    .filter-row{display:grid;grid-template-columns:minmax(280px,520px) minmax(0,1fr);gap:16px;margin-bottom:24px}
+    .search{position:relative}
+    .search svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#98a2b3}
+    .search input{padding-left:46px;border-radius:18px}
+    .context-strip{min-height:46px;border:1px solid var(--line);border-radius:16px;background:#fff;display:flex;align-items:center;justify-content:flex-end;gap:18px;padding:0 16px;color:#475467;font-size:13px;box-shadow:0 8px 30px rgba(15,23,42,.04)}
+    .context-strip b{color:var(--ink)}
+    .section{scroll-margin-top:96px;margin-bottom:48px}
+    .section-head{display:flex;justify-content:space-between;gap:18px;align-items:end;margin:34px 2px 14px}
+    .section-head h2{font-size:24px;line-height:1.2;letter-spacing:0;text-wrap:balance}
+    .section-head p{margin-top:8px;color:var(--muted);font-size:14px;line-height:1.5}
+    .section-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+    .bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:stretch}
+    .card{border:1px solid rgba(230,234,240,.92);border-radius:var(--radius);background:var(--card);box-shadow:var(--shadow-soft);padding:24px;min-width:0;transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease}
+    .bento>.card{height:100%;display:flex;flex-direction:column}
+    .card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#dbe6f5}
+    .success-grid{align-items:stretch}
+    .success-grid>.card{min-height:360px;height:100%;display:flex;flex-direction:column}
+    .success-grid>.card>.gauge-holder{flex:1;min-height:0}
+    .success-grid>.card>.chart{margin-top:auto}
+    .success-grid>.card>.kpi-value{margin-top:28px}
+    .success-grid>.card>.subtitle:last-child{margin-top:auto}
+    .span-12{grid-column:span 12}.span-8{grid-column:span 8}.span-7{grid-column:span 7}.span-6{grid-column:span 6}.span-5{grid-column:span 5}.span-4{grid-column:span 4}.span-3{grid-column:span 3}
+    .card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:18px}
+    .card-title{display:flex;align-items:center;gap:10px}
+    .card-title h3{font-size:18px;line-height:1.25;letter-spacing:0;text-wrap:balance;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .subtitle{color:var(--muted);font-size:14px;line-height:1.45;margin-top:5px;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .icon{width:40px;height:40px;border-radius:14px;background:var(--blue-soft);color:var(--blue);display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+    .icon.dark{background:#111827;color:#fff}.icon.green{background:var(--green-soft);color:#067647}.icon.rose{background:var(--rose-soft);color:#be123c}.icon.amber{background:var(--amber-soft);color:#b45309}
+    .kpi-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
+    .kpi-grid .kpi{grid-column:span 4}
+    .kpi{min-height:220px;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:16px;align-content:stretch}
+    .kpi-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .delta{display:inline-flex;align-items:center;border-radius:999px;padding:6px 9px;font-size:12px;font-weight:850;background:var(--green-soft);color:#067647}
+    .delta.down{background:var(--rose-soft);color:#be123c}
+    .kpi-middle{display:flex;align-items:center;min-height:56px}
+    .kpi-bottom{display:grid;gap:10px}
+    .kpi-value{font-size:clamp(28px,3vw,48px);line-height:1.05;font-weight:850;letter-spacing:0;overflow-wrap:anywhere;word-break:break-word;max-width:100%}
+    .kpi-label{color:#344054;font-size:14px;font-weight:800;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .kpi-note{color:var(--muted);font-size:12px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}
+    .spark{height:48px;width:100%;overflow:visible}
+    .machine-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+    .machine-card{min-height:320px;padding:24px;display:grid;gap:16px;position:relative;overflow:hidden}
+    .machine-card.selected{border-color:#93c5fd;box-shadow:0 26px 90px rgba(37,99,235,.14)}
+    .machine-card:before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--blue),var(--blue-2));opacity:.9}
+    .machine-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+    .machine-device{width:58px;height:58px;border-radius:18px;background:linear-gradient(135deg,#0f172a,#2563eb);display:grid;place-items:center;color:#fff;font-weight:850;letter-spacing:0;box-shadow:0 14px 32px rgba(37,99,235,.2)}
+    .status{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:850}
+    .status:before{content:"";width:7px;height:7px;border-radius:99px;background:currentColor}
+    .status.Active{background:var(--green-soft);color:#067647}
+    .status.Borrowed,.status.Event{background:var(--amber-soft);color:#b45309}
+    .status.Maintenance{background:var(--rose-soft);color:#be123c}
+    .status.Available,.status.Standby{background:#f2f4f7;color:#475467}
+    .machine-id{font-size:14px;font-weight:850;color:#1d4ed8;overflow-wrap:anywhere}
+    .machine-location{margin-top:7px;color:#344054;font-size:14px;line-height:1.5;min-height:42px;text-wrap:pretty;overflow-wrap:anywhere}
+    .machine-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .stat-tile{border:1px solid var(--line-2);border-radius:16px;background:#fbfcfe;padding:14px;min-width:0}
+    .stat-tile strong{display:block;font-size:22px;line-height:1.08;letter-spacing:0;overflow-wrap:anywhere}
+    .stat-tile span{display:block;margin-top:7px;color:var(--muted);font-size:11px}
+    .micro{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--muted);font-size:12px}
+    .click-hint{display:flex;align-items:center;gap:8px;color:#1d4ed8;font-size:12px;font-weight:800}
+    .chart{width:100%;height:auto;display:block;overflow:visible;max-width:100%}
+    .overview-trend-card,.overview-insights-card{min-height:520px}
+    .overview-trend-card .chart{margin-top:auto}
+    .overview-insights-card .exec-list{height:100%;align-content:stretch}
+    .overview-insights-card .exec-list li{min-height:0}
+    .axis-label{fill:#98a2b3;font-size:11px}
+    .grid-line{stroke:#eef2f7;stroke-width:1}
+    .area-fill{opacity:.16;animation:fadeIn .7s ease both}
+    .draw-line{stroke-dasharray:1000;stroke-dashoffset:1000;animation:dash 1.2s ease forwards}
+    @keyframes dash{to{stroke-dashoffset:0}}
+    @keyframes fadeIn{from{opacity:0}to{opacity:.16}}
+    .bar-animate{transform-origin:left center;animation:scaleX .9s ease both}
+    @keyframes scaleX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+    .donut-layout{display:grid;grid-template-columns:minmax(150px,176px) minmax(150px,1fr);gap:22px;align-items:center}
+    .donut{width:176px;height:auto;aspect-ratio:1 / 1;border-radius:50%;display:grid;place-items:center;position:relative;box-shadow:inset 0 0 0 1px rgba(15,23,42,.06);flex:0 0 auto;max-width:100%}
+    .donut:after{content:"";position:absolute;inset:34px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 1px #eef2f7}
+    .donut-center{position:relative;z-index:1;text-align:center}
+    .donut-center strong{display:block;font-size:30px;line-height:1;letter-spacing:0}
+    .donut-center span{display:block;margin-top:5px;color:var(--muted);font-size:11px}
+    .gauge{width:156px;height:auto;aspect-ratio:1 / 1}
+    .gauge .donut-center strong{font-size:28px}
+    .gauge-holder{min-height:164px;display:grid;place-items:center}
+    .km-grid{align-items:start}
+    .km-metric{min-height:132px;display:grid;align-content:start}
+    .km-metric .card-head{margin-bottom:0}
+    .km-gauge-card{min-height:268px;display:grid;grid-template-rows:auto minmax(0,1fr);align-content:start}
+    .km-detail{grid-column:span 12}
+    .km-detail .card-head{margin-bottom:16px}
+    .legend-list{display:grid;gap:10px}
+    .legend-item{display:grid;grid-template-columns:auto minmax(82px,1fr) auto;gap:10px;align-items:center;font-size:13px;color:#344054}
+    .legend-item span{min-width:0;overflow-wrap:anywhere}
+    .swatch{width:10px;height:10px;border-radius:99px}
+    .legend-item b{font-size:13px;white-space:nowrap}
+    .flow-pie{display:grid;grid-template-columns:minmax(150px,180px) minmax(0,1fr);gap:18px;align-items:center;margin-top:auto}
+    .flow-pie .donut{width:170px;justify-self:center}
+    .flow-pie .legend-list{gap:9px}
+    .flow-pie .legend-item{grid-template-columns:auto minmax(74px,1fr) auto;font-size:12px}
+    .behavior-split-card{gap:20px}
+    .behavior-split{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr);gap:22px;align-items:stretch}
+    .behavior-panel{min-width:0;display:flex;flex-direction:column}
+    .behavior-panel+.behavior-panel{border-left:1px solid var(--line-2);padding-left:22px}
+    .behavior-panel .heatmap{margin-top:auto}
+    .leaderboard{display:grid;gap:12px}
+    .leader-row{display:grid;grid-template-columns:minmax(120px,1.1fr) minmax(120px,2fr) auto;gap:12px;align-items:center;font-size:13px}
+    .leader-row b{line-height:1.35;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .leader-row > span:last-child{justify-self:end;font-weight:800;white-space:nowrap}
+    .track{height:12px;border-radius:999px;background:#eef2f7;overflow:hidden}
+    .fill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--blue),var(--blue-2))}
+    .fill.green{background:linear-gradient(90deg,#12b76a,#86efac)}
+    .fill.rose{background:linear-gradient(90deg,#e11d48,#fb7185)}
+    .small-multiple{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+    .small-chart{border:1px solid var(--line-2);border-radius:18px;padding:14px;background:#fbfcfe;min-width:0}
+    .small-chart b{display:block;font-size:12px;color:#344054;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .heatmap{display:grid;grid-template-columns:64px repeat(12,minmax(0,1fr));gap:6px;align-items:center}
+    .heatmap span{font-size:11px;color:#667085}
+    .heat-cell{height:22px;border-radius:7px;background:#dbeafe;transition:.2s ease}
+    .heat-cell:hover{transform:scale(1.12);box-shadow:0 8px 18px rgba(37,99,235,.18)}
+    .treemap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:58px;gap:8px;min-height:270px}
+    .tile{border-radius:20px;padding:14px;color:#fff;display:grid;align-content:end;overflow:hidden;position:relative;isolation:isolate;min-width:0}
+    .tile:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(15,23,42,.22));z-index:-1}
+    .tile b{font-size:clamp(11px,1vw,15px);line-height:1.2;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;overflow-wrap:anywhere}.tile span{font-size:12px;opacity:.9;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tile-small{padding:10px;align-content:center}.tile-small b{font-size:13px;-webkit-line-clamp:1}.tile-small span{display:block;font-size:10px;line-height:1.2;white-space:normal;overflow:hidden;text-overflow:clip;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+    .timeline-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;position:relative}
+    .timeline-line{grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;margin-top:30px;padding-top:10px}
+    .timeline-item{border:1px solid var(--line-2);border-radius:22px;padding:16px;background:#fbfcfe;min-height:150px;position:relative}
+    .timeline-item:before{content:"";position:absolute;left:18px;top:-8px;width:13px;height:13px;border-radius:99px;background:var(--blue);box-shadow:0 0 0 6px #eff6ff}
+    .timeline-line .timeline-item{border-radius:34px;padding:28px 30px;min-height:236px;background:#fff}
+    .timeline-line .timeline-item:before{left:30px;top:-27px;width:18px;height:18px;z-index:2;box-shadow:0 0 0 14px #eff6ff}
+    .timeline-line .timeline-item:after{content:"";position:absolute;left:39px;right:-70px;top:-18px;height:1px;background:var(--line);z-index:1}
+    .timeline-line .timeline-item:nth-child(3n):after,
+    .timeline-line .timeline-item:last-child:after{display:none}
+    .timeline-date{color:var(--blue);font-size:12px;font-weight:850;margin-bottom:12px}
+    .timeline-line .timeline-date{font-size:18px;margin-bottom:28px}
+    .timeline-item b{display:block;font-size:14px;line-height:1.35;overflow-wrap:anywhere}
+    .timeline-line .timeline-item b{font-size:20px}
+    .timeline-item p{margin-top:8px;color:var(--muted);font-size:12px;line-height:1.45;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .timeline-line .timeline-item p{margin-top:20px;font-size:18px;line-height:1.38;-webkit-line-clamp:3}
+    .event-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+    .event-card{padding:0;overflow:hidden}
+    .event-media{height:160px;background:#111827;display:grid;grid-template-columns:96px 1fr;overflow:hidden}
+    .event-media img{width:100%;height:100%;object-fit:cover;object-position:50% 16%}
+    .event-media div{padding:20px;color:#fff;display:grid;align-content:end;background:linear-gradient(90deg,rgba(17,24,39,.15),rgba(17,24,39,.94))}
+    .event-body{padding:18px}
+    .event-body h3{font-size:17px;line-height:1.25;overflow-wrap:anywhere}
+    .event-body p{margin-top:8px;color:var(--muted);font-size:13px;line-height:1.45;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .event-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:14px}
+    .event-metrics div{border-radius:14px;background:#f8fafc;padding:10px}
+    .event-metrics strong{display:block;font-size:17px}.event-metrics span{display:block;margin-top:5px;color:var(--muted);font-size:10px}
+    details.gap{border:1px solid var(--line-2);border-radius:20px;background:#fbfcfe;overflow:hidden}
+    details.gap+details.gap{margin-top:10px}
+    details.gap summary{list-style:none;padding:16px;display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center;cursor:pointer}
+    details.gap summary::-webkit-details-marker{display:none}
+    .gap-title b{display:block;font-size:14px}.gap-title span{display:block;margin-top:5px;color:var(--muted);font-size:12px}
+    .gap-body{border-top:1px solid var(--line-2);padding:16px;color:#344054;font-size:13px;line-height:1.55;display:grid;gap:10px}
+    .pill{display:inline-flex;align-items:center;border-radius:999px;padding:7px 10px;font-size:12px;font-weight:850;background:#f2f4f7;color:#475467}
+    .pill.open{background:var(--rose-soft);color:#be123c}.pill.fixed{background:var(--green-soft);color:#067647}.pill.confirm{background:var(--amber-soft);color:#b45309}
+    .insight-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+    .insight{min-height:170px;background:linear-gradient(180deg,#fff,#fbfdff)}
+    .insight b{display:block;font-size:16px;line-height:1.35;overflow-wrap:anywhere}.insight p{margin-top:10px;color:var(--muted);font-size:13px;line-height:1.55;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .recommendation-card .insight-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
+    .recommendation-card .insight{min-height:0;border:1px solid var(--line-2);border-radius:18px;background:#fbfcfe;padding:16px;display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 12px;align-items:start}
+    .recommendation-card .insight .icon{grid-row:1 / 3;width:40px;height:40px;border-radius:14px}
+    .recommendation-card .insight b{font-size:15px;line-height:1.25}
+    .recommendation-card .insight p{margin-top:0;font-size:13px;line-height:1.45;-webkit-line-clamp:3}
+    .ranking-card .scroll{flex:1}
+    .ranking-card .rank-table{min-width:940px}
+    .ranking-card .rank-table td:nth-child(2){min-width:170px}
+    @media(max-width:1200px){.recommendation-card .insight-grid{grid-template-columns:1fr}}
+    @media(max-width:760px){.overview-trend-card,.overview-insights-card{min-height:auto}.recommendation-card .insight-grid{grid-template-columns:1fr}}
+    .data-table{width:100%;border-collapse:separate;border-spacing:0 8px;font-size:13px;table-layout:auto}
+    .data-table th{color:#667085;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:0;padding:0 12px 6px}
+    .data-table td{background:#fbfcfe;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);padding:16px 14px;vertical-align:top;line-height:1.45;overflow-wrap:anywhere;word-break:normal}
+    .data-table td:first-child{border-left:1px solid var(--line-2);border-radius:16px 0 0 16px}
+    .data-table td:last-child{border-right:1px solid var(--line-2);border-radius:0 16px 16px 0}
+    .scroll{overflow:auto;max-width:100%}
+    .upload-area{border:1px dashed #bfd0e7;border-radius:24px;background:#fbfdff;padding:22px;display:grid;gap:14px}
+    .upload-btn{min-height:52px;border:0;border-radius:18px;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#fff;font-weight:850;box-shadow:0 16px 42px rgba(37,99,235,.24);display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:0 20px;cursor:pointer;width:max-content;max-width:100%}
+    .upload-file{display:none}
+    .upload-note{margin:0;color:var(--muted);font-size:13px;line-height:1.55}
+    .upload-selection{border:1px solid var(--line-2);border-radius:16px;background:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px;color:#344054;font-size:13px;font-weight:750}
+    .field-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+    .field-chip{border-radius:14px;background:#f2f4f7;color:#344054;padding:10px;font-size:12px;line-height:1.35;overflow-wrap:anywhere}
+    .empty{min-height:220px;border:1px dashed #d9e1ec;border-radius:22px;background:#fbfdff;display:grid;place-items:center;text-align:center;color:var(--muted);padding:24px}
+    .compare-shell{display:grid;gap:16px}
+    .compare-hero{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:end;border:1px solid rgba(219,230,245,.92);border-radius:20px;background:linear-gradient(135deg,#fff,#f8fbff);box-shadow:var(--shadow-soft);padding:24px}
+    .compare-hero h3{font-size:24px;line-height:1.2;letter-spacing:0}
+    .compare-hero p{max-width:820px;margin-top:8px;color:var(--muted);font-size:14px;line-height:1.55}
+    .compare-actions{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-end}
+    .action-btn,.quick-btn,.compare-chip{border:1px solid var(--line);border-radius:999px;background:#fff;color:#344054;font-size:12px;font-weight:850;min-height:38px;padding:0 12px;display:inline-flex;align-items:center;gap:7px;transition:.2s ease;white-space:nowrap}
+    .action-btn:hover,.quick-btn:hover,.compare-chip:hover{border-color:#bfd3f4;box-shadow:0 8px 18px rgba(15,23,42,.06)}
+    .action-btn.primary,.quick-btn.active,.compare-chip.selected{border-color:#bfdbfe;background:var(--blue-soft);color:#1d4ed8}
+    .action-btn.danger{border-color:#fecdd3;background:#fff1f3;color:#be123c}
+    .compare-kpi-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+    .compare-kpi{border:1px solid var(--line-2);border-radius:20px;background:#fbfcfe;padding:16px;min-height:128px;display:grid;align-content:space-between}
+    .compare-kpi strong{display:block;font-size:28px;line-height:1;letter-spacing:0}
+    .compare-kpi span{color:#344054;font-size:13px;font-weight:850}
+    .compare-kpi small{color:var(--muted);font-size:11px;line-height:1.35}
+    .apple-compare-shell{display:grid;gap:18px}
+    .compare-guide{border:1px solid rgba(219,230,245,.92);border-radius:20px;background:#fff;box-shadow:var(--shadow-soft);padding:22px;display:grid;gap:18px}
+    .compare-guide-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+    .compare-guide-head h3{font-size:21px;line-height:1.15}
+    .compare-guide-head p{margin-top:7px;color:var(--muted);font-size:13px;line-height:1.5}
+    .compare-filter-sections{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:end}
+    .compare-filter-section{display:grid;gap:6px;min-width:0;color:#667085;font-size:11px;font-weight:850}
+    .compare-filter-section,.compare-filter-section *{pointer-events:auto}
+    .compare-filter-section h4{margin:0;font-size:11px;color:#667085;text-transform:uppercase;letter-spacing:.04em}
+    .compare-filter-section select,.compare-filter-section input{height:42px;border-radius:14px;min-width:0;color:var(--ink);font-size:13px;font-weight:650}
+    .compare-filter-section input.invalid{border-color:#fda4af;box-shadow:0 0 0 4px rgba(225,29,72,.08)}
+    .segment-control{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+    .segment-control button{border:1px solid var(--line);border-radius:14px;background:#fff;min-height:42px;color:#475467;font-size:12px;font-weight:850;transition:.2s ease}
+    .segment-control button.active{border-color:#bfdbfe;background:var(--blue-soft);color:#1d4ed8;box-shadow:inset 0 0 0 1px #bfdbfe}
+    .compare-mode-field{grid-column:span 2}
+    .compare-action-field{align-self:end}
+    .compare-machine-panel{border-top:1px solid var(--line-2);padding-top:16px;display:grid;gap:12px}
+    .compare-machine-panel h4{margin:0;font-size:11px;color:#667085;text-transform:uppercase;letter-spacing:.04em}
+    .compare-results-head{display:flex;align-items:end;justify-content:space-between;gap:14px;margin:2px 2px -4px}
+    .compare-results-head h3{font-size:22px;line-height:1.15;margin:0}
+    .compare-results-head p{margin-top:6px;color:var(--muted);font-size:13px;line-height:1.45}
+    .compare-selection-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+    .compare-machine-card{border:1px solid var(--line);border-radius:16px;background:#fff;color:#344054;text-align:left;padding:12px;display:grid;gap:8px;transition:.18s ease;min-height:134px}
+    .compare-machine-card:hover{border-color:#bfdbfe;box-shadow:0 10px 24px rgba(15,23,42,.06)}
+    .compare-machine-card.selected{border-color:#93c5fd;background:#eff6ff;box-shadow:inset 0 0 0 1px #bfdbfe}
+    .compare-machine-card input{width:16px;height:16px;margin:0;accent-color:var(--blue)}
+    .compare-machine-card-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+    .compare-machine-card b{font-size:13px;line-height:1.3;overflow-wrap:anywhere}
+    .compare-machine-card span,.compare-machine-card small{font-size:11px;line-height:1.35;color:var(--muted);overflow-wrap:anywhere}
+    .compare-machine-card .status{justify-self:start}
+    .compare-summary{display:flex;flex-wrap:wrap;gap:8px;align-items:center;color:var(--muted);font-size:12px;font-weight:750}
+    .filter-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .filter-grid label{display:grid;gap:6px;color:var(--muted);font-size:11px;font-weight:850}
+    .filter-grid select,.filter-grid input{height:42px;border-radius:14px;min-width:0}
+    .filter-grid input.invalid{border-color:#fda4af;box-shadow:0 0 0 4px rgba(225,29,72,.08)}
+    .advanced-toggle{border:1px solid var(--line);border-radius:16px;background:#fff;overflow:hidden}
+    .advanced-toggle summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;justify-content:space-between;gap:12px;align-items:center;color:#344054;font-weight:850;font-size:13px}
+    .advanced-toggle summary::-webkit-details-marker{display:none}
+    .advanced-body{border-top:1px solid var(--line-2);padding:14px 16px;display:grid;gap:12px}
+    .advanced-actions{display:flex;flex-wrap:wrap;gap:8px}
+    .apply-strip{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:center;border-top:1px solid var(--line-2);padding-top:16px}
+    .apply-strip p{color:var(--muted);font-size:13px;line-height:1.45;margin:0}
+    .apply-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:flex-end}
+    .filter-status{border:1px solid #bfdbfe;border-radius:16px;background:#eff6ff;color:#1d4ed8;padding:12px 14px;font-size:13px;line-height:1.45;font-weight:760;overflow-wrap:anywhere}
+    .filter-status.error{border-color:#fecdd3;background:#fff1f3;color:#be123c}
+    .filter-status.empty{border-color:#fde68a;background:#fffbeb;color:#92400e}
+    .loading-state{min-height:160px;border:1px dashed #bfdbfe;border-radius:20px;background:#f8fbff;color:#1d4ed8;display:grid;place-items:center;text-align:center;font-size:14px;font-weight:800;padding:24px}
+    .loading-state:before{content:"";width:26px;height:26px;border-radius:999px;border:3px solid #bfdbfe;border-top-color:var(--blue);animation:spin .8s linear infinite;margin-bottom:10px}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .comparison-table-wrap{border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:var(--shadow-soft);overflow:auto}
+    .apple-compare-table{width:100%;min-width:1180px;border-collapse:separate;border-spacing:0;table-layout:fixed}
+    .apple-compare-table th,.apple-compare-table td{border-bottom:1px solid var(--line-2);border-right:1px solid var(--line-2);vertical-align:top;overflow-wrap:anywhere}
+    .apple-compare-table th:last-child,.apple-compare-table td:last-child{border-right:0}
+    .metric-col{width:178px;background:#fff;color:#475467;font-size:12px;text-transform:uppercase;letter-spacing:.04em;font-weight:850;padding:22px 18px;text-align:left}
+    .apple-compare-table thead th{position:sticky;top:88px;z-index:8;background:rgba(255,255,255,.96);backdrop-filter:blur(14px)}
+    .apple-compare-table thead .metric-col{z-index:9}
+    .machine-head{padding:22px 18px 18px;text-align:left}
+    .machine-color{width:34px;height:5px;border-radius:999px;margin-bottom:16px}
+    .machine-head h3{font-size:18px;line-height:1.18;margin:0;overflow-wrap:anywhere}
+    .machine-head p{margin-top:9px;color:var(--muted);font-size:12px;line-height:1.45;overflow-wrap:anywhere}
+    .machine-head .asset-line{margin-top:12px;color:#344054;font-size:11px;font-weight:850;overflow-wrap:anywhere}
+    .metric-label{position:sticky;left:0;z-index:6;background:#fff;color:#344054;font-size:13px;font-weight:850;padding:18px;min-height:66px}
+    .apple-compare-table tbody tr:hover td,.apple-compare-table tbody tr:hover .metric-label{background:#fbfdff}
+    .metric-value{padding:18px;color:#111827;font-size:14px;line-height:1.5;min-width:0}
+    .metric-value strong{display:block;font-size:22px;line-height:1.12;letter-spacing:0;overflow-wrap:anywhere}
+    .metric-value small{display:block;margin-top:7px;color:var(--muted);font-size:11px;line-height:1.4;overflow-wrap:anywhere}
+    .metric-tags{display:flex;flex-wrap:wrap;gap:6px}
+    .metric-tags span{border-radius:999px;background:#f2f6ff;color:#1d4ed8;padding:6px 9px;font-size:11px;font-weight:850;line-height:1.25;overflow-wrap:anywhere}
+    .mini-score{height:7px;border-radius:999px;background:#eef2f7;overflow:hidden;margin-top:10px}
+    .mini-score i{display:block;height:100%;border-radius:999px}
+    .machine-status-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:12px}
+    .screen-pill{border-radius:999px;background:#f2f4f7;color:#344054;padding:6px 9px;font-size:11px;font-weight:850}
+    .matrix{display:grid;gap:14px}
+    .matrix-row{display:grid;grid-template-columns:112px minmax(0,1fr);gap:12px;align-items:center}
+    .matrix-row b{font-size:13px;color:#344054;overflow-wrap:anywhere}
+    .matrix-bars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;align-items:end;min-height:142px;border-left:1px solid var(--line-2);border-bottom:1px solid var(--line-2);padding:8px 6px 0}
+    .matrix-bar{border-radius:12px 12px 4px 4px;min-height:8px;background:linear-gradient(180deg,var(--blue-2),var(--blue));position:relative;animation:scaleY .7s ease both;transform-origin:bottom}
+    .matrix-bar:nth-child(2){background:linear-gradient(180deg,#67e8f9,#0891b2)}.matrix-bar:nth-child(3){background:linear-gradient(180deg,#86efac,#12b76a)}.matrix-bar:nth-child(4){background:linear-gradient(180deg,#fbbf24,#f59e0b)}
+    .matrix-bar span{position:absolute;left:50%;bottom:calc(100% + 6px);transform:translateX(-50%);font-size:10px;color:var(--muted);white-space:nowrap}
+    @keyframes scaleY{from{transform:scaleY(.08)}to{transform:scaleY(1)}}
+    .chart-legend{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:12px;margin-top:12px}
+    .chart-legend i{display:inline-block;width:9px;height:9px;border-radius:99px;margin-right:5px}
+    .line-compare{width:100%;height:auto;display:block;overflow:visible}
+    .stacked-list{display:grid;gap:12px}
+    .stacked-row{display:grid;grid-template-columns:112px minmax(0,1fr);gap:12px;align-items:center}
+    .stacked-row b{font-size:13px;color:#344054}
+    .stacked-bar{height:24px;border-radius:999px;background:#eef2f7;display:flex;overflow:hidden}
+    .stacked-seg{height:100%;min-width:2px}
+    .category-heatmap{display:grid;grid-template-columns:110px repeat(6,minmax(0,1fr));gap:6px;align-items:center}
+    .category-heatmap span{font-size:11px;color:#667085;overflow-wrap:anywhere}
+    .category-cell{min-height:38px;border-radius:10px;background:#eff6ff;display:grid;place-items:center;color:#1e3a8a;font-size:11px;font-weight:850}
+    .brand-rank{display:grid;gap:10px}
+    .brand-row{display:grid;grid-template-columns:minmax(92px,142px) minmax(0,1fr) auto;gap:10px;align-items:center;font-size:13px}
+    .brand-row b{overflow-wrap:anywhere}
+    .word-cloud{display:flex;flex-wrap:wrap;gap:10px;align-content:center;min-height:180px}
+    .word-cloud span{border-radius:999px;background:#f2f6ff;color:#1d4ed8;padding:8px 12px;font-weight:850}
+    .hour-compare{display:grid;grid-template-columns:112px repeat(12,minmax(0,1fr));gap:6px;align-items:center}
+    .hour-compare span{font-size:11px;color:#667085;overflow-wrap:anywhere}
+    .hour-cell{height:28px;border-radius:8px;background:#dbeafe;transition:.2s ease}
+    .hour-cell:hover{transform:scale(1.08);box-shadow:0 8px 18px rgba(37,99,235,.18)}
+    .question-list{display:grid;gap:10px;max-height:430px;overflow:auto;padding-right:4px}
+    .question-item{border:1px solid var(--line-2);border-radius:16px;background:#fbfcfe;padding:16px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:start}
+    .question-item b{font-size:14px;line-height:1.4;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .question-meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+    .question-meta span{display:inline-flex;margin:0;border-radius:999px;background:#f2f4f7;color:#475467;padding:5px 8px;font-size:11px;font-weight:750;line-height:1.1}
+    .rank-table{width:100%;border-collapse:separate;border-spacing:0 8px;font-size:13px;table-layout:auto}
+    .rank-table th{color:#667085;text-align:left;font-size:11px;text-transform:uppercase;padding:0 10px 6px}
+    .rank-table td{background:#fbfcfe;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);padding:16px 12px;vertical-align:top;overflow-wrap:anywhere;line-height:1.4}
+    .rank-table td:first-child{border-left:1px solid var(--line-2);border-radius:14px 0 0 14px}.rank-table td:last-child{border-right:1px solid var(--line-2);border-radius:0 14px 14px 0}
+    .score-pill{display:inline-flex;min-width:54px;justify-content:center;border-radius:999px;background:var(--blue-soft);color:#1d4ed8;padding:7px 9px;font-weight:850}
+    .strength-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+    .strength-card{border:1px solid var(--line-2);border-radius:20px;background:#fbfcfe;padding:16px;display:grid;gap:10px;min-width:0}
+    .strength-card h4{margin:0;font-size:15px;line-height:1.3;overflow-wrap:anywhere}.strength-card p{color:var(--muted);font-size:12px;line-height:1.45;overflow-wrap:anywhere}
+    .strength-card b{font-size:12px;color:#344054}
+    .exec-list{display:grid;gap:10px}
+    .exec-list li{list-style:none;border:1px solid var(--line-2);border-radius:16px;background:#fbfcfe;padding:13px;color:#344054;font-size:13px;line-height:1.45;overflow-wrap:anywhere}
+    .app-shell{min-height:100vh;background:var(--bg)}
+    .sidebar{position:fixed;z-index:70;inset:0 auto 0 0;width:312px;background:rgba(255,255,255,.94);border-right:1px solid rgba(230,234,240,.9);box-shadow:16px 0 44px rgba(15,23,42,.04);backdrop-filter:blur(18px);display:flex;flex-direction:column;overflow:auto}
+    .sidebar-inner{padding:22px 18px 18px;display:grid;gap:14px}
+    .sidebar-brand{display:flex;align-items:center;gap:12px;padding:6px 8px 16px;border-bottom:1px solid var(--line-2)}
+    .sidebar-brand .brand-mark{width:48px;height:48px;border-radius:17px}
+    .sidebar-brand b{display:block;font-size:16px;line-height:1.1}
+    .sidebar-brand span:not(.brand-m):not(.brand-agent){display:block;margin-top:4px;color:var(--muted);font-size:12px}
+    .sidebar-section{display:grid;gap:6px;padding:0 4px}
+    .sidebar-section-head{width:100%;min-height:42px;border:0;border-radius:14px;background:transparent;color:#344054;display:grid;grid-template-columns:26px minmax(0,1fr) 20px;gap:10px;align-items:center;padding:0 10px;text-align:left;transition:.18s ease}
+    .sidebar-section-head:hover{background:#f5f8ff;color:#1d4ed8}
+    .sidebar-section-head.active{background:#f8fbff;color:#1d4ed8}
+    .sidebar-section-head.expanded{background:var(--blue-soft);color:#1d4ed8;box-shadow:inset 0 0 0 1px #bfdbfe}
+    .sidebar-section-icon{width:26px;height:26px;border-radius:9px;background:#f4f7fb;color:currentColor;display:grid;place-items:center}
+    .sidebar-section-title{display:block;font-size:16px;font-weight:720;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .sidebar-chevron{color:#98a2b3;font-size:12px;line-height:1;text-align:center;transition:.18s ease}
+    .sidebar-section-head.active .sidebar-chevron,.sidebar-section-head.expanded .sidebar-chevron{color:#1d4ed8}
+    .sidebar-menu{display:grid;gap:3px;padding-left:36px;overflow:hidden;max-height:0;opacity:0;transition:max-height .22s ease,opacity .16s ease,padding-top .22s ease,padding-bottom .22s ease}
+    .sidebar-menu.expanded{max-height:240px;opacity:1;padding-top:2px;padding-bottom:4px}
+    .sidebar-link{width:100%;min-height:34px;border:0;border-radius:12px;background:transparent;color:#475467;display:flex;gap:8px;align-items:center;text-align:left;padding:0 10px;font-size:14px;font-weight:560;transition:.18s ease}
+    .sidebar-link svg{display:none}
+    .sidebar-link span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    .sidebar-link:hover{background:#f5f8ff;color:#1d4ed8}
+    .sidebar-link.active{background:var(--blue-soft);color:#1d4ed8;box-shadow:inset 0 0 0 1px #bfdbfe}
+    .workspace{min-width:0;margin-left:312px}
+    .workspace-header{position:sticky;top:0;z-index:60;min-height:74px;border-bottom:1px solid rgba(230,234,240,.88);background:rgba(247,248,250,.84);backdrop-filter:blur(18px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center;padding:14px 34px}
+    .mobile-menu{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:14px;background:#fff;color:#344054;align-items:center;justify-content:center}
+    .header-title{display:flex;align-items:center;gap:12px;min-width:0}
+    .header-title .icon{width:42px;height:42px;border-radius:15px}
+    .crumb{color:#667085;font-size:12px;font-weight:760;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .crumb b{color:#1d4ed8}
+    .page-title-line{margin-top:3px;font-size:22px;font-weight:850;line-height:1.1;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .header-filters{display:flex;align-items:center;gap:10px}
+    .header-filters .field{min-width:150px}
+    .period-control{display:grid;gap:7px;min-width:min(430px,42vw)}
+    .period-label{color:var(--muted);font-size:11px;font-weight:850;line-height:1;text-transform:uppercase;letter-spacing:0}
+    .period-range{display:grid;grid-template-columns:repeat(2,minmax(150px,1fr));gap:10px}
+    .period-range .field{min-width:0}
+    .page-view{width:min(1540px,100%);margin:0 auto;padding:30px 36px 56px;animation:pageIn .24s ease both}
+    @keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    .page-stack{display:grid;gap:24px}
+    .page-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+    .page-card-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:start}
+    .summary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+    .summary-card{border:1px solid var(--line-2);border-radius:20px;background:#fff;padding:24px;box-shadow:var(--shadow-soft);display:grid;grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);column-gap:18px;row-gap:12px;min-height:160px;align-items:start}
+    .summary-card > .icon{grid-column:1;grid-row:1;width:56px;height:56px;border-radius:18px}
+    .summary-content{grid-column:2;grid-row:1 / span 2;align-self:stretch;display:grid;grid-template-rows:auto minmax(18px,1fr) auto;gap:10px;min-height:112px;justify-items:end;text-align:right}
+    .summary-main{display:grid;gap:5px;justify-items:end;align-self:start;max-width:100%}
+    .summary-label{color:#344054;font-size:18px;font-weight:850;line-height:1.22;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .summary-card strong{display:block;font-size:clamp(28px,2.7vw,42px);line-height:1.02;letter-spacing:0;overflow-wrap:anywhere;word-break:break-word;max-width:100%}
+    .summary-card p{align-self:end;color:var(--muted);font-size:14px;line-height:1.35;margin:0;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-align:right}
+    .subnav-row{display:flex;gap:8px;flex-wrap:wrap}
+    .sidebar-backdrop{display:none}
+    .compact-list{display:grid;gap:10px}
+    .compact-row{border:1px solid var(--line-2);border-radius:18px;background:#fbfcfe;padding:14px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center}
+    .compact-row b{font-size:14px;line-height:1.35;overflow-wrap:anywhere}.compact-row p{margin-top:5px;color:var(--muted);font-size:12px;line-height:1.45;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .app-error{min-height:100vh;display:grid;place-items:center;background:var(--bg);padding:32px}
+    .app-error-card{max-width:620px;border:1px solid #fecdd3;border-radius:24px;background:#fff;box-shadow:var(--shadow);padding:28px;color:#344054}
+    .app-error-card h1{margin:0;font-size:28px;line-height:1.2;color:#be123c}
+    .app-error-card p{margin-top:12px;color:var(--muted);font-size:14px;line-height:1.55}
+    .app-error-card button{margin-top:18px;border:0;border-radius:14px;background:#be123c;color:#fff;min-height:42px;padding:0 16px;font-weight:850}
+    @media(max-width:1320px){.hero{grid-template-columns:1fr}.kpi-grid{grid-template-columns:repeat(12,minmax(0,1fr))}.kpi-grid .kpi{grid-column:span 6}.span-8,.span-7,.span-6,.span-5,.span-4,.span-3{grid-column:span 12}.event-grid,.insight-grid{grid-template-columns:1fr 1fr}.compare-kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.compare-filter-sections{grid-template-columns:1fr 1fr}.compare-mode-field{grid-column:span 2}}
+    @media(max-width:900px){.filter-row{grid-template-columns:1fr}.context-strip{justify-content:flex-start;flex-wrap:wrap;padding:12px}.hero-copy,.hero-visual{min-height:auto;border-radius:20px;padding:24px}.hero-mini{grid-template-columns:1fr 1fr}.kpi-grid,.event-grid,.insight-grid,.field-grid,.compare-kpi-grid,.compare-filter-sections,.filter-grid,.behavior-split{grid-template-columns:1fr}.behavior-panel+.behavior-panel{border-left:0;border-top:1px solid var(--line-2);padding-left:0;padding-top:18px}.kpi-grid .kpi{grid-column:1/-1}.compare-mode-field{grid-column:auto}.compare-guide-head,.apply-strip{display:grid}.segment-control{grid-template-columns:1fr}.donut-layout{grid-template-columns:1fr}.heatmap{grid-template-columns:48px repeat(6,minmax(0,1fr))}.heatmap .hide-sm{display:none}.matrix-row,.stacked-row{grid-template-columns:1fr}.matrix-bars{min-height:120px}.category-heatmap{grid-template-columns:92px repeat(3,minmax(0,1fr))}.category-heatmap .hide-sm{display:none}.hour-compare{grid-template-columns:72px repeat(6,minmax(0,1fr))}.hour-compare .hide-sm{display:none}h1{font-size:32px}.section-head{display:grid}.section-actions{justify-content:flex-start}}
+    @media(max-width:1100px){
+      .sidebar{transform:translateX(-104%);transition:transform .24s ease;box-shadow:30px 0 70px rgba(15,23,42,.14)}
+      body .sidebar.open{transform:translateX(0)!important}
+      .sidebar-backdrop.show{display:block;position:fixed;z-index:65;inset:0;background:rgba(15,23,42,.22);backdrop-filter:blur(2px)}
+      .workspace{margin-left:0}
+      .workspace-header{grid-template-columns:minmax(0,1fr);padding:12px 18px}
+      .mobile-menu{display:inline-flex;flex:0 0 auto}
+      .header-title{align-items:flex-start}
+      .header-filters{justify-content:flex-start;flex-wrap:wrap}
+      .period-control{min-width:0;width:100%}
+      .page-view{padding:20px 18px 44px}
+      .page-actions{justify-content:flex-start}
+      .summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .timeline-line{grid-template-columns:1fr 1fr}
+      .timeline-line .timeline-item:nth-child(3n):after{display:block}
+      .timeline-line .timeline-item:nth-child(2n):after,
+      .timeline-line .timeline-item:last-child:after{display:none}
+    }
+    @media(max-width:640px){
+      .sidebar{width:min(312px,88vw)}
+      .page-title-line{font-size:18px}
+      .header-title .icon{display:none}
+      .header-filters .field{min-width:0;flex:1 1 100%}
+      .period-range{grid-template-columns:1fr}
+      .summary-grid{grid-template-columns:1fr}
+      .compact-row{grid-template-columns:1fr}
+      .timeline-line{grid-template-columns:1fr}
+      .timeline-line .timeline-item:after{display:none}
+      .timeline-line .timeline-date{font-size:16px}
+      .timeline-line .timeline-item b{font-size:18px}
+      .timeline-line .timeline-item p{font-size:15px}
+    }
+    .sidebar.open{transform:translateX(0)!important}
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="./vendor/react.production.min.js"></script>
+  <script src="./vendor/react-dom.production.min.js"></script>
+  <script src="./vendor/papaparse.min.js"></script>
+  <script src="./vendor/xlsx.full.min.js"></script>
+  <script>
+    const {useEffect, useMemo, useRef, useState} = React;
+    const h = React.createElement;
+    const months = [
+      {id:"2026-06",label:"June 2026",short:"Jun",days:30},
+      {id:"2026-05",label:"May 2026",short:"May",days:31},
+      {id:"2026-04",label:"April 2026",short:"Apr",days:30},
+      {id:"2026-03",label:"March 2026",short:"Mar",days:31},
+      {id:"2026-02",label:"February 2026",short:"Feb",days:28},
+      {id:"2026-01",label:"January 2026",short:"Jan",days:31},
+      {id:"2025-12",label:"December 2025",short:"Dec",days:31},
+      {id:"2025-11",label:"November 2025",short:"Nov",days:30},
+      {id:"2025-10",label:"October 2025",short:"Oct",days:31},
+      {id:"2025-09",label:"September 2025",short:"Sep",days:30}
+    ];
+    const kiosks = [
+      {assetId:"NO1-M8-BKP-01",machine:"TheMall-001",screen:"Not provided",branch:"M8 Bangkapi",location:"M8 Bangkapi - Information Counter (G)",period:"10 Apr 2026-Present",status:"Active",notes:"Returned to M8 Bangkapi after 2025 roadshows, event borrowing, and internal relocations."},
+      {assetId:"NO2-M7-BKE-01",machine:"TheMall-002",screen:"43 in",branch:"M8 Bangkapi",location:"M8 Bangkapi - E-Stamp (G)",period:"10 Apr 2026-Present",status:"Active",notes:"Consolidated from M7 Bangkae; borrowed for Bangkok Bank M VISA and Marketing Oops 2026."},
+      {assetId:"NO3-M6-NGW-01",machine:"TheMall-003",screen:"Not provided",branch:"M8 Bangkapi",location:"M8 Bangkapi - Bank Zone ชั้น 2",period:"10 Apr 2026-Present",status:"Active",notes:"Consolidated from M6 Ngamwongwan to M8 Bank Zone."},
+      {assetId:"NO4-M5-THA-01",machine:"TheMall-004",screen:"Not provided",branch:"M8 Bangkapi",location:"M8 Bangkapi - Platinum Lounge ชั้น 2",period:"10 Apr 2026-Present",status:"Active",notes:"Consolidated from M5 Thapra; borrowed for The Mall Lifestore Sports Fest."},
+      {assetId:"NO5-M3-EVT-01",machine:"TheMall-005",screen:"55 in",branch:"M8 Bangkapi",location:"M8 Bangkapi - Dining Zone ชั้น 3",period:"10 Apr 2026-Present",status:"Active",notes:"Former event pool machine, now permanent at M8 Dining Zone."}
+    ];
+    const coverImage = "../work/Design/M Agent/Default.png";
+    const eventImages = {
+      "The Mall Lifestore Sports Fest":"../work/Design/M Agent/THE MALL LIFESTORE SPORTS FEST .png",
+      "Marketing Oops 2026":"../work/Design/M Agent/Default.png",
+      "Bangkok Bank M VISA":"../work/Design/M Agent/Default.png",
+      "Power Mall Gamer Festival":"../work/Design/M Agent/Power Mall Gamer Festival.png",
+      "Electronica 2025":"../work/Design/M Agent/Power Mall Electronica.png",
+      "Sustainability Forum 2026":"../work/Design/M Agent/SUSTAINABILITY FORUM 2026 Shift Forward.png",
+      "WORLD PUP EXPO 2025":"../work/Design/M Agent/World Pup - M Pet Club.png",
+      "อร่อยทั่วไทย M8":"../work/Design/M Agent/อร่อยทั่วไทย M8.png"
+    };
+    const base = [
+      ["NO1-M8-BKP-01",1180,2876,1620,850,406,2430,325,82,39,4.4,2634,242],
+      ["NO2-M7-BKE-01",940,2018,1118,610,290,1742,196,54,26,4.2,1846,172],
+      ["NO3-M6-NGW-01",815,1796,980,522,294,1548,171,48,29,4.1,1612,184],
+      ["NO4-M5-THA-01",404,782,384,260,138,692,62,16,12,3.7,657,125],
+      ["NO5-M3-EVT-01",620,1345,742,433,170,1064,221,42,18,4.5,1246,99]
+    ].map(([assetId,sessions,questions,voice,quickReply,keyboard,thai,english,chinese,others,rating,success,apology])=>({assetId,sessions,questions,voice,quickReply,keyboard,thai,english,chinese,others,rating,success,apology}));
+    const monthlyMultipliers = {
+      "2026-06":[1,1,1,1,1],"2026-05":[.82,.9,.86,1.18,.42],"2026-04":[.76,.84,.78,1.05,.28],
+      "2026-03":[.7,.78,.72,.92,.2],"2026-02":[.62,.7,.66,.84,.18],"2026-01":[.56,.64,.58,.72,.16],
+      "2025-12":[.48,.52,.46,.54,.88],"2025-11":[.42,.46,.38,.42,.95],"2025-10":[.34,.38,.3,.36,.3],"2025-09":[.22,.25,.2,.24,.18]
+    };
+    const perf = months.flatMap((m,monthIndex)=>base.map((x,i)=>{
+      const factor=(monthlyMultipliers[m.id]||[1,1,1,1,1])[i];
+      const qualityDrift=Math.max(0, monthIndex*.06);
+      return {...x,month:m.id,sessions:Math.round(x.sessions*factor),questions:Math.round(x.questions*factor),success:Math.round(x.success*factor*Math.max(.82,1-qualityDrift*.28)),apology:Math.max(1,Math.round(x.apology*factor*(1+qualityDrift*.45))),rating:+Math.max(3.2,x.rating-qualityDrift).toFixed(1)};
+    }));
+    const history = [
+      ["NO1-M8-BKP-01","Initial-26 Jun 2025","Initial Deployment","M8 Bangkapi - Information Counter (G)","Branch","Permanent · Active"],
+      ["NO1-M8-BKP-01","27-28 Jun 2025","Marketing Oops 2025","QSNCC","Event","Borrowed"],
+      ["NO1-M8-BKP-01","4-13 Jul 2025","อร่อยทั่วไทย M8","M8 Bangkapi","Event","Borrowed"],
+      ["NO1-M8-BKP-01","9-10 Jul 2025","PTT OPEX DAY 2025","Centara Grand Ladprao","Event","Borrowed"],
+      ["NO1-M8-BKP-01","14-23 Jul 2025","Platinum Lounge","M8 Platinum Lounge","Branch","Internal relocation · Active"],
+      ["NO1-M8-BKP-01","24-28 Jul 2025","Gen ใหม่ Life สนุก","M6 Ngamwongwan","Branch","Temporary relocation · Active"],
+      ["NO1-M8-BKP-01","29 Jul-27 Aug 2025","Information Counter M6","M6 Information Counter","Branch","Permanent · Active"],
+      ["NO1-M8-BKP-01","28-31 Aug 2025","WORLD PUP EXPO 2025","M7 Bangkae","Event","Borrowed"],
+      ["NO1-M8-BKP-01","28 Oct-9 Nov 2025","Power Mall Gamer Festival","M7 Bangkae","Event","Borrowed"],
+      ["NO1-M8-BKP-01","10 Apr 2026-Present","Machine Consolidation","M8 Bangkapi - Information Counter (G)","Branch","Permanent · Active"],
+      ["NO2-M7-BKE-01","Initial-9 Apr 2026","Initial Deployment","M7 Bangkae - Information Counter","Branch","Permanent · Active"],
+      ["NO2-M7-BKE-01","10 Apr 2026-Present","Machine Consolidation","M8 Bangkapi - E-Stamp (G)","Branch","Permanent · Active"],
+      ["NO2-M7-BKE-01","15-16 May 2026","Bangkok Bank M VISA","Bangkok Bank Event","Event","Borrowed"],
+      ["NO2-M7-BKE-01","11 Jun 2026","Marketing Oops 2026","QSNCC","Event","Borrowed"],
+      ["NO3-M6-NGW-01","Initial-9 Apr 2026","Initial Deployment","M6 Ngamwongwan - Information Counter","Branch","Permanent · Active"],
+      ["NO3-M6-NGW-01","10 Apr 2026-Present","Machine Consolidation","M8 Bangkapi - Bank Zone ชั้น 2","Branch","Permanent · Active"],
+      ["NO4-M5-THA-01","Initial-9 Apr 2026","Initial Deployment","M5 Thapra - Information Counter","Branch","Permanent · Active"],
+      ["NO4-M5-THA-01","10 Apr 2026-Present","Machine Consolidation","M8 Bangkapi - Platinum Lounge ชั้น 2","Branch","Permanent · Active"],
+      ["NO4-M5-THA-01","5-10 Jun 2026","The Mall Lifestore Sports Fest","M7 Bangkae","Event","Borrowed"],
+      ["NO5-M3-EVT-01","Initial-9 Nov 2025","Standby","M3 Ramkhamhaeng","Maintenance","Standby · Available"],
+      ["NO5-M3-EVT-01","10 Nov-10 Dec 2025","Electronica 2025","Siam Paragon","Event","Borrowed"],
+      ["NO5-M3-EVT-01","3-4 Dec 2025","Sustainability Forum 2026","Samyan Mitrtown","Event","Borrowed"],
+      ["NO5-M3-EVT-01","10 Apr 2026-Present","Machine Consolidation","M8 Bangkapi - Dining Zone ชั้น 3","Branch","Permanent · Active"]
+    ].map(([assetId,range,name,loc,type,note])=>({assetId,range,name,loc,type,note}));
+    const globalTimeline = [
+      ["Initial Deployment","ติดตั้ง 5 เครื่องประจำ 4 สาขา + 1 เครื่อง Event"],["27 Jun 2025","Marketing Oops"],["Jul 2025","Multiple Roadshow / Internal Relocation"],
+      ["Aug 2025","World Pup Expo"],["Oct-Nov 2025","Power Mall Gamer Festival"],["Nov-Dec 2025","Electronica 2025"],["Dec 2025","Sustainability Forum"],
+      ["Dec 2025-Jan 2026","The Great New Year Campaign (Avatar Update ทุกเครื่อง)"],["10 Apr 2026","Consolidate เครื่องทั้งหมดมายัง M8 Bangkapi"],
+      ["May 2026","Bangkok Bank M VISA"],["Jun 2026","Sports Fest"],["Jun 2026","Marketing Oops 2026"]
+    ].map(([date,activity])=>({date,activity}));
+    const topics = {
+      "2026-06":[["Promotion",1840,21],["M Card",1425,17],["Directory",1320,15],["Event",1184,14],["Parking",940,11],["Rewards",810,9],["Store location",650,8],["Others",431,5]],
+      "2026-05":[["Promotion",1280,18],["M Card",1210,17],["Directory",1188,17],["Parking",880,12],["Rewards",740,10]],
+      "2026-04":[["Directory",1120,18],["Promotion",1088,17],["M Card",970,15],["Parking",820,13]]
+    };
+    const questions = {
+      "2026-06":[["วันนี้มีโปรโมชันอะไรบ้าง","Promotion",286],["สมัคร M Card ได้ที่ไหน","M Card",221],["ร้าน Uniqlo อยู่ชั้นไหน","Directory",198],["จอดรถฟรีกี่ชั่วโมง","Parking",166],["งาน Marketing Oops อยู่ตรงไหน","Event",142],["แลกคะแนน M Point ได้อย่างไร","Rewards",120]],
+      "2026-05":[["วันนี้มีโปรโมชันอะไรบ้าง","Promotion",218],["ร้านอาหารอยู่ชั้นไหน","Directory",173],["สมัคร M Card ได้ที่ไหน","M Card",168]]
+    };
+    const errors = [
+      ["2026-06","2026-06-04","NO3-M6-NGW-01","ร้าน Apple เปิดถึงกี่โมง","เปิดถึง 21:00 น.","Outdated content","เปิดถึง 22:00 น. ในวันศุกร์-อาทิตย์","To fix","KM Team","Update store hours source."],
+      ["2026-06","2026-06-11","NO2-M7-BKE-01","บูธ Marketing Oops อยู่ฮอลล์ไหน","อยู่บริเวณ M8 Bangkapi - E-Stamp (G)","Wrong info","QSNCC, Marketing Oops 2026 event area","Fixed","Event Ops","Event location pushed after borrowing log confirmation."],
+      ["2026-06","2026-06-16","NO4-M5-THA-01","จอดรถมอเตอร์ไซค์ตรงไหน","ขออภัยค่ะ ฉันยังไม่มีข้อมูลนี้","Missing info","อาคารจอดรถ B ชั้น 1","Need confirmation","Branch Ops","Need branch confirmation."],
+      ["2026-05","2026-05-21","NO2-M7-BKE-01","แลกคูปองร้านอาหารยังไง","กดรับสิทธิ์ในแอปแล้วใช้ได้ทันที","Confusing answer","กดรับสิทธิ์ใน M Card app แล้วแสดง QR ก่อนชำระเงิน","Fixed","CRM","Template improved."]
+    ].map((x,i)=>({id:i,month:x[0],date:x[1],kiosk:x[2],question:x[3],answer:x[4],issue:x[5],correct:x[6],status:x[7],owner:x[8],note:x[9]}));
+    const events = [
+      ["2026-06","The Mall Lifestore Sports Fest","2026-06-05 to 2026-06-10","NO4-M5-THA-01","M8 Bangkapi - Platinum Lounge ชั้น 2","M7 Bangkae","2026-06-05","2026-06-10","404 sessions, 782 questions, 3.7 rating","Borrowed from consolidated M8 placement."],
+      ["2026-06","Marketing Oops 2026","2026-06-11","NO2-M7-BKE-01","M8 Bangkapi - E-Stamp (G)","QSNCC","2026-06-11","2026-06-11","940 sessions, 2,018 questions, 4.2 rating","One-day event borrowing."],
+      ["2026-05","Bangkok Bank M VISA","2026-05-15 to 2026-05-16","NO2-M7-BKE-01","M8 Bangkapi - E-Stamp (G)","Bangkok Bank Event","2026-05-15","2026-05-16","846 sessions, 1,776 questions, 4.1 rating","Borrowed for Bangkok Bank event."]
+    ].map((x,i)=>({id:i,month:x[0],event:x[1],date:x[2],asset:x[3],original:x[4],location:x[5],setup:x[6],returnDate:x[7],performance:x[8],notes:x[9]}));
+
+    const fmt = new Intl.NumberFormat("en-US");
+    const safeNumber = v => {const raw=typeof v==="string"?v.replace(/,/g,"").trim():v;const num=Number(raw);return Number.isFinite(num)?num:0};
+    const n = v => fmt.format(Math.round(safeNumber(v)));
+    const compact = v => Intl.NumberFormat("en-US",{notation:"compact",maximumFractionDigits:1}).format(safeNumber(v));
+    const pct = v => `${safeNumber(v).toFixed(1)}%`;
+    const display = (v,fallback="—") => (v===undefined||v===null||v===""?fallback:v);
+    const sum = (rows,k)=>rows.reduce((a,b)=>a+safeNumber(b[k]),0);
+    const metric = (rows,days=30)=>{const sessions=sum(rows,"sessions"), questions=sum(rows,"questions"), success=sum(rows,"success"), apology=sum(rows,"apology"), rating=rows.reduce((a,b)=>a+safeNumber(b.rating)*safeNumber(b.sessions),0), dayCount=days||1;return {sessions,questions,avg:questions/dayCount,successRate:questions?success/questions*100:0,apologyRate:questions?apology/questions*100:0,rating:sessions?rating/sessions:0,success,apology}};
+    const delta = (a,b)=>{const next=safeNumber(a), base=safeNumber(b);return base?((next-base)/base*100):(next?100:0)};
+    const parsePerformance = text => ({sessions:+(text.match(/([\d,]+) sessions/)?.[1]||"0").replace(/,/g,""),questions:+(text.match(/([\d,]+) questions/)?.[1]||"0").replace(/,/g,""),rating:+(text.match(/([\d.]+) rating/)?.[1]||"0")});
+    const activeTimeline = asset => history.filter(x=>x.assetId===asset);
+    const getTopics = (monthId,totalQuestions) => {
+      if(topics[monthId]) return topics[monthId];
+      const seed=topics["2026-06"];
+      const seedTotal=seed.reduce((a,b)=>a+b[1],0)||1;
+      return seed.map(([name,value,share])=>[name,Math.round(totalQuestions*(value/seedTotal)),share]);
+    };
+    const getQuestions = monthId => questions[monthId] || questions["2026-06"].slice(0,4).map(([q,c,count])=>[q,c,Math.round(count*.58)]);
+    const categorySeed = [["Promotion",.19],["M Card",.15],["Directory",.14],["Parking",.1],["Events",.1],["Store Information",.09],["Rewards",.08],["Restaurant",.06],["Fashion",.035],["Beauty",.025],["Sports",.025],["Lifestyle",.015]];
+    const brandSeed = [["Uniqlo",.18],["Starbucks",.15],["McDonald's",.12],["Nike",.11],["Adidas",.09],["Power Mall",.16],["Gourmet Market",.13],["Apple",.06]];
+    const questionBank = [
+      ["วันนี้มีโปรโมชันอะไรบ้าง","Promotion"],["สมัคร M Card ได้ที่ไหน","M Card"],["ร้าน Uniqlo อยู่ชั้นไหน","Directory"],["จอดรถฟรีกี่ชั่วโมง","Parking"],["งานวันนี้อยู่ตรงไหน","Events"],
+      ["แลกคะแนน M Point ได้อย่างไร","Rewards"],["ร้านอาหารชั้น 3 มีอะไรบ้าง","Restaurant"],["Power Mall มีโปรอะไร","Store Information"],["Gourmet Market อยู่ชั้นไหน","Store Information"],["Nike อยู่โซนไหน","Fashion"],
+      ["Adidas มีสาขาไหม","Sports"],["Starbucks เปิดถึงกี่โมง","Restaurant"],["Beauty Hall อยู่ตรงไหน","Beauty"],["ห้องน้ำอยู่ไหน","Directory"],["ทางไปลานจอดรถ B","Parking"],
+      ["Event มีถึงวันไหน","Events"],["ใช้คะแนนแลกคูปองได้ไหม","Rewards"],["ร้านเสื้อผ้าผู้หญิงอยู่ชั้นไหน","Fashion"],["มีร้านเด็กไหม","Lifestyle"],["ติดต่อ information counter ได้ที่ไหน","Directory"],
+      ["McDonald's อยู่ชั้นไหน","Restaurant"],["Apple เปิดถึงกี่โมง","Store Information"],["สมัครบัตรเครดิต M VISA ที่ไหน","M Card"],["มีโปรร้านอาหารอะไร","Promotion"],["แผนที่ไป Bank Zone","Directory"]
+    ];
+    const comparisonPeriods = ["Daily","Weekly","Monthly","Quarterly","Yearly","Custom Date Range"];
+    const comparisonModes = ["Current vs Previous Period","Month vs Month","Year vs Year"];
+    const compareColors = ["#2563eb","#0891b2","#12b76a","#f59e0b","#7c3aed"];
+    const sidebarGroups = [
+      {id:"dashboard",title:"Dashboard",subtitle:"Portfolio overview",icon:"activity",items:[["overview","Overview","Monthly command view"]]},
+      {id:"machine",title:"Machine Analytics",subtitle:"Status, comparison, timeline",icon:"cpu",items:[["machine-status","Machine Status","Operational cards"],["machine-comparison","Machine Comparison","Compare all 5 machines"],["machine-timeline","Machine & Event Timeline","Movement, event, borrowing"]]},
+      {id:"performance",title:"Performance & User Analytics",subtitle:"Volume, quality, customer intent, and KM actions",icon:"trend",items:[["sessions","Sessions","Usage trend"],["questions-page","Questions & Topics","Questions, topics, brands"],["ratings","Ratings & Success","Rating and answer quality"],["user-behavior","User Behavior","Journey and peak hours"],["wrong-answers","KM Actions","Answer gaps and content fixes"]]},
+      {id:"import",title:"Import Data",subtitle:"Add a Data Report file",icon:"upload",items:[["import-data","Import Data","Add a Data Report file"]]}
+    ];
+    const pageAliases = {machines:"machine-status",compare:"machine-comparison",movement:"machine-timeline",performance:"sessions",behavior:"user-behavior",km:"wrong-answers",events:"machine-timeline",insights:"overview","executive-summary":"overview",data:"import-data",import:"import-data","monthly-report":"overview",export:"overview","missing-knowledge":"wrong-answers","ai-improvements":"wrong-answers","success-rate":"ratings","question-categories":"questions-page","brand-mentions":"questions-page","language-analysis":"overview","event-timeline":"machine-timeline","event-performance":"machine-timeline","borrowing-history":"machine-timeline"};
+    const pageList = sidebarGroups.flatMap(group=>group.items.map(item=>({id:item[0],label:item[1],subtitle:item[2],group:group.title,groupSubtitle:group.subtitle,icon:group.icon})));
+    const pageById = id => pageList.find(p=>p.id===(pageAliases[id]||id)) || pageList[0];
+    const monthPos = id => Math.max(0, months.findIndex(m=>m.id===id));
+    const monthById = id => months.find(m=>m.id===id) || months[0];
+    function periodLength(period){return period==="Quarterly"?3:period==="Yearly"?12:1}
+    function periodMonthIds(anchor,period,offset=0){const start=monthPos(anchor)+offset, len=periodLength(period);return months.slice(start,start+len).map(m=>m.id)}
+    function customDayCount(start,end,fallback=30){const s=start?new Date(start):null,e=end?new Date(end):null;if(s&&e&&!Number.isNaN(+s)&&!Number.isNaN(+e)&&e>=s)return Math.max(1,Math.round((e-s)/86400000)+1);return fallback}
+    function periodDays(ids,period,start,end){if(period==="Daily"||period==="Today"||period==="Yesterday")return 1;if(period==="Weekly"||period==="Last 7 Days")return 7;if(period==="Last 30 Days")return 30;if(period==="Custom Date Range")return customDayCount(start,end,monthById(ids[0]).days);return ids.reduce((a,id)=>a+monthById(id).days,0)||30}
+    function periodScale(ids,period,start,end){if(["Daily","Weekly","Today","Yesterday","Last 7 Days","Last 30 Days","Custom Date Range"].includes(period)){return Math.min(1,periodDays(ids,period,start,end)/(monthById(ids[0]).days||30))}return 1}
+    function aggregateAsset(assetId,ids,scale=1,days=30){
+      const source=perf.filter(r=>r.assetId===assetId&&ids.includes(r.month));
+      const out={assetId,sessions:0,questions:0,voice:0,quickReply:0,keyboard:0,thai:0,english:0,chinese:0,others:0,success:0,apology:0,rating:0,activeDays:days};
+      source.forEach(r=>["sessions","questions","voice","quickReply","keyboard","thai","english","chinese","others","success","apology"].forEach(k=>out[k]+=safeNumber(r[k])*scale));
+      out.sessions=Math.round(out.sessions);out.questions=Math.round(out.questions);out.voice=Math.round(out.voice);out.quickReply=Math.round(out.quickReply);out.keyboard=Math.round(out.keyboard);out.thai=Math.round(out.thai);out.english=Math.round(out.english);out.chinese=Math.round(out.chinese);out.others=Math.round(out.others);out.success=Math.round(out.success);out.apology=Math.round(out.apology);
+      const weighted=source.reduce((a,r)=>a+safeNumber(r.rating)*safeNumber(r.sessions)*scale,0);out.rating=out.sessions?weighted/out.sessions:0;out.avgDailySessions=out.sessions/(days||1);out.qps=out.sessions?out.questions/out.sessions:0;out.successRate=out.questions?out.success/out.questions*100:0;out.apologyRate=out.questions?out.apology/out.questions*100:0;
+      return out;
+    }
+    function comparisonMetric(rows){const sessions=sum(rows,"sessions"),questions=sum(rows,"questions"),maxDays=Math.max(1,...rows.map(r=>safeNumber(r.activeDays)||1));return {sessions,questions,qps:sessions?questions/sessions:0,rating:rows.reduce((a,b)=>a+safeNumber(b.rating)*safeNumber(b.sessions),0)/(sessions||1),successRate:questions?sum(rows,"success")/questions*100:0,apologyRate:questions?sum(rows,"apology")/questions*100:0,activeDays:Math.max(0,...rows.map(r=>safeNumber(r.activeDays))),avgDailySessions:sessions/maxDays}}
+    function languageMix(r={}){const others=safeNumber(r.others), japanese=Math.round(others*.35), other=Math.max(0,others-japanese);return [{name:"Thai",value:safeNumber(r.thai),color:"#2563eb"},{name:"English",value:safeNumber(r.english),color:"#0891b2"},{name:"Chinese",value:safeNumber(r.chinese),color:"#f59e0b"},{name:"Japanese",value:japanese,color:"#7c3aed"},{name:"Other",value:other,color:"#94a3b8"}]}
+    function categoryMix(r){const idx=kiosks.findIndex(k=>k.assetId===r.assetId), questions=safeNumber(r?.questions);const mods=[1.12,.95,1.04,.82,1.24];return categorySeed.map(([name,share],i)=>({name,value:Math.round(questions*share*(mods[(idx+i)%mods.length]||1)),share}))}
+    function brandMix(r){const idx=kiosks.findIndex(k=>k.assetId===r.assetId), questions=safeNumber(r?.questions);return brandSeed.map(([name,share],i)=>({name,value:Math.round(questions*share*(.78+(((idx+i)%5)*.11)))})).sort((a,b)=>b.value-a.value)}
+    function machineQuestionRows(r={},limit=20){const idx=kiosks.findIndex(k=>k.assetId===r.assetId), questions=safeNumber(r?.questions);return questionBank.map((q,i)=>({question:q[0],category:q[1],machine:r.assetId,count:Math.max(questions?4:0,Math.round(questions*(.026-(i%8)*.0016)*(1+((idx+i)%4)*.08)))})).sort((a,b)=>b.count-a.count).slice(0,limit)}
+    function hourlyRows(r){const hours=[10,11,12,13,14,15,16,17,18,19,20,21], sessions=safeNumber(r?.sessions);const idx=kiosks.findIndex(k=>k.assetId===r.assetId);return hours.map((hr,i)=>({hour:hr,value:Math.round(sessions*(.045+Math.max(0,Math.sin((i+idx)*.72))*.06+(i>7?.035:0))) }))}
+    function scoreRows(current,previous,eventRows){
+      if(!current.length)return [];
+      const maxSessions=Math.max(...current.map(r=>r.sessions),1), maxQps=Math.max(...current.map(r=>r.qps),1);
+      return current.map(r=>{const p=previous.find(x=>x.assetId===r.assetId)||{};const langs=languageMix(r), langTotal=langs.reduce((a,b)=>a+b.value,0)||1, diversity=langs.filter(l=>l.value/langTotal>.05).length/5;const eventPerformance=eventRows.some(e=>e.asset===r.assetId)?1:.55;const score=(r.sessions/maxSessions*.22+r.qps/maxQps*.18+r.rating/5*.18+r.successRate/100*.16+(100-r.apologyRate)/100*.12+diversity*.08+eventPerformance*.06)*100;return {...r,previous:p,growth:delta(r.sessions,p.sessions||0),knowledgeCoverage:Math.max(0,100-r.apologyRate),languageDiversity:diversity*100,eventPerformance:eventPerformance*100,overallScore:score}}).sort((a,b)=>b.overallScore-a.overallScore).map((r,i)=>({...r,rank:i+1}))}
+    function buildMachineComparison({machineIds,anchor,period,mode,start,end,topLimit}){
+      const ids=Array.isArray(machineIds)?machineIds:kiosks.map(k=>k.assetId), currentIds=periodMonthIds(anchor,period,0), previousIds=periodMonthIds(anchor,period,periodLength(period));
+      const days=periodDays(currentIds,period,start,end), prevDays=periodDays(previousIds,period,start,end), scale=periodScale(currentIds,period,start,end), prevScale=periodScale(previousIds,period,start,end);
+      const current=ids.map(id=>aggregateAsset(id,currentIds,scale,days)), previous=ids.map(id=>aggregateAsset(id,previousIds,prevScale,prevDays));
+      const summary=comparisonMetric(current), prevSummary=comparisonMetric(previous), eventRows=events.filter(e=>currentIds.includes(e.month)&&ids.includes(e.asset)), ranking=scoreRows(current,previous,eventRows);
+      const categoryRows=current.map(r=>({assetId:r.assetId,machine:kiosks.find(k=>k.assetId===r.assetId)?.machine||r.assetId,items:categoryMix(r)}));
+      const brandRows=current.flatMap(r=>brandMix(r).map(b=>({...b,assetId:r.assetId,machine:kiosks.find(k=>k.assetId===r.assetId)?.machine||r.assetId})));
+      const brandTotals=brandSeed.map(([name])=>({name,value:brandRows.filter(b=>b.name===name).reduce((a,b)=>a+b.value,0)})).sort((a,b)=>b.value-a.value);
+      const topQuestions=current.flatMap(r=>machineQuestionRows(r,+topLimit||20)).sort((a,b)=>b.count-a.count).slice(0,+topLimit||20);
+      const hourly=current.map(r=>({assetId:r.assetId,machine:kiosks.find(k=>k.assetId===r.assetId)?.machine||r.assetId,hours:hourlyRows(r)}));
+      const highest=ranking[0], lowest=ranking[ranking.length-1], growth=[...ranking].sort((a,b)=>b.growth-a.growth)[0];
+      return {ids,current,previous,summary,prevSummary,ranking,categoryRows,brandTotals,topQuestions,hourly,eventRows,periodLabel:period,compareLabel:mode,days,previousIds,currentIds,highest,lowest,growth};
+    }
+    const iconPaths = {
+      activity:"M22 12h-4l-3 8L9 4l-3 8H2",menu:"M4 6h16 M4 12h16 M4 18h16",cpu:"M9 9h6v6H9z M9 2v3 M15 2v3 M9 19v3 M15 19v3 M2 9h3 M2 15h3 M19 9h3 M19 15h3 M7 5h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z",
+      map:"M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0z M12 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z",calendar:"M7 2v4 M17 2v4 M3 10h18 M5 5h14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2z",
+      brain:"M9 3a3 3 0 0 0-3 3v1a3 3 0 0 0-2 5 3 3 0 0 0 2 5v1a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3z M15 3a3 3 0 0 1 3 3v1a3 3 0 0 1 2 5 3 3 0 0 1-2 5v1a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3z",
+      alert:"M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z M12 9v4 M12 17h.01",trend:"M3 17l6-6 4 4 7-8 M14 7h6v6",
+      message:"M21 15a4 4 0 0 1-4 4H7l-4 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z",upload:"M12 16V4 M7 9l5-5 5 5 M5 20h14",search:"M21 21l-4.3-4.3 M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15z",
+      gauge:"M4 14a8 8 0 1 1 16 0 M12 14l4-4 M8 20h8",check:"M20 6 9 17l-5-5",mic:"M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3z M19 11a7 7 0 0 1-14 0 M12 18v4",globe:"M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z M2 12h20 M12 2a15 15 0 0 1 0 20 M12 2a15 15 0 0 0 0 20"
+    };
+    function Icon({name,size=18}){return h("svg",{width:size,height:size,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round","aria-hidden":"true"},h("path",{d:iconPaths[name]||iconPaths.activity}))}
+    function Section({id,title,sub,children,action}){return h("section",{id,className:"section"},h("div",{className:"section-head"},h("div",null,h("h2",null,title),sub&&h("p",null,sub)),action&&h("div",{className:"section-actions"},action)),children)}
+    function Delta({value,bad}){const good=bad?value<=0:value>=0;return h("span",{className:`delta ${good?"":"down"}`},`${value>0?"+":""}${value.toFixed(1)}%`)}
+    function Sparkline({values,color="#2563eb"}){let safe=(values||[]).map(safeNumber);if(!safe.length)safe=[0,0];if(safe.length===1)safe=[safe[0],safe[0]];const max=Math.max(...safe), min=Math.min(...safe), pts=safe.map((v,i)=>`${i/(safe.length-1)*110},${28-((v-min)/(max-min||1)*22+3)}`).join(" ");return h("svg",{className:"spark",viewBox:"0 0 110 32",preserveAspectRatio:"none"},h("polyline",{points:pts,fill:"none",stroke:color,strokeWidth:2.4,strokeLinecap:"round",strokeLinejoin:"round"}))}
+    function KpiCard({label,value,note,deltaValue,bad,icon,series}){return h("article",{className:"card kpi"},h("div",{className:"kpi-top"},h("span",{className:"icon"},h(Icon,{name:icon,size:24})),h(Delta,{value:safeNumber(deltaValue),bad})),h("div",{className:"kpi-middle"},h("div",{className:"kpi-value"},display(value))),h("div",{className:"kpi-bottom"},h("div",null,h("div",{className:"kpi-label"},display(label,"Untitled metric")),note&&h("div",{className:"kpi-note"},note)),h(Sparkline,{values:series||[2,3,4,4.8,5.3,6.2],color:bad?"#e11d48":"#2563eb"})))}
+    function pathFrom(values,w=760,hgt=270,pad=30){let safe=(values||[]).map(safeNumber);if(!safe.length)safe=[0,0];if(safe.length===1)safe=[safe[0],safe[0]];const max=Math.max(...safe),min=Math.min(...safe),span=max-min||1;return safe.map((v,i)=>[pad+i*((w-pad*2)/(safe.length-1)),hgt-pad-((v-min)/span)*(hgt-pad*2)]);}
+    function AreaChart({monthsData}){const data=(monthsData?.length?monthsData:[{id:"empty-a",short:"",sessions:0,questions:0},{id:"empty-b",short:"",sessions:0,questions:0}]);const w=760,hgt=320, sessions=data.map(x=>safeNumber(x.sessions)), questions=data.map(x=>safeNumber(x.questions));const p1=pathFrom(questions,w,hgt,46), p2=pathFrom(sessions,w,hgt,46);const line=pts=>pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1)).join(" ");const area=pts=>line(pts)+` L ${w-46} ${hgt-46} L 46 ${hgt-46} Z`;const labelX=(pts,i)=>i===pts.length-1?pts[i][0]-16:i===0?pts[i][0]+14:pts[i][0];const labelAnchor=(pts,i)=>i===pts.length-1?"end":i===0?"start":"middle";return h("svg",{className:"chart",viewBox:`0 0 ${w} ${hgt}`,role:"img","aria-label":"Monthly sessions and questions trend"},[0,1,2,3].map(i=>h("line",{key:i,x1:46,x2:w-46,y1:46+i*58,y2:46+i*58,className:"grid-line"})),h("path",{d:area(p1),fill:"#2563eb",className:"area-fill"}),h("path",{d:line(p1),fill:"none",stroke:"#2563eb",strokeWidth:4,className:"draw-line"}),h("path",{d:line(p2),fill:"none",stroke:"#0891b2",strokeWidth:3,strokeDasharray:"6 8",className:"draw-line"}),data.map((m,i)=>h("g",{key:`point-${m.id||i}`},h("circle",{cx:p1[i][0],cy:p1[i][1],r:3.5,fill:"#2563eb"}),h("circle",{cx:p2[i][0],cy:p2[i][1],r:3,fill:"#0891b2"}),h("text",{x:labelX(p1,i),y:Math.max(18,p1[i][1]-15),textAnchor:labelAnchor(p1,i),fill:"#2563eb",fontSize:11,fontWeight:850},compact(questions[i])),h("text",{x:labelX(p2,i),y:Math.min(hgt-62,p2[i][1]+19),textAnchor:labelAnchor(p2,i),fill:"#0891b2",fontSize:10,fontWeight:800},compact(sessions[i])))),data.map((m,i)=>h("text",{key:m.id||i,x:p1[i][0],y:hgt-12,textAnchor:"middle",className:"axis-label"},display(m.short,""))))}
+    function LineChart({values,labels=[],color="#12b76a"}){const w=360,hgt=150, pts=pathFrom(values,w,hgt,18), line=pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1)).join(" "), safeLabels=labels.length?labels:pts.map((_,i)=>String(i+1));return h("svg",{className:"chart",viewBox:`0 0 ${w} ${hgt}`},h("path",{d:line,fill:"none",stroke:color,strokeWidth:4,strokeLinecap:"round",strokeLinejoin:"round",className:"draw-line"}),pts.map((p,i)=>h("circle",{key:i,cx:p[0],cy:p[1],r:4,fill:"#fff",stroke:color,strokeWidth:3})),safeLabels.slice(0,pts.length).map((l,i)=>h("text",{key:l+i,x:pts[i][0],y:hgt-4,textAnchor:"middle",className:"axis-label"},l)))}
+    function Donut({title,segments=[],total,label,span=4}){let cursor=0;const safeTotal=safeNumber(total), colors=["#2563eb","#0891b2","#12b76a","#f59e0b","#7c3aed","#e11d48"], safeSegments=segments.length?segments:[{name:"No data",value:0,color:"#e5e7eb"}];const gradient=safeTotal?safeSegments.map((s,i)=>{const v=safeTotal?safeNumber(s.value)/safeTotal*100:0;const out=`${s.color||colors[i%colors.length]} ${cursor}% ${cursor+v}%`;cursor+=v;return out;}).join(", "):"#eef2f7 0% 100%";return h("article",{className:`card span-${span}`},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"globe"})),h("div",null,h("h3",null,display(title,"Distribution")),h("p",{className:"subtitle"},display(label,"No description"))))) ,h("div",{className:"donut-layout"},h("div",{className:"donut",style:{background:`conic-gradient(${gradient})`}},h("div",{className:"donut-center"},h("strong",null,compact(safeTotal)),h("span",null,"total"))),h("div",{className:"legend-list"},safeSegments.map((s,i)=>h("div",{className:"legend-item",key:s.name||i},h("i",{className:"swatch",style:{background:s.color||colors[i%colors.length]}}),h("span",null,display(s.name,"No data")),h("b",null,pct(safeTotal?safeNumber(s.value)/safeTotal*100:0)))))))}
+    function Gauge({value,label}){const safe=Math.max(0,Math.min(100,safeNumber(value)));return h("div",{className:"donut gauge",style:{background:`conic-gradient(#12b76a 0 ${safe}%, #eef2f7 ${safe}% 100%)`}},h("div",{className:"donut-center"},h("strong",null,pct(safe)),h("span",null,display(label,"score"))))}
+    function KmSummaryCard({icon,tone,title,value}){
+      return h("article",{className:"card span-3 km-metric"},
+        h("div",{className:"card-head"},
+          h("div",{className:"card-title"},
+            h("span",{className:`icon ${tone||""}`},h(Icon,{name:icon})),
+            h("div",null,h("h3",null,display(title,"Knowledge metric")),h("p",{className:"subtitle"},display(value,"No data")))
+          )
+        )
+      )
+    }
+    function KmGaugeCard({icon,tone,title,value,label}){
+      return h("article",{className:"card span-3 km-gauge-card"},
+        h("div",{className:"card-head"},
+          h("div",{className:"card-title"},
+            h("span",{className:`icon ${tone||""}`},h(Icon,{name:icon})),
+            h("div",null,h("h3",null,display(title,"Knowledge score")),h("p",{className:"subtitle"},pct(safeNumber(value))))
+          )
+        ),
+        h("div",{className:"gauge-holder"},h(Gauge,{value,label}))
+      )
+    }
+    function Leaderboard({rows,kiosksMap}){if(!rows?.length)return h("div",{className:"empty"},"No ranking data for this filter.");const sorted=[...rows].sort((a,b)=>safeNumber(b.questions)-safeNumber(a.questions)), max=Math.max(...sorted.map(x=>safeNumber(x.questions)),1);return h("div",{className:"leaderboard"},sorted.map((r,i)=>{const k=kiosksMap.get(r.assetId);return h("div",{className:"leader-row",key:r.assetId||i},h("b",null,`${i+1}. ${display(k?.machine,r.assetId||"Machine")}`),h("div",{className:"track"},h("div",{className:"fill bar-animate",style:{width:`${safeNumber(r.questions)/max*100}%`}})),h("span",null,n(r.questions))) })) }
+    function MachineCard({row={},kiosk={},days,selected,onSelect}){const questions=safeNumber(row.questions), success=questions?safeNumber(row.success)/questions*100:0;const today=Math.round(safeNumber(row.sessions)/(days||1)*1.12);return h("article",{className:`card machine-card ${selected?"selected":""}`,onClick:onSelect},h("div",{className:"machine-top"},h("div",{className:"machine-device"},(kiosk.machine||"M").split("-")[1]||"M"),h("span",{className:`status ${kiosk.status||"Standby"}`},display(kiosk.status,"Standby"))),h("div",null,h("div",{className:"machine-id"},display(kiosk.assetId,"No asset ID")),h("div",{className:"machine-location"},display(kiosk.location,"Location not available")),h("p",{className:"subtitle"},`${display(kiosk.machine,"Unnamed machine")} · ${display(kiosk.screen,"Screen size not available")}`)),h("div",{className:"machine-stats"},h("div",{className:"stat-tile"},h("strong",null,n(today)),h("span",null,"Today's sessions")),h("div",{className:"stat-tile"},h("strong",null,n(row.sessions)),h("span",null,"Monthly sessions")),h("div",{className:"stat-tile"},h("strong",null,safeNumber(row.rating).toFixed(1)),h("span",null,"Rating")),h("div",{className:"stat-tile"},h("strong",null,pct(success)),h("span",null,"Success"))),h("div",{className:"micro"},h("span",null,"Last update"),h("b",null,"18 Jun 2026 · 16:30")),h("div",{className:"click-hint"},h(Icon,{name:"trend",size:14}),"Click to view movement timeline"))}
+    function StackedBars({rows,kiosksMap}){if(!rows?.length)return h("div",{className:"empty"},"No input method data for this filter.");return h("div",{className:"leaderboard"},rows.map(r=>{const voice=safeNumber(r.voice), quick=safeNumber(r.quickReply), keyboard=safeNumber(r.keyboard), total=voice+quick+keyboard||1,k=kiosksMap.get(r.assetId);return h("div",{className:"leader-row",key:r.assetId},h("b",null,display(k?.machine,r.assetId)),h("div",{className:"track",style:{display:"flex",height:16}},h("span",{className:"bar-animate",style:{width:`${voice/total*100}%`,background:"#2563eb"}},),h("span",{className:"bar-animate",style:{width:`${quick/total*100}%`,background:"#0891b2"}},),h("span",{className:"bar-animate",style:{width:`${keyboard/total*100}%`,background:"#e11d48"}},)),h("span",null,pct(voice/total*100))) })) }
+    function Treemap({rows}){if(!rows?.length)return h("div",{className:"empty"},"No topic data for this filter.");const colors=["#2563eb","#0891b2","#12b76a","#7c3aed","#f59e0b","#e11d48","#475467","#94a3b8"], spans=[5,4,3,4,3,3,3,2], total=rows.reduce((a,b)=>a+safeNumber(b[1]),0)||1;return h("div",{className:"treemap"},rows.map((r,i)=>{const span=spans[i]||3, isSmall=span<=3, value=safeNumber(r[1]), share=r[2]||Math.round(value/total*100), meta=isSmall?`${compact(value)} questions`:`${n(value)} questions · ${share}%`;return h("div",{className:`tile ${isSmall?"tile-small":""}`,key:r[0]||i,style:{gridColumn:`span ${span}`,background:colors[i%colors.length]}},h("b",null,display(r[0],"Uncategorized")),h("span",null,meta))}))}
+    function Heatmap(){const days=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"], hours=["10","11","12","13","14","15","16","17","18","19","20","21"];return h("div",{className:"heatmap"},h("span",null,""),hours.map((hr,i)=>h("span",{key:hr,className:i>5?"hide-sm":""},hr)),days.flatMap((d,di)=>[h("span",{key:d},d),...hours.map((hr,hi)=>{const intensity=(Math.sin((hi+di)*.9)+1)/2*.55+(hi>6?.35:0)+(di>4?.18:0);return h("div",{key:d+hr,className:`heat-cell ${hi>5?"hide-sm":""}`,title:`${d} ${hr}:00`,style:{background:`rgba(37,99,235,${Math.min(.95,.12+intensity*.74)})`}})})]))}
+    function Timeline({items=[],line=false}){return h("div",{className:`timeline-strip ${line?"timeline-line":""}`},items.map((x,i)=>h("article",{className:"timeline-item",key:(x.range||"range")+(x.name||i)},h("div",{className:"timeline-date"},display(x.range,"Date not available")),h("b",null,display(x.name,"Movement not available")),h("p",null,`${display(x.loc,"Location not available")} · ${display(x.note,"No note")}`))),!items.length&&h("div",{className:"empty"},"No movement found for this filter."))}
+    function GlobalTimeline(){return h("div",{className:"timeline-strip"},globalTimeline.map((x,i)=>h("article",{className:"timeline-item",key:(x.date||"date")+(x.activity||i)},h("div",{className:"timeline-date"},display(x.date,"Date not available")),h("b",null,display(x.activity,"Portfolio milestone")),h("p",null,"Portfolio movement and campaign milestone"))))}
+    function EventCard({event={}}){const p=parsePerformance(event.performance||"");return h("article",{className:"card event-card"},h("div",{className:"event-media"},h("img",{src:eventImages[event.event]||coverImage,alt:`${display(event.event,"Event")} display`}),h("div",null,h("span",{className:"status Event"},"Event"),h("b",null,display(event.event,"Event not named")))),h("div",{className:"event-body"},h("h3",null,display(event.date,"Date not available")),h("p",null,`${display(event.asset,"Machine")} borrowed from ${display(event.original,"original location")} to ${display(event.location,"event location")}. Display image is mapped to event only.`),h("div",{className:"event-metrics"},h("div",null,h("strong",null,n(p.sessions)),h("span",null,"Sessions")),h("div",null,h("strong",null,n(p.questions)),h("span",null,"Questions")),h("div",null,h("strong",null,safeNumber(p.rating).toFixed(1)),h("span",null,"Rating")))))}
+    function ErrorCards({rows=[]}){if(!rows.length)return h("div",{className:"empty"},"No answer gaps for the current filter.");return h("div",null,rows.map((r,i)=>h("details",{className:"gap",key:r.id||i,open:r.status!=="Fixed"},h("summary",null,h("div",{className:"gap-title"},h("b",null,display(r.question,"Question not available")),h("span",null,`${display(r.kiosk,"Machine")} · ${display(r.date,"Date")} · ${display(r.issue,"Issue")}`)),h("span",{className:`pill ${r.status==="Fixed"?"fixed":r.status==="To fix"?"open":"confirm"}`},display(r.status,"Need confirmation"))),h("div",{className:"gap-body"},h("div",null,h("b",null,"AI answer: ")," ",display(r.answer,"No AI answer recorded")),h("div",null,h("b",null,"Correct answer: ")," ",display(r.correct,"Correct answer not confirmed")),h("div",null,h("b",null,"Owner: ")," ",display(r.owner,"Unassigned")," · ",display(r.note,"No note"))))))}
+    function Radar({rows}){if(!rows?.length)return h("div",{className:"empty"},"No branch comparison data for this filter.");const axes=["Sessions","Questions","Success","Rating","Input"], center=[150,132], radius=92;const top=[...rows].sort((a,b)=>safeNumber(b.questions)-safeNumber(a.questions))[0];const inputTotal=safeNumber(top.voice)+safeNumber(top.quickReply)+safeNumber(top.keyboard)||1;const values=[safeNumber(top.sessions)/1200,safeNumber(top.questions)/2900,(safeNumber(top.success)/(safeNumber(top.questions)||1)),safeNumber(top.rating)/5,safeNumber(top.voice)/inputTotal].map(v=>Math.max(.05,Math.min(1,v)));const point=(i,v)=>{const a=-Math.PI/2+i*Math.PI*2/axes.length;return [center[0]+Math.cos(a)*radius*v,center[1]+Math.sin(a)*radius*v]};const poly=values.map((v,i)=>point(i,v).join(",")).join(" ");return h("svg",{className:"chart",viewBox:"0 0 300 250"},[.33,.66,1].map(g=>h("polygon",{key:g,points:axes.map((_,i)=>point(i,g).join(",")).join(" "),fill:"none",stroke:"#e6eaf0"})),axes.map((a,i)=>{const p=point(i,1.13);return h("text",{key:a,x:p[0],y:p[1],textAnchor:"middle",className:"axis-label"},a)}),h("polygon",{points:poly,fill:"rgba(37,99,235,.18)",stroke:"#2563eb",strokeWidth:3}),h("text",{x:150,y:238,textAnchor:"middle",fill:"#344054",fontSize:12,fontWeight:800},display(top.assetId,"Machine")))}
+    function Funnel({questions}){const total=safeNumber(questions), denom=total||1, stages=[["Asked",total],["Understood",Math.round(total*.94)],["Answered",Math.round(total*.907)],["Rated",Math.round(total*.36)]];return h("div",{className:"leaderboard"},stages.map((s,i)=>h("div",{className:"leader-row",key:s[0],style:{gridTemplateColumns:"100px minmax(0,1fr) 80px"}},h("b",null,s[0]),h("div",{className:"track",style:{height:22}},h("div",{className:"fill bar-animate",style:{width:`${s[1]/denom*100}%`,background:i<2?"#2563eb":i===2?"#12b76a":"#f59e0b"}})),h("span",null,n(s[1])))))}
+    function Sankey({voice=0,quick=0,keyboard=0,total}){const colors=["#2563eb","#0891b2","#e11d48"], segments=[{name:"Voice",value:safeNumber(voice),color:colors[0]},{name:"Quick Reply",value:safeNumber(quick),color:colors[1]},{name:"Keyboard",value:safeNumber(keyboard),color:colors[2]}];const safeTotal=safeNumber(total)||segments.reduce((a,b)=>a+b.value,0);let cursor=0;const gradient=safeTotal?segments.map(s=>{const v=s.value/safeTotal*100,out=`${s.color} ${cursor}% ${cursor+v}%`;cursor+=v;return out}).join(", "):"#eef2f7 0% 100%";return h("div",{className:"flow-pie"},h("div",{className:"donut",style:{background:`conic-gradient(${gradient})`}},h("div",{className:"donut-center"},h("strong",null,compact(safeTotal)),h("span",null,"inputs"))),h("div",{className:"legend-list"},segments.map(s=>h("div",{className:"legend-item",key:s.name},h("i",{className:"swatch",style:{background:s.color}}),h("span",null,s.name),h("b",null,`${n(s.value)} · ${pct(safeTotal?s.value/safeTotal*100:0)}`)))))}
+    function InputMethodSummary({total,voice,quick,keyboard}){let cursor=0;const safeTotal=safeNumber(total), segments=[{name:"Voice",value:safeNumber(voice),color:"#2563eb"},{name:"Quick Reply",value:safeNumber(quick),color:"#0891b2"},{name:"Keyboard",value:safeNumber(keyboard),color:"#e11d48"}];const gradient=safeTotal?segments.map(s=>{const v=s.value/safeTotal*100,out=`${s.color} ${cursor}% ${cursor+v}%`;cursor+=v;return out}).join(", "):"#eef2f7 0% 100%";return h("div",{className:"donut-layout"},h("div",{className:"donut",style:{background:`conic-gradient(${gradient})`}},h("div",{className:"donut-center"},h("strong",null,compact(safeTotal)),h("span",null,"total"))),h("div",{className:"legend-list"},segments.map(s=>h("div",{className:"legend-item",key:s.name},h("i",{className:"swatch",style:{background:s.color}}),h("span",null,s.name),h("b",null,pct(safeTotal?s.value/safeTotal*100:0))))))}
+    function CompareKpi({label,value,note,growth,bad}){const safeGrowth=safeNumber(growth);return h("div",{className:"compare-kpi"},h("div",null,h("span",null,display(label,"Metric")),h("strong",null,display(value))),h("small",null,display(note,"No comparison note")," · ",h("b",{style:{color:(bad?safeGrowth<=0:safeGrowth>=0)?"#067647":"#be123c"}},`${safeGrowth>0?"+":""}${safeGrowth.toFixed(1)}%`)))}
+    function MachineSelection({selected=[],onToggle,onAll,onPair,onClear}){return h("div",{className:"machine-picker"},h("div",{className:"panel-title"},h("b",null,"Machine selection"),h("span",null,`${selected.length} of 5 selected`)),h("div",{className:"chip-set"},kiosks.map(k=>h("button",{className:`compare-chip ${selected.includes(k.assetId)?"selected":""}`,onClick:()=>onToggle?.(k.assetId),key:k.assetId,title:k.assetId},h(Icon,{name:"cpu",size:14}),k.machine))),h("div",{className:"chip-set"},h("button",{className:"quick-btn active",onClick:onAll},"All 5 machines"),h("button",{className:"quick-btn",onClick:onPair},"Compare first 2"),h("button",{className:"quick-btn",onClick:onClear},"Single focus")))}
+    function ComparisonMatrix({rows}){if(!rows?.length)return h("div",{className:"empty"},"No comparison matrix data for this filter.");const max={sessions:Math.max(...rows.map(r=>safeNumber(r.sessions)),1),questions:Math.max(...rows.map(r=>safeNumber(r.questions)),1),successRate:100,rating:5};return h("div",{className:"matrix"},rows.map(r=>{const k=kiosks.find(x=>x.assetId===r.assetId);return h("div",{className:"matrix-row",key:r.assetId},h("b",null,display(k?.machine,r.assetId)),h("div",{className:"matrix-bars"},[["Sessions",safeNumber(r.sessions),max.sessions],["Questions",safeNumber(r.questions),max.questions],["Success",safeNumber(r.successRate),max.successRate],["Rating",safeNumber(r.rating),max.rating]].map(([label,value,m])=>h("div",{className:"matrix-bar",key:label,title:`${display(k?.machine,"Machine")} ${label}: ${label==="Rating"?value.toFixed(1):n(value)}`,style:{height:`${Math.max(8,value/(m||1)*126)}px`}},h("span",null,label==="Rating"?value.toFixed(1):compact(value))))))}))}
+    function ComparisonTrend({ids=[],metricName}){if(!ids.length)return h("div",{className:"empty"},"No trend data for this filter.");const w=760,hgt=270,pad=34,monthSeries=months.slice().reverse(),values=ids.map(id=>monthSeries.map(m=>safeNumber(perf.find(r=>r.assetId===id&&r.month===m.id)?.[metricName]))),flat=values.flat(),max=Math.max(...flat,1),min=Math.min(...flat,0),span=max-min||1;const point=(v,i)=>[pad+i*((w-pad*2)/(monthSeries.length-1)),hgt-pad-((v-min)/span)*(hgt-pad*2)];const line=pts=>pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1)).join(" ");return h("svg",{className:"line-compare",viewBox:`0 0 ${w} ${hgt}`,role:"img","aria-label":"Machine comparison trend"},[0,1,2,3].map(i=>h("line",{key:i,x1:pad,x2:w-pad,y1:pad+i*52,y2:pad+i*52,className:"grid-line"})),values.map((series,si)=>{const pts=series.map(point);return h("path",{key:ids[si],d:line(pts),fill:"none",stroke:compareColors[si%compareColors.length],strokeWidth:3.4,strokeLinecap:"round",strokeLinejoin:"round",className:"draw-line"})}),monthSeries.map((m,i)=>h("text",{key:m.id,x:pad+i*((w-pad*2)/(monthSeries.length-1)),y:hgt-8,textAnchor:"middle",className:"axis-label"},m.short)))}
+    function LanguageStacked({rows}){if(!rows?.length)return h("div",{className:"empty"},"No language data for this filter.");return h("div",{className:"stacked-list"},rows.map(r=>{const k=kiosks.find(x=>x.assetId===r.assetId), mix=languageMix(r), total=mix.reduce((a,b)=>a+safeNumber(b.value),0)||1;return h("div",{className:"stacked-row",key:r.assetId},h("b",null,display(k?.machine,r.assetId)),h("div",{className:"stacked-bar"},mix.map(seg=>h("div",{className:"stacked-seg",key:seg.name,title:`${seg.name}: ${pct(safeNumber(seg.value)/total*100)}`,style:{width:`${safeNumber(seg.value)/total*100}%`,background:seg.color}}))))}))}
+    function CategoryComparison({categoryRows}){if(!categoryRows?.length)return h("div",{className:"empty"},"No category data for this filter.");const cats=categorySeed.slice(0,6).map(x=>x[0]),max=Math.max(...categoryRows.flatMap(r=>(r.items||[]).map(i=>safeNumber(i.value))),1);return h("div",{className:"category-heatmap"},h("span",null,""),cats.map((c,i)=>h("span",{key:c,className:i>2?"hide-sm":""},c)),categoryRows.flatMap(row=>[h("span",{key:row.assetId},display(row.machine,row.assetId)),...cats.map((c,i)=>{const item=(row.items||[]).find(x=>x.name===c)||{value:0};return h("div",{key:row.assetId+c,className:`category-cell ${i>2?"hide-sm":""}`,title:`${display(row.machine,"Machine")} ${c}: ${n(item.value)}`,style:{background:`rgba(37,99,235,${.08+safeNumber(item.value)/max*.78})`}},compact(item.value))})]))}
+    function BrandComparison({brands}){if(!brands?.length)return h("div",{className:"empty"},"No brand mention data for this filter.");const max=Math.max(...brands.map(b=>safeNumber(b.value)),1);return h("div",{className:"brand-rank"},brands.map((b,i)=>h("div",{className:"brand-row",key:b.name||i},h("b",null,`${i+1}. ${display(b.name,"Brand")}`),h("div",{className:"track"},h("div",{className:"fill bar-animate",style:{width:`${safeNumber(b.value)/max*100}%`,background:i<3?"linear-gradient(90deg,#2563eb,#60a5fa)":"linear-gradient(90deg,#94a3b8,#cbd5e1)"}})),h("span",null,n(b.value)))))}
+    function BrandCloud({brands}){if(!brands?.length)return h("div",{className:"empty"},"No brand cloud data for this filter.");const max=Math.max(...brands.map(b=>safeNumber(b.value)),1);return h("div",{className:"word-cloud"},brands.map((b,i)=>h("span",{key:b.name||i,style:{fontSize:`${12+(safeNumber(b.value)/max*14)}px`},title:`${display(b.name,"Brand")}: ${n(b.value)} mentions`},display(b.name,"Brand"))))}
+    function TopQuestionComparison({items}){if(!items?.length)return h("div",{className:"empty"},"No question data for this filter.");return h("div",{className:"question-list"},items.map((q,i)=>{const k=kiosks.find(x=>x.assetId===q.machine);return h("div",{className:"question-item",key:(q.machine||"machine")+(q.question||"question")+i},h("div",null,h("b",null,display(q.question,"Question not available")),h("div",{className:"question-meta"},h("span",null,display(q.category,"Uncategorized")),h("span",null,display(k?.machine||q.machine,"Machine not available")))),h("span",{className:"score-pill"},n(q.count))) })) }
+    function HourlyComparison({rows}){if(!rows?.length)return h("div",{className:"empty"},"No hourly usage data for this filter.");const hours=[10,11,12,13,14,15,16,17,18,19,20,21],max=Math.max(...rows.flatMap(r=>(r.hours||[]).map(h=>safeNumber(h.value))),1);return h("div",{className:"hour-compare"},h("span",null,""),hours.map((hr,i)=>h("span",{key:hr,className:i>5?"hide-sm":""},`${hr}:00`)),rows.flatMap(r=>[h("span",{key:r.assetId},display(r.machine,r.assetId)),...(r.hours||[]).map((x,i)=>h("div",{key:r.assetId+x.hour,className:`hour-cell ${i>5?"hide-sm":""}`,title:`${display(r.machine,"Machine")} ${x.hour}:00 · ${n(x.value)} sessions`,style:{background:`rgba(37,99,235,${.1+safeNumber(x.value)/max*.75})`}}))]))}
+    function RankingTable({rows,onDrill}){
+      if(!rows?.length)return h("div",{className:"empty"},"No machine ranking data for this filter.");
+      return h("div",{className:"scroll"},
+        h("table",{className:"rank-table"},
+          h("thead",null,
+            h("tr",null,["Rank","Machine","Sessions","Engagement","Rating","Success","Coverage","Diversity","Score"].map(x=>h("th",{key:x},x)))
+          ),
+          h("tbody",null,
+            rows.map(r=>{
+              const k=kiosks.find(x=>x.assetId===r.assetId);
+              return h("tr",{key:r.assetId,onClick:()=>onDrill?.(r.assetId),title:"Click to drill down to this machine"},
+                h("td",null,`#${display(r.rank,"-")}`),
+                h("td",null,h("b",null,display(k?.machine,r.assetId)),h("div",{className:"subtitle"},display(r.assetId,"No asset ID"))),
+                h("td",null,n(r.sessions)),
+                h("td",null,safeNumber(r.qps).toFixed(2)),
+                h("td",null,safeNumber(r.rating).toFixed(1)),
+                h("td",null,pct(r.successRate)),
+                h("td",null,pct(r.knowledgeCoverage)),
+                h("td",null,pct(r.languageDiversity)),
+                h("td",null,h("span",{className:"score-pill"},Math.round(safeNumber(r.overallScore))))
+              )
+            })
+          )
+        )
+      )
+    }
+    function StrengthCards({rows}){if(!rows?.length)return h("div",{className:"empty"},"No strength analysis for this filter.");return h("div",{className:"strength-grid"},rows.map(r=>{const k=kiosks.find(x=>x.assetId===r.assetId), topCat=categoryMix(r).sort((a,b)=>b.value-a.value)[0]||{name:"customer questions"};const weakness=safeNumber(r.apologyRate)>9?"High apology rate":safeNumber(r.rating)<4.1?"Lower rating":"Narrower language mix";return h("article",{className:"strength-card",key:r.assetId},h("h4",null,display(k?.machine,r.assetId)),h("div",null,h("b",null,"Strength"),h("p",null,`${r.rank===1?"Highest overall score":"Stable usage"} with ${pct(r.successRate)} success and ${topCat.name} demand.`)),h("div",null,h("b",null,"Weakness"),h("p",null,weakness)),h("div",null,h("b",null,"Opportunity"),h("p",null,`Improve ${topCat.name} journeys and cross-sell M Card prompts.`)),h("div",null,h("b",null,"Recommendation"),h("p",null,safeNumber(r.growth)>0?"Keep current placement and refresh top content weekly.":"Review placement visibility and KM answers before next monthly review."))) })) }
+    function ExecutiveComparisonInsights({comparison}){if(!comparison?.current?.length)return h("div",{className:"empty"},"No executive insights for this filter.");const top=comparison.highest, low=comparison.lowest, growth=comparison.growth;const topMachine=display(kiosks.find(k=>k.assetId===top?.assetId)?.machine,"Top machine"), lowMachine=display(kiosks.find(k=>k.assetId===low?.assetId)?.machine,"Lowest machine"), growthMachine=display(kiosks.find(k=>k.assetId===growth?.assetId)?.machine,"Growth leader");const english=[...comparison.current].sort((a,b)=>safeNumber(b.english)-safeNumber(a.english))[0], englishMachine=display(kiosks.find(k=>k.assetId===english?.assetId)?.machine,"Language leader");const lines=[`${topMachine} has the highest overall machine score for ${display(comparison.periodLabel,"the selected period")}.`,`${growthMachine} shows the strongest sessions growth versus the comparison period at ${pct(growth?.growth||0)}.`,`${englishMachine} has the highest English-language usage among selected machines.`,`${lowMachine} needs review for placement, KM coverage, or customer journey quality.`,`Parking and promotion questions remain important drivers for Bangkapi kiosk traffic.`];return h("ul",{className:"exec-list"},lines.map(x=>h("li",{key:x},x)))}
+    function MachineComparisonSection({comparison,period,setPeriod,start,setStart,end,setEnd,topLimit,setTopLimit,presets=[],onLoadPreset,presetMessage,topicFilter,setTopicFilter,brandFilter,setBrandFilter,languageFilter,setLanguageFilter,onApply,onReset,machineCompareMode="All Machines",onCompareModeChange,selected=[],onToggleMachine,isApplying=false,filterError="",appliedSummary=""}){
+      const machineSpecsAll=[
+        {assetId:"NO1-M8-BKP-01",machine:"TheMall-001",location:"Information Counter, G Floor",screen:'43"',color:"#2563eb"},
+        {assetId:"NO2-M7-BKE-01",machine:"TheMall-002",location:"E-Stamp, G Floor",screen:'43"',color:"#0891b2"},
+        {assetId:"NO3-M6-NGW-01",machine:"TheMall-003",location:"Bank Zone, 2nd Floor",screen:'43"',color:"#12b76a"},
+        {assetId:"NO4-M5-THA-01",machine:"TheMall-004",location:"Platinum Lounge, 2nd Floor",screen:'43"',color:"#f59e0b"},
+        {assetId:"NO5-M3-EVT-01",machine:"TheMall-005",location:"Dining Zone, 3rd Floor",screen:'55"',color:"#7c3aed"}
+      ];
+      const safeComparison=comparison||{ids:[],current:[],ranking:[],days:30};
+      const activeIds=safeComparison.ids||[];
+      const machineSpecs=machineSpecsAll.filter(spec=>activeIds.includes(spec.assetId));
+      const rowMap=new Map((safeComparison.current||[]).map(r=>[r.assetId,r]));
+      const rankMap=new Map((safeComparison.ranking||[]).map(r=>[r.assetId,r]));
+      const emptyMachineData=spec=>({...aggregateAsset(spec.assetId,[],0,safeComparison.days||30),assetId:spec.assetId});
+      const machines=machineSpecs.map(spec=>({...spec,data:rowMap.get(spec.assetId)||emptyMachineData(spec),rank:rankMap.get(spec.assetId)||null,master:kiosks.find(k=>k.assetId===spec.assetId)}));
+      const topicOptions=["All",...categorySeed.map(x=>x[0])], brandOptions=["All",...brandSeed.map(x=>x[0])], languageOptions=["All","Thai","English","Chinese","Japanese","Other"];
+      const modeOptions=["All Machines","Selected Machines","Single Machine"];
+      const dateInvalid=!!(start&&end&&new Date(start)>new Date(end));
+      const tags=items=>h("div",{className:"metric-tags"},items.map(x=>h("span",{key:x},x)));
+      const valueWithScore=(main,sub,score,color)=>h("div",null,h("strong",null,main),sub&&h("small",null,sub),Number.isFinite(score)&&h("div",{className:"mini-score"},h("i",{style:{width:`${Math.max(4,Math.min(100,score))}%`,background:color}})));
+      const maxSessions=Math.max(...machines.map(x=>safeNumber(x.data?.sessions)),1), maxQuestions=Math.max(...machines.map(x=>safeNumber(x.data?.questions)),1), maxHourly=Math.max(...machines.flatMap(x=>hourlyRows(x.data||{}).map(h=>safeNumber(h.value))),1);
+      const topCategoryFor=m=>{const list=categoryMix(m.data||{}).sort((a,b)=>b.value-a.value);const filtered=topicFilter==="All"?list.slice(0,3):list.filter(x=>x.name===topicFilter);return filtered.length?filtered:list.slice(0,1)};
+      const topBrandFor=m=>{const list=brandMix(m.data||{}).sort((a,b)=>b.value-a.value);const filtered=brandFilter==="All"?list.slice(0,3):list.filter(x=>x.name===brandFilter);return filtered.length?filtered:list.slice(0,1)};
+      const languageFor=m=>{const list=languageMix(m.data||{}).sort((a,b)=>b.value-a.value);const filtered=languageFilter==="All"?list.slice(0,3):list.filter(x=>x.name===languageFilter);return filtered.length?filtered:list.slice(0,1)};
+      const topQuestionsFor=m=>machineQuestionRows(m.data||{},+topLimit||20).filter(q=>topicFilter==="All"||q.category===topicFilter).slice(0,2);
+      const peakHourFor=m=>[...hourlyRows(m.data||{})].sort((a,b)=>b.value-a.value)[0]||{hour:"-",value:0};
+      const strengthFor=m=>m.rank?.rank===1?"Highest overall score":safeNumber(m.data?.rating)>=4.4?"Strong customer satisfaction":safeNumber(m.data?.successRate)>=90?"High answer success":"Stable usage quality";
+      const weaknessFor=m=>safeNumber(m.data?.apologyRate)>9?"High apology rate":safeNumber(m.data?.rating)<4.1?"Lower rating":languageMix(m.data||{}).filter(x=>x.value/(safeNumber(m.data?.questions)||1)>.05).length<3?"Narrower language mix":"Needs richer category depth";
+      const recommendationFor=m=>safeNumber(m.data?.apologyRate)>9?"Prioritize KM fixes for missed answers.":safeNumber(m.rank?.growth)<0?"Review placement visibility and prompt entry points.":"Keep placement and refresh high-demand answers weekly.";
+      const metricRows=[
+        ["Sessions",m=>valueWithScore(n(m.data?.sessions),`${n(m.data?.avgDailySessions)} avg daily sessions`,safeNumber(m.data?.sessions)/maxSessions*100,m.color)],
+        ["Questions",m=>valueWithScore(n(m.data?.questions),`${safeNumber(m.data?.qps).toFixed(2)} questions/session`,safeNumber(m.data?.questions)/maxQuestions*100,m.color)],
+        ["Rating",m=>valueWithScore(safeNumber(m.data?.rating).toFixed(1) + "/5","Weighted by sessions",safeNumber(m.data?.rating)/5*100,m.color)],
+        ["Success Rate",m=>valueWithScore(pct(m.data?.successRate),`${n(m.data?.success)} successful answers`,safeNumber(m.data?.successRate),m.color)],
+        ["Apology Rate",m=>valueWithScore(pct(m.data?.apologyRate),`${n(m.data?.apology)} apology/error answers`,100-safeNumber(m.data?.apologyRate),m.color)],
+        ["Languages",m=>{const mix=languageMix(m.data||{}), total=mix.reduce((a,b)=>a+safeNumber(b.value),0)||1;return tags(languageFor(m).map(x=>`${x.name} ${pct(safeNumber(x.value)/total*100)}`))}],
+        ["Top Categories",m=>tags(topCategoryFor(m).map(x=>`${x.name} · ${compact(x.value)}`))],
+        ["Top Brands",m=>tags(topBrandFor(m).map(x=>`${x.name} · ${compact(x.value)}`))],
+        ["Top Questions",m=>h("div",null,topQuestionsFor(m).map(q=>h("small",{key:q.question},`${q.question} · ${n(q.count)}`)))],
+        ["Peak Hour",m=>{const peak=peakHourFor(m);return valueWithScore(`${peak.hour}:00`,`${n(peak.value)} sessions`,safeNumber(peak.value)/maxHourly*100,m.color)}],
+        ["Strength",m=>h("div",null,h("strong",null,strengthFor(m)),h("small",null,`Rank #${m.rank?.rank||"-"} overall`))],
+        ["Weakness",m=>h("div",null,h("strong",null,weaknessFor(m)),h("small",null,"Review in weekly operating rhythm"))],
+        ["Recommendation",m=>h("div",null,h("strong",null,recommendationFor(m)),h("small",null,"Suggested next action"))]
+      ];
+      return h("div",{className:"apple-compare-shell"},
+        h("div",{className:"compare-guide"},
+          h("div",{className:"compare-guide-head"},
+            h("div",null,h("h3",null,"Comparison Filters"),h("p",null,"One filter panel controls every KPI, ranking, chart, and comparison metric on this page.")),
+            h("span",{className:"source-chip"},`${machines.length} of 5 machines shown`)
+          ),
+          h("div",{className:"compare-filter-sections"},
+            h("label",{className:"compare-filter-section"},"Start Date",
+              h("input",{type:"date",value:start,className:dateInvalid?"invalid":"",onChange:e=>{console.info("[M Agent Compare] startDate",e.target.value);setStart(e.target.value)},"aria-invalid":dateInvalid})
+            ),
+            h("label",{className:"compare-filter-section"},"End Date",
+              h("input",{type:"date",value:end,className:dateInvalid?"invalid":"",onChange:e=>{console.info("[M Agent Compare] endDate",e.target.value);setEnd(e.target.value)},"aria-invalid":dateInvalid})
+            ),
+            h("label",{className:"compare-filter-section"},"Period",
+              h("select",{value:period,onChange:e=>{console.info("[M Agent Compare] period",e.target.value);setPeriod(e.target.value)}},comparisonPeriods.map(x=>h("option",{key:x,value:x},x)))
+            ),
+            h("label",{className:"compare-filter-section"},"Language",
+              h("select",{value:languageFilter,onChange:e=>{console.info("[M Agent Compare] language",e.target.value);setLanguageFilter(e.target.value)}},languageOptions.map(x=>h("option",{key:x,value:x},x)))
+            ),
+            h("label",{className:"compare-filter-section"},"Topic",
+              h("select",{value:topicFilter,onChange:e=>{console.info("[M Agent Compare] topic",e.target.value);setTopicFilter(e.target.value)}},topicOptions.map(x=>h("option",{key:x,value:x},x)))
+            ),
+            h("label",{className:"compare-filter-section"},"Brand",
+              h("select",{value:brandFilter,onChange:e=>{console.info("[M Agent Compare] brand",e.target.value);setBrandFilter(e.target.value)}},brandOptions.map(x=>h("option",{key:x,value:x},x)))
+            ),
+            h("label",{className:"compare-filter-section"},"Top Questions",
+              h("select",{value:topLimit,onChange:e=>{console.info("[M Agent Compare] topLimit",e.target.value);setTopLimit(e.target.value)}},["20","50"].map(x=>h("option",{key:x,value:x},`Top ${x}`)))
+            ),
+            h("label",{className:"compare-filter-section"},"Presets",
+              h("select",{onChange:e=>e.target.value&&onLoadPreset(e.target.value),defaultValue:""},h("option",{value:""},"Load saved preset"),presets.map((preset,i)=>h("option",{key:i,value:i},preset.name)))
+            ),
+            h("div",{className:"compare-filter-section compare-mode-field"},
+              h("h4",null,"Compare Mode"),
+              h("div",{className:"segment-control"},
+                modeOptions.map(x=>h("button",{key:x,type:"button",className:machineCompareMode===x?"active":"",onClick:()=>{console.info("[M Agent Compare] mode",x);onCompareModeChange?.(x)},"aria-pressed":machineCompareMode===x},x))
+              )
+            )
+          ),
+          h("div",{className:"compare-machine-panel"},
+            h("h4",null,"Machine Selection"),
+            h("div",{className:"compare-summary"},
+              h("span",null,`${selected.length} of 5 machines selected.`),
+              h("span",null,`Applied view: ${activeIds.length} machine${activeIds.length===1?"":"s"}.`),
+              h("span",null,`Date range: ${start || "not set"} to ${end || "not set"}.`)
+            ),
+            machineCompareMode!=="All Machines"&&h("div",{className:"compare-selection-grid"},
+              machineSpecsAll.map(spec=>{const master=kiosks.find(k=>k.assetId===spec.assetId), checked=selected.includes(spec.assetId), inputType=machineCompareMode==="Single Machine"?"radio":"checkbox";return h("button",{type:"button",key:spec.assetId,className:`compare-machine-card ${checked?"selected":""}`,onClick:()=>{console.info("[M Agent Compare] machine",spec.assetId);onToggleMachine?.(spec.assetId,machineCompareMode==="Single Machine")},"aria-pressed":checked},
+                h("div",{className:"compare-machine-card-head"},
+                  h("b",null,spec.machine),
+                  h("input",{type:inputType,checked,readOnly:true,"aria-label":`${spec.machine} selected`})
+                ),
+                h("span",null,spec.location),
+                h("small",null,`${spec.assetId} · ${spec.screen}`),
+                h("span",{className:`status ${master?.status||"Active"}`},master?.status||"Active")
+              )})
+            )
+          ),
+          dateInvalid&&h("div",{className:"filter-status error",role:"alert"},"Start Date must be before End Date."),
+          h("div",{className:"apply-strip"},
+            h("p",null,`Applied source of truth: ${start || "not set"} to ${end || "not set"} · ${period} · ${machineCompareMode} · ${topicFilter==="All"?"all topics":topicFilter} · ${brandFilter==="All"?"all brands":brandFilter} · ${languageFilter==="All"?"all languages":languageFilter}.`),
+            h("div",{className:"apply-actions"},
+              h("button",{type:"button",className:"action-btn",onClick:onReset},"Reset Filters"),
+              h("button",{type:"button",className:"action-btn primary",onClick:onApply},h(Icon,{name:"check",size:14}),"Apply Filters")
+            )
+          ),
+          filterError&&h("div",{className:"filter-status error",role:"alert"},filterError),
+          !filterError&&appliedSummary&&h("div",{className:"filter-status","aria-live":"polite"},appliedSummary),
+          !filterError&&!isApplying&&!machines.length&&h("div",{className:"filter-status empty"},"No results: choose at least one machine or reset filters.")
+        ),
+        h("div",{className:"compare-results-head"},
+          h("div",null,h("h3",null,"Comparison Results"),h("p",null,"Machine Comparison Table")),
+          h("span",{className:"source-chip"},`${period} · ${start || "not set"} to ${end || "not set"}`)
+        ),
+        isApplying?h("div",{className:"loading-state","aria-live":"polite"},"Applying filters and refreshing comparison analytics..."):
+        !machines.length?h("div",{className:"empty"},"No machine comparison results for the current filters. Select at least one machine or reset filters."):
+        h("div",{className:"comparison-table-wrap"},
+          h("table",{className:"apple-compare-table"},
+            h("thead",null,
+              h("tr",null,
+                h("th",{className:"metric-col"},"Metric"),
+                machines.map(m=>h("th",{className:"machine-head",key:m.assetId},
+                  h("div",{className:"machine-color",style:{background:m.color}}),
+                  h("h3",null,m.machine),
+                  h("p",null,m.location),
+                  h("div",{className:"asset-line"},m.assetId),
+                  h("div",{className:"machine-status-line"},h("span",{className:`status ${m.master?.status||"Active"}`},m.master?.status||"Active"),h("span",{className:"screen-pill"},m.screen))
+                ))
+              )
+            ),
+            h("tbody",null,
+              metricRows.map(row=>h("tr",{key:row[0]},
+                h("th",{className:"metric-label"},row[0]),
+                machines.map(m=>h("td",{className:"metric-value",key:m.assetId+row[0]},row[1](m)))
+              ))
+            )
+          )
+        )
+      )
+    }
+    function PageShell({children,action}){return h("div",{className:"page-stack"},action&&h("div",{className:"page-actions"},action),children)}
+    function SummaryCard({label,value,note,icon,tone}){return h("article",{className:"summary-card"},h("span",{className:`icon ${tone||""}`},h(Icon,{name:icon||"activity",size:24})),h("div",{className:"summary-content"},h("div",{className:"summary-main"},h("span",{className:"summary-label"},display(label,"Metric")),h("strong",null,display(value))),h("span",{"aria-hidden":"true"}),note&&h("p",null,note)))}
+    class AppErrorBoundary extends React.Component{
+      constructor(props){super(props);this.state={error:null}}
+      static getDerivedStateFromError(error){return {error}}
+      componentDidCatch(error,info){console.error("[M Agent Dashboard] render error",error,info)}
+      render(){if(this.state.error)return h("div",{className:"app-error"},h("div",{className:"app-error-card"},h("h1",null,"Dashboard view needs a refresh"),h("p",null,"A display error occurred while rendering this page. Your data is still in the dashboard file."),h("p",null,String(this.state.error?.message||this.state.error||"Unknown error")),h("button",{type:"button",onClick:()=>{this.setState({error:null});location.hash="#overview";location.reload()}},"Reset dashboard view")));return this.props.children}
+    }
+    function SidebarNav({page,onNavigate,open,onClose}){
+      const activeGroupId=sidebarGroups.find(group=>group.items.some(item=>item[0]===page))?.id||"dashboard";
+      const [expandedGroup,setExpandedGroup]=useState(()=>activeGroupId);
+      const previousPage=useRef(page);
+      useEffect(()=>{if(previousPage.current!==page){previousPage.current=page;setExpandedGroup(activeGroupId)}},[page,activeGroupId]);
+      useEffect(()=>{try{expandedGroup?localStorage.setItem("mAgentSidebarExpanded",expandedGroup):localStorage.removeItem("mAgentSidebarExpanded")}catch(e){}},[expandedGroup]);
+      const toggleGroup=group=>setExpandedGroup(current=>current===group.id?null:group.id);
+      return h(React.Fragment,null,
+        h("div",{className:`sidebar-backdrop ${open?"show":""}`,onClick:onClose}),
+        h("aside",{className:`sidebar ${open?"open":""}`},
+          h("div",{className:"sidebar-inner"},
+            h("div",{className:"sidebar-brand"},
+              h("div",{className:"brand-mark"},h("img",{src:"./assets/m-agent-avatar.png",alt:"M Agent avatar"})),
+              h("div",null,
+                h("b",{className:"brand-name"},h("span",{className:"brand-m"},"M")," ",h("span",{className:"brand-agent"},"Agent Analytics")),
+                h("span",null,"Executive AI Kiosk Dashboard")
+              )
+            ),
+            sidebarGroups.map(group=>{
+              const isExpanded=expandedGroup===group.id, isActive=group.items.some(item=>item[0]===page), isSolo=group.id==="import";
+              return h("div",{className:`sidebar-section ${isActive?"active":""}`,key:group.id},
+                h("button",{className:`sidebar-section-head ${isActive?"active":""} ${isExpanded&&!isSolo?"expanded":""}`,onClick:()=>isSolo?onNavigate(group.items[0][0]):toggleGroup(group),"aria-expanded":isSolo?undefined:isExpanded,title:isSolo?group.items[0][2]:`${isExpanded?"Collapse":"Expand"} ${group.title}`},
+                  h("span",{className:"sidebar-section-icon"},h(Icon,{name:group.icon,size:18})),
+                  h("span",{className:"sidebar-section-title"},group.title),
+                  !isSolo&&h("span",{className:"sidebar-chevron","aria-hidden":"true"},isExpanded?"▼":"▶")
+                ),
+                !isSolo&&h("div",{className:`sidebar-menu ${isExpanded?"expanded":"collapsed"}`},
+                  group.items.map(item=>
+                    h("button",{key:item[0],"data-page-id":item[0],className:`sidebar-link ${page===item[0]?"active":""}`,onClick:()=>onNavigate(item[0]),title:item[2]},
+                      h(Icon,{name:group.icon,size:15}),
+                      h("span",null,item[1])
+                    )
+                  )
+                )
+              )
+            })
+          )
+        )
+      )
+    }
+    function WorkspaceHeader({meta,periodStart,setPeriodStart,periodEnd,setPeriodEnd,setMonth,onMenu,showPeriod=true}){const changeEnd=value=>{setPeriodEnd(value);const id=(value||"").slice(0,7);if(months.some(m=>m.id===id))setMonth(id)};return h("header",{className:"workspace-header"},h("div",{className:"header-title"},h("button",{className:"mobile-menu",onClick:onMenu,"aria-label":"Open navigation"},h(Icon,{name:"menu",size:22})),h("span",{className:"icon"},h(Icon,{name:meta.icon||"activity"})),h("div",{style:{minWidth:0}},h("div",{className:"crumb"},h("b",null,meta.group)," / ",meta.label),h("div",{className:"page-title-line"},meta.label))),showPeriod&&h("div",{className:"header-filters"},h("div",{className:"period-control"},h("div",{className:"period-label"},"Period"),h("div",{className:"period-range"},h("label",{className:"field"},"Start Date",h("input",{type:"date",value:periodStart,onChange:e=>setPeriodStart(e.target.value)})),h("label",{className:"field"},"End Date",h("input",{type:"date",value:periodEnd,onChange:e=>changeEnd(e.target.value)}))))))}
+    function App(){
+      const [month,setMonth]=useState("2026-06"), [periodStart,setPeriodStart]=useState("2026-06-01"), [periodEnd,setPeriodEnd]=useState("2026-06-30"), [status,setStatus]=useState("All"), [query,setQuery]=useState(""), [asset,setAsset]=useState(kiosks[0].assetId);
+      const allMachineIds=kiosks.map(k=>k.assetId);
+      const [compareIds,setCompareIds]=useState(allMachineIds), [machineCompareMode,setMachineCompareMode]=useState("All Machines"), [comparePeriod,setComparePeriod]=useState("Monthly"), [compareMode,setCompareMode]=useState("Current vs Previous Period"), [customStart,setCustomStart]=useState("2026-06-01"), [customEnd,setCustomEnd]=useState("2026-06-30"), [topLimit,setTopLimit]=useState("20"), [presetMessage,setPresetMessage]=useState("");
+      const [topicFilter,setTopicFilter]=useState("All"), [brandFilter,setBrandFilter]=useState("All"), [languageFilter,setLanguageFilter]=useState("All");
+      const [isApplyingComparison,setIsApplyingComparison]=useState(false), [filterError,setFilterError]=useState(""), [appliedSummary,setAppliedSummary]=useState("Applied: All Machines · Monthly · all topics · all brands · all languages.");
+      const [savedPresets,setSavedPresets]=useState(()=>{try{return JSON.parse(localStorage.getItem("mAgentComparisonPresets")||"[]")}catch(e){return []}});
+      const [importFile,setImportFile]=useState(null);
+      const [page,setPage]=useState(()=>{const id=(location.hash||"").replace("#","");return pageById(id).id});
+      const [sidebarOpen,setSidebarOpen]=useState(false);
+      useEffect(()=>{const syncPage=()=>{const id=(location.hash||"").replace("#","");if(id)setPage(pageById(id).id)};syncPage();window.addEventListener("hashchange",syncPage);return()=>window.removeEventListener("hashchange",syncPage)},[]);
+      const monthObj=months.find(m=>m.id===month)||months[0], prev=months[months.findIndex(m=>m.id===month)+1]||monthObj;
+      const prettyDate=value=>{const parts=String(value||"").split("-");if(parts.length!==3)return "Not set";const m=months.find(x=>x.id===`${parts[0]}-${parts[1]}`);return `${Number(parts[2])} ${m?.short||parts[1]} ${parts[0]}`};
+      const periodText=`${prettyDate(periodStart)} - ${prettyDate(periodEnd)}`;
+      const rows=perf.filter(r=>r.month===month), prevRows=perf.filter(r=>r.month===prev.id);
+      const filteredKiosks=useMemo(()=>kiosks.filter(k=>!query||`${k.assetId} ${k.machine} ${k.branch} ${k.location} ${k.notes}`.toLowerCase().includes(query.toLowerCase())),[query]);
+      const kioskMap=new Map(kiosks.map(k=>[k.assetId,k])), filteredMap=new Map(filteredKiosks.map(k=>[k.assetId,k]));
+      const filteredRows=rows.filter(r=>filteredMap.has(r.assetId));
+      const cur=metric(filteredRows,monthObj.days), old=metric(prevRows.filter(r=>filteredMap.has(r.assetId)||!query),prev.days);
+      const monthRows=months.slice().reverse().map(m=>({id:m.id,label:m.label,short:m.short,...metric(perf.filter(r=>r.month===m.id),m.days)}));
+      const topicRows=getTopics(month,cur.questions), questionRows=getQuestions(month), errorRows=errors.filter(e=>e.month===month && filteredMap.has(e.kiosk)), eventRows=events.filter(e=>e.month===month && filteredMap.has(e.asset));
+      const best=[...filteredRows].sort((a,b)=>b.questions-a.questions)[0], low=[...filteredRows].sort((a,b)=>a.sessions-b.sessions)[0], topTopic=topicRows[0], openErrors=errorRows.filter(e=>e.status!=="Fixed").length;
+      const inputTotal=sum(filteredRows,"voice")+sum(filteredRows,"quickReply")+sum(filteredRows,"keyboard"), langTotal=sum(filteredRows,"thai")+sum(filteredRows,"english")+sum(filteredRows,"chinese")+sum(filteredRows,"others");
+      const kpiSeries=monthRows.map(x=>x.questions);
+      const kpis=[
+        ["Sessions",n(cur.sessions),"All kiosk interactions (Sum of daily sessions from kiosk performance logs)",delta(cur.sessions,old.sessions),false,"activity",kpiSeries],
+        ["Questions",n(cur.questions),"Customer questions asked (Sum of questions from raw performance logs)",delta(cur.questions,old.questions),false,"message",kpiSeries],
+        ["Avg Rating",cur.rating.toFixed(1) + "/5","Weighted by sessions (Sum of (Rating × Sessions) / Total Sessions)",cur.rating-old.rating,false,"gauge",monthRows.map(x=>x.rating)],
+        ["Success Rate",pct(cur.successRate),"Answered without apology (Success answers / Total questions × 100)",cur.successRate-old.successRate,false,"check",monthRows.map(x=>x.successRate)],
+        ["Active Machines",filteredKiosks.length,"Filtered kiosk portfolio (Count of active machines in filters)",delta(filteredKiosks.length,kiosks.length),false,"cpu",[3,4,5,5,5,5]],
+        ["Event Count",eventRows.length,"Borrowing records this month (Total rows in event borrowing log)",delta(eventRows.length,events.filter(e=>e.month===prev.id).length),false,"calendar",[0,1,1,2,1,2]]
+      ];
+      const machineRows=filteredRows.map(r=>({row:r,kiosk:kioskMap.get(r.assetId)})).filter(x=>x.kiosk);
+      const selectedHistory=activeTimeline(asset);
+      const masterRows=filteredKiosks;
+      const insights=[
+        ["Highest performing location",best?`Best site: ${kioskMap.get(best.assetId)?.location}. ${n(best.questions)} questions and ${pct(best.success/best.questions*100)} success.`:"No active machine in this filter.","trend"],
+        ["Lowest engagement",low?`Needs review: ${low.assetId}. Only ${n(low.sessions)} sessions, so check traffic and visibility.`:"No low-volume signal available.","map"],
+        ["Most popular topic",topTopic?`Top demand: ${topTopic[0]}. ${n(topTopic[1])} questions; refresh campaign and M Card answers first.`:"No topic data for this month.","message"],
+        ["KM update priority",`Action queue: ${openErrors} open gaps. Fix store hours, parking, and event-location answers first.`,"brain"],
+        ["Machine growth signal",best?`Use ${best.assetId} as the benchmark for placement and prompt design this month.`:"Growth signal needs data.","activity"],
+        ["Relocation watchlist",low?`Watchlist: ${low.assetId}. Recheck placement or campaign fit before next review.`:"No relocation watchlist.","alert"]
+      ];
+      const smallMultiples=filteredRows.map(r=>({id:r.assetId,values:monthRows.map(m=>perf.find(x=>x.month===m.id&&x.assetId===r.assetId)?.questions||0)}));
+      const activeCompareIds=machineCompareMode==="All Machines"?allMachineIds:compareIds;
+      const comparison=useMemo(()=>buildMachineComparison({machineIds:activeCompareIds,anchor:month,period:comparePeriod,mode:compareMode,start:customStart,end:customEnd,topLimit}),[activeCompareIds.join("|"),month,comparePeriod,compareMode,customStart,customEnd,topLimit]);
+      const comparisonAll=comparison;
+      const toggleCompare=(id,solo=false)=>setCompareIds(list=>solo?[id]:(list.includes(id)?list.filter(x=>x!==id):[...list,id]));
+      const changeMachineCompareMode=mode=>{console.info("[M Agent Compare] compare mode changed",mode);setMachineCompareMode(mode);setFilterError("");if(mode==="All Machines")setCompareIds(allMachineIds);if(mode==="Single Machine")setCompareIds(list=>[list[0]||allMachineIds[0]])};
+      const resetComparisonFilters=()=>{console.info("[M Agent Compare] reset filters");setMachineCompareMode("All Machines");setCompareIds(allMachineIds);setComparePeriod("Monthly");setCompareMode("Current vs Previous Period");setCustomStart("2026-06-01");setCustomEnd("2026-06-30");setTopLimit("20");setTopicFilter("All");setBrandFilter("All");setLanguageFilter("All");setFilterError("");setIsApplyingComparison(false);setPresetMessage("Filters reset");setAppliedSummary("Applied: All Machines · Monthly · all topics · all brands · all languages.")};
+      const applyComparisonFilters=()=>{console.info("[M Agent Compare] apply filters",{machineCompareMode,compareIds,comparePeriod,customStart,customEnd,topicFilter,brandFilter,languageFilter,topLimit});const startDate=customStart?new Date(customStart):null,endDate=customEnd?new Date(customEnd):null;if(startDate&&endDate&&startDate>endDate){setFilterError("Start Date must be before End Date.");setPresetMessage("Date range error");return}if(machineCompareMode!=="All Machines"&&!compareIds.length){setFilterError("No results: please select at least one machine.");setPresetMessage("No machines selected");return}setFilterError("");setIsApplyingComparison(true);setPresetMessage("Applying filters...");window.setTimeout(()=>{const selectedLabel=machineCompareMode==="All Machines"?"5 of 5 machines":`${compareIds.length} of 5 machines`;const summary=`Applied: ${machineCompareMode} · ${selectedLabel} · ${comparePeriod} · ${customStart||"no start"} to ${customEnd||"no end"} · ${topicFilter==="All"?"all topics":topicFilter} · ${brandFilter==="All"?"all brands":brandFilter} · ${languageFilter==="All"?"all languages":languageFilter}.`;setAppliedSummary(summary);setPresetMessage("Filters applied");setIsApplyingComparison(false)},220)};
+      const savePreset=()=>{const preset={name:`${machineCompareMode} · ${comparePeriod} · ${topicFilter} · ${brandFilter}`,machineCompareMode,compareIds,comparePeriod,compareMode,customStart,customEnd,topLimit,topicFilter,brandFilter,languageFilter};const next=[preset,...savedPresets].slice(0,8);setSavedPresets(next);localStorage.setItem("mAgentComparisonPresets",JSON.stringify(next));setPresetMessage("Preset bookmarked")}
+      const loadPreset=idx=>{const p=savedPresets[+idx];if(!p)return;setMachineCompareMode(p.machineCompareMode||"All Machines");setCompareIds(p.compareIds?.length?p.compareIds:allMachineIds);setComparePeriod(p.comparePeriod||"Monthly");setCompareMode(p.compareMode||"Current vs Previous Period");setCustomStart(p.customStart||customStart);setCustomEnd(p.customEnd||customEnd);setTopLimit(p.topLimit||"20");setTopicFilter(p.topicFilter||"All");setBrandFilter(p.brandFilter||"All");setLanguageFilter(p.languageFilter||"All");setFilterError("");setPresetMessage(`Loaded ${p.name}`)}
+      const goPage=id=>{const next=pageById(id).id;setPage(next);setSidebarOpen(false);if(location.hash!==`#${next}`)location.hash=next;window.scrollTo({top:0,behavior:"smooth"})}
+      const meta=pageById(page);
+      const machineComparisonProps={comparison:comparisonAll,period:comparePeriod,setPeriod:setComparePeriod,start:customStart,setStart:customStart=>setCustomStart(customStart),end:customEnd,setEnd:customEnd=>setCustomEnd(customEnd),topLimit,setTopLimit,presets:savedPresets,onLoadPreset:loadPreset,presetMessage,topicFilter,setTopicFilter,brandFilter,setBrandFilter,languageFilter,setLanguageFilter,onApply:applyComparisonFilters,onReset:resetComparisonFilters,machineCompareMode,onCompareModeChange:changeMachineCompareMode,selected:compareIds,onToggleMachine:toggleCompare,isApplying:isApplyingComparison,filterError,appliedSummary};
+      const machineTable=h("div",{className:"scroll"},h("table",{className:"data-table"},h("thead",null,h("tr",null,["Asset ID","Machine","Screen","Location","Period","Status"].map(x=>h("th",{key:x},x)))),h("tbody",null,masterRows.map(k=>h("tr",{key:k.assetId},h("td",null,h("b",null,k.assetId)),h("td",null,k.machine),h("td",null,k.screen),h("td",null,k.location),h("td",null,k.period),h("td",null,h("span",{className:`status ${k.status}`},k.status)))))));
+      const eventTable=h("div",{className:"scroll"},h("table",{className:"data-table"},h("thead",null,h("tr",null,["Event","Date","Machine","Original location","Event location","Setup","Return","Performance"].map(x=>h("th",{key:x},x)))),h("tbody",null,events.map(e=>h("tr",{key:e.id},h("td",null,h("b",null,e.event)),h("td",null,e.date),h("td",null,e.asset),h("td",null,e.original),h("td",null,e.location),h("td",null,e.setup),h("td",null,e.returnDate),h("td",null,e.performance))))));
+      const repeatedQuestions=h("div",{className:"question-list"},questionRows.length?questionRows.map(q=>h("div",{className:"question-item",key:q[0]},h("div",null,h("b",null,display(q[0],"Question not available")),h("div",{className:"question-meta"},h("span",null,display(q[1],"Uncategorized")),h("span",null,"All machines"))),h("span",{className:"score-pill"},n(q[2])))):h("div",{className:"empty"},"No repeated questions for this filter."));
+      const renderKmCards=()=>h("div",{className:"bento km-grid"},h(KmSummaryCard,{icon:"alert",tone:"rose",title:"Wrong answers",value:`${errorRows.filter(x=>x.issue==="Wrong info").length} issue(s)`}),h(KmSummaryCard,{icon:"brain",tone:"amber",title:"Missing knowledge",value:`${errorRows.filter(x=>x.issue==="Missing info").length} item(s)`}),h(KmGaugeCard,{icon:"gauge",title:"AI Confidence",value:cur.successRate,label:"confidence"}),h(KmGaugeCard,{icon:"check",tone:"green",title:"Knowledge coverage",value:Math.max(0,100-cur.apologyRate),label:"coverage"}));
+      const renderPage=()=>{
+        if(page==="machine-comparison") return h(MachineComparisonSection,machineComparisonProps);
+        if(page==="import-data") return h(PageShell,null,
+          h("div",{className:"card"},
+            h("div",{className:"card-head"},
+              h("div",{className:"card-title"},
+                h("span",{className:"icon"},h(Icon,{name:"upload"})),
+                h("div",null,h("h3",null,"Import Data Report"),h("p",{className:"subtitle"},"Add the latest report file for dashboard data preparation."))
+              )
+            ),
+            h("div",{className:"upload-area"},
+              h("p",{className:"upload-note"},"Choose one Data Report file. Supported formats: CSV, Excel, and JSON."),
+              h("label",{className:"upload-btn",htmlFor:"data-report-file"},h(Icon,{name:"upload",size:18}),"Choose Data Report"),
+              h("input",{id:"data-report-file",className:"upload-file",type:"file",accept:".csv,.xlsx,.xls,.json",onChange:e=>setImportFile(e.target.files?.[0]||null)}),
+              importFile&&h("div",{className:"upload-selection"},h(Icon,{name:"check",size:18}),h("span",null,importFile.name))
+            )
+          )
+        );
+        if(page==="overview") return h(PageShell,null,h("section",{className:"hero"},h("div",{className:"hero-copy"},h("div",null,h("span",{className:"eyebrow"},h("span",{className:"pulse"}),"Monthly command view"),h("h1",null,"AI kiosk performance, movement, events, and knowledge gaps in one workspace."),h("p",null,`${monthObj.label} combines machine status, usage, event borrowing, and KM action queues for management review.`)),h("div",{className:"hero-actions"},h("button",{className:"hero-chip primary",onClick:()=>goPage("sessions"),type:"button","aria-label":"Open sessions monthly readout"},h(Icon,{name:"activity",size:16}),"Live monthly readout"),h("button",{className:"hero-chip",onClick:()=>goPage("machine-comparison"),type:"button","aria-label":"Open Machine Comparison"},h(Icon,{name:"cpu",size:16}),"Open Machine Comparison"),h("button",{className:"hero-chip",onClick:()=>goPage("machine-timeline"),type:"button","aria-label":"Open machine timeline"},h(Icon,{name:"map",size:16}),"Location and event separated"),h("button",{className:"hero-chip",onClick:()=>goPage("wrong-answers"),type:"button","aria-label":"Open KM action queue"},h(Icon,{name:"brain",size:16}),"KM action queue"))),h("div",{className:"hero-visual"},h("div",{className:"hero-visual-copy"},h("div",null,h("span",{className:"icon"},h(Icon,{name:"gauge",size:20})),h("b",null,"Portfolio pulse"),h("p",null,"A focused overview. Use the sidebar to move into dedicated analysis pages.")),h("div",{className:"hero-score"},h("div",{className:"hero-score-head"},h("span",null,"Success quality"),h("strong",null,pct(cur.successRate))),h("div",{className:"track"},h("div",{className:"fill bar-animate",style:{width:pct(cur.successRate)}})),h("p",{className:"subtitle"},`${pct(cur.apologyRate)} apology/error rate · ${cur.rating.toFixed(1)}/5 average rating`)),h("div",{className:"hero-mini"},h("div",null,h("strong",null,cur.rating.toFixed(1) + "/5"),h("span",null,"Avg rating")),h("div",null,h("strong",null,n(openErrors)),h("span",null,"Open KM gaps")),h("div",null,h("strong",null,n(eventRows.length)),h("span",null,"Events")),h("div",null,h("strong",null,n(cur.sessions)),h("span",null,"Sessions")))))),h("div",{className:"kpi-grid"},kpis.map(k=>h(KpiCard,{key:k[0],label:k[0],value:k[1],note:k[2],deltaValue:k[3],bad:k[0]==="Apology Rate",icon:k[5],series:k[6]}))),h("div",{className:"bento"},h("div",{className:"card span-8 overview-trend-card"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"trend"})),h("div",null,h("h3",null,"10-month trend"),h("p",{className:"subtitle"},"Questions and sessions trend across the full available history.")))),h(AreaChart,{monthsData:monthRows})),h("div",{className:"card span-4 overview-insights-card"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon amber"},h(Icon,{name:"brain"})),h("div",null,h("h3",null,"Executive insights"),h("p",{className:"subtitle"},"High-signal notes for this month.")))),h("ul",{className:"exec-list"},insights.slice(0,4).map(([title,text])=>h("li",{key:title},h("b",null,title),": ",text)))),h(Donut,{title:"Language distribution",label:"Thai, English, Chinese, and others",total:langTotal,segments:[{name:"Thai",value:sum(filteredRows,"thai"),color:"#2563eb"},{name:"English",value:sum(filteredRows,"english"),color:"#0891b2"},{name:"Chinese",value:sum(filteredRows,"chinese"),color:"#f59e0b"},{name:"Others",value:sum(filteredRows,"others"),color:"#7c3aed"}]})));
+        if(page==="machine-status") return h(PageShell,{title:"Machine Status",sub:"Operational card view for all active M Agent devices."},h("div",{className:"machine-grid"},machineRows.map(x=>h(MachineCard,{key:x.row.assetId,row:x.row,kiosk:x.kiosk,days:monthObj.days,selected:x.row.assetId===asset,onSelect:()=>setAsset(x.row.assetId)}))),h("div",{className:"card"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"cpu"})),h("div",null,h("h3",null,"Machine master data"),h("p",{className:"subtitle"},"Reference list for active machines.")))),machineTable));
+        if(page==="machine-timeline") return h(PageShell,{title:"Machine & Event Timeline",sub:"Permanent moves, event borrowing, consolidation, performance, and borrowing log in one place.",action:h("div",{className:"subnav-row"},kiosks.map(k=>h("button",{className:`quick-btn ${asset===k.assetId?"active":""}`,onClick:()=>setAsset(k.assetId),key:k.assetId},k.machine)))},h("div",{className:"bento"},h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"map"})),h("div",null,h("h3",null,`Selected machine: ${asset}`),h("p",{className:"subtitle"},"Borrowing and events are temporary overlays, not permanent location changes.")))),h(Timeline,{items:selectedHistory,asset,line:true})),h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon amber"},h(Icon,{name:"calendar"})),h("div",null,h("h3",null,"Portfolio milestones"),h("p",{className:"subtitle"},"Global deployment and campaign movement.")))),h(GlobalTimeline)),h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"map"})),h("div",null,h("h3",null,"Event calendar timeline"),h("p",{className:"subtitle"},"Borrowed machine event records connected to timeline.")))),h("div",{className:"timeline-strip"},events.map(e=>h("article",{className:"timeline-item",key:e.id},h("div",{className:"timeline-date"},e.date),h("b",null,e.event),h("p",null,`${e.asset} · ${e.location} · ${e.performance}`))))),h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon green"},h(Icon,{name:"activity"})),h("div",null,h("h3",null,"Event performance"),h("p",{className:"subtitle"},"Event traffic and quality summary for the selected filter.")))),eventRows.length?h("div",{className:"event-grid"},eventRows.map(e=>h(EventCard,{event:e,key:e.id}))):h("div",{className:"empty"},"No event borrowing recorded for this filter.")),h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon amber"},h(Icon,{name:"calendar"})),h("div",null,h("h3",null,"Borrowing log"),h("p",{className:"subtitle"},"Setup, return date, and event location in one reference table.")))),eventTable)));
+        if(page==="sessions") return h(PageShell,{title:"Sessions",sub:"Usage volume over time, by month and by machine."},h("div",{className:"bento"},h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"activity"})),h("div",null,h("h3",null,"Sessions trend"),h("p",{className:"subtitle"},"Dashed line tracks sessions across all 10 months.")))),h(AreaChart,{monthsData:monthRows})),h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon green"},h(Icon,{name:"check"})),h("div",null,h("h3",null,"Session leaderboard"),h("p",{className:"subtitle"},"Highest traffic machines this month.")))),h(Leaderboard,{rows:filteredRows,kiosksMap:kioskMap}))));
+        if(page==="questions-page") return h(PageShell,{title:"Questions & Topics",sub:"Question volume, categories, brand mentions, repeated questions, and per-machine trend in one view."},h("div",{className:"bento"},h("div",{className:"card span-7"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"message"})),h("div",null,h("h3",null,"Question category treemap"),h("p",{className:"subtitle"},"Area size represents question volume.")))),h(Treemap,{rows:topicRows})),h("div",{className:"card span-5"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"activity"})),h("div",null,h("h3",null,"Machine category heatmap"),h("p",{className:"subtitle"},"Compare top categories across machines.")))),h(CategoryComparison,{categoryRows:comparison.categoryRows})),h("div",{className:"card span-6"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"search"})),h("div",null,h("h3",null,"Brand ranking"),h("p",{className:"subtitle"},"Horizontal ranking by total mentions.")))),h(BrandComparison,{brands:comparison.brandTotals})),h("div",{className:"card span-6"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"message"})),h("div",null,h("h3",null,"Brand cloud"),h("p",{className:"subtitle"},"Word size reflects mention volume.")))),h(BrandCloud,{brands:comparison.brandTotals})),h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon green"},h(Icon,{name:"message"})),h("div",null,h("h3",null,"Top repeated questions"),h("p",{className:"subtitle"},"High-frequency questions to review weekly.")))),repeatedQuestions),h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"activity"})),h("div",null,h("h3",null,"Small multiples"),h("p",{className:"subtitle"},"Question trend for each machine across the full 10-month history.")))),h("div",{className:"small-multiple"},smallMultiples.map(s=>h("div",{className:"small-chart",key:s.id},h("b",null,s.id),h(Sparkline,{values:s.values,color:"#2563eb"})))))));
+        if(page==="ratings") return h(PageShell,{title:"Ratings & Success",sub:"Customer satisfaction, answer quality, apology/error rate, and machine comparison in one view."},h("div",{className:"bento success-grid"},h("div",{className:"card span-3"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"gauge"})),h("div",null,h("h3",null,"Average rating"),h("p",{className:"subtitle"},"Weighted by sessions.")))),h("div",{className:"kpi-value"},cur.rating.toFixed(1) + "/5"),h(LineChart,{values:monthRows.map(x=>x.rating),labels:monthRows.map(x=>x.short),color:"#2563eb"})),h("div",{className:"card span-3"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon green"},h(Icon,{name:"check"})),h("div",null,h("h3",null,"Success gauge"),h("p",{className:"subtitle"},"Answered without apology.")))),h("div",{className:"gauge-holder"},h(Gauge,{value:cur.successRate,label:"success"}))),h("div",{className:"card span-3"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon rose"},h(Icon,{name:"alert"})),h("div",null,h("h3",null,"Apology rate"),h("p",{className:"subtitle"},"Failed or apologetic answers.")))),h("div",{className:"kpi-value"},pct(cur.apologyRate)),h("p",{className:"subtitle"},"Lower is better.")),h("div",{className:"card span-3"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"trend"})),h("div",null,h("h3",null,"Success trend"),h("p",{className:"subtitle"},"10-month quality movement.")))),h(LineChart,{values:monthRows.map(x=>x.successRate),labels:monthRows.map(x=>x.short),color:"#12b76a"})),h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon green"},h(Icon,{name:"check"})),h("div",null,h("h3",null,"Machine rating comparison"),h("p",{className:"subtitle"},"Ranked with usage and quality context.")))),h(RankingTable,{rows:comparison.ranking,onDrill:id=>{toggleCompare(id,true);goPage("machine-comparison")}}))));
+        if(page==="success-rate") return h(PageShell,{title:"Success Rate",sub:"Answer quality, apology/error rate, and knowledge coverage."},h("div",{className:"bento success-grid"},h("div",{className:"card span-4"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon green"},h(Icon,{name:"check"})),h("div",null,h("h3",null,"Success gauge"),h("p",{className:"subtitle"},"Answered without apology.")))),h("div",{className:"gauge-holder"},h(Gauge,{value:cur.successRate,label:"success"}))),h("div",{className:"card span-4"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon rose"},h(Icon,{name:"alert"})),h("div",null,h("h3",null,"Apology rate"),h("p",{className:"subtitle"},"Failed or apologetic answers.")))),h("div",{className:"kpi-value"},pct(cur.apologyRate)),h("p",{className:"subtitle"},"Lower is better.")),h("div",{className:"card span-4"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"trend"})),h("div",null,h("h3",null,"Success trend"),h("p",{className:"subtitle"},"10-month quality movement.")))),h(LineChart,{values:monthRows.map(x=>x.successRate),labels:monthRows.map(x=>x.short),color:"#12b76a"}))));
+        if(page==="question-categories") return h(PageShell,{title:"Question Categories",sub:"What customers ask about at each kiosk."},h("div",{className:"bento"},h("div",{className:"card span-7"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"message"})),h("div",null,h("h3",null,"Category treemap"),h("p",{className:"subtitle"},"Topic share for the selected month.")))),h(Treemap,{rows:topicRows})),h("div",{className:"card span-5"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"activity"})),h("div",null,h("h3",null,"Machine category heatmap"),h("p",{className:"subtitle"},"Compare top categories across machines.")))),h(CategoryComparison,{categoryRows:comparison.categoryRows}))));
+        if(page==="brand-mentions") return h(PageShell,{title:"Brand Mentions",sub:"Brands customers mention most often in kiosk conversations."},h("div",{className:"bento"},h("div",{className:"card span-6"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"search"})),h("div",null,h("h3",null,"Brand ranking"),h("p",{className:"subtitle"},"Horizontal ranking by total mentions.")))),h(BrandComparison,{brands:comparison.brandTotals})),h("div",{className:"card span-6"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"message"})),h("div",null,h("h3",null,"Brand cloud"),h("p",{className:"subtitle"},"Word size reflects mention volume.")))),h(BrandCloud,{brands:comparison.brandTotals}))));
+        if(page==="language-analysis") return h(PageShell,{title:"Language Analysis",sub:"Thai, English, Chinese, Japanese, and other-language usage."},h("div",{className:"bento"},h(Donut,{title:"Language distribution",label:"Thai, English, Chinese, and others",total:langTotal,segments:[{name:"Thai",value:sum(filteredRows,"thai"),color:"#2563eb"},{name:"English",value:sum(filteredRows,"english"),color:"#0891b2"},{name:"Chinese",value:sum(filteredRows,"chinese"),color:"#f59e0b"},{name:"Others",value:sum(filteredRows,"others"),color:"#7c3aed"}]}),h("div",{className:"card span-8"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"globe"})),h("div",null,h("h3",null,"Language comparison by machine"),h("p",{className:"subtitle"},"100% stacked language share.")))),h(LanguageStacked,{rows:comparison.current}))));
+        if(page==="user-behavior") return h(PageShell,{title:"User Behavior",sub:"Input methods, peak hours, conversation journey, and flow analysis."},h("div",{className:"bento"},h("div",{className:"card span-12 behavior-split-card"},h("div",{className:"behavior-split"},h("div",{className:"behavior-panel"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"activity"})),h("div",null,h("h3",null,"Peak hour heatmap"),h("p",{className:"subtitle"},"Usage intensity by weekday and operating hour.")))),h(Heatmap)),h("div",{className:"behavior-panel"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"globe"})),h("div",null,h("h3",null,"Input method distribution"),h("p",{className:"subtitle"},"How users interact with kiosks")))),h(InputMethodSummary,{total:inputTotal,voice:sum(filteredRows,"voice"),quick:sum(filteredRows,"quickReply"),keyboard:sum(filteredRows,"keyboard")})))),h("div",{className:"card span-4"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon amber"},h(Icon,{name:"activity"})),h("div",null,h("h3",null,"Conversation journey"),h("p",{className:"subtitle"},"Funnel from question to rated answer.")))),h(Funnel,{questions:cur.questions})),h("div",{className:"card span-4"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"mic"})),h("div",null,h("h3",null,"Question flow"),h("p",{className:"subtitle"},"Input modes flowing to resolved answers.")))),h(Sankey,{total:inputTotal,voice:sum(filteredRows,"voice"),quick:sum(filteredRows,"quickReply"),keyboard:sum(filteredRows,"keyboard")})),h("div",{className:"card span-4"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"gauge"})),h("div",null,h("h3",null,"Branch comparison radar"),h("p",{className:"subtitle"},"Top machine normalized profile.")))),filteredRows.length?h(Radar,{rows:filteredRows}):h("div",{className:"empty"},"No machine rows in this filter."))));
+        if(page==="wrong-answers") return h(PageShell,{title:"KM Actions",sub:"Answer gaps, missing knowledge, and improvement actions in one place."},renderKmCards(),h("div",{className:"card"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon rose"},h(Icon,{name:"alert"})),h("div",null,h("h3",null,"Answer and knowledge gap detail"),h("p",{className:"subtitle"},"Open by default when action is needed.")))),errorRows.length?h(ErrorCards,{rows:errorRows}):h("div",{className:"empty"},"No answer gaps for the current filter.")),h("div",{className:"card"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon amber"},h(Icon,{name:"brain"})),h("div",null,h("h3",null,"Machine strength analysis"),h("p",{className:"subtitle"},"Strength, weakness, opportunity, and recommendation by machine.")))),h(StrengthCards,{rows:comparison.ranking})));
+        if(page==="event-timeline") return h(PageShell,{title:"Event Timeline",sub:"Calendar-style event and portfolio movement history."},h("div",{className:"bento"},h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon amber"},h(Icon,{name:"calendar"})),h("div",null,h("h3",null,"Global timeline"),h("p",{className:"subtitle"},"Deployment, roadshow, event, avatar update, and consolidation milestones.")))),h(GlobalTimeline)),h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"map"})),h("div",null,h("h3",null,"Event calendar timeline"),h("p",{className:"subtitle"},"Borrowed machine event records.")))),h("div",{className:"timeline-strip"},events.map(e=>h("article",{className:"timeline-item",key:e.id},h("div",{className:"timeline-date"},e.date),h("b",null,e.event),h("p",null,`${e.asset} · ${e.location} · ${e.performance}`)))))));
+        if(page==="event-performance") return h(PageShell,{title:"Event Performance",sub:"Event traffic, borrowed machines, and before/after impact.",action:h("button",{className:"action-btn",onClick:()=>goPage("borrowing-history")},"Open Borrowing History")},h("div",{className:"event-grid"},eventRows.length?eventRows.map(e=>h(EventCard,{event:e,key:e.id})):h("div",{className:"empty"},"No event borrowing recorded for this filter.")),h("div",{className:"summary-grid"},h(SummaryCard,{label:"Event Count",value:n(eventRows.length),note:"Selected month",icon:"calendar",tone:"amber"}),h(SummaryCard,{label:"Event Sessions",value:n(eventRows.reduce((a,e)=>a+parsePerformance(e.performance).sessions,0)),note:"From event logs",icon:"activity"}),h(SummaryCard,{label:"Event Questions",value:n(eventRows.reduce((a,e)=>a+parsePerformance(e.performance).questions,0)),note:"From event logs",icon:"message"}),h(SummaryCard,{label:"Avg Event Rating",value:(eventRows.reduce((a,e)=>a+parsePerformance(e.performance).rating,0)/(eventRows.length||1)).toFixed(1) + "/5",note:"Simple event average",icon:"gauge"})));
+        if(page==="borrowing-history") return h(PageShell,{title:"Borrowing History",sub:"Detailed log for borrowed machines, setup dates, return dates, and event performance."},h("div",{className:"card"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon amber"},h(Icon,{name:"calendar"})),h("div",null,h("h3",null,"Borrowing log"),h("p",{className:"subtitle"},"Event display connects to event records only, not machine master location.")))),eventTable));
+        return h(PageShell,{title:"Overview",sub:"Default dashboard page."});
+      };
+      return h("div",{className:"app-shell"},h(SidebarNav,{page,onNavigate:goPage,open:sidebarOpen,onClose:()=>setSidebarOpen(false)}),h("div",{className:"workspace"},h(WorkspaceHeader,{meta,periodStart,setPeriodStart,periodEnd,setPeriodEnd,setMonth,onMenu:()=>setSidebarOpen(true),showPeriod:page!=="machine-comparison"&&page!=="import-data"}),h("main",{className:"page-view",key:page},renderPage())));
+
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(h(AppErrorBoundary,null,h(App)));
+  </script>
+</body>
+</html>

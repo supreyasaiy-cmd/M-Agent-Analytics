@@ -1,0 +1,25 @@
+{
+  "name": "m-agent-kiosk-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/build-static.mjs && vite dist --host 127.0.0.1",
+    "build": "node scripts/build-static.mjs",
+    "build:app": "tsc && vite build",
+    "preview": "node scripts/build-static.mjs && vite preview --host 127.0.0.1"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "lucide-react": "^0.468.0",
+    "papaparse": "^5.4.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "recharts": "^2.13.3",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
+  }
+}

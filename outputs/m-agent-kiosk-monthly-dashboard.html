@@ -598,9 +598,9 @@
       }
     };
     const authoritativePeriodMetrics = {
-      "2025-10-16|2026-03-29":{
-        sessions:5602,questions:10168,rating:null,ratingScale:4,success:0,successRate:0,apology:0,apologyRate:0,activeMachines:4,
-        coverage:"16 Oct 2025-29 Mar 2026",source:"Overview: Performance Summary table"
+      "2025-10-16|2026-03-19":{
+        sessions:3085,questions:5470,rating:2.82,ratingScale:4,success:4467,successRate:81.66,apology:1003,apologyRate:18.34,activeMachines:5,
+        coverage:"16 Oct 2025-19 Mar 2026",source:"Message log and ratings CSV, mapped production machine IDs only"
       }
     };
     const csvMachineMetrics = {
@@ -1059,7 +1059,7 @@
       const selectedPeriodOverride=authoritativePeriodMetrics[`${appliedPeriod.start}|${appliedPeriod.end}`];
       const selectedMonthMetrics=months.filter(m=>m.id>=appliedPeriod.start.slice(0,7)&&m.id<=appliedPeriod.end.slice(0,7)).map(m=>authoritativeMonthlyMetrics[m.id]).filter(Boolean);
       const rangeSummary=selectedMonthMetrics.length>1?(()=>{const sessions=selectedMonthMetrics.reduce((a,b)=>a+b.sessions,0),questions=selectedMonthMetrics.reduce((a,b)=>a+b.questions,0),success=selectedMonthMetrics.reduce((a,b)=>a+b.success,0),apology=selectedMonthMetrics.reduce((a,b)=>a+b.apology,0),rated=selectedMonthMetrics.filter(x=>x.rating!==null),ratingWeight=rated.reduce((a,b)=>a+b.sessions,0);return {sessions,questions,success,apology,successRate:questions?success/questions*100:0,apologyRate:questions?apology/questions*100:0,rating:ratingWeight?rated.reduce((a,b)=>a+b.rating*b.sessions,0)/ratingWeight:null,ratingScale:4,activeMachines:Math.max(...selectedMonthMetrics.map(x=>x.activeMachines)),coverage:periodText,source:"Aggregated monthly CSV metrics across the applied Date Range"}})():null;
-      const periodSummary=selectedPeriodOverride?{...(rangeSummary||authoritativeCur||{}),...selectedPeriodOverride,success:rangeSummary?.success||0,apology:rangeSummary?.apology||0,successRate:rangeSummary?.successRate||0,apologyRate:rangeSummary?.apologyRate||0,rating:rangeSummary?.rating??null}:rangeSummary||authoritativeCur;
+      const periodSummary=selectedPeriodOverride||rangeSummary||authoritativeCur;
       const cur=periodSummary?{...calculatedCur,...periodSummary,avg:periodSummary.questions/customDayCount(appliedPeriod.start,appliedPeriod.end,monthObj.days)}:calculatedCur;
       const old=authoritativeOld?{...calculatedOld,...authoritativeOld,avg:authoritativeOld.questions/prev.days}:calculatedOld;
       const monthRows=months.slice().reverse().map(m=>({id:m.id,label:m.label,short:m.short,...metric(perf.filter(r=>r.month===m.id),m.days),...(authoritativeMonthlyMetrics[m.id]||{})}));

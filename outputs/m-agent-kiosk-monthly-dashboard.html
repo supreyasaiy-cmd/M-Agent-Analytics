@@ -168,11 +168,19 @@
     .reco-hero-card .card-title{align-items:flex-start}
     .reco-period-chip{display:inline-flex;align-items:center;gap:10px;margin-top:10px;padding:10px 14px;border-radius:999px;background:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8;font-size:13px;font-weight:800;line-height:1.35}
     .reco-period-chip b{font-size:14px;color:#1e3a8a}
-    .reco-summary-kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;margin-top:18px}
-    .reco-kpi{border:1px solid var(--line-2);border-radius:18px;background:#fbfcfe;padding:18px;display:grid;gap:8px}
+    .reco-summary-kpis{display:grid;gap:14px;margin-top:18px}
+    .reco-summary-kpis-primary,.reco-summary-kpis-secondary{display:grid;gap:14px}
+    .reco-summary-kpis-primary{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .reco-summary-kpis-secondary{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .reco-kpi{border:1px solid var(--line-2);border-radius:18px;background:#fbfcfe;padding:18px;display:grid;gap:8px;align-content:start;min-height:168px}
     .reco-kpi span{font-size:11px;color:var(--muted);font-weight:800;text-transform:uppercase}
     .reco-kpi strong{font-size:30px;line-height:1.02;letter-spacing:0}
     .reco-kpi p{margin:0;color:#475467;font-size:13px;line-height:1.45}
+    .reco-kpi.primary{background:linear-gradient(180deg,#ffffff,#f8fbff)}
+    .reco-kpi.primary strong{font-size:44px;line-height:.95}
+    .reco-kpi.primary p{max-width:28ch}
+    .reco-kpi.supporting{min-height:148px}
+    .reco-kpi.supporting strong{font-size:38px}
     .reco-benefits{display:grid;gap:10px}
     .reco-benefit{border:1px solid var(--line-2);border-radius:16px;background:#fbfcfe;padding:14px 16px;display:grid;grid-template-columns:32px minmax(0,1fr);gap:12px;align-items:start}
     .reco-benefit .icon{width:32px;height:32px;border-radius:11px}
@@ -340,8 +348,8 @@
     .ranking-card .scroll{flex:1}
     .ranking-card .rank-table{min-width:940px}
     .ranking-card .rank-table td:nth-child(2){min-width:170px}
-    @media(max-width:1200px){.recommendation-card .insight-grid,.reco-insight-grid,.reco-summary-grid{grid-template-columns:1fr}}
-    @media(max-width:760px){.overview-trend-card,.overview-insights-card{min-height:auto}.recommendation-card .insight-grid,.reco-insight-grid,.reco-summary-grid{grid-template-columns:1fr}}
+    @media(max-width:1200px){.recommendation-card .insight-grid,.reco-insight-grid,.reco-summary-grid,.reco-summary-kpis-primary,.reco-summary-kpis-secondary{grid-template-columns:1fr}}
+    @media(max-width:760px){.overview-trend-card,.overview-insights-card{min-height:auto}.recommendation-card .insight-grid,.reco-insight-grid,.reco-summary-grid,.reco-summary-kpis-primary,.reco-summary-kpis-secondary{grid-template-columns:1fr}}
     .data-table{width:100%;border-collapse:separate;border-spacing:0 8px;font-size:13px;table-layout:auto}
     .data-table th{color:#667085;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:0;padding:0 12px 6px}
     .data-table td{background:#fbfcfe;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);padding:16px 14px;vertical-align:top;line-height:1.45;overflow-wrap:anywhere;word-break:normal}
@@ -625,6 +633,7 @@
   <script src="./vendor/react-dom.production.min.js"></script>
   <script src="./vendor/papaparse.min.js"></script>
   <script src="./vendor/xlsx.full.min.js"></script>
+  <script src="./assets/performance-report-data.js"></script>
   <script>
     const {useEffect, useMemo, useRef, useState} = React;
     const h = React.createElement;
@@ -647,16 +656,18 @@
       {assetId:"NO4-M5-THA-01",machine:"TheMall-004",screen:"Not provided",branch:"M8 Bangkapi",location:"M8 Bangkapi - Platinum Lounge ชั้น 2",period:"10 Apr 2026-Present",status:"Active",notes:"Consolidated from M5 Thapra; borrowed for The Mall Lifestore Sports Fest."},
       {assetId:"NO5-M3-EVT-01",machine:"TheMall-005",screen:"55 in",branch:"M8 Bangkapi",location:"M8 Bangkapi - Dining Zone ชั้น 3",period:"10 Apr 2026-Present",status:"Active",notes:"Former event pool machine, now permanent at M8 Dining Zone."}
     ];
-    const coverImage = "../work/Design/M Agent/Default.png";
+    const coverImage = "./assets/event-default.png";
     const eventImages = {
-      "The Mall Lifestore Sports Fest":"../work/Design/M Agent/THE MALL LIFESTORE SPORTS FEST .png",
-      "Marketing Oops 2026":"../work/Design/M Agent/Default.png",
-      "Bangkok Bank M VISA":"../work/Design/M Agent/Default.png",
-      "Power Mall Gamer Festival":"../work/Design/M Agent/Power Mall Gamer Festival.png",
-      "Electronica 2025":"../work/Design/M Agent/Power Mall Electronica.png",
-      "Sustainability Forum 2026":"../work/Design/M Agent/SUSTAINABILITY FORUM 2026 Shift Forward.png",
-      "WORLD PUP EXPO 2025":"../work/Design/M Agent/World Pup - M Pet Club.png",
-      "อร่อยทั่วไทย M8":"../work/Design/M Agent/อร่อยทั่วไทย M8.png"
+      "The Mall Lifestore Sports Fest":"./assets/event-the-mall-lifestore-sports-fest.png",
+      "Marketing Oops 2026":"./assets/event-default.png",
+      "Bangkok Bank M VISA":"./assets/event-default.png",
+      "Power Mall Gamer Festival":"./assets/event-power-mall-gamer-festival.png",
+      "Electronica 2025":"./assets/event-electronica-2025.png",
+      "Sustainability Forum 2026":"./assets/event-sustainability-forum-2026.png",
+      "WORLD PUP EXPO 2025":"./assets/event-world-pup-expo-2025.png",
+      "อร่อยทั่วไทย M8":"./assets/event-aroi-thua-thai-m8.png",
+      "Marketing Oops 2025":"./assets/event-default.png",
+      "PTT OPEX DAY 2025":"./assets/event-default.png"
     };
     const machineImages = {
       "NO1-M8-BKP-01":"./assets/no1-m8-bkp-01.jpg",
@@ -742,7 +753,8 @@
         coverage:"16 Oct 2025-19 Mar 2026",source:"Message log and ratings CSV, mapped production machine IDs only"
       }
     };
-    const csvMachineMetrics = {
+    const performanceReportSource = window.__PERFORMANCE_REPORT_DATA__ || null;
+    const fallbackCsvMachineMetrics = {
       "2025-09":{"NO1-M8-BKP-01":[99,239,189,18,32,204,32,3,0,225,14]},
       "2025-10":{"NO1-M8-BKP-01":[161,280,107,122,51,132,145,3,0,247,33],"NO2-M7-BKE-01":[203,405,219,169,17,285,119,1,0,323,82],"NO3-M6-NGW-01":[207,429,275,134,20,300,125,4,0,332,97],"NO4-M5-THA-01":[103,217,141,47,29,128,83,6,0,168,49],"NO5-M3-EVT-01":[1,2,0,1,1,2,0,0,0,2,0]},
       "2025-11":{"NO1-M8-BKP-01":[271,476,250,177,49,231,245,0,0,384,92,3.03]},
@@ -754,6 +766,7 @@
       "2026-05":{"NO1-M8-BKP-01":[222,385,160,154,71,168,217,0,0,328,57,2.56],"NO2-M7-BKE-01":[578,931,459,385,87,496,435,0,0,768,163,2.38],"NO3-M6-NGW-01":[137,215,94,91,30,92,123,0,0,180,35,2.19],"NO4-M5-THA-01":[46,78,39,32,7,30,48,0,0,64,14,2.5],"NO5-M3-EVT-01":[174,350,197,105,48,230,120,0,0,272,78,2.88]},
       "2026-06":{"NO1-M8-BKP-01":[151,314,163,96,55,149,165,0,0,237,77,3],"NO2-M7-BKE-01":[492,843,316,486,41,508,335,0,0,726,117,3.17],"NO3-M6-NGW-01":[120,201,99,72,30,99,102,0,0,162,39,2.55],"NO4-M5-THA-01":[127,203,94,97,12,108,95,0,0,167,36,2.75],"NO5-M3-EVT-01":[169,296,155,97,44,136,160,0,0,235,61,2]}
     };
+    const csvMachineMetrics = performanceReportSource?.csvMachineMetrics || fallbackCsvMachineMetrics;
     const perf = months.flatMap((m,monthIndex)=>base.map((x,i)=>{
       const factor=(monthlyMultipliers[m.id]||[1,1,1,1,1])[i];
       const qualityDrift=Math.max(0, monthIndex*.06);
@@ -1568,11 +1581,14 @@
                 h("h1",null,"Keep the strongest 3 kiosks and rationalize the remaining footprint."),
                 h("p",{className:"subtitle"},"This page automatically scores every kiosk with a weighted model using traffic, engagement, answer quality, trends, event impact, and operational health across all available history."),
                 h("div",{className:"reco-summary-kpis"},
-                  h("div",{className:"reco-kpi"},h("span",null,"Current deployment"),h("strong",null,String(data.currentDeployment)),h("p",null,"Kiosks currently in the portfolio")),
-                  h("div",{className:"reco-kpi"},h("span",null,"Recommended deployment"),h("strong",null,String(data.recommendedDeployment)),h("p",null,"Kiosks recommended to remain in active service")),
-                  h("div",{className:"reco-kpi"},h("span",null,"Recommended hardware mix"),h("strong",null,'43" x2 + 55" x1'),h("p",null,"Selection is constrained to preserve the required screen-size coverage")),
-                  h("div",{className:"reco-kpi"},h("span",null,"Overall questions"),h("strong",null,n(data.totalQuestions)),h("p",null,"Total questions across all kiosks in the recommendation period")),
-                  h("div",{className:"reco-kpi"},h("span",null,"Portfolio avg / day"),h("strong",null,data.portfolioAvgDaily.toFixed(1)),h("p",null,"Average sessions per day across the full kiosk portfolio"))
+                  h("div",{className:"reco-summary-kpis-primary"},
+                    h("div",{className:"reco-kpi primary"},h("span",null,"Current deployment"),h("strong",null,String(data.currentDeployment)),h("p",null,"Kiosks currently in the portfolio")),
+                    h("div",{className:"reco-kpi primary"},h("span",null,"Recommended deployment"),h("strong",null,String(data.recommendedDeployment)),h("p",null,"Kiosks recommended to remain in active service")),
+                    h("div",{className:"reco-kpi primary"},h("span",null,"Recommended hardware mix"),h("strong",null,'43" x2 + 55" x1'),h("p",null,"Keep 2 compact kiosks and 1 large-format kiosk"))
+                  ),
+                  h("div",{className:"reco-summary-kpis-secondary"},
+                    h("div",{className:"reco-kpi supporting"},h("span",null,"Portfolio sessions avg / day"),h("strong",null,data.portfolioAvgDaily.toFixed(1)),h("p",null,"Average sessions per day across all kiosks"))
+                  )
                 )
               )
             ),
@@ -1654,7 +1670,8 @@
                       ),
                       h("div",{className:"reco-metrics"},
                         h("div",{className:"reco-metric"},h("span",null,"Sessions"),h("strong",null,n(item.sessions))),
-                        h("div",{className:"reco-metric"},h("span",null,"Avg / day"),h("strong",null,item.avgDailySessions.toFixed(1))),
+                        h("div",{className:"reco-metric"},h("span",null,"Questions"),h("strong",null,n(item.questions))),
+                        h("div",{className:"reco-metric"},h("span",null,"Sessions avg / day"),h("strong",null,item.avgDailySessions.toFixed(1))),
                         h("div",{className:"reco-metric"},h("span",null,"Engagement"),h("strong",null,item.qps.toFixed(2))),
                         h("div",{className:"reco-metric"},h("span",null,"Success"),h("strong",null,pct(item.successRate))),
                         h("div",{className:"reco-metric"},h("span",null,"Rating"),h("strong",null,item.rating?item.rating.toFixed(2):"—")),

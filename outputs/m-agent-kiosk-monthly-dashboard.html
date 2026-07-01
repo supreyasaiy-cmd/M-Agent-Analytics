@@ -1052,7 +1052,6 @@
         {title:"Rationalization candidate",text:`${bottom.kiosk.location} ranks lowest on the combined score because traffic, engagement, and business value trail the rest of the portfolio.`,icon:"alert",tone:"rose"}
       ];
       const summaryPoints=[
-        {label:"Coverage window",title:`${historyStart} - ${historyEnd}`,text:"Recommendation uses cumulative historical data across the full available model window, not just the currently selected month."},
         {label:"Recommended keep set",title:keepRows.map(row=>`${row.kiosk.machine||row.assetId} (${row.screenGroup})`).join(", "),text:"This follows the required mix of 2 kiosks in 43-inch format and 1 kiosk in 55-inch format."},
         {label:"Why this works",title:"Stronger day-to-day business value",text:"The selected kiosks outperform on blended score, not just sessions. The model weighs consistency over time, engagement depth, answer quality, campaign value, and future scalability together."},
         {label:"Review / remove",title:`Review ${reviewRows[0]?`${reviewRows[0].kiosk.machine||reviewRows[0].assetId} (${reviewRows[0].screenGroup})`:"next-best kiosk"}`,text:`Treat ${removeRows.map(row=>`${row.kiosk.machine||row.assetId} (${row.screenGroup})`).join(" and ")} as the first rationalization targets because their value is less stable or less differentiated over time.`}
@@ -1670,7 +1669,7 @@
                         h("div",{className:"reco-metric"},h("span",null,"Sessions"),h("strong",null,n(item.sessions))),
                         h("div",{className:"reco-metric"},h("span",null,"Questions"),h("strong",null,n(item.questions))),
                         h("div",{className:"reco-metric"},h("span",null,"Sessions avg / day"),h("strong",null,item.avgDailySessions.toFixed(1))),
-                        h("div",{className:"reco-metric"},h("span",null,"Engagement"),h("strong",null,item.qps.toFixed(2))),
+                        h("div",{className:"reco-metric"},h("span",null,"Questions avg / session"),h("strong",null,item.qps.toFixed(2))),
                         h("div",{className:"reco-metric"},h("span",null,"Success"),h("strong",null,pct(item.successRate))),
                         h("div",{className:"reco-metric"},h("span",null,"Rating"),h("strong",null,item.rating?item.rating.toFixed(2):"—")),
                         h("div",{className:"reco-metric"},h("span",null,"Campaign impact"),h("strong",null,`${Math.round(item.campaignImpact*100)}/100`)),

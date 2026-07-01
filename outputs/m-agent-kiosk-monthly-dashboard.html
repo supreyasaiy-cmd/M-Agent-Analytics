@@ -103,7 +103,7 @@
     .card-title{display:flex;align-items:center;gap:10px}
     .card-title h3{font-size:18px;line-height:1.25;letter-spacing:0;text-wrap:balance;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
     .subtitle{color:var(--muted);font-size:14px;line-height:1.45;margin-top:5px;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-    .icon{width:40px;height:40px;border-radius:14px;background:var(--blue-soft);color:var(--blue);display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+    .icon{width:40px;height:40px;border-radius:14px;background:linear-gradient(180deg,#ffffff 0%,#eef4ff 100%);color:var(--blue);display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;box-shadow:inset 0 1px 0 rgba(255,255,255,.95),0 8px 18px rgba(15,23,42,.08),0 1px 2px rgba(15,23,42,.06);border:1px solid rgba(148,163,184,.16)}
     .icon.dark{background:#111827;color:#fff}.icon.green{background:var(--green-soft);color:#067647}.icon.rose{background:var(--rose-soft);color:#be123c}.icon.amber{background:var(--amber-soft);color:#b45309}
     .kpi-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px}
     .kpi-grid .kpi{grid-column:span 4}
@@ -164,21 +164,27 @@
     .overview-machine-metrics strong{display:block;font-size:20px;line-height:1.05;overflow-wrap:anywhere}
     .overview-machine-metrics span{display:block;margin-top:6px;color:var(--muted);font-size:11px}
     .reco-hero{display:grid;grid-template-columns:1fr;gap:24px}
-    .reco-hero-card{min-height:0}
+    .reco-hero-card{min-height:0;padding:34px 36px}
     .reco-hero-card .card-title{align-items:flex-start}
-    .reco-period-chip{display:inline-flex;align-items:center;gap:10px;margin-top:10px;padding:10px 14px;border-radius:999px;background:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8;font-size:13px;font-weight:800;line-height:1.35}
-    .reco-period-chip b{font-size:14px;color:#1e3a8a}
+    .reco-hero-card h1{font-size:58px;line-height:1.06;max-width:15ch;margin-top:18px}
+    .reco-hero-card > .subtitle{max-width:52ch;font-size:16px;line-height:1.6;margin-top:14px}
+    .reco-hero-card .card-title h3{font-size:28px;line-height:1.15}
+    .reco-hero-card .card-title .subtitle{font-size:15px;line-height:1.55;max-width:58ch}
+    .reco-period-chip{display:inline-flex;align-items:center;gap:10px;margin-top:12px;padding:9px 14px;border-radius:999px;background:#eff6ff;border:1px solid #bfdbfe;color:#1d4ed8;font-size:12px;font-weight:800;line-height:1.35;width:max-content;max-width:100%}
+    .reco-period-chip b{font-size:13px;color:#1e3a8a}
     .reco-summary-kpis{display:grid;gap:14px;margin-top:18px}
     .reco-summary-kpis-primary,.reco-summary-kpis-secondary{display:grid;gap:14px}
     .reco-summary-kpis-primary{grid-template-columns:repeat(3,minmax(0,1fr))}
     .reco-summary-kpis-secondary{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .reco-kpi{border:1px solid var(--line-2);border-radius:18px;background:#fbfcfe;padding:18px;display:grid;gap:8px;align-content:start;min-height:168px}
-    .reco-kpi span{font-size:11px;color:var(--muted);font-weight:800;text-transform:uppercase}
-    .reco-kpi strong{font-size:30px;line-height:1.02;letter-spacing:0}
-    .reco-kpi p{margin:0;color:#475467;font-size:13px;line-height:1.45}
+    .reco-kpi{border:1px solid var(--line-2);border-radius:20px;background:#fbfcfe;padding:20px 22px;display:grid;gap:10px;align-content:start;min-height:172px}
+    .reco-kpi span{font-size:12px;color:#667085;font-weight:850;text-transform:uppercase;line-height:1.3}
+    .reco-kpi strong{font-size:30px;line-height:1;letter-spacing:0}
+    .reco-kpi p{margin:0;color:#475467;font-size:14px;line-height:1.5}
     .reco-kpi.primary{background:linear-gradient(180deg,#ffffff,#f8fbff)}
-    .reco-kpi.primary strong{font-size:44px;line-height:.95}
-    .reco-kpi.primary p{max-width:28ch}
+    .reco-kpi.primary strong{font-size:40px;line-height:.95}
+    .reco-kpi.primary p{max-width:24ch}
+    .reco-kpi.mix strong{font-size:32px;line-height:1.02;max-width:none;white-space:nowrap}
+    .reco-kpi.mix p{max-width:22ch}
     .reco-kpi.supporting{min-height:148px}
     .reco-kpi.supporting strong{font-size:38px}
     .reco-benefits{display:grid;gap:10px}
@@ -204,23 +210,49 @@
     .reco-badge.keep{background:var(--green-soft);color:#067647}
     .reco-badge.review{background:var(--amber-soft);color:#b45309}
     .reco-badge.remove{background:var(--rose-soft);color:#be123c}
-    .reco-machine-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
-    .reco-machine-card{padding:18px;display:grid;gap:16px;align-content:start}
-    .reco-machine-photo{width:100%;aspect-ratio:16/10;border-radius:18px;overflow:hidden;border:1px solid var(--line-2);background:#f8fafc}
+    .reco-machine-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+    .reco-machine-card{padding:32px;display:grid;gap:20px;align-content:start}
+    .reco-machine-top{display:grid;grid-template-columns:1fr;gap:20px;align-items:start}
+    .reco-machine-photo{width:100%;aspect-ratio:1.22/1;border-radius:24px;overflow:hidden;border:1px solid var(--line-2);background:#f8fafc}
     .reco-machine-photo img{width:100%;height:100%;object-fit:cover;display:block}
-    .reco-machine-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
-    .reco-machine-head b{display:block;font-size:15px;line-height:1.3;overflow-wrap:anywhere}
-    .reco-machine-head p{margin-top:6px;color:#667085;font-size:12px;line-height:1.45}
-    .reco-score{display:grid;gap:4px;justify-items:end;text-align:right}
-    .reco-score strong{font-size:32px;line-height:1}
-    .reco-score span{font-size:12px;color:var(--muted);font-weight:750}
-    .reco-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
-    .reco-metric{border:1px solid var(--line-2);border-radius:16px;background:#fbfcfe;padding:12px}
-    .reco-metric span{display:block;color:var(--muted);font-size:11px}
-    .reco-metric strong{display:block;margin-top:6px;font-size:20px;line-height:1.05}
-    .reco-trend-line{font-size:12px;color:#475467;font-weight:750}
-    .reco-reasons{display:grid;gap:8px}
-    .reco-reasons li{list-style:none;border-radius:14px;background:#f8fafc;padding:11px 12px;color:#344054;font-size:12px;line-height:1.45}
+    .reco-machine-main{display:grid;gap:16px;min-width:0}
+    .reco-machine-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:start}
+    .reco-machine-title{display:grid;gap:10px;min-width:0;align-content:start}
+    .reco-machine-title b{display:block;font-size:26px;line-height:1.08;font-weight:900;color:#0f172a;overflow-wrap:break-word;word-break:normal}
+    .reco-machine-title h4{margin:0;font-size:20px;line-height:1.18;letter-spacing:0;color:#475467;overflow-wrap:break-word;word-break:normal;font-weight:600}
+    .reco-machine-meta{display:grid;gap:6px;color:#667085;font-size:15px;line-height:1.45;overflow-wrap:break-word;word-break:normal}
+    .reco-machine-meta .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    .reco-machine-meta .row svg{flex:0 0 auto}
+    .reco-score-panel{border:1px solid var(--line-2);border-radius:18px;background:#fff;padding:14px 16px;display:grid;grid-template-columns:1fr;gap:6px;align-items:center;min-width:172px;align-self:start}
+    .reco-score-copy{display:grid;gap:6px}
+    .reco-score-copy span{font-size:11px;color:#667085;font-weight:850;text-transform:uppercase;line-height:1.2;letter-spacing:.02em}
+    .reco-score{display:flex;align-items:flex-end;gap:6px;min-width:0}
+    .reco-score strong{font-size:46px;line-height:.9;font-weight:900}
+    .reco-score .denom{font-size:14px;color:#667085;font-weight:700;margin-bottom:5px}
+    .reco-score-label{font-size:11px;color:#475467;font-weight:700;line-height:1.3}
+    .reco-machine-title .reco-badge{justify-self:start}
+    .reco-kpi-primary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .reco-kpi-secondary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:stretch}
+    .reco-metrics{display:grid;gap:14px}
+    .reco-metric{border:1px solid var(--line-2);border-radius:20px;background:#fff;padding:18px 18px 16px;min-height:124px;display:grid;grid-auto-rows:min-content;align-content:center;gap:10px;justify-items:center;text-align:center}
+    .reco-metric.priority{background:#ffffff}
+    .reco-metric .icon{width:42px;height:42px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;align-self:center;justify-self:center;margin:0;box-shadow:inset 0 1px 0 rgba(255,255,255,.98),0 10px 22px rgba(15,23,42,.08),0 2px 4px rgba(15,23,42,.06);border:1px solid rgba(148,163,184,.14)}
+    .reco-metric span{display:block;color:#667085;font-size:13px;line-height:1.35;font-weight:500;letter-spacing:0;text-transform:none}
+    .reco-metric strong{display:block;font-size:30px;line-height:1;color:#101828;font-weight:900}
+    .reco-metric strong small{font-size:13px;color:#667085;font-weight:700}
+    .reco-metric.wide{grid-column:auto;min-height:116px}
+    .reco-signal-strip{border:1px solid var(--line-2);border-radius:20px;background:#fff;padding:18px 20px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .reco-signal{display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;align-items:center;min-width:0}
+    .reco-signal .icon{width:36px;height:36px;border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.98),0 8px 16px rgba(15,23,42,.07),0 2px 4px rgba(15,23,42,.05);border:1px solid rgba(148,163,184,.14)}
+    .reco-signal div{display:grid;gap:2px;min-width:0}
+    .reco-signal span{font-size:12px;color:#667085;font-weight:500;line-height:1.25;text-transform:none}
+    .reco-signal b{font-size:17px;line-height:1.2;color:#101828}
+    .reco-reasons{border:1px solid var(--line-2);border-radius:20px;background:#fff;padding:18px 20px;display:grid;gap:14px}
+    .reco-reasons-head{font-size:12px;color:#667085;font-weight:850;text-transform:uppercase;line-height:1.2}
+    .reco-reasons ul{display:grid;gap:12px}
+    .reco-reasons li{list-style:none;border-radius:18px;background:#fbfcfe;padding:16px 18px;color:#344054;font-size:14px;line-height:1.55;display:grid;grid-template-columns:52px minmax(0,1fr);gap:14px;align-items:start;min-height:108px}
+    .reco-reasons li .icon{width:52px;height:52px;border-radius:16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.98),0 12px 24px rgba(15,23,42,.08),0 2px 6px rgba(15,23,42,.06);border:1px solid rgba(148,163,184,.14)}
+    .reco-reasons li b{display:block;font-size:15px;line-height:1.25;color:#101828;margin-bottom:4px;text-transform:none}
     .reco-insight-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
     .reco-insight{border:1px solid var(--line-2);border-radius:18px;background:#fbfcfe;padding:16px;display:grid;grid-template-columns:40px minmax(0,1fr);gap:4px 12px;align-items:start}
     .reco-insight .icon{grid-row:1 / 3;width:40px;height:40px;border-radius:14px}
@@ -348,8 +380,8 @@
     .ranking-card .scroll{flex:1}
     .ranking-card .rank-table{min-width:940px}
     .ranking-card .rank-table td:nth-child(2){min-width:170px}
-    @media(max-width:1200px){.recommendation-card .insight-grid,.reco-insight-grid,.reco-summary-grid,.reco-summary-kpis-primary,.reco-summary-kpis-secondary{grid-template-columns:1fr}}
-    @media(max-width:760px){.overview-trend-card,.overview-insights-card{min-height:auto}.recommendation-card .insight-grid,.reco-insight-grid,.reco-summary-grid,.reco-summary-kpis-primary,.reco-summary-kpis-secondary{grid-template-columns:1fr}}
+    @media(max-width:1200px){.recommendation-card .insight-grid,.reco-insight-grid,.reco-summary-grid,.reco-summary-kpis-primary,.reco-summary-kpis-secondary{grid-template-columns:1fr}.reco-hero-card h1{font-size:48px}}
+    @media(max-width:760px){.overview-trend-card,.overview-insights-card{min-height:auto}.recommendation-card .insight-grid,.reco-insight-grid,.reco-summary-grid,.reco-summary-kpis-primary,.reco-summary-kpis-secondary{grid-template-columns:1fr}.reco-hero-card{padding:24px}.reco-hero-card h1{font-size:36px}.reco-hero-card > .subtitle{font-size:15px}.reco-kpi{min-height:0;padding:18px}.reco-kpi.primary strong,.reco-kpi.mix strong,.reco-kpi.supporting strong{font-size:34px}}
     .data-table{width:100%;border-collapse:separate;border-spacing:0 8px;font-size:13px;table-layout:auto}
     .data-table th{color:#667085;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:0;padding:0 12px 6px}
     .data-table td{background:#fbfcfe;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);padding:16px 14px;vertical-align:top;line-height:1.45;overflow-wrap:anywhere;word-break:normal}
@@ -572,7 +604,7 @@
     .app-error-card p{margin-top:12px;color:var(--muted);font-size:14px;line-height:1.55}
     .app-error-card button{margin-top:18px;border:0;border-radius:14px;background:#be123c;color:#fff;min-height:42px;padding:0 16px;font-weight:850}
     @media(max-width:1320px){.hero,.reco-hero{grid-template-columns:1fr}.kpi-grid{grid-template-columns:repeat(12,minmax(0,1fr))}.kpi-grid .kpi{grid-column:span 6}.span-8,.span-7,.span-6,.span-5,.span-4,.span-3{grid-column:span 12}.event-grid,.insight-grid{grid-template-columns:1fr 1fr}.compare-kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.compare-filter-sections{grid-template-columns:1fr 1fr}.compare-mode-field{grid-column:span 2}}
-    @media(max-width:900px){.filter-row{grid-template-columns:1fr}.context-strip{justify-content:flex-start;flex-wrap:wrap;padding:12px}.hero-copy,.hero-visual{min-height:auto;border-radius:20px;padding:24px}.hero-mini,.reco-summary-kpis,.reco-metrics{grid-template-columns:1fr 1fr}.kpi-grid,.event-grid,.insight-grid,.field-grid,.compare-kpi-grid,.compare-filter-sections,.filter-grid,.behavior-split,.overview-summary-grid,.reco-machine-grid,.reco-insight-grid{grid-template-columns:1fr}.behavior-panel+.behavior-panel{border-left:0;border-top:1px solid var(--line-2);padding-left:0;padding-top:18px}.kpi-grid .kpi{grid-column:1/-1}.compare-mode-field{grid-column:auto}.compare-guide-head,.apply-strip,.overview-summary-head{display:grid}.overview-summary-actions{justify-content:flex-start}.segment-control{grid-template-columns:1fr}.donut-layout{grid-template-columns:1fr}.heatmap{grid-template-columns:48px repeat(6,minmax(0,1fr))}.heatmap .hide-sm{display:none}.matrix-row,.stacked-row,.reco-rank-row{grid-template-columns:1fr}.matrix-bars{min-height:120px}.category-heatmap{grid-template-columns:92px repeat(3,minmax(0,1fr))}.category-heatmap .hide-sm{display:none}.hour-compare{grid-template-columns:72px repeat(6,minmax(0,1fr))}.hour-compare .hide-sm{display:none}h1{font-size:32px}.section-head{display:grid}.section-actions{justify-content:flex-start}}
+    @media(max-width:900px){.filter-row{grid-template-columns:1fr}.context-strip{justify-content:flex-start;flex-wrap:wrap;padding:12px}.hero-copy,.hero-visual{min-height:auto;border-radius:20px;padding:24px}.hero-mini,.reco-summary-kpis,.reco-metrics{grid-template-columns:1fr 1fr}.kpi-grid,.event-grid,.insight-grid,.field-grid,.compare-kpi-grid,.compare-filter-sections,.filter-grid,.behavior-split,.overview-summary-grid,.reco-machine-grid,.reco-insight-grid{grid-template-columns:1fr}.behavior-panel+.behavior-panel{border-left:0;border-top:1px solid var(--line-2);padding-left:0;padding-top:18px}.kpi-grid .kpi{grid-column:1/-1}.compare-mode-field{grid-column:auto}.compare-guide-head,.apply-strip,.overview-summary-head{display:grid}.overview-summary-actions{justify-content:flex-start}.segment-control{grid-template-columns:1fr}.donut-layout{grid-template-columns:1fr}.heatmap{grid-template-columns:48px repeat(6,minmax(0,1fr))}.heatmap .hide-sm{display:none}.matrix-row,.stacked-row,.reco-rank-row{grid-template-columns:1fr}.matrix-bars{min-height:120px}.category-heatmap{grid-template-columns:92px repeat(3,minmax(0,1fr))}.category-heatmap .hide-sm{display:none}.hour-compare{grid-template-columns:72px repeat(6,minmax(0,1fr))}.hour-compare .hide-sm{display:none}h1{font-size:32px}.section-head{display:grid}.section-actions{justify-content:flex-start}.reco-machine-top,.reco-score-panel{grid-template-columns:1fr}.reco-kpi-primary,.reco-kpi-secondary{grid-template-columns:repeat(2,minmax(0,1fr))}.reco-signal-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.reco-machine-title h4{font-size:22px}}
     @media(min-width:901px) and (max-width:1320px){.donut-card .donut-layout{grid-template-columns:minmax(150px,176px) minmax(0,1fr)}.donut-card .donut{width:176px}}
     @media(max-width:1100px){
       .sidebar{transform:translateX(-104%);transition:transform .24s ease;box-shadow:30px 0 70px rgba(15,23,42,.14)}
@@ -614,6 +646,12 @@
       .event-detail-list{grid-template-columns:1fr}
       .event-metrics{grid-template-columns:1fr}
       .summary-grid{grid-template-columns:1fr}
+      .reco-machine-card{padding:18px}
+      .reco-machine-top,.reco-machine-head,.reco-score-panel{grid-template-columns:1fr}
+      .reco-score{justify-content:flex-start}
+      .reco-kpi-primary,.reco-kpi-secondary,.reco-signal-strip{grid-template-columns:1fr}
+      .reco-metric.wide{grid-column:auto}
+      .reco-reasons li{grid-template-columns:1fr}
       .compact-row{grid-template-columns:1fr}
       .timeline-line{grid-template-columns:1fr}
       .timeline-line .timeline-item:after{display:none}
@@ -1076,6 +1114,17 @@
     function LineChart({values,labels=[],color="#12b76a"}){const w=360,hgt=150, pts=pathFrom(values,w,hgt,18), line=pts.map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1)).join(" "), safeLabels=labels.length?labels:pts.map((_,i)=>String(i+1));return h("svg",{className:"chart",viewBox:`0 0 ${w} ${hgt}`},h("path",{d:line,fill:"none",stroke:color,strokeWidth:4,strokeLinecap:"round",strokeLinejoin:"round",className:"draw-line"}),pts.map((p,i)=>h("circle",{key:i,cx:p[0],cy:p[1],r:4,fill:"#fff",stroke:color,strokeWidth:3})),safeLabels.slice(0,pts.length).map((l,i)=>h("text",{key:l+i,x:pts[i][0],y:hgt-4,textAnchor:"middle",className:"axis-label"},l)))}
     function Donut({title,segments=[],total,label,span=4}){let cursor=0;const safeTotal=safeNumber(total), colors=["#2563eb","#0891b2","#12b76a","#f59e0b","#7c3aed","#e11d48"], safeSegments=segments.length?segments:[{name:"No data",value:0,color:"#e5e7eb"}];const gradient=safeTotal?safeSegments.map((s,i)=>{const v=safeTotal?safeNumber(s.value)/safeTotal*100:0;const out=`${s.color||colors[i%colors.length]} ${cursor}% ${cursor+v}%`;cursor+=v;return out;}).join(", "):"#eef2f7 0% 100%";return h("article",{className:`card donut-card span-${span}`},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"globe"})),h("div",null,h("h3",null,display(title,"Distribution")),h("p",{className:"subtitle"},display(label,"No description"))))) ,h("div",{className:"donut-layout"},h("div",{className:"donut",style:{background:`conic-gradient(${gradient})`}},h("div",{className:"donut-center"},h("strong",null,compact(safeTotal)),h("span",null,"total"))),h("div",{className:"legend-list"},safeSegments.map((s,i)=>h("div",{className:"legend-item",key:s.name||i},h("i",{className:"swatch",style:{background:s.color||colors[i%colors.length]}}),h("span",null,display(s.name,"No data")),h("b",null,pct(safeTotal?safeNumber(s.value)/safeTotal*100:0)))))))}
     function Gauge({value,label}){const safe=Math.max(0,Math.min(100,safeNumber(value)));return h("div",{className:"donut gauge",style:{background:`conic-gradient(#12b76a 0 ${safe}%, #eef2f7 ${safe}% 100%)`}},h("div",{className:"donut-center"},h("strong",null,pct(safe)),h("span",null,display(label,"score"))))}
+    function ScoreArc({value,tone="#12b76a"}){
+      const safe=Math.max(0,Math.min(100,safeNumber(value)));
+      const circumference=Math.PI*54;
+      const dashOffset=circumference-(circumference*safe/100);
+      return h("div",{className:"reco-score-arc"},
+        h("svg",{viewBox:"0 0 140 84","aria-hidden":"true"},
+          h("path",{d:"M 16 68 A 54 54 0 0 1 124 68",fill:"none",stroke:"#eef2f7",strokeWidth:"14",strokeLinecap:"round"}),
+          h("path",{d:"M 16 68 A 54 54 0 0 1 124 68",fill:"none",stroke:tone,strokeWidth:"14",strokeLinecap:"round",strokeDasharray:`${circumference} ${circumference}`,strokeDashoffset:dashOffset})
+        )
+      );
+    }
     function KmSummaryCard({icon,tone,title,value}){
       return h("article",{className:"card span-3 km-metric"},
         h("div",{className:"card-head"},
@@ -1572,18 +1621,17 @@
                     h("span",{className:"icon green"},h(Icon,{name:"check"})),
                     h("div",null,
                       h("h3",null,"Recommendation"),
-                      h("p",{className:"subtitle"},"Executive summary for reducing deployment from 5 kiosks to 3 kiosks using cumulative historical data."),
-                      h("div",{className:"reco-period-chip"},h("span",null,"Performance window"),h("b",null,`${data.historyStart} to ${data.historyEnd}`))
                     )
                   )
                 ),
                 h("h1",null,"Keep the strongest 3 kiosks and rationalize the remaining footprint."),
-                h("p",{className:"subtitle"},"This page automatically scores every kiosk with a weighted model using traffic, engagement, answer quality, trends, event impact, and operational health across all available history."),
+                h("p",{className:"subtitle"},"This page automatically scores every kiosk with a weighted model using traffic, engagement, answer quality, trend consistency, event impact, and operational health across the full available performance history."),
+                h("div",{className:"reco-period-chip"},h("span",null,"Performance window"),h("b",null,`${data.historyStart} to ${data.historyEnd}`)),
                 h("div",{className:"reco-summary-kpis"},
                   h("div",{className:"reco-summary-kpis-primary"},
                     h("div",{className:"reco-kpi primary"},h("span",null,"Current deployment"),h("strong",null,String(data.currentDeployment)),h("p",null,"Kiosks currently in the portfolio")),
                     h("div",{className:"reco-kpi primary"},h("span",null,"Recommended deployment"),h("strong",null,String(data.recommendedDeployment)),h("p",null,"Kiosks recommended to remain in active service")),
-                    h("div",{className:"reco-kpi primary"},h("span",null,"Recommended hardware mix"),h("strong",null,'43" x2 + 55" x1'),h("p",null,"Keep 2 compact kiosks and 1 large-format kiosk"))
+                    h("div",{className:"reco-kpi primary mix"},h("span",null,"Recommended hardware mix"),h("strong",null,'43" x2 + 55" x1'),h("p",null,"Keep 2 compact kiosks and 1 large-format kiosk"))
                   ),
                   h("div",{className:"reco-summary-kpis-secondary"})
                 )
@@ -1652,37 +1700,85 @@
                   )
                 ),
                 h("div",{className:"reco-machine-grid"},
-                  data.results.map(item=>
-                    h("article",{className:"card reco-machine-card",key:item.assetId},
-                      h("div",{className:"reco-machine-photo"},h("img",{src:item.photo,alt:`${item.assetId} at ${item.kiosk.location||"location"}`})),
-                      h("div",{className:"reco-machine-head"},
-                        h("div",null,
-                          h("b",null,item.assetId),
-                          h("p",null,`${item.kiosk.location||"Location not available"}\n${item.floor} · ${item.screenGroup}`)
-                        ),
-                        h("div",{className:"reco-score"},
-                          h("strong",null,`${item.overallScore}`),
-                          h("span",null,"Overall score")
+                  data.results.map(item=>{
+                    const decisionTitle=item.recommendation==="KEEP"
+                      ?"Healthy kiosk"
+                      :item.recommendation==="REVIEW"
+                        ?"Needs closer review"
+                        :"Low-priority kiosk";
+                    const decisionWhy=item.recommendation==="KEEP"
+                      ?"Strong enough to retain in the 3-kiosk footprint."
+                      :item.recommendation==="REVIEW"
+                        ?"Promising in some areas, but not yet resilient enough."
+                        :"Weak overall case compared with the rest of the portfolio.";
+                    const nextAction=item.recommendation==="KEEP"
+                      ?"Keep live, protect visibility, and refresh high-demand answers weekly."
+                      :item.recommendation==="REVIEW"
+                        ?"Track for another cycle and test placement or campaign support."
+                        :"Prepare removal or convert to event-only deployment unless business needs change.";
+                    const reasonLabels=["Why it helps","Traffic quality","Answer quality","Business impact","Next action"];
+                    const reasonCards=[
+                      item.reasons[0],
+                      item.reasons[1],
+                      item.reasons[2],
+                      item.reasons[3],
+                      nextAction
+                    ].filter(Boolean);
+                    return h("article",{className:"card reco-machine-card",key:item.assetId},
+                      h("div",{className:"reco-machine-top"},
+                        h("div",{className:"reco-machine-photo"},h("img",{src:item.photo,alt:`${item.assetId} at ${item.kiosk.location||"location"}`})),
+                        h("div",{className:"reco-machine-main"},
+                          h("div",{className:"reco-machine-head"},
+                            h("div",{className:"reco-machine-title"},
+                              h("span",{className:`reco-badge ${item.recommendation.toLowerCase()}`},item.recommendation),
+                              h("b",null,item.assetId),
+                              h("div",{className:"reco-machine-meta"},
+                                h("div",{className:"row"},h(Icon,{name:"map",size:15}),h("span",null,item.kiosk.location||"Location not available")),
+                                h("div",{className:"row"},h("span",null,`${item.floor} · ${item.screenGroup}`))
+                              )
+                            ),
+                            h("div",{className:"reco-score-panel"},
+                              h("div",{className:"reco-score-copy"},
+                                h("span",null,"Overall score"),
+                                h("div",{className:"reco-score"},
+                                  h("strong",null,item.overallScore),
+                                  h("span",{className:"denom"},"/100")
+                                ),
+                                h("div",{className:"reco-score-label"},decisionTitle)
+                              )
+                            )
+                          )
                         )
                       ),
                       h("div",{className:"reco-metrics"},
-                        h("div",{className:"reco-metric"},h("span",null,"Sessions"),h("strong",null,n(item.sessions))),
-                        h("div",{className:"reco-metric"},h("span",null,"Questions"),h("strong",null,n(item.questions))),
-                        h("div",{className:"reco-metric"},h("span",null,"Sessions avg / day"),h("strong",null,item.avgDailySessions.toFixed(1))),
-                        h("div",{className:"reco-metric"},h("span",null,"Questions avg / session"),h("strong",null,item.qps.toFixed(2))),
-                        h("div",{className:"reco-metric"},h("span",null,"Success"),h("strong",null,pct(item.successRate))),
-                        h("div",{className:"reco-metric"},h("span",null,"Rating"),h("strong",null,item.rating?item.rating.toFixed(2):"—")),
-                        h("div",{className:"reco-metric"},h("span",null,"Campaign impact"),h("strong",null,`${Math.round(item.campaignImpact*100)}/100`)),
-                        h("div",{className:"reco-metric"},h("span",null,"Consistency"),h("strong",null,`${Math.round(item.trendStability*100)}/100`)),
-                        h("div",{className:"reco-metric"},h("span",null,"Scalability"),h("strong",null,`${Math.round(item.futureScalability*100)}/100`))
+                        h("div",{className:"reco-kpi-primary"},
+                          h("div",{className:"reco-metric priority"},h("span",{className:"icon"},h(Icon,{name:"activity",size:22})),h("span",null,"Sessions"),h("strong",null,n(item.sessions))),
+                          h("div",{className:"reco-metric priority"},h("span",{className:"icon"},h(Icon,{name:"trend",size:22})),h("span",null,"Sessions avg / day"),h("strong",null,item.avgDailySessions.toFixed(1))),
+                          h("div",{className:"reco-metric priority"},h("span",{className:"icon green"},h(Icon,{name:"message",size:22})),h("span",null,"Questions"),h("strong",null,n(item.questions))),
+                          h("div",{className:"reco-metric priority"},h("span",{className:"icon green"},h(Icon,{name:"message",size:22})),h("span",null,"Questions avg / session"),h("strong",null,item.qps.toFixed(2)))
+                        ),
                       ),
-                      h("div",{className:"reco-machine-head"},
-                        h("div",{className:"reco-trend-line"},`Trend: ${item.trendLabel} · Peak-hour activity ${Math.round(item.peakActivity*100)}/100 · Weekly usage ${Math.round(item.weeklyUsage*100)}/100 · Campaign dependency ${Math.round(item.campaignDependency*100)}/100`),
-                        h("span",{className:`reco-badge ${item.recommendation.toLowerCase()}`},item.recommendation)
-                      ),
-                      h("ul",{className:"reco-reasons"},item.reasons.map(reason=>h("li",{key:reason},reason)))
-                    )
-                  )
+                      h("div",{className:"reco-reasons"},
+                        h("div",{className:"reco-reasons-head"},"Key insights"),
+                        reasonCards.map((reason,index)=>{
+                          const iconMeta=[
+                            ["Usage Stability","activity",""],
+                            ["Foot-Traffic Quality","globe","green"],
+                            ["Engagement Quality","check","purple"],
+                            ["Business Impact","alert","amber"],
+                            ["Scalability Outlook","cpu",""]
+                          ][index]||[`Reason ${index+1}`,"activity",""];
+                          return h("li",{key:`${item.assetId}-${index}`},
+                            h("span",{className:`icon ${iconMeta[2]||""}`},h(Icon,{name:iconMeta[1],size:24})),
+                            h("div",null,
+                              h("b",null,iconMeta[0]),
+                              h("span",null,reason)
+                            )
+                          );
+                        })
+                      )
+                    );
+                  })
                 )
               ),
               h("div",{className:"card span-12"},

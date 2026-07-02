@@ -223,7 +223,7 @@
     .reco-machine-meta{display:grid;gap:6px;color:#667085;font-size:15px;line-height:1.45;overflow-wrap:break-word;word-break:normal}
     .reco-machine-meta .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
     .reco-machine-meta .row svg{flex:0 0 auto}
-    .reco-score-panel{border:1px solid var(--line-2);border-radius:18px;background:#fff;padding:14px 16px;display:grid;grid-template-columns:1fr;gap:6px;align-items:center;min-width:172px;align-self:start}
+    .reco-score-panel{border:1px solid var(--line-2);border-radius:18px;background:#fff;padding:14px 16px;display:grid;grid-template-columns:1fr;gap:6px;align-items:center;min-width:172px;align-self:start;margin-top:38px}
     .reco-score-copy{display:grid;gap:6px}
     .reco-score-copy span{font-size:11px;color:#667085;font-weight:850;text-transform:uppercase;line-height:1.2;letter-spacing:.02em}
     .reco-score{display:flex;align-items:flex-end;gap:6px;min-width:0}
@@ -381,7 +381,7 @@
     .ranking-card .rank-table{min-width:940px}
     .ranking-card .rank-table td:nth-child(2){min-width:170px}
     @media(max-width:1200px){.recommendation-card .insight-grid,.reco-insight-grid,.reco-summary-grid,.reco-summary-kpis-primary,.reco-summary-kpis-secondary{grid-template-columns:1fr}.reco-hero-card h1{font-size:48px}}
-    @media(max-width:760px){.overview-trend-card,.overview-insights-card{min-height:auto}.recommendation-card .insight-grid,.reco-insight-grid,.reco-summary-grid,.reco-summary-kpis-primary,.reco-summary-kpis-secondary{grid-template-columns:1fr}.reco-hero-card{padding:24px}.reco-hero-card h1{font-size:36px}.reco-hero-card > .subtitle{font-size:15px}.reco-kpi{min-height:0;padding:18px}.reco-kpi.primary strong,.reco-kpi.mix strong,.reco-kpi.supporting strong{font-size:34px}}
+    @media(max-width:760px){.overview-trend-card,.overview-insights-card{min-height:auto}.recommendation-card .insight-grid,.reco-insight-grid,.reco-summary-grid,.reco-summary-kpis-primary,.reco-summary-kpis-secondary,.reco-kpi-primary,.reco-kpi-secondary,.reco-signal-strip{grid-template-columns:1fr}.reco-hero-card{padding:24px}.reco-hero-card h1{font-size:36px}.reco-hero-card > .subtitle{font-size:15px}.reco-kpi{min-height:0;padding:18px}.reco-kpi.primary strong,.reco-kpi.mix strong,.reco-kpi.supporting strong{font-size:34px}}
     .data-table{width:100%;border-collapse:separate;border-spacing:0 8px;font-size:13px;table-layout:auto}
     .data-table th{color:#667085;text-align:left;font-size:11px;text-transform:uppercase;letter-spacing:0;padding:0 12px 6px}
     .data-table td{background:#fbfcfe;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);padding:16px 14px;vertical-align:top;line-height:1.45;overflow-wrap:anywhere;word-break:normal}
@@ -604,7 +604,7 @@
     .app-error-card p{margin-top:12px;color:var(--muted);font-size:14px;line-height:1.55}
     .app-error-card button{margin-top:18px;border:0;border-radius:14px;background:#be123c;color:#fff;min-height:42px;padding:0 16px;font-weight:850}
     @media(max-width:1320px){.hero,.reco-hero{grid-template-columns:1fr}.kpi-grid{grid-template-columns:repeat(12,minmax(0,1fr))}.kpi-grid .kpi{grid-column:span 6}.span-8,.span-7,.span-6,.span-5,.span-4,.span-3{grid-column:span 12}.event-grid,.insight-grid{grid-template-columns:1fr 1fr}.compare-kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.compare-filter-sections{grid-template-columns:1fr 1fr}.compare-mode-field{grid-column:span 2}}
-    @media(max-width:900px){.filter-row{grid-template-columns:1fr}.context-strip{justify-content:flex-start;flex-wrap:wrap;padding:12px}.hero-copy,.hero-visual{min-height:auto;border-radius:20px;padding:24px}.hero-mini,.reco-summary-kpis,.reco-metrics{grid-template-columns:1fr 1fr}.kpi-grid,.event-grid,.insight-grid,.field-grid,.compare-kpi-grid,.compare-filter-sections,.filter-grid,.behavior-split,.overview-summary-grid,.reco-machine-grid,.reco-insight-grid{grid-template-columns:1fr}.behavior-panel+.behavior-panel{border-left:0;border-top:1px solid var(--line-2);padding-left:0;padding-top:18px}.kpi-grid .kpi{grid-column:1/-1}.compare-mode-field{grid-column:auto}.compare-guide-head,.apply-strip,.overview-summary-head{display:grid}.overview-summary-actions{justify-content:flex-start}.segment-control{grid-template-columns:1fr}.donut-layout{grid-template-columns:1fr}.heatmap{grid-template-columns:48px repeat(6,minmax(0,1fr))}.heatmap .hide-sm{display:none}.matrix-row,.stacked-row,.reco-rank-row{grid-template-columns:1fr}.matrix-bars{min-height:120px}.category-heatmap{grid-template-columns:92px repeat(3,minmax(0,1fr))}.category-heatmap .hide-sm{display:none}.hour-compare{grid-template-columns:72px repeat(6,minmax(0,1fr))}.hour-compare .hide-sm{display:none}h1{font-size:32px}.section-head{display:grid}.section-actions{justify-content:flex-start}.reco-machine-top,.reco-score-panel{grid-template-columns:1fr}.reco-kpi-primary,.reco-kpi-secondary{grid-template-columns:repeat(2,minmax(0,1fr))}.reco-signal-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.reco-machine-title h4{font-size:22px}}
+    @media(max-width:900px){.filter-row{grid-template-columns:1fr}.context-strip{justify-content:flex-start;flex-wrap:wrap;padding:12px}.hero-copy,.hero-visual{min-height:auto;border-radius:20px;padding:24px}.hero-mini,.reco-summary-kpis{grid-template-columns:1fr 1fr}.kpi-grid,.event-grid,.insight-grid,.field-grid,.compare-kpi-grid,.compare-filter-sections,.filter-grid,.behavior-split,.overview-summary-grid,.reco-machine-grid,.reco-insight-grid{grid-template-columns:1fr}.behavior-panel+.behavior-panel{border-left:0;border-top:1px solid var(--line-2);padding-left:0;padding-top:18px}.kpi-grid .kpi{grid-column:1/-1}.compare-mode-field{grid-column:auto}.compare-guide-head,.apply-strip,.overview-summary-head{display:grid}.overview-summary-actions{justify-content:flex-start}.segment-control{grid-template-columns:1fr}.donut-layout{grid-template-columns:1fr}.heatmap{grid-template-columns:48px repeat(6,minmax(0,1fr))}.heatmap .hide-sm{display:none}.matrix-row,.stacked-row,.reco-rank-row{grid-template-columns:1fr}.matrix-bars{min-height:120px}.category-heatmap{grid-template-columns:92px repeat(3,minmax(0,1fr))}.category-heatmap .hide-sm{display:none}.hour-compare{grid-template-columns:72px repeat(6,minmax(0,1fr))}.hour-compare .hide-sm{display:none}h1{font-size:32px}.section-head{display:grid}.section-actions{justify-content:flex-start}.reco-machine-top,.reco-score-panel{grid-template-columns:1fr}.reco-kpi-primary,.reco-kpi-secondary{grid-template-columns:repeat(2,minmax(0,1fr))}.reco-signal-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.reco-machine-title h4{font-size:22px}.reco-score-panel{margin-top:0}}
     @media(min-width:901px) and (max-width:1320px){.donut-card .donut-layout{grid-template-columns:minmax(150px,176px) minmax(0,1fr)}.donut-card .donut{width:176px}}
     @media(max-width:1100px){
       .sidebar{transform:translateX(-104%);transition:transform .24s ease;box-shadow:30px 0 70px rgba(15,23,42,.14)}
@@ -1616,14 +1616,6 @@
           return h(PageShell,null,
             h("div",{className:"reco-hero"},
               h("div",{className:"card reco-hero-card"},
-                h("div",{className:"card-head"},
-                  h("div",{className:"card-title"},
-                    h("span",{className:"icon green"},h(Icon,{name:"check"})),
-                    h("div",null,
-                      h("h3",null,"Recommendation"),
-                    )
-                  )
-                ),
                 h("h1",null,"Keep the strongest 3 kiosks and rationalize the remaining footprint."),
                 h("p",{className:"subtitle"},"This page automatically scores every kiosk with a weighted model using traffic, engagement, answer quality, trend consistency, event impact, and operational health across the full available performance history."),
                 h("div",{className:"reco-period-chip"},h("span",null,"Performance window"),h("b",null,`${data.historyStart} to ${data.historyEnd}`)),

@@ -210,20 +210,20 @@
     .reco-badge.keep{background:var(--green-soft);color:#067647}
     .reco-badge.review{background:var(--amber-soft);color:#b45309}
     .reco-badge.remove{background:var(--rose-soft);color:#be123c}
-    .reco-machine-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
-    .reco-machine-card{padding:32px;display:grid;gap:20px;align-content:start}
-    .reco-machine-top{display:grid;grid-template-columns:1fr;gap:20px;align-items:start}
-    .reco-machine-photo{width:100%;aspect-ratio:1.22/1;border-radius:24px;overflow:hidden;border:1px solid var(--line-2);background:#f8fafc}
+    .reco-machine-grid{display:grid;grid-template-columns:repeat(2,minmax(420px,1fr));gap:24px}
+    .reco-machine-card{padding:32px;display:grid;gap:20px;align-content:start;min-width:0}
+    .reco-machine-top{display:grid;grid-template-columns:1fr;gap:20px;align-items:start;min-width:0}
+    .reco-machine-photo{width:100%;aspect-ratio:1.38/1;border-radius:24px;overflow:hidden;border:1px solid var(--line-2);background:#f8fafc}
     .reco-machine-photo img{width:100%;height:100%;object-fit:cover;display:block}
     .reco-machine-main{display:grid;gap:16px;min-width:0}
-    .reco-machine-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:start}
+    .reco-machine-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:start}
     .reco-machine-title{display:grid;gap:10px;min-width:0;align-content:start}
     .reco-machine-title b{display:block;font-size:26px;line-height:1.08;font-weight:900;color:#0f172a;overflow-wrap:break-word;word-break:normal}
     .reco-machine-title h4{margin:0;font-size:20px;line-height:1.18;letter-spacing:0;color:#475467;overflow-wrap:break-word;word-break:normal;font-weight:600}
     .reco-machine-meta{display:grid;gap:6px;color:#667085;font-size:15px;line-height:1.45;overflow-wrap:break-word;word-break:normal}
     .reco-machine-meta .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
     .reco-machine-meta .row svg{flex:0 0 auto}
-    .reco-score-panel{border:1px solid var(--line-2);border-radius:18px;background:#fff;padding:14px 16px;display:grid;grid-template-columns:1fr;gap:6px;align-items:center;min-width:172px;align-self:start;margin-top:38px}
+    .reco-score-panel{border:1px solid var(--line-2);border-radius:18px;background:#fff;padding:14px 16px;display:grid;grid-template-columns:1fr;gap:6px;align-items:center;min-width:172px;align-self:start}
     .reco-score-copy{display:grid;gap:6px}
     .reco-score-copy span{font-size:11px;color:#667085;font-weight:850;text-transform:uppercase;line-height:1.2;letter-spacing:.02em}
     .reco-score{display:flex;align-items:flex-end;gap:6px;min-width:0}
@@ -234,19 +234,13 @@
     .reco-kpi-primary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
     .reco-kpi-secondary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:stretch}
     .reco-metrics{display:grid;gap:14px}
-    .reco-metric{border:1px solid var(--line-2);border-radius:20px;background:#fff;padding:18px 18px 16px;min-height:124px;display:grid;grid-auto-rows:min-content;align-content:center;gap:10px;justify-items:center;text-align:center}
+    .reco-metric{border:1px solid var(--line-2);border-radius:20px;background:#fff;padding:18px 18px 16px;min-height:124px;display:grid;grid-auto-rows:min-content;align-content:center;gap:10px;justify-items:center;text-align:center;min-width:0}
     .reco-metric.priority{background:#ffffff}
-    .reco-metric .icon{width:42px;height:42px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;align-self:center;justify-self:center;margin:0;box-shadow:inset 0 1px 0 rgba(255,255,255,.98),0 10px 22px rgba(15,23,42,.08),0 2px 4px rgba(15,23,42,.06);border:1px solid rgba(148,163,184,.14)}
+    .reco-metric .icon{width:42px;height:42px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;align-self:center;justify-self:center;margin:0;box-shadow:inset 0 1px 0 rgba(255,255,255,.98),0 10px 22px rgba(15,23,42,.08),0 2px 4px rgba(15,23,42,.06);border:1px solid rgba(148,163,184,.14);padding:0}
     .reco-metric span{display:block;color:#667085;font-size:13px;line-height:1.35;font-weight:500;letter-spacing:0;text-transform:none}
     .reco-metric strong{display:block;font-size:30px;line-height:1;color:#101828;font-weight:900}
     .reco-metric strong small{font-size:13px;color:#667085;font-weight:700}
     .reco-metric.wide{grid-column:auto;min-height:116px}
-    .reco-signal-strip{border:1px solid var(--line-2);border-radius:20px;background:#fff;padding:18px 20px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-    .reco-signal{display:grid;grid-template-columns:36px minmax(0,1fr);gap:12px;align-items:center;min-width:0}
-    .reco-signal .icon{width:36px;height:36px;border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.98),0 8px 16px rgba(15,23,42,.07),0 2px 4px rgba(15,23,42,.05);border:1px solid rgba(148,163,184,.14)}
-    .reco-signal div{display:grid;gap:2px;min-width:0}
-    .reco-signal span{font-size:12px;color:#667085;font-weight:500;line-height:1.25;text-transform:none}
-    .reco-signal b{font-size:17px;line-height:1.2;color:#101828}
     .reco-reasons{border:1px solid var(--line-2);border-radius:20px;background:#fff;padding:18px 20px;display:grid;gap:14px}
     .reco-reasons-head{font-size:12px;color:#667085;font-weight:850;text-transform:uppercase;line-height:1.2}
     .reco-reasons ul{display:grid;gap:12px}
@@ -604,7 +598,7 @@
     .app-error-card p{margin-top:12px;color:var(--muted);font-size:14px;line-height:1.55}
     .app-error-card button{margin-top:18px;border:0;border-radius:14px;background:#be123c;color:#fff;min-height:42px;padding:0 16px;font-weight:850}
     @media(max-width:1320px){.hero,.reco-hero{grid-template-columns:1fr}.kpi-grid{grid-template-columns:repeat(12,minmax(0,1fr))}.kpi-grid .kpi{grid-column:span 6}.span-8,.span-7,.span-6,.span-5,.span-4,.span-3{grid-column:span 12}.event-grid,.insight-grid{grid-template-columns:1fr 1fr}.compare-kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.compare-filter-sections{grid-template-columns:1fr 1fr}.compare-mode-field{grid-column:span 2}}
-    @media(max-width:900px){.filter-row{grid-template-columns:1fr}.context-strip{justify-content:flex-start;flex-wrap:wrap;padding:12px}.hero-copy,.hero-visual{min-height:auto;border-radius:20px;padding:24px}.hero-mini,.reco-summary-kpis{grid-template-columns:1fr 1fr}.kpi-grid,.event-grid,.insight-grid,.field-grid,.compare-kpi-grid,.compare-filter-sections,.filter-grid,.behavior-split,.overview-summary-grid,.reco-machine-grid,.reco-insight-grid{grid-template-columns:1fr}.behavior-panel+.behavior-panel{border-left:0;border-top:1px solid var(--line-2);padding-left:0;padding-top:18px}.kpi-grid .kpi{grid-column:1/-1}.compare-mode-field{grid-column:auto}.compare-guide-head,.apply-strip,.overview-summary-head{display:grid}.overview-summary-actions{justify-content:flex-start}.segment-control{grid-template-columns:1fr}.donut-layout{grid-template-columns:1fr}.heatmap{grid-template-columns:48px repeat(6,minmax(0,1fr))}.heatmap .hide-sm{display:none}.matrix-row,.stacked-row,.reco-rank-row{grid-template-columns:1fr}.matrix-bars{min-height:120px}.category-heatmap{grid-template-columns:92px repeat(3,minmax(0,1fr))}.category-heatmap .hide-sm{display:none}.hour-compare{grid-template-columns:72px repeat(6,minmax(0,1fr))}.hour-compare .hide-sm{display:none}h1{font-size:32px}.section-head{display:grid}.section-actions{justify-content:flex-start}.reco-machine-top,.reco-score-panel{grid-template-columns:1fr}.reco-kpi-primary,.reco-kpi-secondary{grid-template-columns:repeat(2,minmax(0,1fr))}.reco-signal-strip{grid-template-columns:repeat(2,minmax(0,1fr))}.reco-machine-title h4{font-size:22px}.reco-score-panel{margin-top:0}}
+    @media(max-width:900px){.filter-row{grid-template-columns:1fr}.context-strip{justify-content:flex-start;flex-wrap:wrap;padding:12px}.hero-copy,.hero-visual{min-height:auto;border-radius:20px;padding:24px}.hero-mini,.reco-summary-kpis{grid-template-columns:1fr 1fr}.kpi-grid,.event-grid,.insight-grid,.field-grid,.compare-kpi-grid,.compare-filter-sections,.filter-grid,.behavior-split,.overview-summary-grid,.reco-machine-grid,.reco-insight-grid{grid-template-columns:1fr}.behavior-panel+.behavior-panel{border-left:0;border-top:1px solid var(--line-2);padding-left:0;padding-top:18px}.kpi-grid .kpi{grid-column:1/-1}.compare-mode-field{grid-column:auto}.compare-guide-head,.apply-strip,.overview-summary-head{display:grid}.overview-summary-actions{justify-content:flex-start}.segment-control{grid-template-columns:1fr}.donut-layout{grid-template-columns:1fr}.heatmap{grid-template-columns:48px repeat(6,minmax(0,1fr))}.heatmap .hide-sm{display:none}.matrix-row,.stacked-row,.reco-rank-row{grid-template-columns:1fr}.matrix-bars{min-height:120px}.category-heatmap{grid-template-columns:92px repeat(3,minmax(0,1fr))}.category-heatmap .hide-sm{display:none}.hour-compare{grid-template-columns:72px repeat(6,minmax(0,1fr))}.hour-compare .hide-sm{display:none}h1{font-size:32px}.section-head{display:grid}.section-actions{justify-content:flex-start}.reco-machine-top,.reco-score-panel{grid-template-columns:1fr}.reco-kpi-primary,.reco-kpi-secondary{grid-template-columns:repeat(2,minmax(0,1fr))}.reco-machine-title h4{font-size:22px}.reco-score-panel{margin-top:0;min-width:0}}
     @media(min-width:901px) and (max-width:1320px){.donut-card .donut-layout{grid-template-columns:minmax(150px,176px) minmax(0,1fr)}.donut-card .donut{width:176px}}
     @media(max-width:1100px){
       .sidebar{transform:translateX(-104%);transition:transform .24s ease;box-shadow:30px 0 70px rgba(15,23,42,.14)}
@@ -734,12 +728,6 @@
       "c9f04fd5-e1d4-47a5-8866-ac555bced1d3":"NO4-M5-THA-01",
       "16f880a4-ccd9-41b6-a3ad-0f0075b649a2":"NO5-M3-EVT-01"
     };
-    const authoritativePeriodMetrics = {
-      "2025-10-16|2026-03-19":{
-        sessions:3085,questions:5470,rating:2.82,ratingScale:4,success:4467,successRate:81.66,apology:1003,apologyRate:18.34,activeMachines:5,
-        coverage:"16 Oct 2025-19 Mar 2026",source:"Message log and ratings CSV, mapped production machine IDs only"
-      }
-    };
     const performanceReportSource = window.__PERFORMANCE_REPORT_DATA__ || null;
     const fallbackCsvMachineMetrics = {
       "2025-09":{"NO1-M8-BKP-01":[99,239,189,18,32,204,32,3,0,225,14]},
@@ -754,7 +742,13 @@
       "2026-06":{"NO1-M8-BKP-01":[151,314,163,96,55,149,165,0,0,237,77,3],"NO2-M7-BKE-01":[492,843,316,486,41,508,335,0,0,726,117,3.23],"NO3-M6-NGW-01":[120,201,99,72,30,99,102,0,0,162,39,2.55],"NO4-M5-THA-01":[127,203,94,97,12,108,95,0,0,167,36,2.75],"NO5-M3-EVT-01":[169,296,155,97,44,136,160,0,0,235,61,2]}
     };
     const csvMachineMetrics = performanceReportSource?.csvMachineMetrics || fallbackCsvMachineMetrics;
+    const dailyAssetMetrics = performanceReportSource?.dailyAssetMetrics || {};
     const monthMeta = performanceReportSource?.monthMeta || {};
+    const generatedTopicSummaryByMonth = performanceReportSource?.topicSummaryByMonth || {};
+    const generatedTopQuestionsByMonth = performanceReportSource?.topQuestionsByMonth || {};
+    const generatedBrandSummaryByMonth = performanceReportSource?.brandSummaryByMonth || {};
+    const generatedCategoryByAssetByMonth = performanceReportSource?.categoryByAssetByMonth || {};
+    const generatedBrandByAssetByMonth = performanceReportSource?.brandByAssetByMonth || {};
     const monthLabelShort = {Jan:"Jan",Feb:"Feb",Mar:"Mar",Apr:"Apr",May:"May",Jun:"Jun",Jul:"Jul",Aug:"Aug",Sep:"Sep",Oct:"Oct",Nov:"Nov",Dec:"Dec"};
     const csvNum = value => {const raw=typeof value==="string"?value.replace(/,/g,"").trim():value;const num=Number(raw);return Number.isFinite(num)?num:0};
     function buildCoverageLabel(start,end){
@@ -846,20 +840,13 @@
       ["2026-06","2026-06-16","NO4-M5-THA-01","จอดรถมอเตอร์ไซค์ตรงไหน","ขออภัยค่ะ ฉันยังไม่มีข้อมูลนี้","Missing info","อาคารจอดรถ B ชั้น 1","Need confirmation","Branch Ops","Need branch confirmation."],
       ["2026-05","2026-05-21","NO2-M7-BKE-01","แลกคูปองร้านอาหารยังไง","กดรับสิทธิ์ในแอปแล้วใช้ได้ทันที","Confusing answer","กดรับสิทธิ์ใน M Card app แล้วแสดง QR ก่อนชำระเงิน","Fixed","CRM","Template improved."]
     ].map((x,i)=>({id:i,month:x[0],date:x[1],kiosk:x[2],question:x[3],answer:x[4],issue:x[5],correct:x[6],status:x[7],owner:x[8],note:x[9]}));
-    const events = [
-      ["2026-06","The Mall Lifestore Sports Fest","2026-06-05 to 2026-06-10","NO4-M5-THA-01","M8 Bangkapi - Platinum Lounge ชั้น 2","M7 Bangkae","2026-06-05","2026-06-10","404 sessions, 782 questions, 3.7 rating","Borrowed from consolidated M8 placement."],
-      ["2026-06","Marketing Oops 2026","2026-06-11","NO2-M7-BKE-01","M8 Bangkapi - E-Stamp (G)","QSNCC","2026-06-11","2026-06-11","940 sessions, 2,018 questions, 4.2 rating","One-day event borrowing."],
-      ["2026-05","Bangkok Bank M VISA","2026-05-15 to 2026-05-16","NO2-M7-BKE-01","M8 Bangkapi - E-Stamp (G)","Bangkok Bank Event","2026-05-15","2026-05-16","846 sessions, 1,776 questions, 4.1 rating","Borrowed for Bangkok Bank event."]
+    const csvEventHistory = performanceReportSource?.eventHistory || [];
+    const fallbackEvents = [
+      ["2026-06","The Mall Lifestore Sports Fest","2026-06-05 to 2026-06-10","NO4-M5-THA-01","M8 Bangkapi - Platinum Lounge ชั้น 2","M7 Bangkae","2026-06-05","2026-06-10","101 sessions, 148 questions, 3.0 rating","Performance verified from June 2026 Performance Reports CSV for the event window."],
+      ["2026-06","Marketing Oops 2026","2026-06-11","NO2-M7-BKE-01","M8 Bangkapi - E-Stamp (G)","QSNCC","2026-06-11","2026-06-11","96 sessions, 247 questions, 3.5 rating","Performance verified from June 2026 Performance Reports CSV for the event window."],
+      ["2026-05","Bangkok Bank M VISA","2026-05-15 to 2026-05-16","NO2-M7-BKE-01","M8 Bangkapi - E-Stamp (G)","Bangkok Bank Event","2026-05-15","2026-05-16","20 sessions, 41 questions, 2.5 rating","Performance verified from May 2026 Performance Reports CSV for the event window."]
     ].map((x,i)=>({id:i,month:x[0],event:x[1],date:x[2],asset:x[3],original:x[4],location:x[5],setup:x[6],returnDate:x[7],performance:x[8],notes:x[9]}));
-    const historicalEventPerformance = {
-      "Marketing Oops 2025":{setup:"2025-06-27",returnDate:"2025-06-28",performance:"130 sessions, 287 questions, rating not available"},
-      "อร่อยทั่วไทย M8":{setup:"2025-07-04",returnDate:"2025-07-13",performance:"677 sessions, 1,174 questions, rating not available"},
-      "PTT OPEX DAY 2025":{setup:"2025-07-09",returnDate:"2025-07-10",performance:"75 sessions, 101 questions, rating not available"},
-      "WORLD PUP EXPO 2025":{setup:"2025-08-28",returnDate:"2025-08-31",performance:"75 sessions, 121 questions, rating not available"},
-      "Power Mall Gamer Festival":{setup:"2025-10-28",returnDate:"2025-11-09",performance:"233 sessions, 456 questions, 3.3 rating"},
-      "Electronica 2025":{setup:"2025-11-10",returnDate:"2025-12-10",performance:"313 sessions, 536 questions, 3.0 rating"},
-      "Sustainability Forum 2026":{setup:"2025-12-03",returnDate:"2025-12-04",performance:"8 sessions, 14 questions, 3.5 rating"}
-    };
+    const events = csvEventHistory.length?csvEventHistory:fallbackEvents;
     const eventMonthNumber={Jan:"01",Feb:"02",Mar:"03",Apr:"04",May:"05",Jun:"06",Jul:"07",Aug:"08",Sep:"09",Oct:"10",Nov:"11",Dec:"12"};
     const eventSortDate=range=>{
       const text=String(range||"");
@@ -869,7 +856,7 @@
       return `${year}-${eventMonthNumber[month]||"01"}-${String(day).padStart(2,"0")}`;
     };
     const allEvents = history.filter(item=>item.type==="Event").map((item,index)=>{
-      const performanceEvent=events.find(event=>event.asset===item.assetId&&event.event===item.name);
+      const performanceEvent=events.find(event=>event.event===item.name&&(!event.asset||event.asset===item.assetId));
       return performanceEvent||{
         id:`history-${index}`,
         month:eventSortDate(item.range).slice(0,7),
@@ -878,10 +865,10 @@
         asset:item.assetId,
         original:"Not recorded",
         location:item.loc,
-        setup:historicalEventPerformance[item.name]?.setup||eventSortDate(item.range),
-        returnDate:historicalEventPerformance[item.name]?.returnDate||"",
-        performance:historicalEventPerformance[item.name]?.performance||"",
-        notes:historicalEventPerformance[item.name]?"Performance calculated from the Performance Reports CSV for the event date range.":"Performance data is not available for this historical event."
+        setup:eventSortDate(item.range),
+        returnDate:"",
+        performance:"",
+        notes:"Performance data is not available for this historical event."
       };
     });
 
@@ -897,12 +884,13 @@
     const parsePerformance = text => {const rating=text.match(/([\d.]+) rating/);return {sessions:+(text.match(/([\d,]+) sessions/)?.[1]||"0").replace(/,/g,""),questions:+(text.match(/([\d,]+) questions/)?.[1]||"0").replace(/,/g,""),rating:rating?+rating[1]:null}};
     const activeTimeline = asset => history.filter(x=>x.assetId===asset);
     const getTopics = (monthId,totalQuestions) => {
+      if(generatedTopicSummaryByMonth[monthId]?.length) return generatedTopicSummaryByMonth[monthId];
       if(topics[monthId]) return topics[monthId];
       const seed=topics["2026-06"];
       const seedTotal=seed.reduce((a,b)=>a+b[1],0)||1;
       return seed.map(([name,value,share])=>[name,Math.round(totalQuestions*(value/seedTotal)),share]);
     };
-    const getQuestions = monthId => questions[monthId] || questions["2026-06"].slice(0,4).map(([q,c,count])=>[q,c,Math.round(count*.58)]);
+    const getQuestions = monthId => generatedTopQuestionsByMonth[monthId]?.length ? generatedTopQuestionsByMonth[monthId] : (questions[monthId] || questions["2026-06"].slice(0,4).map(([q,c,count])=>[q,c,Math.round(count*.58)]));
     const categorySeed = [["Promotion",.19],["M Card",.15],["Directory",.14],["Parking",.1],["Events",.1],["Store Information",.09],["Rewards",.08],["Restaurant",.06],["Fashion",.035],["Beauty",.025],["Sports",.025],["Lifestyle",.015]];
     const brandSeed = [["Uniqlo",.18],["Starbucks",.15],["McDonald's",.12],["Nike",.11],["Adidas",.09],["Power Mall",.16],["Gourmet Market",.13],["Apple",.06]];
     const questionBank = [
@@ -929,6 +917,44 @@
     function periodLength(period){return period==="Quarterly"?3:period==="Yearly"?12:1}
     function periodMonthIds(anchor,period,offset=0){const start=monthPos(anchor)+offset, len=periodLength(period);return months.slice(start,start+len).map(m=>m.id)}
     function customDayCount(start,end,fallback=30){const s=start?new Date(start):null,e=end?new Date(end):null;if(s&&e&&!Number.isNaN(+s)&&!Number.isNaN(+e)&&e>=s)return Math.max(1,Math.round((e-s)/86400000)+1);return fallback}
+    function shiftDate(value,offsetDays){const date=value?new Date(`${value}T00:00:00`):null;if(!date||Number.isNaN(+date))return value;date.setDate(date.getDate()+offsetDays);return date.toISOString().slice(0,10)}
+    function enumerateDates(start,end){
+      const s=start?new Date(`${start}T00:00:00`):null,e=end?new Date(`${end}T00:00:00`):null;
+      if(!s||!e||Number.isNaN(+s)||Number.isNaN(+e)||e<s)return [];
+      const dates=[];
+      const cursor=new Date(s);
+      while(cursor<=e){dates.push(cursor.toISOString().slice(0,10));cursor.setDate(cursor.getDate()+1)}
+      return dates;
+    }
+    function buildDailyRangeRows(start,end,assetIds){
+      const ids=assetIds?.length?assetIds:kiosks.map(k=>k.assetId);
+      const dateRows=enumerateDates(start,end);
+      return ids.map(assetId=>{
+        const totals={assetId,sessions:0,questions:0,voice:0,quickReply:0,keyboard:0,thai:0,english:0,chinese:0,others:0,success:0,apology:0,rating:0};
+        let ratingWeight=0;
+        dateRows.forEach(date=>{
+          const row=dailyAssetMetrics[date]?.[assetId];
+          if(!row)return;
+          totals.sessions+=safeNumber(row[0]);
+          totals.questions+=safeNumber(row[1]);
+          totals.voice+=safeNumber(row[2]);
+          totals.quickReply+=safeNumber(row[3]);
+          totals.keyboard+=safeNumber(row[4]);
+          totals.thai+=safeNumber(row[5]);
+          totals.english+=safeNumber(row[6]);
+          totals.chinese+=safeNumber(row[7]);
+          totals.others+=safeNumber(row[8]);
+          totals.success+=safeNumber(row[9]);
+          totals.apology+=safeNumber(row[10]);
+          if(row.length>11 && row[11]!==null && row[11]!==undefined){
+            totals.rating+=safeNumber(row[11])*safeNumber(row[0]);
+            ratingWeight+=safeNumber(row[0]);
+          }
+        });
+        totals.rating=ratingWeight?totals.rating/ratingWeight:0;
+        return totals;
+      });
+    }
     function periodDays(ids,period,start,end){if(period==="Daily"||period==="Today"||period==="Yesterday")return 1;if(period==="Weekly"||period==="Last 7 Days")return 7;if(period==="Last 30 Days")return 30;if(period==="Custom Date Range")return customDayCount(start,end,monthById(ids[0]).days);return ids.reduce((a,id)=>a+monthById(id).days,0)||30}
     function periodScale(ids,period,start,end){if(["Daily","Weekly","Today","Yesterday","Last 7 Days","Last 30 Days","Custom Date Range"].includes(period)){return Math.min(1,periodDays(ids,period,start,end)/(monthById(ids[0]).days||30))}return 1}
     function aggregateAsset(assetId,ids,scale=1,days=30){
@@ -941,9 +967,39 @@
     }
     function comparisonMetric(rows){const sessions=sum(rows,"sessions"),questions=sum(rows,"questions"),maxDays=Math.max(1,...rows.map(r=>safeNumber(r.activeDays)||1));return {sessions,questions,qps:sessions?questions/sessions:0,rating:rows.reduce((a,b)=>a+safeNumber(b.rating)*safeNumber(b.sessions),0)/(sessions||1),successRate:questions?sum(rows,"success")/questions*100:0,apologyRate:questions?sum(rows,"apology")/questions*100:0,activeDays:Math.max(0,...rows.map(r=>safeNumber(r.activeDays))),avgDailySessions:sessions/maxDays}}
     function languageMix(r={}){const others=safeNumber(r.others), japanese=Math.round(others*.35), other=Math.max(0,others-japanese);return [{name:"Thai",value:safeNumber(r.thai),color:"#2563eb"},{name:"English",value:safeNumber(r.english),color:"#0891b2"},{name:"Chinese",value:safeNumber(r.chinese),color:"#f59e0b"},{name:"Japanese",value:japanese,color:"#7c3aed"},{name:"Other",value:other,color:"#94a3b8"}]}
-    function categoryMix(r){const idx=kiosks.findIndex(k=>k.assetId===r.assetId), questions=safeNumber(r?.questions);const mods=[1.12,.95,1.04,.82,1.24];return categorySeed.map(([name,share],i)=>({name,value:Math.round(questions*share*(mods[(idx+i)%mods.length]||1)),share}))}
-    function brandMix(r){const idx=kiosks.findIndex(k=>k.assetId===r.assetId), questions=safeNumber(r?.questions);return brandSeed.map(([name,share],i)=>({name,value:Math.round(questions*share*(.78+(((idx+i)%5)*.11)))})).sort((a,b)=>b.value-a.value)}
-    function machineQuestionRows(r={},limit=20){const idx=kiosks.findIndex(k=>k.assetId===r.assetId), questions=safeNumber(r?.questions);return questionBank.map((q,i)=>({question:q[0],category:q[1],machine:r.assetId,count:Math.max(questions?4:0,Math.round(questions*(.026-(i%8)*.0016)*(1+((idx+i)%4)*.08)))})).sort((a,b)=>b.count-a.count).slice(0,limit)}
+    function categoryMix(r,monthIds=[]){
+      const generated = monthIds.flatMap(monthId => (generatedCategoryByAssetByMonth[monthId]?.[r.assetId] || []).map(([name,value]) => ({name,value:safeNumber(value)})));
+      if(generated.length){
+        const totals = new Map();
+        generated.forEach(item => totals.set(item.name,(totals.get(item.name)||0)+item.value));
+        return [...totals.entries()].map(([name,value])=>({name,value,share:value/Math.max(1,safeNumber(r?.questions))})).sort((a,b)=>b.value-a.value);
+      }
+      const idx=kiosks.findIndex(k=>k.assetId===r.assetId), questions=safeNumber(r?.questions);const mods=[1.12,.95,1.04,.82,1.24];return categorySeed.map(([name,share],i)=>({name,value:Math.round(questions*share*(mods[(idx+i)%mods.length]||1)),share}))
+    }
+    function brandMix(r,monthIds=[]){
+      const generated = monthIds.flatMap(monthId => (generatedBrandByAssetByMonth[monthId]?.[r.assetId] || []).map(([name,value]) => ({name,value:safeNumber(value)})));
+      if(generated.length){
+        const totals = new Map();
+        generated.forEach(item => totals.set(item.name,(totals.get(item.name)||0)+item.value));
+        return [...totals.entries()].map(([name,value])=>({name,value})).sort((a,b)=>b.value-a.value);
+      }
+      const idx=kiosks.findIndex(k=>k.assetId===r.assetId), questions=safeNumber(r?.questions);return brandSeed.map(([name,share],i)=>({name,value:Math.round(questions*share*(.78+(((idx+i)%5)*.11)))})).sort((a,b)=>b.value-a.value)
+    }
+    function machineQuestionRows(r={},limit=20,monthIds=[]){
+      const monthEntries = monthIds.flatMap(monthId => (generatedTopQuestionsByMonth[monthId] || []).map(([question,category,count]) => ({question,category,count:safeNumber(count)})));
+      if(monthEntries.length){
+        const totals = new Map();
+        monthEntries.forEach(item => {
+          const key = `${item.question}|||${item.category}`;
+          totals.set(key,(totals.get(key)||0)+item.count);
+        });
+        return [...totals.entries()].map(([key,count]) => {
+          const [question,category] = key.split("|||");
+          return {question,category,machine:r.assetId,count};
+        }).sort((a,b)=>b.count-a.count).slice(0,limit);
+      }
+      const idx=kiosks.findIndex(k=>k.assetId===r.assetId), questions=safeNumber(r?.questions);return questionBank.map((q,i)=>({question:q[0],category:q[1],machine:r.assetId,count:Math.max(questions?4:0,Math.round(questions*(.026-(i%8)*.0016)*(1+((idx+i)%4)*.08)))})).sort((a,b)=>b.count-a.count).slice(0,limit)
+    }
     function hourlyRows(r){const hours=[10,11,12,13,14,15,16,17,18,19,20,21], sessions=safeNumber(r?.sessions);const idx=kiosks.findIndex(k=>k.assetId===r.assetId);return hours.map((hr,i)=>({hour:hr,value:Math.round(sessions*(.045+Math.max(0,Math.sin((i+idx)*.72))*.06+(i>7?.035:0))) }))}
     function scoreRows(current,previous,eventRows){
       if(!current.length)return [];
@@ -954,10 +1010,12 @@
       const days=periodDays(currentIds,period,start,end), prevDays=periodDays(previousIds,period,start,end), scale=periodScale(currentIds,period,start,end), prevScale=periodScale(previousIds,period,start,end);
       const current=ids.map(id=>aggregateAsset(id,currentIds,scale,days)), previous=ids.map(id=>aggregateAsset(id,previousIds,prevScale,prevDays));
       const summary=comparisonMetric(current), prevSummary=comparisonMetric(previous), eventRows=events.filter(e=>currentIds.includes(e.month)&&ids.includes(e.asset)), ranking=scoreRows(current,previous,eventRows);
-      const categoryRows=current.map(r=>({assetId:r.assetId,machine:kiosks.find(k=>k.assetId===r.assetId)?.machine||r.assetId,items:categoryMix(r)}));
-      const brandRows=current.flatMap(r=>brandMix(r).map(b=>({...b,assetId:r.assetId,machine:kiosks.find(k=>k.assetId===r.assetId)?.machine||r.assetId})));
-      const brandTotals=brandSeed.map(([name])=>({name,value:brandRows.filter(b=>b.name===name).reduce((a,b)=>a+b.value,0)})).sort((a,b)=>b.value-a.value);
-      const topQuestions=current.flatMap(r=>machineQuestionRows(r,+topLimit||20)).sort((a,b)=>b.count-a.count).slice(0,+topLimit||20);
+      const categoryRows=current.map(r=>({assetId:r.assetId,machine:kiosks.find(k=>k.assetId===r.assetId)?.machine||r.assetId,items:categoryMix(r,currentIds)}));
+      const brandRows=current.flatMap(r=>brandMix(r,currentIds).map(b=>({...b,assetId:r.assetId,machine:kiosks.find(k=>k.assetId===r.assetId)?.machine||r.assetId})));
+      const brandTotals=brandRows.length
+        ? [...brandRows.reduce((map,row)=>map.set(row.name,(map.get(row.name)||0)+safeNumber(row.value)),new Map()).entries()].map(([name,value])=>({name,value})).sort((a,b)=>b.value-a.value)
+        : brandSeed.map(([name])=>({name,value:0}));
+      const topQuestions=current.flatMap(r=>machineQuestionRows(r,+topLimit||20,currentIds)).sort((a,b)=>b.count-a.count).slice(0,+topLimit||20);
       const hourly=current.map(r=>({assetId:r.assetId,machine:kiosks.find(k=>k.assetId===r.assetId)?.machine||r.assetId,hours:hourlyRows(r)}));
       const highest=ranking[0], lowest=ranking[ranking.length-1], growth=[...ranking].sort((a,b)=>b.growth-a.growth)[0];
       return {ids,current,previous,summary,prevSummary,ranking,categoryRows,brandTotals,topQuestions,hourly,eventRows,periodLabel:period,compareLabel:mode,days,previousIds,currentIds,highest,lowest,growth};
@@ -1393,21 +1451,25 @@
       const monthObj=months.find(m=>m.id===month)||months[0], prev=months[months.findIndex(m=>m.id===month)+1]||monthObj;
       const prettyDate=value=>{const parts=String(value||"").split("-");if(parts.length!==3)return "Not set";const m=months.find(x=>x.id===`${parts[0]}-${parts[1]}`);return `${Number(parts[2])} ${m?.short||parts[1]} ${parts[0]}`};
       const periodText=`${prettyDate(appliedPeriod.start)} - ${prettyDate(appliedPeriod.end)}`;
-      const rows=perf.filter(r=>r.month===month), prevRows=perf.filter(r=>r.month===prev.id);
+      const isFullMonthRange=appliedPeriod.start===`${month}-01`&&appliedPeriod.end===`${month}-${String(monthObj.days).padStart(2,"0")}`;
+      const comparableDays=customDayCount(appliedPeriod.start,appliedPeriod.end,monthObj.days);
+      const previousPeriodEnd=shiftDate(appliedPeriod.start,-1);
+      const previousPeriodStart=shiftDate(appliedPeriod.start,-comparableDays);
+      const baseRows=isFullMonthRange?perf.filter(r=>r.month===month):buildDailyRangeRows(appliedPeriod.start,appliedPeriod.end,kiosks.map(k=>k.assetId));
+      const basePrevRows=isFullMonthRange?perf.filter(r=>r.month===prev.id):buildDailyRangeRows(previousPeriodStart,previousPeriodEnd,kiosks.map(k=>k.assetId));
       const productionFocusMonths=new Set(["2025-10","2025-11","2025-12","2026-01"]);
       const machineStatusAssetAllowList=page==="machine-status"&&productionFocusMonths.has(month)?new Set(["NO1-M8-BKP-01"]):null;
       const filteredKiosks=useMemo(()=>kiosks.filter(k=>(!machineStatusAssetAllowList||machineStatusAssetAllowList.has(k.assetId))&&(!query||`${k.assetId} ${k.machine} ${k.branch} ${k.location} ${k.notes}`.toLowerCase().includes(query.toLowerCase()))),[query,machineStatusAssetAllowList]);
       const kioskMap=new Map(kiosks.map(k=>[k.assetId,k])), filteredMap=new Map(filteredKiosks.map(k=>[k.assetId,k]));
-      const filteredRows=rows.filter(r=>filteredMap.has(r.assetId)&&(!machineStatusAssetAllowList||machineStatusAssetAllowList.has(r.assetId)));
-      const calculatedCur=metric(filteredRows,monthObj.days), calculatedOld=metric(prevRows.filter(r=>filteredMap.has(r.assetId)||!query),prev.days);
+      const filteredRows=baseRows.filter(r=>filteredMap.has(r.assetId)&&(!machineStatusAssetAllowList||machineStatusAssetAllowList.has(r.assetId)));
+      const filteredPrevRows=basePrevRows.filter(r=>filteredMap.has(r.assetId)&&(!machineStatusAssetAllowList||machineStatusAssetAllowList.has(r.assetId)));
+      const calculatedCur=metric(filteredRows,comparableDays), calculatedOld=metric(filteredPrevRows,isFullMonthRange?prev.days:comparableDays);
       const authoritativeCur=authoritativeMonthlyMetrics[month];
       const authoritativeOld=authoritativeMonthlyMetrics[prev.id];
-      const selectedPeriodOverride=authoritativePeriodMetrics[`${appliedPeriod.start}|${appliedPeriod.end}`];
       const selectedMonthMetrics=months.filter(m=>m.id>=appliedPeriod.start.slice(0,7)&&m.id<=appliedPeriod.end.slice(0,7)).map(m=>authoritativeMonthlyMetrics[m.id]).filter(Boolean);
-      const rangeSummary=selectedMonthMetrics.length>1?(()=>{const sessions=selectedMonthMetrics.reduce((a,b)=>a+b.sessions,0),questions=selectedMonthMetrics.reduce((a,b)=>a+b.questions,0),success=selectedMonthMetrics.reduce((a,b)=>a+b.success,0),apology=selectedMonthMetrics.reduce((a,b)=>a+b.apology,0),rated=selectedMonthMetrics.filter(x=>x.rating!==null),ratingWeight=rated.reduce((a,b)=>a+b.sessions,0);return {sessions,questions,success,apology,successRate:questions?success/questions*100:0,apologyRate:questions?apology/questions*100:0,rating:ratingWeight?rated.reduce((a,b)=>a+b.rating*b.sessions,0)/ratingWeight:null,ratingScale:4,activeMachines:Math.max(...selectedMonthMetrics.map(x=>x.activeMachines)),coverage:periodText,source:"Aggregated monthly CSV metrics across the applied Date Range"}})():null;
-      const periodSummary=selectedPeriodOverride||rangeSummary||authoritativeCur;
-      const cur=periodSummary?{...calculatedCur,...periodSummary,avg:periodSummary.questions/customDayCount(appliedPeriod.start,appliedPeriod.end,monthObj.days)}:calculatedCur;
-      const old=authoritativeOld?{...calculatedOld,...authoritativeOld,avg:authoritativeOld.questions/prev.days}:calculatedOld;
+      const periodSummary=isFullMonthRange&&authoritativeCur?authoritativeCur:{ratingScale:4,activeMachines:filteredRows.filter(r=>safeNumber(r.sessions)>0||safeNumber(r.questions)>0).length,coverage:periodText,source:"Daily rollup from Performance Reports CSV across the applied Date Range"};
+      const cur={...calculatedCur,...periodSummary,avg:calculatedCur.questions/comparableDays};
+      const old=isFullMonthRange&&authoritativeOld?{...calculatedOld,...authoritativeOld,avg:authoritativeOld.questions/prev.days}:{...calculatedOld,ratingScale:4,activeMachines:filteredPrevRows.filter(r=>safeNumber(r.sessions)>0||safeNumber(r.questions)>0).length,coverage:`${prettyDate(previousPeriodStart)} - ${prettyDate(previousPeriodEnd)}`,source:"Daily rollup from Performance Reports CSV across the previous comparison window"};
       const monthRows=months.slice().reverse().map(m=>({id:m.id,label:m.label,short:m.short,...metric(perf.filter(r=>r.month===m.id),m.days),...(authoritativeMonthlyMetrics[m.id]||{})}));
       const ratingText=(value,scale=5)=>value===null||value===undefined?"Not available":`${safeNumber(value).toFixed(2)}/${safeNumber(scale).toFixed(2)}`;
       const topicRows=getTopics(month,cur.questions), questionRows=getQuestions(month), errorRows=errors.filter(e=>e.month===month && filteredMap.has(e.kiosk)), eventRows=events.filter(e=>e.month===month && filteredMap.has(e.asset));
@@ -1434,7 +1496,7 @@
       ];
       const overviewMachineCards=filteredRows.map(r=>{const kiosk=kioskMap.get(r.assetId);const machineQuestions=safeNumber(r.questions), machineSuccess=machineQuestions?safeNumber(r.success)/machineQuestions*100:0;return {assetId:r.assetId,machine:display(kiosk?.machine,r.assetId),location:display(kiosk?.location,"Location not available"),sessions:n(r.sessions),questions:n(r.questions),success:pct(machineSuccess),rating:r.rating?safeNumber(r.rating).toFixed(1):"—",imageSrc:machineImages[r.assetId]||""}});
       const kpiSeries=monthRows.map(x=>x.questions);
-      const metricDeltas=selectedMonthMetrics.length>1?{}:(authoritativeCur?.deltas||{});
+      const metricDeltas=isFullMonthRange&&selectedMonthMetrics.length<=1?{}:{};
       const ratingScale=periodSummary?.ratingScale||5;
       const activeMachineCount=periodSummary?.activeMachines||filteredKiosks.length;
       const sourceNote=periodSummary?.source?` Source: ${periodSummary.source}${periodSummary.coverage?` (${periodSummary.coverage})`:""}.`:"";
@@ -1735,6 +1797,12 @@
                           h("div",{className:"reco-metric priority"},h("span",{className:"icon green"},h(Icon,{name:"message",size:22})),h("span",null,"Questions"),h("strong",null,n(item.questions))),
                           h("div",{className:"reco-metric priority"},h("span",{className:"icon green"},h(Icon,{name:"message",size:22})),h("span",null,"Questions avg / session"),h("strong",null,item.qps.toFixed(2)))
                         ),
+                        h("div",{className:"reco-kpi-secondary"},
+                          h("div",{className:"reco-metric wide"},h("span",{className:"icon"},h(Icon,{name:"trend",size:22})),h("span",null,"Consistency"),h("strong",null,item.consistencyScore,h("small",null,"/100"))),
+                          h("div",{className:"reco-metric wide"},h("span",{className:"icon green"},h(Icon,{name:"trend",size:22})),h("span",null,"Scalability"),h("strong",null,item.futureScalability,h("small",null,"/100"))),
+                          h("div",{className:"reco-metric wide"},h("span",{className:"icon amber"},h(Icon,{name:"alert",size:22})),h("span",null,"Campaign impact"),h("strong",null,item.campaignImpact,h("small",null,"/100"))),
+                          h("div",{className:"reco-metric wide"},h("span",{className:"icon amber"},h(Icon,{name:"activity",size:22})),h("span",null,"Foot-traffic quality"),h("strong",null,item.footTrafficQuality,h("small",null,"/100")))
+                        )
                       ),
                       h("div",{className:"reco-reasons"},
                         h("div",{className:"reco-reasons-head"},"Key insights"),

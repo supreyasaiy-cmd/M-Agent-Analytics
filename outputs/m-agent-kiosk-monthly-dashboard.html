@@ -734,57 +734,6 @@
       "c9f04fd5-e1d4-47a5-8866-ac555bced1d3":"NO4-M5-THA-01",
       "16f880a4-ccd9-41b6-a3ad-0f0075b649a2":"NO5-M3-EVT-01"
     };
-    const authoritativeMonthlyMetrics = {
-      "2025-09":{
-        sessions:99,questions:239,rating:null,ratingScale:4,success:225,successRate:94.14,apologyRate:5.86,apology:14,activeMachines:1,
-        coverage:"1-8 Sep 2025",source:"CSV, mapped production machine IDs only"
-      },
-      "2025-10":{
-        sessions:675,questions:1333,rating:3.32,ratingScale:4,success:1072,successRate:80.42,apologyRate:19.58,apology:261,activeMachines:1,
-        coverage:"15-31 Oct 2025",source:"CSV, NO1 production machine only + ratings CSV"
-      },
-      "2025-11":{
-        sessions:271,questions:476,rating:3.03,ratingScale:4,success:384,successRate:80.67,apologyRate:19.33,apology:92,activeMachines:1,
-        coverage:"1-30 Nov 2025",source:"CSV, NO1 production machine only"
-      },
-      "2025-12":{
-        sessions:361,questions:646,rating:2.86,ratingScale:4,success:504,successRate:78.02,apologyRate:21.98,apology:142,activeMachines:1,
-        coverage:"1-31 Dec 2025",source:"CSV, NO1 production machine only"
-      },
-      "2026-01":{
-        sessions:301,questions:527,rating:2.88,ratingScale:4,success:446,successRate:84.63,apologyRate:15.37,apology:81,activeMachines:1,
-        coverage:"1-31 Jan 2026",source:"CSV, NO1 production machine only"
-      },
-      "2026-02":{
-        sessions:780,questions:1333,rating:2.35,ratingScale:4,success:1058,successRate:79.37,apologyRate:20.63,apology:275,activeMachines:4,
-        coverage:"1-28 Feb 2026",source:"Message log and ratings CSV, mapped production machine IDs only"
-      },
-      "2026-03":{
-        sessions:1286,questions:2238,rating:null,ratingScale:4,success:1984,successRate:88.65,apologyRate:11.35,apology:254,activeMachines:5,
-        coverage:"1-31 Mar 2026",source:"Message log CSV, mapped production machine IDs only"
-      },
-      "2026-04":{
-        sessions:1814,questions:3001,rating:3.13,ratingScale:4,success:2696,successRate:89.84,apologyRate:10.16,apology:305,activeMachines:5,
-        coverage:"1-30 Apr 2026",source:"Message log and ratings CSV, mapped production machine IDs only"
-      },
-      "2026-05":{
-        sessions:1157,
-        questions:1959,
-        rating:2.43,
-        ratingScale:4,
-        success:1612,
-        successRate:82.29,
-        apologyRate:17.71,
-        apology:347,
-        activeMachines:5,
-        coverage:"1-31 May 2026",
-        source:"Message log and ratings CSV, mapped production machine IDs only"
-      },
-      "2026-06":{
-        sessions:1059,questions:1857,rating:2.82,ratingScale:4,success:1527,successRate:82.23,apologyRate:17.77,apology:330,activeMachines:5,
-        coverage:"1-30 Jun 2026",source:"Message log and ratings CSV, mapped production machine IDs only"
-      }
-    };
     const authoritativePeriodMetrics = {
       "2025-10-16|2026-03-19":{
         sessions:3085,questions:5470,rating:2.82,ratingScale:4,success:4467,successRate:81.66,apology:1003,apologyRate:18.34,activeMachines:5,
@@ -794,17 +743,54 @@
     const performanceReportSource = window.__PERFORMANCE_REPORT_DATA__ || null;
     const fallbackCsvMachineMetrics = {
       "2025-09":{"NO1-M8-BKP-01":[99,239,189,18,32,204,32,3,0,225,14]},
-      "2025-10":{"NO1-M8-BKP-01":[161,280,107,122,51,132,145,3,0,247,33],"NO2-M7-BKE-01":[203,405,219,169,17,285,119,1,0,323,82],"NO3-M6-NGW-01":[207,429,275,134,20,300,125,4,0,332,97],"NO4-M5-THA-01":[103,217,141,47,29,128,83,6,0,168,49],"NO5-M3-EVT-01":[1,2,0,1,1,2,0,0,0,2,0]},
+      "2025-10":{"NO1-M8-BKP-01":[161,280,107,122,51,132,145,3,0,247,33,3.07],"NO2-M7-BKE-01":[203,405,219,169,17,285,119,1,0,323,82,3.53],"NO3-M6-NGW-01":[207,429,275,134,20,300,125,4,0,332,97,3.38],"NO4-M5-THA-01":[103,217,141,47,29,128,83,6,0,168,49,3.13],"NO5-M3-EVT-01":[1,2,0,1,1,2,0,0,0,2,0]},
       "2025-11":{"NO1-M8-BKP-01":[271,476,250,177,49,231,245,0,0,384,92,3.03]},
       "2025-12":{"NO1-M8-BKP-01":[361,646,328,209,109,302,344,0,0,504,142,2.86]},
       "2026-01":{"NO1-M8-BKP-01":[301,527,235,217,75,253,274,0,0,446,81,2.88]},
-      "2026-02":{"NO1-M8-BKP-01":[223,385,174,120,91,152,233,0,0,280,105,2.35],"NO2-M7-BKE-01":[98,159,60,72,27,84,75,0,0,140,19,0],"NO3-M6-NGW-01":[328,578,377,154,47,392,186,0,0,466,112,0],"NO4-M5-THA-01":[131,211,109,82,20,129,82,0,0,172,39,0]},
+      "2026-02":{"NO1-M8-BKP-01":[223,385,174,120,91,152,233,0,0,280,105,2.35],"NO2-M7-BKE-01":[98,159,60,72,27,84,75,0,0,140,19],"NO3-M6-NGW-01":[328,578,377,154,47,392,186,0,0,466,112],"NO4-M5-THA-01":[131,211,109,82,20,129,82,0,0,172,39]},
       "2026-03":{"NO1-M8-BKP-01":[210,324,99,161,64,155,169,0,0,297,27],"NO2-M7-BKE-01":[226,349,157,160,32,199,150,0,0,327,22],"NO3-M6-NGW-01":[419,717,455,205,57,467,250,0,0,604,113],"NO4-M5-THA-01":[326,664,388,232,44,428,236,0,0,593,71],"NO5-M3-EVT-01":[105,184,93,61,30,78,106,0,0,163,21]},
-      "2026-04":{"NO1-M8-BKP-01":[292,464,133,239,92,201,263,0,0,417,47,2.91],"NO2-M7-BKE-01":[741,1166,650,415,101,718,447,1,0,1038,128,3.12],"NO3-M6-NGW-01":[324,553,284,220,49,303,242,8,0,493,60,2.48],"NO4-M5-THA-01":[214,358,150,184,24,178,180,0,0,327,31,3.22],"NO5-M3-EVT-01":[243,460,227,159,74,207,251,2,0,421,39,3.64]},
+      "2026-04":{"NO1-M8-BKP-01":[292,464,133,239,92,201,263,0,0,417,47,2.91],"NO2-M7-BKE-01":[741,1166,650,415,101,718,447,1,0,1038,128,3.12],"NO3-M6-NGW-01":[324,553,284,220,49,303,242,8,0,493,60,2.48],"NO4-M5-THA-01":[214,358,151,183,24,178,180,0,0,327,31,3.22],"NO5-M3-EVT-01":[243,460,227,159,74,207,251,2,0,421,39,3.64]},
       "2026-05":{"NO1-M8-BKP-01":[222,385,160,154,71,168,217,0,0,328,57,2.56],"NO2-M7-BKE-01":[578,931,459,385,87,496,435,0,0,768,163,2.38],"NO3-M6-NGW-01":[137,215,94,91,30,92,123,0,0,180,35,2.19],"NO4-M5-THA-01":[46,78,39,32,7,30,48,0,0,64,14,2.5],"NO5-M3-EVT-01":[174,350,197,105,48,230,120,0,0,272,78,2.88]},
-      "2026-06":{"NO1-M8-BKP-01":[151,314,163,96,55,149,165,0,0,237,77,3],"NO2-M7-BKE-01":[492,843,316,486,41,508,335,0,0,726,117,3.17],"NO3-M6-NGW-01":[120,201,99,72,30,99,102,0,0,162,39,2.55],"NO4-M5-THA-01":[127,203,94,97,12,108,95,0,0,167,36,2.75],"NO5-M3-EVT-01":[169,296,155,97,44,136,160,0,0,235,61,2]}
+      "2026-06":{"NO1-M8-BKP-01":[151,314,163,96,55,149,165,0,0,237,77,3],"NO2-M7-BKE-01":[492,843,316,486,41,508,335,0,0,726,117,3.23],"NO3-M6-NGW-01":[120,201,99,72,30,99,102,0,0,162,39,2.55],"NO4-M5-THA-01":[127,203,94,97,12,108,95,0,0,167,36,2.75],"NO5-M3-EVT-01":[169,296,155,97,44,136,160,0,0,235,61,2]}
     };
     const csvMachineMetrics = performanceReportSource?.csvMachineMetrics || fallbackCsvMachineMetrics;
+    const monthMeta = performanceReportSource?.monthMeta || {};
+    const monthLabelShort = {Jan:"Jan",Feb:"Feb",Mar:"Mar",Apr:"Apr",May:"May",Jun:"Jun",Jul:"Jul",Aug:"Aug",Sep:"Sep",Oct:"Oct",Nov:"Nov",Dec:"Dec"};
+    const csvNum = value => {const raw=typeof value==="string"?value.replace(/,/g,"").trim():value;const num=Number(raw);return Number.isFinite(num)?num:0};
+    function buildCoverageLabel(start,end){
+      if(!start||!end) return "Coverage not available";
+      const s = new Date(`${start}T00:00:00`);
+      const e = new Date(`${end}T00:00:00`);
+      const startMonth = monthLabelShort[s.toLocaleString("en-US",{month:"short"})] || s.toLocaleString("en-US",{month:"short"});
+      const endMonth = monthLabelShort[e.toLocaleString("en-US",{month:"short"})] || e.toLocaleString("en-US",{month:"short"});
+      if(s.getFullYear()===e.getFullYear() && s.getMonth()===e.getMonth()) return `${s.getDate()}-${e.getDate()} ${endMonth} ${e.getFullYear()}`;
+      if(s.getFullYear()===e.getFullYear()) return `${s.getDate()} ${startMonth}-${e.getDate()} ${endMonth} ${e.getFullYear()}`;
+      return `${s.getDate()} ${startMonth} ${s.getFullYear()}-${e.getDate()} ${endMonth} ${e.getFullYear()}`;
+    }
+    const authoritativeMonthlyMetrics = Object.fromEntries(Object.entries(csvMachineMetrics).map(([monthId,machines])=>{
+      const rows = Object.values(machines||{});
+      const sessions = rows.reduce((sum,row)=>sum+csvNum(row[0]),0);
+      const questions = rows.reduce((sum,row)=>sum+csvNum(row[1]),0);
+      const success = rows.reduce((sum,row)=>sum+csvNum(row[9]),0);
+      const apology = rows.reduce((sum,row)=>sum+csvNum(row[10]),0);
+      const ratedRows = rows.filter(row=>row.length>11 && row[11]!==null && row[11]!==undefined);
+      const ratingWeight = ratedRows.reduce((sum,row)=>sum+csvNum(row[0]),0);
+      const rating = ratingWeight ? ratedRows.reduce((sum,row)=>sum+csvNum(row[11])*csvNum(row[0]),0)/ratingWeight : null;
+      const meta = monthMeta[monthId] || {};
+      return [monthId,{
+        sessions,
+        questions,
+        rating,
+        ratingScale:4,
+        success,
+        successRate:questions?success/questions*100:0,
+        apologyRate:questions?apology/questions*100:0,
+        apology,
+        activeMachines:Object.keys(machines||{}).filter(assetId=>csvNum(machines[assetId]?.[0])>0 || csvNum(machines[assetId]?.[1])>0).length,
+        coverage:buildCoverageLabel(meta.coverageStart,meta.coverageEnd),
+        source:`${performanceReportSource?.source || "Performance Reports CSV"}, mapped production machine IDs only`
+      }];
+    }));
     const perf = months.flatMap((m,monthIndex)=>base.map((x,i)=>{
       const factor=(monthlyMultipliers[m.id]||[1,1,1,1,1])[i];
       const qualityDrift=Math.max(0, monthIndex*.06);

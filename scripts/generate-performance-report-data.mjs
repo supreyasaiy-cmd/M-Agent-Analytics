@@ -157,7 +157,7 @@ const eventCatalog = [
   }
 ];
 
-function parseCsv(path) {
+export function parseCsv(path) {
   const raw = readFileSync(path, "utf8");
   const parsed = Papa.parse(raw, {
     header: true,
@@ -166,18 +166,18 @@ function parseCsv(path) {
   return parsed.data;
 }
 
-function normalizeDate(value) {
+export function normalizeDate(value) {
   if (!value) return null;
   const date = new Date(value);
   if (Number.isNaN(+date)) return null;
   return date;
 }
 
-function isoDate(date) {
+export function isoDate(date) {
   return date ? date.toISOString().slice(0, 10) : null;
 }
 
-function formatLocalIsoDate(value, timeZone = bangkokTimeZone) {
+export function formatLocalIsoDate(value, timeZone = bangkokTimeZone) {
   if (!value) return null;
   const date = value instanceof Date ? value : new Date(value);
   if (Number.isNaN(+date)) return null;
@@ -191,11 +191,33 @@ function formatLocalIsoDate(value, timeZone = bangkokTimeZone) {
   return `${get("year")}-${get("month")}-${get("day")}`;
 }
 
-function formatEventDateRange(start, end) {
+export function formatLocalHour(value, timeZone = bangkokTimeZone) {
+  if (!value) return null;
+  const date = value instanceof Date ? value : new Date(value);
+  if (Number.isNaN(+date)) return null;
+  const hour = new Intl.DateTimeFormat("en-GB", {
+    timeZone,
+    hour: "2-digit",
+    hour12: false
+  }).format(date);
+  return Number(hour);
+}
+
+export function formatLocalWeekday(value, timeZone = bangkokTimeZone) {
+  if (!value) return null;
+  const date = value instanceof Date ? value : new Date(value);
+  if (Number.isNaN(+date)) return null;
+  return new Intl.DateTimeFormat("en-US", {
+    timeZone,
+    weekday: "short"
+  }).format(date);
+}
+
+export function formatEventDateRange(start, end) {
   return start === end ? start : `${start} to ${end}`;
 }
 
-function formatEventPerformance({ sessions, questions, rating }) {
+export function formatEventPerformance({ sessions, questions, rating }) {
   if (rating === null) return `${sessions} sessions, ${questions} questions, rating not available`;
   return `${sessions} sessions, ${questions} questions, ${rating.toFixed(1)} rating`;
 }
@@ -294,7 +316,7 @@ function incrementCounter(map, key, amount = 1) {
   map.set(key, (map.get(key) || 0) + amount);
 }
 
-function buildPerformanceReportData(rootDir) {
+export function buildPerformanceReportData(rootDir) {
   const csvMachineMetrics = {};
   const monthMeta = {};
   const allMessageRows = [];
@@ -305,6 +327,9 @@ function buildPerformanceReportData(rootDir) {
   const monthBrandCounts = {};
   const monthAssetCategoryCounts = {};
   const monthAssetBrandCounts = {};
+  const monthAssetQuestionCounts = {};
+  const monthAssetHourlyCounts = {};
+  const monthAssetWeekdayCounts = {};
 
   for (const [monthId, files] of Object.entries(reportFiles)) {
     const messageRows = parseCsv(join(rootDir, files.message));
@@ -332,10 +357,17 @@ function buildPerformanceReportData(rootDir) {
       if (!monthBrandCounts[monthId]) monthBrandCounts[monthId] = new Map();
       if (!monthAssetCategoryCounts[monthId]) monthAssetCategoryCounts[monthId] = {};
       if (!monthAssetBrandCounts[monthId]) monthAssetBrandCounts[monthId] = {};
+      if (!monthAssetQuestionCounts[monthId]) monthAssetQuestionCounts[monthId] = {};
+      if (!monthAssetHourlyCounts[monthId]) monthAssetHourlyCounts[monthId] = {};
+      if (!monthAssetWeekdayCounts[monthId]) monthAssetWeekdayCounts[monthId] = {};
       if (!monthAssetCategoryCounts[monthId][assetId]) monthAssetCategoryCounts[monthId][assetId] = new Map();
       if (!monthAssetBrandCounts[monthId][assetId]) monthAssetBrandCounts[monthId][assetId] = new Map();
+      if (!monthAssetQuestionCounts[monthId][assetId]) monthAssetQuestionCounts[monthId][assetId] = new Map();
+      if (!monthAssetHourlyCounts[monthId][assetId]) monthAssetHourlyCounts[monthId][assetId] = new Map();
+      if (!monthAssetWeekdayCounts[monthId][assetId]) monthAssetWeekdayCounts[monthId][assetId] = new Map();
 
       if (questionText) incrementCounter(monthQuestionCounts[monthId], `${questionText}|||${category}`);
+      if (questionText) incrementCounter(monthAssetQuestionCounts[monthId][assetId], `${questionText}|||${category}`);
       incrementCounter(monthQuestionCategoryCounts[monthId], category);
       incrementCounter(monthAssetCategoryCounts[monthId][assetId], category);
       brands.forEach(brand => {
@@ -345,6 +377,10 @@ function buildPerformanceReportData(rootDir) {
 
       const start = normalizeDate(row.startAt);
       const localDate = formatLocalIsoDate(start);
+      const localHour = formatLocalHour(start);
+      const localWeekday = formatLocalWeekday(start);
+      if (localHour !== null) incrementCounter(monthAssetHourlyCounts[monthId][assetId], String(localHour));
+      if (localWeekday) incrementCounter(monthAssetWeekdayCounts[monthId][assetId], localWeekday);
       if (localDate) {
         if (!dailyAssetMetrics[localDate]) dailyAssetMetrics[localDate] = {};
         if (!dailyAssetMetrics[localDate][assetId]) dailyAssetMetrics[localDate][assetId] = createDailyBucket();
@@ -430,6 +466,51 @@ function buildPerformanceReportData(rootDir) {
         })
         .sort((a, b) => b[2] - a[2])
         .slice(0, 12)
+    ])
+  );
+
+  const topQuestionsByAssetByMonth = Object.fromEntries(
+    Object.entries(monthAssetQuestionCounts).map(([monthId, assets]) => [
+      monthId,
+      Object.fromEntries(
+        Object.entries(assets).map(([assetId, counts]) => [
+          assetId,
+          [...counts.entries()]
+            .map(([key, count]) => {
+              const [question, category] = key.split("|||");
+              return [question, category, count];
+            })
+            .sort((a, b) => b[2] - a[2])
+            .slice(0, 12)
+        ])
+      )
+    ])
+  );
+
+  const hourlyByAssetByMonth = Object.fromEntries(
+    Object.entries(monthAssetHourlyCounts).map(([monthId, assets]) => [
+      monthId,
+      Object.fromEntries(
+        Object.entries(assets).map(([assetId, counts]) => [
+          assetId,
+          [...counts.entries()]
+            .map(([hour, value]) => [Number(hour), value])
+            .sort((a, b) => a[0] - b[0])
+        ])
+      )
+    ])
+  );
+
+  const weekdayOrder = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  const weekdayByAssetByMonth = Object.fromEntries(
+    Object.entries(monthAssetWeekdayCounts).map(([monthId, assets]) => [
+      monthId,
+      Object.fromEntries(
+        Object.entries(assets).map(([assetId, counts]) => [
+          assetId,
+          weekdayOrder.map(day => [day, counts.get(day) || 0])
+        ])
+      )
     ])
   );
 
@@ -573,6 +654,9 @@ function buildPerformanceReportData(rootDir) {
     csvMachineMetrics,
     dailyAssetMetrics: serializedDailyMetrics,
     topQuestionsByMonth,
+    topQuestionsByAssetByMonth,
+    hourlyByAssetByMonth,
+    weekdayByAssetByMonth,
     topicSummaryByMonth,
     brandSummaryByMonth,
     categoryByAssetByMonth,

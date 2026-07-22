@@ -7,7 +7,9 @@
     "dev": "node scripts/build-static.mjs && vite dist --host 127.0.0.1",
     "build": "node scripts/build-static.mjs",
     "build:app": "tsc && vite build",
-    "preview": "node scripts/build-static.mjs && vite preview --host 127.0.0.1"
+    "preview": "node scripts/build-static.mjs && vite preview --host 127.0.0.1",
+    "audit:data": "node scripts/audit-dashboard-data.mjs",
+    "audit:pages": "node scripts/audit-page-metrics.mjs"
   },
   "dependencies": {
     "@vitejs/plugin-react": "^5.0.0",

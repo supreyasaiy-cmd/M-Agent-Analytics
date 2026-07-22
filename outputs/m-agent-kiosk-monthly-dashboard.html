@@ -708,18 +708,6 @@
       "NO4-M5-THA-01":"./assets/no4-m5-tha-01.jpg",
       "NO5-M3-EVT-01":"./assets/no5-m3-evt-01.png"
     };
-    const base = [
-      ["NO1-M8-BKP-01",1180,2876,1620,850,406,2430,325,82,39,4.4,2634,242],
-      ["NO2-M7-BKE-01",940,2018,1118,610,290,1742,196,54,26,4.2,1846,172],
-      ["NO3-M6-NGW-01",815,1796,980,522,294,1548,171,48,29,4.1,1612,184],
-      ["NO4-M5-THA-01",404,782,384,260,138,692,62,16,12,3.7,657,125],
-      ["NO5-M3-EVT-01",620,1345,742,433,170,1064,221,42,18,4.5,1246,99]
-    ].map(([assetId,sessions,questions,voice,quickReply,keyboard,thai,english,chinese,others,rating,success,apology])=>({assetId,sessions,questions,voice,quickReply,keyboard,thai,english,chinese,others,rating,success,apology}));
-    const monthlyMultipliers = {
-      "2026-06":[1,1,1,1,1],"2026-05":[.82,.9,.86,1.18,.42],"2026-04":[.76,.84,.78,1.05,.28],
-      "2026-03":[.7,.78,.72,.92,.2],"2026-02":[.62,.7,.66,.84,.18],"2026-01":[.56,.64,.58,.72,.16],
-      "2025-12":[.48,.52,.46,.54,.88],"2025-11":[.42,.46,.38,.42,.95],"2025-10":[.34,.38,.3,.36,.3],"2025-09":[.22,.25,.2,.24,.18]
-    };
     const csvMachineIdMap = {
       "135ef541-0de0-41cb-bd1f-c909b3ddb9a3":"NO1-M8-BKP-01",
       "53c8aecf-7c86-4034-9b84-ffa5b9bb11a1":"NO2-M7-BKE-01",
@@ -729,23 +717,14 @@
       "16f880a4-ccd9-41b6-a3ad-0f0075b649a2":"NO5-M3-EVT-01"
     };
     const performanceReportSource = window.__PERFORMANCE_REPORT_DATA__ || null;
-    const fallbackCsvMachineMetrics = {
-      "2025-09":{"NO1-M8-BKP-01":[99,239,189,18,32,204,32,3,0,225,14]},
-      "2025-10":{"NO1-M8-BKP-01":[161,280,107,122,51,132,145,3,0,247,33,3.07],"NO2-M7-BKE-01":[203,405,219,169,17,285,119,1,0,323,82,3.53],"NO3-M6-NGW-01":[207,429,275,134,20,300,125,4,0,332,97,3.38],"NO4-M5-THA-01":[103,217,141,47,29,128,83,6,0,168,49,3.13],"NO5-M3-EVT-01":[1,2,0,1,1,2,0,0,0,2,0]},
-      "2025-11":{"NO1-M8-BKP-01":[271,476,250,177,49,231,245,0,0,384,92,3.03]},
-      "2025-12":{"NO1-M8-BKP-01":[361,646,328,209,109,302,344,0,0,504,142,2.86]},
-      "2026-01":{"NO1-M8-BKP-01":[301,527,235,217,75,253,274,0,0,446,81,2.88]},
-      "2026-02":{"NO1-M8-BKP-01":[223,385,174,120,91,152,233,0,0,280,105,2.35],"NO2-M7-BKE-01":[98,159,60,72,27,84,75,0,0,140,19],"NO3-M6-NGW-01":[328,578,377,154,47,392,186,0,0,466,112],"NO4-M5-THA-01":[131,211,109,82,20,129,82,0,0,172,39]},
-      "2026-03":{"NO1-M8-BKP-01":[210,324,99,161,64,155,169,0,0,297,27],"NO2-M7-BKE-01":[226,349,157,160,32,199,150,0,0,327,22],"NO3-M6-NGW-01":[419,717,455,205,57,467,250,0,0,604,113],"NO4-M5-THA-01":[326,664,388,232,44,428,236,0,0,593,71],"NO5-M3-EVT-01":[105,184,93,61,30,78,106,0,0,163,21]},
-      "2026-04":{"NO1-M8-BKP-01":[292,464,133,239,92,201,263,0,0,417,47,2.91],"NO2-M7-BKE-01":[741,1166,650,415,101,718,447,1,0,1038,128,3.12],"NO3-M6-NGW-01":[324,553,284,220,49,303,242,8,0,493,60,2.48],"NO4-M5-THA-01":[214,358,151,183,24,178,180,0,0,327,31,3.22],"NO5-M3-EVT-01":[243,460,227,159,74,207,251,2,0,421,39,3.64]},
-      "2026-05":{"NO1-M8-BKP-01":[222,385,160,154,71,168,217,0,0,328,57,2.56],"NO2-M7-BKE-01":[578,931,459,385,87,496,435,0,0,768,163,2.38],"NO3-M6-NGW-01":[137,215,94,91,30,92,123,0,0,180,35,2.19],"NO4-M5-THA-01":[46,78,39,32,7,30,48,0,0,64,14,2.5],"NO5-M3-EVT-01":[174,350,197,105,48,230,120,0,0,272,78,2.88]},
-      "2026-06":{"NO1-M8-BKP-01":[151,314,163,96,55,149,165,0,0,237,77,3],"NO2-M7-BKE-01":[492,843,316,486,41,508,335,0,0,726,117,3.23],"NO3-M6-NGW-01":[120,201,99,72,30,99,102,0,0,162,39,2.55],"NO4-M5-THA-01":[127,203,94,97,12,108,95,0,0,167,36,2.75],"NO5-M3-EVT-01":[169,296,155,97,44,136,160,0,0,235,61,2]}
-    };
-    const csvMachineMetrics = performanceReportSource?.csvMachineMetrics || fallbackCsvMachineMetrics;
+    const csvMachineMetrics = performanceReportSource?.csvMachineMetrics || {};
     const dailyAssetMetrics = performanceReportSource?.dailyAssetMetrics || {};
     const monthMeta = performanceReportSource?.monthMeta || {};
     const generatedTopicSummaryByMonth = performanceReportSource?.topicSummaryByMonth || {};
     const generatedTopQuestionsByMonth = performanceReportSource?.topQuestionsByMonth || {};
+    const generatedTopQuestionsByAssetByMonth = performanceReportSource?.topQuestionsByAssetByMonth || {};
+    const generatedHourlyByAssetByMonth = performanceReportSource?.hourlyByAssetByMonth || {};
+    const generatedWeekdayByAssetByMonth = performanceReportSource?.weekdayByAssetByMonth || {};
     const generatedBrandSummaryByMonth = performanceReportSource?.brandSummaryByMonth || {};
     const generatedCategoryByAssetByMonth = performanceReportSource?.categoryByAssetByMonth || {};
     const generatedBrandByAssetByMonth = performanceReportSource?.brandByAssetByMonth || {};
@@ -785,14 +764,11 @@
         source:`${performanceReportSource?.source || "Performance Reports CSV"}, mapped production machine IDs only`
       }];
     }));
-    const perf = months.flatMap((m,monthIndex)=>base.map((x,i)=>{
-      const factor=(monthlyMultipliers[m.id]||[1,1,1,1,1])[i];
-      const qualityDrift=Math.max(0, monthIndex*.06);
-      const csv=csvMachineMetrics[m.id]?.[x.assetId];
-      const generated={...x,month:m.id,sessions:Math.round(x.sessions*factor),questions:Math.round(x.questions*factor),success:Math.round(x.success*factor*Math.max(.82,1-qualityDrift*.28)),apology:Math.max(1,Math.round(x.apology*factor*(1+qualityDrift*.45))),rating:+Math.max(3.2,x.rating-qualityDrift).toFixed(1)};
-      if(!csv)return csvMachineMetrics[m.id]?{...generated,sessions:0,questions:0,voice:0,quickReply:0,keyboard:0,thai:0,english:0,chinese:0,others:0,success:0,apology:0,rating:0}:generated;
+    const perf = months.flatMap(m=>kiosks.map(k=>{
+      const csv=csvMachineMetrics[m.id]?.[k.assetId];
+      if(!csv)return {assetId:k.assetId,month:m.id,sessions:0,questions:0,voice:0,quickReply:0,keyboard:0,thai:0,english:0,chinese:0,others:0,success:0,apology:0,rating:0};
       const [sessions,questions,voice,quickReply,keyboard,thai,english,chinese,others,success,apology,rating]=csv;
-      return {...generated,sessions,questions,voice,quickReply,keyboard,thai,english,chinese,others,success,apology,rating:rating??authoritativeMonthlyMetrics[m.id]?.rating??0};
+      return {assetId:k.assetId,month:m.id,sessions,questions,voice,quickReply,keyboard,thai,english,chinese,others,success,apology,rating:rating??0};
     }));
     const history = [
       ["NO1-M8-BKP-01","Initial-26 Jun 2025","Initial Deployment","M8 Bangkapi - Information Counter (G)","Branch","Permanent · Active"],
@@ -825,28 +801,13 @@
       ["Dec 2025-Jan 2026","The Great New Year Campaign (Avatar Update ทุกเครื่อง)"],["10 Apr 2026","Consolidate เครื่องทั้งหมดมายัง M8 Bangkapi"],
       ["May 2026","Bangkok Bank M VISA"],["Jun 2026","Sports Fest"],["Jun 2026","Marketing Oops 2026"]
     ].map(([date,activity])=>({date,activity}));
-    const topics = {
-      "2026-06":[["Promotion",1840,21],["M Card",1425,17],["Directory",1320,15],["Event",1184,14],["Parking",940,11],["Rewards",810,9],["Store location",650,8],["Others",431,5]],
-      "2026-05":[["Promotion",1280,18],["M Card",1210,17],["Directory",1188,17],["Parking",880,12],["Rewards",740,10]],
-      "2026-04":[["Directory",1120,18],["Promotion",1088,17],["M Card",970,15],["Parking",820,13]]
-    };
-    const questions = {
-      "2026-06":[["วันนี้มีโปรโมชันอะไรบ้าง","Promotion",286],["สมัคร M Card ได้ที่ไหน","M Card",221],["ร้าน Uniqlo อยู่ชั้นไหน","Directory",198],["จอดรถฟรีกี่ชั่วโมง","Parking",166],["งาน Marketing Oops อยู่ตรงไหน","Event",142],["แลกคะแนน M Point ได้อย่างไร","Rewards",120]],
-      "2026-05":[["วันนี้มีโปรโมชันอะไรบ้าง","Promotion",218],["ร้านอาหารอยู่ชั้นไหน","Directory",173],["สมัคร M Card ได้ที่ไหน","M Card",168]]
-    };
     const errors = [
       ["2026-06","2026-06-04","NO3-M6-NGW-01","ร้าน Apple เปิดถึงกี่โมง","เปิดถึง 21:00 น.","Outdated content","เปิดถึง 22:00 น. ในวันศุกร์-อาทิตย์","To fix","KM Team","Update store hours source."],
       ["2026-06","2026-06-11","NO2-M7-BKE-01","บูธ Marketing Oops อยู่ฮอลล์ไหน","อยู่บริเวณ M8 Bangkapi - E-Stamp (G)","Wrong info","QSNCC, Marketing Oops 2026 event area","Fixed","Event Ops","Event location pushed after borrowing log confirmation."],
       ["2026-06","2026-06-16","NO4-M5-THA-01","จอดรถมอเตอร์ไซค์ตรงไหน","ขออภัยค่ะ ฉันยังไม่มีข้อมูลนี้","Missing info","อาคารจอดรถ B ชั้น 1","Need confirmation","Branch Ops","Need branch confirmation."],
       ["2026-05","2026-05-21","NO2-M7-BKE-01","แลกคูปองร้านอาหารยังไง","กดรับสิทธิ์ในแอปแล้วใช้ได้ทันที","Confusing answer","กดรับสิทธิ์ใน M Card app แล้วแสดง QR ก่อนชำระเงิน","Fixed","CRM","Template improved."]
     ].map((x,i)=>({id:i,month:x[0],date:x[1],kiosk:x[2],question:x[3],answer:x[4],issue:x[5],correct:x[6],status:x[7],owner:x[8],note:x[9]}));
-    const csvEventHistory = performanceReportSource?.eventHistory || [];
-    const fallbackEvents = [
-      ["2026-06","The Mall Lifestore Sports Fest","2026-06-05 to 2026-06-10","NO4-M5-THA-01","M8 Bangkapi - Platinum Lounge ชั้น 2","M7 Bangkae","2026-06-05","2026-06-10","101 sessions, 148 questions, 3.0 rating","Performance verified from June 2026 Performance Reports CSV for the event window."],
-      ["2026-06","Marketing Oops 2026","2026-06-11","NO2-M7-BKE-01","M8 Bangkapi - E-Stamp (G)","QSNCC","2026-06-11","2026-06-11","96 sessions, 247 questions, 3.5 rating","Performance verified from June 2026 Performance Reports CSV for the event window."],
-      ["2026-05","Bangkok Bank M VISA","2026-05-15 to 2026-05-16","NO2-M7-BKE-01","M8 Bangkapi - E-Stamp (G)","Bangkok Bank Event","2026-05-15","2026-05-16","20 sessions, 41 questions, 2.5 rating","Performance verified from May 2026 Performance Reports CSV for the event window."]
-    ].map((x,i)=>({id:i,month:x[0],event:x[1],date:x[2],asset:x[3],original:x[4],location:x[5],setup:x[6],returnDate:x[7],performance:x[8],notes:x[9]}));
-    const events = csvEventHistory.length?csvEventHistory:fallbackEvents;
+    const events = performanceReportSource?.eventHistory || [];
     const eventMonthNumber={Jan:"01",Feb:"02",Mar:"03",Apr:"04",May:"05",Jun:"06",Jul:"07",Aug:"08",Sep:"09",Oct:"10",Nov:"11",Dec:"12"};
     const eventSortDate=range=>{
       const text=String(range||"");
@@ -883,14 +844,8 @@
     const delta = (a,b)=>{const next=safeNumber(a), base=safeNumber(b);return base?((next-base)/base*100):(next?100:0)};
     const parsePerformance = text => {const rating=text.match(/([\d.]+) rating/);return {sessions:+(text.match(/([\d,]+) sessions/)?.[1]||"0").replace(/,/g,""),questions:+(text.match(/([\d,]+) questions/)?.[1]||"0").replace(/,/g,""),rating:rating?+rating[1]:null}};
     const activeTimeline = asset => history.filter(x=>x.assetId===asset);
-    const getTopics = (monthId,totalQuestions) => {
-      if(generatedTopicSummaryByMonth[monthId]?.length) return generatedTopicSummaryByMonth[monthId];
-      if(topics[monthId]) return topics[monthId];
-      const seed=topics["2026-06"];
-      const seedTotal=seed.reduce((a,b)=>a+b[1],0)||1;
-      return seed.map(([name,value,share])=>[name,Math.round(totalQuestions*(value/seedTotal)),share]);
-    };
-    const getQuestions = monthId => generatedTopQuestionsByMonth[monthId]?.length ? generatedTopQuestionsByMonth[monthId] : (questions[monthId] || questions["2026-06"].slice(0,4).map(([q,c,count])=>[q,c,Math.round(count*.58)]));
+    const getTopics = monthId => generatedTopicSummaryByMonth[monthId]?.length ? generatedTopicSummaryByMonth[monthId] : [];
+    const getQuestions = monthId => generatedTopQuestionsByMonth[monthId]?.length ? generatedTopQuestionsByMonth[monthId] : [];
     const categorySeed = [["Promotion",.19],["M Card",.15],["Directory",.14],["Parking",.1],["Events",.1],["Store Information",.09],["Rewards",.08],["Restaurant",.06],["Fashion",.035],["Beauty",.025],["Sports",.025],["Lifestyle",.015]];
     const brandSeed = [["Uniqlo",.18],["Starbucks",.15],["McDonald's",.12],["Nike",.11],["Adidas",.09],["Power Mall",.16],["Gourmet Market",.13],["Apple",.06]];
     const questionBank = [
@@ -986,7 +941,7 @@
       const idx=kiosks.findIndex(k=>k.assetId===r.assetId), questions=safeNumber(r?.questions);return brandSeed.map(([name,share],i)=>({name,value:Math.round(questions*share*(.78+(((idx+i)%5)*.11)))})).sort((a,b)=>b.value-a.value)
     }
     function machineQuestionRows(r={},limit=20,monthIds=[]){
-      const monthEntries = monthIds.flatMap(monthId => (generatedTopQuestionsByMonth[monthId] || []).map(([question,category,count]) => ({question,category,count:safeNumber(count)})));
+      const monthEntries = monthIds.flatMap(monthId => (generatedTopQuestionsByAssetByMonth[monthId]?.[r.assetId] || []).map(([question,category,count]) => ({question,category,count:safeNumber(count)})));
       if(monthEntries.length){
         const totals = new Map();
         monthEntries.forEach(item => {
@@ -1000,7 +955,51 @@
       }
       const idx=kiosks.findIndex(k=>k.assetId===r.assetId), questions=safeNumber(r?.questions);return questionBank.map((q,i)=>({question:q[0],category:q[1],machine:r.assetId,count:Math.max(questions?4:0,Math.round(questions*(.026-(i%8)*.0016)*(1+((idx+i)%4)*.08)))})).sort((a,b)=>b.count-a.count).slice(0,limit)
     }
-    function hourlyRows(r){const hours=[10,11,12,13,14,15,16,17,18,19,20,21], sessions=safeNumber(r?.sessions);const idx=kiosks.findIndex(k=>k.assetId===r.assetId);return hours.map((hr,i)=>({hour:hr,value:Math.round(sessions*(.045+Math.max(0,Math.sin((i+idx)*.72))*.06+(i>7?.035:0))) }))}
+    function hourlyRows(r={},monthIds=[]){
+      const hours=[10,11,12,13,14,15,16,17,18,19,20,21];
+      const assetId=r?.assetId;
+      const entries=monthIds.flatMap(monthId=>(generatedHourlyByAssetByMonth[monthId]?.[assetId]||[]).map(([hour,value])=>({hour:safeNumber(hour),value:safeNumber(value)})));
+      if(entries.length){
+        const totals=new Map(hours.map(hour=>[hour,0]));
+        entries.forEach(item=>totals.set(item.hour,(totals.get(item.hour)||0)+item.value));
+        return hours.map(hour=>({hour,value:totals.get(hour)||0}));
+      }
+      const sessions=safeNumber(r?.sessions);const idx=kiosks.findIndex(k=>k.assetId===assetId);return hours.map((hr,i)=>({hour:hr,value:Math.round(sessions*(.045+Math.max(0,Math.sin((i+idx)*.72))*.06+(i>7?.035:0))) }))
+    }
+    function weekdayRows(r={},monthIds=[]){
+      const weekdays=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+      const assetId=r?.assetId;
+      const entries=monthIds.flatMap(monthId=>(generatedWeekdayByAssetByMonth[monthId]?.[assetId]||[]).map(([day,value])=>({day,value:safeNumber(value)})));
+      if(entries.length){
+        const totals=new Map(weekdays.map(day=>[day,0]));
+        entries.forEach(item=>totals.set(item.day,(totals.get(item.day)||0)+item.value));
+        return weekdays.map(day=>({day,value:totals.get(day)||0}));
+      }
+      const sessions=safeNumber(r?.sessions)||0;
+      const base=[0.12,0.12,0.13,0.14,0.15,0.17,0.17];
+      return weekdays.map((day,index)=>({day,value:Math.round(sessions*base[index])}));
+    }
+    function peakWindowLabel(rows=[],monthIds=[]){
+      const hours=[10,11,12,13,14,15,16,17,18,19,20,21];
+      const totals=new Map(hours.map(hour=>[hour,0]));
+      rows.forEach(row=>{
+        hourlyRows(row,monthIds).forEach(item=>{
+          totals.set(item.hour,(totals.get(item.hour)||0)+safeNumber(item.value));
+        });
+      });
+      const ordered=hours.map(hour=>({hour,value:totals.get(hour)||0}));
+      let best={start:17,end:21,total:0};
+      for(let index=0;index<=ordered.length-3;index++){
+        for(let span=3;span<=4 && index+span<=ordered.length;span++){
+          const slice=ordered.slice(index,index+span);
+          const total=slice.reduce((sum,item)=>sum+safeNumber(item.value),0);
+          if(total>best.total){
+            best={start:slice[0].hour,end:slice[slice.length-1].hour+1,total};
+          }
+        }
+      }
+      return `${String(best.start).padStart(2,"0")}:00-${String(best.end).padStart(2,"0")}:00`;
+    }
     function scoreRows(current,previous,eventRows){
       if(!current.length)return [];
       const maxSessions=Math.max(...current.map(r=>r.sessions),1), maxQps=Math.max(...current.map(r=>r.qps),1);
@@ -1016,7 +1015,7 @@
         ? [...brandRows.reduce((map,row)=>map.set(row.name,(map.get(row.name)||0)+safeNumber(row.value)),new Map()).entries()].map(([name,value])=>({name,value})).sort((a,b)=>b.value-a.value)
         : brandSeed.map(([name])=>({name,value:0}));
       const topQuestions=current.flatMap(r=>machineQuestionRows(r,+topLimit||20,currentIds)).sort((a,b)=>b.count-a.count).slice(0,+topLimit||20);
-      const hourly=current.map(r=>({assetId:r.assetId,machine:kiosks.find(k=>k.assetId===r.assetId)?.machine||r.assetId,hours:hourlyRows(r)}));
+      const hourly=current.map(r=>({assetId:r.assetId,machine:kiosks.find(k=>k.assetId===r.assetId)?.machine||r.assetId,hours:hourlyRows(r,currentIds)}));
       const highest=ranking[0], lowest=ranking[ranking.length-1], growth=[...ranking].sort((a,b)=>b.growth-a.growth)[0];
       return {ids,current,previous,summary,prevSummary,ranking,categoryRows,brandTotals,topQuestions,hourly,eventRows,periodLabel:period,compareLabel:mode,days,previousIds,currentIds,highest,lowest,growth};
     }
@@ -1045,10 +1044,13 @@
         const activeSeries=series.filter(v=>v>0);
         const bestMonth=Math.max(...activeSeries,0);
         const campaignDependency=clamp(bestMonth?(bestMonth/(avg(activeSeries)||bestMonth)-1)/1.6:0,0,1);
-        const hourly=hourlyRows(row).map(x=>x.value);
+        const hourly=hourlyRows(row,historyIds).map(x=>x.value);
+        const weekday=weekdayRows(row,historyIds).map(x=>x.value);
         const peak=max=>Math.max(...max,0);
         const peakActivity=clamp(peak(hourly)/(avg(hourly)*1.85||1));
-        const weeklyUsage=clamp((activeMonths/months.length)*0.65 + (1-clamp(volatility,0,1))*0.35);
+        const weeklySpread=weekday.filter(value=>value>0).length/7;
+        const weeklyBalance=1-clamp(std(weekday)/(avg(weekday)||1),0,1);
+        const weeklyUsage=clamp(weeklySpread*0.45 + weeklyBalance*0.35 + (activeMonths/months.length)*0.2);
         const topCats=categoryMix(row).sort((a,b)=>b.value-a.value).slice(0,3);
         const eventList=allEvents.filter(e=>e.asset===row.assetId);
         const eventSessions=eventList.reduce((sum,e)=>sum+parsePerformance(e.performance||"").sessions,0);
@@ -1068,8 +1070,12 @@
         const qualityScore=clamp((safeNumber(row.successRate)/100)*0.7 + (1-safeNumber(row.apologyRate)/100)*0.3);
         const ratingScore=clamp(safeNumber(row.rating)/4);
         const futureScalability=clamp(trendStability*0.4 + operationalHealth*0.35 + userBehaviorFit*0.25);
+        const consistencyScore=Math.round(trendStability*100);
+        const scalabilityScore=Math.round(futureScalability*100);
+        const campaignImpactScore=Math.round(campaignImpact*100);
+        const footTrafficQualityScore=Math.round(footTrafficQuality*100);
         const overallScore=Math.round((sessionsScore*30)+(engagementScore*20)+(qualityScore*15)+(ratingScore*10)+(businessValue*10)+(trendStability*10)+(operationalHealth*5));
-        return {...row,kiosk,series,activeMonths,trendDelta,trendLabel:trendDelta>0.08?"Growing":trendDelta<-0.08?"Declining":"Stable",peakActivity,weeklyUsage,campaignImpact,campaignDependency,businessValue,operationalHealth,trendStability,footTrafficQuality,userBehaviorFit,futureScalability,sessionsScore,engagementScore,qualityScore,ratingScore,overallScore,errorCount,maintenanceCount,eventSessions,eventCount:eventList.length,topCategories:topCats,floor:floorFromLocation(kiosk.location),screenGroup:normalizedScreen(kiosk),photo:machineImages[row.assetId]||coverImage};
+        return {...row,kiosk,series,activeMonths,trendDelta,trendLabel:trendDelta>0.08?"Growing":trendDelta<-0.08?"Declining":"Stable",peakActivity,weeklyUsage,campaignImpact,campaignImpactScore,campaignDependency,businessValue,operationalHealth,trendStability,consistencyScore,footTrafficQuality,footTrafficQualityScore,userBehaviorFit,futureScalability,scalabilityScore,sessionsScore,engagementScore,qualityScore,ratingScore,overallScore,errorCount,maintenanceCount,eventSessions,eventCount:eventList.length,topCategories:topCats,floor:floorFromLocation(kiosk.location),screenGroup:normalizedScreen(kiosk),photo:machineImages[row.assetId]||coverImage};
       }).sort((a,b)=>b.overallScore-a.overallScore).map((row,index)=>{
         return {...row,rank:index+1,recommendation:"REMOVE"};
       });
@@ -1191,7 +1197,7 @@
       )
     }
     function Leaderboard({rows,kiosksMap}){if(!rows?.length)return h("div",{className:"empty"},"No ranking data for this filter.");const sorted=[...rows].sort((a,b)=>safeNumber(b.questions)-safeNumber(a.questions)), max=Math.max(...sorted.map(x=>safeNumber(x.questions)),1);return h("div",{className:"leaderboard"},sorted.map((r,i)=>{const k=kiosksMap.get(r.assetId);return h("div",{className:"leader-row",key:r.assetId||i},h("b",null,`${i+1}. ${display(k?.machine,r.assetId||"Machine")}`),h("div",{className:"track"},h("div",{className:"fill bar-animate",style:{width:`${safeNumber(r.questions)/max*100}%`}})),h("span",null,n(r.questions))) })) }
-    function MachineCard({row={},kiosk={},days,selected,onSelect}){const questions=safeNumber(row.questions), success=questions?safeNumber(row.success)/questions*100:0;const today=Math.round(safeNumber(row.sessions)/(days||1)*1.12), imageSrc=machineImages[kiosk.assetId];return h("article",{className:`card machine-card ${selected?"selected":""}`,onClick:onSelect},imageSrc&&h("div",{className:"machine-photo"},h("img",{src:imageSrc,alt:`${display(kiosk.assetId,"Machine")} at ${display(kiosk.location,"location")}`})),h("div",{className:"machine-top"},h("div",{className:"machine-device"},(kiosk.machine||"M").split("-")[1]||"M"),h("span",{className:`status ${kiosk.status||"Standby"}`},display(kiosk.status,"Standby"))),h("div",null,h("div",{className:"machine-id"},display(kiosk.assetId,"No asset ID")),h("div",{className:"machine-location"},display(kiosk.location,"Location not available")),h("p",{className:"subtitle"},`${display(kiosk.machine,"Unnamed machine")} · ${display(kiosk.screen,"Screen size not available")}`)),h("div",{className:"machine-stats"},h("div",{className:"stat-tile"},h("strong",null,n(today)),h("span",null,"Today's sessions")),h("div",{className:"stat-tile"},h("strong",null,n(row.sessions)),h("span",null,"Monthly sessions")),h("div",{className:"stat-tile"},h("strong",null,safeNumber(row.rating).toFixed(1)),h("span",null,"Rating")),h("div",{className:"stat-tile"},h("strong",null,pct(success)),h("span",null,"Success"))),h("div",{className:"micro"},h("span",null,"Last update"),h("b",null,"30 Jun 2026 · latest June CSV")),h("div",{className:"click-hint"},h(Icon,{name:"trend",size:14}),"Click to view movement timeline"))}
+    function MachineCard({row={},kiosk={},days,selected,onSelect,coverageStart,coverageEnd,monthLabel}){const questions=safeNumber(row.questions), success=questions?safeNumber(row.success)/questions*100:0;const coveredDays=coverageStart&&coverageEnd?customDayCount(coverageStart,coverageEnd,days):days;const avgDaily=safeNumber(coveredDays)?safeNumber(row.sessions)/(coveredDays||1):0, imageSrc=machineImages[kiosk.assetId];const latestLabel=coverageEnd?`${prettyDate(coverageEnd)} · ${monthLabel} CSV`:`${monthLabel} CSV`;return h("article",{className:`card machine-card ${selected?"selected":""}`,onClick:onSelect},imageSrc&&h("div",{className:"machine-photo"},h("img",{src:imageSrc,alt:`${display(kiosk.assetId,"Machine")} at ${display(kiosk.location,"location")}`})),h("div",{className:"machine-top"},h("div",{className:"machine-device"},(kiosk.machine||"M").split("-")[1]||"M"),h("span",{className:`status ${kiosk.status||"Standby"}`},display(kiosk.status,"Standby"))),h("div",null,h("div",{className:"machine-id"},display(kiosk.assetId,"No asset ID")),h("div",{className:"machine-location"},display(kiosk.location,"Location not available")),h("p",{className:"subtitle"},`${display(kiosk.machine,"Unnamed machine")} · ${display(kiosk.screen,"Screen size not available")}`)),h("div",{className:"machine-stats"},h("div",{className:"stat-tile"},h("strong",null,safeNumber(avgDaily).toFixed(1)),h("span",null,"Avg / day")),h("div",{className:"stat-tile"},h("strong",null,n(row.sessions)),h("span",null,"Monthly sessions")),h("div",{className:"stat-tile"},h("strong",null,row.rating?safeNumber(row.rating).toFixed(1):"—"),h("span",null,"Rating")),h("div",{className:"stat-tile"},h("strong",null,pct(success)),h("span",null,"Success"))),h("div",{className:"micro"},h("span",null,"Coverage end"),h("b",null,latestLabel)),h("div",{className:"click-hint"},h(Icon,{name:"trend",size:14}),"Click to view movement timeline"))}
     function StackedBars({rows,kiosksMap}){if(!rows?.length)return h("div",{className:"empty"},"No input method data for this filter.");return h("div",{className:"leaderboard"},rows.map(r=>{const voice=safeNumber(r.voice), quick=safeNumber(r.quickReply), keyboard=safeNumber(r.keyboard), total=voice+quick+keyboard||1,k=kiosksMap.get(r.assetId);return h("div",{className:"leader-row",key:r.assetId},h("b",null,display(k?.machine,r.assetId)),h("div",{className:"track",style:{display:"flex",height:16}},h("span",{className:"bar-animate",style:{width:`${voice/total*100}%`,background:"#2563eb"}},),h("span",{className:"bar-animate",style:{width:`${quick/total*100}%`,background:"#0891b2"}},),h("span",{className:"bar-animate",style:{width:`${keyboard/total*100}%`,background:"#e11d48"}},)),h("span",null,pct(voice/total*100))) })) }
     function Treemap({rows}){if(!rows?.length)return h("div",{className:"empty"},"No topic data for this filter.");const colors=["#2563eb","#0891b2","#12b76a","#7c3aed","#f59e0b","#e11d48","#475467","#94a3b8"], spans=[5,4,3,4,3,3,3,2], total=rows.reduce((a,b)=>a+safeNumber(b[1]),0)||1;return h("div",{className:"treemap"},rows.map((r,i)=>{const span=spans[i]||3, isSmall=span<=3, value=safeNumber(r[1]), share=r[2]||Math.round(value/total*100), meta=isSmall?`${compact(value)} questions`:`${n(value)} questions · ${share}%`;return h("div",{className:`tile ${isSmall?"tile-small":""}`,key:r[0]||i,style:{gridColumn:`span ${span}`,background:colors[i%colors.length]}},h("b",null,display(r[0],"Uncategorized")),h("span",null,meta))}))}
     function Heatmap(){const days=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"], hours=["10","11","12","13","14","15","16","17","18","19","20","21"];return h("div",{className:"heatmap"},h("span",null,""),hours.map((hr,i)=>h("span",{key:hr,className:i>5?"hide-sm":""},hr)),days.flatMap((d,di)=>[h("span",{key:d},d),...hours.map((hr,hi)=>{const intensity=(Math.sin((hi+di)*.9)+1)/2*.55+(hi>6?.35:0)+(di>4?.18:0);return h("div",{key:d+hr,className:`heat-cell ${hi>5?"hide-sm":""}`,title:`${d} ${hr}:00`,style:{background:`rgba(37,99,235,${Math.min(.95,.12+intensity*.74)})`}})})]))}
@@ -1261,12 +1267,12 @@
       const dateInvalid=!!(start&&end&&new Date(start)>new Date(end));
       const tags=items=>h("div",{className:"metric-tags"},items.map(x=>h("span",{key:x},x)));
       const valueWithScore=(main,sub,score,color)=>h("div",null,h("strong",null,main),sub&&h("small",null,sub),Number.isFinite(score)&&h("div",{className:"mini-score"},h("i",{style:{width:`${Math.max(4,Math.min(100,score))}%`,background:color}})));
-      const maxSessions=Math.max(...machines.map(x=>safeNumber(x.data?.sessions)),1), maxQuestions=Math.max(...machines.map(x=>safeNumber(x.data?.questions)),1), maxHourly=Math.max(...machines.flatMap(x=>hourlyRows(x.data||{}).map(h=>safeNumber(h.value))),1);
+      const maxSessions=Math.max(...machines.map(x=>safeNumber(x.data?.sessions)),1), maxQuestions=Math.max(...machines.map(x=>safeNumber(x.data?.questions)),1), maxHourly=Math.max(...machines.flatMap(x=>hourlyRows(x.data||{},safeComparison.currentIds||[]).map(h=>safeNumber(h.value))),1);
       const topCategoryFor=m=>{const list=categoryMix(m.data||{}).sort((a,b)=>b.value-a.value);const filtered=topicFilter==="All"?list.slice(0,3):list.filter(x=>x.name===topicFilter);return filtered.length?filtered:list.slice(0,1)};
       const topBrandFor=m=>{const list=brandMix(m.data||{}).sort((a,b)=>b.value-a.value);const filtered=brandFilter==="All"?list.slice(0,3):list.filter(x=>x.name===brandFilter);return filtered.length?filtered:list.slice(0,1)};
       const languageFor=m=>{const list=languageMix(m.data||{}).sort((a,b)=>b.value-a.value);const filtered=languageFilter==="All"?list.slice(0,3):list.filter(x=>x.name===languageFilter);return filtered.length?filtered:list.slice(0,1)};
       const topQuestionsFor=m=>machineQuestionRows(m.data||{},+topLimit||20).filter(q=>topicFilter==="All"||q.category===topicFilter).slice(0,2);
-      const peakHourFor=m=>[...hourlyRows(m.data||{})].sort((a,b)=>b.value-a.value)[0]||{hour:"-",value:0};
+      const peakHourFor=m=>[...hourlyRows(m.data||{},safeComparison.currentIds||[])].sort((a,b)=>b.value-a.value)[0]||{hour:"-",value:0};
       const strengthFor=m=>m.rank?.rank===1?"Highest overall score":safeNumber(m.data?.rating)>=4.4?"Strong customer satisfaction":safeNumber(m.data?.successRate)>=90?"High answer success":"Stable usage quality";
       const weaknessFor=m=>safeNumber(m.data?.apologyRate)>9?"High apology rate":safeNumber(m.data?.rating)<4.1?"Lower rating":languageMix(m.data||{}).filter(x=>x.value/(safeNumber(m.data?.questions)||1)>.05).length<3?"Narrower language mix":"Needs richer category depth";
       const recommendationFor=m=>safeNumber(m.data?.apologyRate)>9?"Prioritize KM fixes for missed answers.":safeNumber(m.rank?.growth)<0?"Review placement visibility and prompt entry points.":"Keep placement and refresh high-demand answers weekly.";
@@ -1488,11 +1494,13 @@
       ].sort((a,b)=>b.value-a.value);
       const topInput=inputMix[0]||{name:"No input data",value:0};
       const topLanguage=languageMix[0]||{name:"No language data",value:0};
+      const overviewMonthIds=months.filter(m=>m.id>=appliedPeriod.start.slice(0,7)&&m.id<=appliedPeriod.end.slice(0,7)).map(m=>m.id);
+      const peakWindow=peakWindowLabel(filteredRows,overviewMonthIds);
       const overviewBehaviorSummary=[
         {label:"Performance snapshot",value:pct(cur.successRate),note:`${n(cur.sessions)} sessions · ${n(cur.questions)} questions this period.`},
         {label:"Top input method",value:topInput.name,note:`${pct(inputTotal?topInput.value/inputTotal*100:0)} of all user inputs.`},
         {label:"Top language",value:topLanguage.name,note:`${pct(langTotal?topLanguage.value/langTotal*100:0)} of all conversations.`},
-        {label:"Peak traffic window",value:"17:00-21:00",note:"Evening traffic remains the strongest browsing period."}
+        {label:"Peak traffic window",value:peakWindow,note:"Calculated from actual usage timestamps in the selected reporting window."}
       ];
       const overviewMachineCards=filteredRows.map(r=>{const kiosk=kioskMap.get(r.assetId);const machineQuestions=safeNumber(r.questions), machineSuccess=machineQuestions?safeNumber(r.success)/machineQuestions*100:0;return {assetId:r.assetId,machine:display(kiosk?.machine,r.assetId),location:display(kiosk?.location,"Location not available"),sessions:n(r.sessions),questions:n(r.questions),success:pct(machineSuccess),rating:r.rating?safeNumber(r.rating).toFixed(1):"—",imageSrc:machineImages[r.assetId]||""}});
       const kpiSeries=monthRows.map(x=>x.questions);
@@ -1799,9 +1807,9 @@
                         ),
                         h("div",{className:"reco-kpi-secondary"},
                           h("div",{className:"reco-metric wide"},h("span",{className:"icon"},h(Icon,{name:"trend",size:22})),h("span",null,"Consistency"),h("strong",null,item.consistencyScore,h("small",null,"/100"))),
-                          h("div",{className:"reco-metric wide"},h("span",{className:"icon green"},h(Icon,{name:"trend",size:22})),h("span",null,"Scalability"),h("strong",null,item.futureScalability,h("small",null,"/100"))),
-                          h("div",{className:"reco-metric wide"},h("span",{className:"icon amber"},h(Icon,{name:"alert",size:22})),h("span",null,"Campaign impact"),h("strong",null,item.campaignImpact,h("small",null,"/100"))),
-                          h("div",{className:"reco-metric wide"},h("span",{className:"icon amber"},h(Icon,{name:"activity",size:22})),h("span",null,"Foot-traffic quality"),h("strong",null,item.footTrafficQuality,h("small",null,"/100")))
+                          h("div",{className:"reco-metric wide"},h("span",{className:"icon green"},h(Icon,{name:"trend",size:22})),h("span",null,"Scalability"),h("strong",null,item.scalabilityScore,h("small",null,"/100"))),
+                          h("div",{className:"reco-metric wide"},h("span",{className:"icon amber"},h(Icon,{name:"alert",size:22})),h("span",null,"Campaign impact"),h("strong",null,item.campaignImpactScore,h("small",null,"/100"))),
+                          h("div",{className:"reco-metric wide"},h("span",{className:"icon amber"},h(Icon,{name:"activity",size:22})),h("span",null,"Foot-traffic quality"),h("strong",null,item.footTrafficQualityScore,h("small",null,"/100")))
                         )
                       ),
                       h("div",{className:"reco-reasons"},
@@ -1847,7 +1855,7 @@
             )
           );
         }
-        if(page==="machine-status") return h(PageShell,{title:"Machine Status",sub:"Operational card view for all active M Agent devices."},h("div",{className:"machine-grid"},machineRows.map(x=>h(MachineCard,{key:x.row.assetId,row:x.row,kiosk:x.kiosk,days:monthObj.days,selected:x.row.assetId===asset,onSelect:()=>setAsset(x.row.assetId)}))),h("div",{className:"card"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"cpu"})),h("div",null,h("h3",null,"Machine master data"),h("p",{className:"subtitle"},"Reference list for active machines.")))),machineTable));
+        if(page==="machine-status") return h(PageShell,{title:"Machine Status",sub:"Operational card view for all active M Agent devices."},h("div",{className:"machine-grid"},machineRows.map(x=>h(MachineCard,{key:x.row.assetId,row:x.row,kiosk:x.kiosk,days:monthObj.days,coverageStart:monthMeta?.[month]?.coverageStart,coverageEnd:authoritativeCur?.coverageEnd||monthMeta?.[month]?.coverageEnd,monthLabel:monthObj.label,selected:x.row.assetId===asset,onSelect:()=>setAsset(x.row.assetId)}))),h("div",{className:"card"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"cpu"})),h("div",null,h("h3",null,"Machine master data"),h("p",{className:"subtitle"},"Reference list for active machines.")))),machineTable));
         if(page==="machine-timeline") return h(PageShell,null,
           h("div",{className:"timeline-tabs",role:"tablist","aria-label":"Timeline views"},
             h("button",{type:"button",role:"tab","aria-selected":timelineTab==="machine",className:`timeline-tab ${timelineTab==="machine"?"active":""}`,onClick:()=>setTimelineTab("machine")},h(Icon,{name:"cpu",size:17}),"Machine Timeline"),

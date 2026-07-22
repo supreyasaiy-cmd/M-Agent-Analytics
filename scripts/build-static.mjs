@@ -1,6 +1,7 @@
 import { cpSync, existsSync, mkdirSync, rmSync, copyFileSync } from "node:fs";
 import { join } from "node:path";
 import { writePerformanceReportData } from "./generate-performance-report-data.mjs";
+import { validatePerformanceReportData } from "./validate-performance-report-data.mjs";
 
 const root = process.cwd();
 const sourceDir = join(root, "outputs");
@@ -24,6 +25,7 @@ if (!existsSync(dashboardFile)) {
 }
 
 writePerformanceReportData(root);
+validatePerformanceReportData(root);
 mkdirSync(assetsDir, { recursive: true });
 for (const [sourceName, targetName] of eventAssetCopies) {
   const sourcePath = join(designDir, sourceName);

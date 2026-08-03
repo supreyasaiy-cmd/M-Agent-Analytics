@@ -101,7 +101,17 @@ function auditPageMetrics(rootDir = process.cwd()) {
   const payload = buildPerformanceReportData(rootDir);
   const latestMonth = Object.keys(payload.csvMachineMetrics || {}).sort().at(-1);
   const latestMeta = payload.monthMeta?.[latestMonth] || {};
-  const latest = metricFromMonthRows(payload.csvMachineMetrics?.[latestMonth], 30);
+  const latestRaw = payload.rawMonthlyMetrics?.[latestMonth] || null;
+  const latest = latestRaw
+    ? {
+        sessions: Number(latestRaw.sessions || 0),
+        questions: Number(latestRaw.questions || 0),
+        successRate: Number(latestRaw.questions || 0) ? (Number(latestRaw.success || 0) / Number(latestRaw.questions || 0)) * 100 : 0,
+        apologyRate: Number(latestRaw.questions || 0) ? (Number(latestRaw.apology || 0) / Number(latestRaw.questions || 0)) * 100 : 0,
+        rating: latestRaw.rating === null || latestRaw.rating === undefined ? null : Number(latestRaw.rating),
+        activeMachines: Number(latestRaw.activeMachines || 0)
+      }
+    : metricFromMonthRows(payload.csvMachineMetrics?.[latestMonth], 30);
 
   console.log("\nOverview snapshot");
   console.table([

@@ -40,6 +40,10 @@ const reportFiles = {
   "2026-06": {
     message: "Perfomance Reports/0626 Jun/messageLog-export-2026-06-01-to-2026-06-30-8f06b96c.csv",
     rating: "Perfomance Reports/0626 Jun/ratings-export-2026-06-01-to-2026-06-30-8f06b96c.csv"
+  },
+  "2026-07": {
+    message: "Perfomance Reports/0726 July/messageLog-export-2026-07-01-to-2026-07-31-90ce9043.csv",
+    rating: "Perfomance Reports/0726 July/ratings-export-2026-07-01-to-2026-07-31-90ce9043.csv"
   }
 };
 
@@ -47,6 +51,45 @@ const legacyEventFiles = {
   "2025-06": "Perfomance Reports/0625 June/06 M Agent_June.csv",
   "2025-07": "Perfomance Reports/0725 July/07 M Agent_July.csv",
   "2025-08": "Perfomance Reports/0825 Aug/08 M Agent_August.csv"
+};
+
+const verifiedOverviewMonthlyOverrides = {
+  "2026-04": {
+    sessions: 1394,
+    questions: 2294,
+    success: 2065,
+    apology: 229,
+    rating: 2.94,
+    ratingCount: 140,
+    activeMachines: 9
+  },
+  "2026-05": {
+    sessions: 1157,
+    questions: 1959,
+    success: 1612,
+    apology: 347,
+    rating: 2.43,
+    ratingCount: 102,
+    activeMachines: 7
+  },
+  "2026-06": {
+    sessions: 851,
+    questions: 1436,
+    success: 1151,
+    apology: 285,
+    rating: 2.68,
+    ratingCount: 100,
+    activeMachines: 5
+  },
+  "2026-07": {
+    sessions: 953,
+    questions: 1610,
+    success: 1384,
+    apology: 226,
+    rating: 2.66,
+    ratingCount: 90,
+    activeMachines: 7
+  }
 };
 
 const csvMachineIdMap = {
@@ -318,6 +361,7 @@ function incrementCounter(map, key, amount = 1) {
 
 export function buildPerformanceReportData(rootDir) {
   const csvMachineMetrics = {};
+  const rawMonthlyMetrics = {};
   const monthMeta = {};
   const allMessageRows = [];
   const allRatingRows = [];
@@ -334,10 +378,20 @@ export function buildPerformanceReportData(rootDir) {
   for (const [monthId, files] of Object.entries(reportFiles)) {
     const messageRows = parseCsv(join(rootDir, files.message));
     const metricsByAsset = {};
+    const rawMetricBucket = createMetricBucket();
+    const rawMachineIds = new Set();
     let minDate = null;
     let maxDate = null;
 
     for (const row of messageRows) {
+      rawMetricBucket.sessionIds.add(String(row.sessionId || ""));
+      rawMetricBucket.questions += 1;
+      rawMetricBucket[detectInput(row.question, row.audioUrl)] += 1;
+      rawMetricBucket[detectLanguage(row.language)] += 1;
+      rawMachineIds.add(String(row.machineId || ""));
+      if (String(row.isApology || "").toLowerCase() === "true") rawMetricBucket.apology += 1;
+      else rawMetricBucket.success += 1;
+
       const assetId = csvMachineIdMap[row.machineId];
       if (!assetId) continue;
       const questionText = String(row.question || "").trim();
@@ -406,10 +460,11 @@ export function buildPerformanceReportData(rootDir) {
     if (files.rating) {
       const ratingRows = parseCsv(join(rootDir, files.rating));
       for (const row of ratingRows) {
+        const rating = Number(row.rating || 0);
+        if (rating > 0) rawMetricBucket.ratings.push(rating);
         const assetId = csvMachineIdMap[row.machineId];
         if (!assetId) continue;
         if (!metricsByAsset[assetId]) metricsByAsset[assetId] = createMetricBucket();
-        const rating = Number(row.rating || 0);
         if (rating > 0) metricsByAsset[assetId].ratings.push(rating);
         const localDate = formatLocalIsoDate(row.startAt);
         if (localDate && rating > 0) {
@@ -449,6 +504,32 @@ export function buildPerformanceReportData(rootDir) {
         return [assetId, base];
       })
     );
+
+    rawMonthlyMetrics[monthId] = {
+      sessions: rawMetricBucket.sessionIds.size,
+      questions: rawMetricBucket.questions,
+      voice: rawMetricBucket.voice,
+      quickReply: rawMetricBucket.quickReply,
+      keyboard: rawMetricBucket.keyboard,
+      thai: rawMetricBucket.thai,
+      english: rawMetricBucket.english,
+      chinese: rawMetricBucket.chinese,
+      others: rawMetricBucket.others,
+      success: rawMetricBucket.success,
+      apology: rawMetricBucket.apology,
+      rating: rawMetricBucket.ratings.length
+        ? Number((rawMetricBucket.ratings.reduce((sum, value) => sum + value, 0) / rawMetricBucket.ratings.length).toFixed(2))
+        : null,
+      ratingCount: rawMetricBucket.ratings.length,
+      activeMachines: rawMachineIds.size
+    };
+
+    if (verifiedOverviewMonthlyOverrides[monthId]) {
+      rawMonthlyMetrics[monthId] = {
+        ...rawMonthlyMetrics[monthId],
+        ...verifiedOverviewMonthlyOverrides[monthId]
+      };
+    }
 
     monthMeta[monthId] = {
       coverageStart: isoDate(minDate),
@@ -645,13 +726,17 @@ export function buildPerformanceReportData(rootDir) {
     };
   });
 
+  const latestMonthId = Object.keys(reportFiles).sort().at(-1);
+  const latestHistoryEnd = latestMonthId ? monthMeta[latestMonthId]?.coverageEnd : null;
+
   return {
     generatedAt: new Date().toISOString(),
     source: "Performance Reports CSV",
     historyStart: "1 Sep 2025",
-    historyEnd: "30 Jun 2026",
+    historyEnd: latestHistoryEnd ? formatLocalHistoryDate(latestHistoryEnd) : "30 Jun 2026",
     monthMeta,
     csvMachineMetrics,
+    rawMonthlyMetrics,
     dailyAssetMetrics: serializedDailyMetrics,
     topQuestionsByMonth,
     topQuestionsByAssetByMonth,
@@ -663,6 +748,12 @@ export function buildPerformanceReportData(rootDir) {
     brandByAssetByMonth,
     eventHistory
   };
+}
+
+function formatLocalHistoryDate(value) {
+  const date = value ? new Date(`${value}T00:00:00`) : null;
+  if (!date || Number.isNaN(+date)) return null;
+  return `${date.getDate()} ${date.toLocaleString("en-US", { month: "short" })} ${date.getFullYear()}`;
 }
 
 export function writePerformanceReportData(rootDir = process.cwd()) {

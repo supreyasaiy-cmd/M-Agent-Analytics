@@ -1,4 +1,13 @@
-import { cpSync, existsSync, mkdirSync, rmSync, copyFileSync } from "node:fs";
+import {
+  cpSync,
+  existsSync,
+  mkdirSync,
+  rmSync,
+  copyFileSync,
+  readFileSync,
+  statSync,
+  writeFileSync
+} from "node:fs";
 import { join } from "node:path";
 import { writePerformanceReportData } from "./generate-performance-report-data.mjs";
 import { validatePerformanceReportData } from "./validate-performance-report-data.mjs";
@@ -9,6 +18,29 @@ const dashboardFile = join(sourceDir, "m-agent-kiosk-monthly-dashboard.html");
 const distDir = join(root, "dist");
 const assetsDir = join(sourceDir, "assets");
 const designDir = join(root, "work", "Design", "M Agent");
+
+function stampPerformanceDataVersion(filePath, cacheKey) {
+  const html = readFileSync(filePath, "utf8");
+  const updated = html.replace(
+    /\.\/assets\/performance-report-data\.js(?:\?v=[^"]+)?/g,
+    `./assets/performance-report-data.js?v=${cacheKey}`
+  );
+  if (updated !== html) writeFileSync(filePath, updated, "utf8");
+}
+
+function inlinePerformanceData(filePath, dataFilePath) {
+  const html = readFileSync(filePath, "utf8");
+  const dataScript = readFileSync(dataFilePath, "utf8").trim();
+  const externalScriptPattern = /<script src="\.\/assets\/performance-report-data\.js(?:\?v=[^"]+)?"><\/script>/;
+  const inlineScriptTag = `<script id="performance-report-data-inline">\n${dataScript}\n</script>`;
+  const updated = externalScriptPattern.test(html)
+    ? html.replace(externalScriptPattern, inlineScriptTag)
+    : html.replace(
+        /<script id="performance-report-data-inline">[\s\S]*?<\/script>/,
+        inlineScriptTag
+      );
+  if (updated !== html) writeFileSync(filePath, updated, "utf8");
+}
 
 const eventAssetCopies = [
   ["Default.png", "event-default.png"],
@@ -24,8 +56,11 @@ if (!existsSync(dashboardFile)) {
   throw new Error("Missing outputs/m-agent-kiosk-monthly-dashboard.html");
 }
 
-writePerformanceReportData(root);
+const performanceDataFile = writePerformanceReportData(root);
 validatePerformanceReportData(root);
+const performanceDataVersion = String(Math.floor(statSync(performanceDataFile).mtimeMs));
+stampPerformanceDataVersion(dashboardFile, performanceDataVersion);
+inlinePerformanceData(dashboardFile, performanceDataFile);
 mkdirSync(assetsDir, { recursive: true });
 for (const [sourceName, targetName] of eventAssetCopies) {
   const sourcePath = join(designDir, sourceName);

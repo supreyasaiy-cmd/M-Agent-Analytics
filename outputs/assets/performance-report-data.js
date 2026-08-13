@@ -1,5 +1,5 @@
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-13T13:12:48.317Z",
+  "generatedAt": "2026-08-13T14:38:55.263Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "31 Jul 2026",

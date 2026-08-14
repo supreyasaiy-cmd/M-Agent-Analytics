@@ -574,7 +574,29 @@
     const metric = (rows,days=30)=>{const sessions=sum(rows,"sessions"), questions=sum(rows,"questions"), success=sum(rows,"success"), apology=sum(rows,"apology"), rating=rows.reduce((a,b)=>a+safeNumber(b.rating)*safeNumber(b.sessions),0), dayCount=days||1;return {sessions,questions,avg:questions/dayCount,successRate:questions?success/questions*100:0,apologyRate:questions?apology/questions*100:0,rating:sessions?rating/sessions:0,success,apology}};
     const delta = (a,b)=>{const next=safeNumber(a), base=safeNumber(b);return base?((next-base)/base*100):(next?100:0)};
     const parsePerformance = text => ({sessions:+(text.match(/([\d,]+) sessions/)?.[1]||"0").replace(/,/g,""),questions:+(text.match(/([\d,]+) questions/)?.[1]||"0").replace(/,/g,""),rating:+(text.match(/([\d.]+) rating/)?.[1]||"0")});
-    const activeTimeline = asset => history.filter(x=>x.assetId===asset);
+    const activeTimeline = asset => {
+      const baseHistory = history.filter(item => item.assetId === asset);
+      const performanceEvents = events
+        .filter(event => event.asset === asset)
+        .map(event => ({
+          assetId: asset,
+          range: event.date,
+          name: event.event,
+          loc: event.location || event.original || "Event location",
+          type: "Event",
+          note: event.notes || "Borrowed"
+        }));
+      const mergedHistory = [...baseHistory];
+      performanceEvents.forEach(item => {
+        const exists = mergedHistory.some(existing =>
+          existing.assetId === item.assetId &&
+          existing.name === item.name &&
+          existing.range === item.range
+        );
+        if (!exists) mergedHistory.push(item);
+      });
+      return mergedHistory.sort((a,b)=>String(eventSortDate(b.range)).localeCompare(String(eventSortDate(a.range))));
+    };
     const getTopics = (monthId,totalQuestions) => {
       if(topics[monthId]) return topics[monthId];
       const seed=topics["2026-06"];

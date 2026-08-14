@@ -1,6 +1,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { dirname, extname, join } from "node:path";
 import Papa from "papaparse";
+import XLSX from "xlsx";
 
 const reportFiles = {
   "2025-09": {
@@ -44,6 +45,12 @@ const reportFiles = {
   "2026-07": {
     message: "Perfomance Reports/0726 July/messageLog-export-2026-07-01-to-2026-07-31-90ce9043.csv",
     rating: "Perfomance Reports/0726 July/ratings-export-2026-07-01-to-2026-07-31-90ce9043.csv"
+  },
+  "2026-08": {
+    message: "Perfomance Reports/0826 Aug/M-Agent Report 07-13082026_Woman Inspired2026.xlsx",
+    messageSheet: "Raw",
+    rating: "Perfomance Reports/0826 Aug/M-Agent Report 07-13082026_Woman Inspired2026.xlsx",
+    ratingSheet: "Rating"
   }
 };
 
@@ -89,6 +96,15 @@ const verifiedOverviewMonthlyOverrides = {
     rating: 2.66,
     ratingCount: 90,
     activeMachines: 7
+  },
+  "2026-08": {
+    sessions: 64,
+    questions: 103,
+    success: 95,
+    apology: 8,
+    rating: 3,
+    ratingCount: 8,
+    activeMachines: 1
   }
 };
 
@@ -197,6 +213,14 @@ const eventCatalog = [
     location: "QSNCC",
     setup: "2026-06-11",
     returnDate: "2026-06-11"
+  },
+  {
+    event: "Women Inspired 2026 Sunflower Social Club",
+    asset: "NO5-M3-EVT-01",
+    original: "M8 Bangkapi - Dining Zone ชั้น 3",
+    location: "The Mall Lifestore Bangkapi M8",
+    setup: "2026-08-07",
+    returnDate: "2026-08-13"
   }
 ];
 
@@ -207,6 +231,23 @@ export function parseCsv(path) {
     skipEmptyLines: true
   });
   return parsed.data;
+}
+
+function parseWorkbookSheet(path, sheetName) {
+  const workbook = XLSX.readFile(path);
+  const targetSheetName = sheetName || workbook.SheetNames[0];
+  const sheet = workbook.Sheets[targetSheetName];
+  if (!sheet) {
+    throw new Error(`Missing sheet "${targetSheetName}" in ${path}`);
+  }
+  return XLSX.utils.sheet_to_json(sheet, { defval: "" });
+}
+
+function parseTabularFile(path, sheetName) {
+  const extension = extname(path).toLowerCase();
+  if (extension === ".csv") return parseCsv(path);
+  if (extension === ".xlsx" || extension === ".xls") return parseWorkbookSheet(path, sheetName);
+  throw new Error(`Unsupported report format: ${path}`);
 }
 
 export function normalizeDate(value) {
@@ -376,7 +417,7 @@ export function buildPerformanceReportData(rootDir) {
   const monthAssetWeekdayCounts = {};
 
   for (const [monthId, files] of Object.entries(reportFiles)) {
-    const messageRows = parseCsv(join(rootDir, files.message));
+    const messageRows = parseTabularFile(join(rootDir, files.message), files.messageSheet);
     const metricsByAsset = {};
     const rawMetricBucket = createMetricBucket();
     const rawMachineIds = new Set();
@@ -458,7 +499,7 @@ export function buildPerformanceReportData(rootDir) {
     }
 
     if (files.rating) {
-      const ratingRows = parseCsv(join(rootDir, files.rating));
+      const ratingRows = parseTabularFile(join(rootDir, files.rating), files.ratingSheet);
       for (const row of ratingRows) {
         const rating = Number(row.rating || 0);
         if (rating > 0) rawMetricBucket.ratings.push(rating);
@@ -673,7 +714,7 @@ export function buildPerformanceReportData(rootDir) {
   );
 
   for (const [monthId, file] of Object.entries(legacyEventFiles)) {
-    const messageRows = parseCsv(join(rootDir, file));
+    const messageRows = parseTabularFile(join(rootDir, file));
     for (const row of messageRows) {
       const start = normalizeDate(row.startAt);
       const localDate = formatLocalIsoDate(start);

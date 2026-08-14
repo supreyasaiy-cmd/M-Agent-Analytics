@@ -1,8 +1,8 @@
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-13T14:38:55.263Z",
+  "generatedAt": "2026-08-14T15:09:37.747Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
-  "historyEnd": "31 Jul 2026",
+  "historyEnd": "13 Aug 2026",
   "monthMeta": {
     "2025-09": {
       "coverageStart": "2025-09-01",
@@ -47,6 +47,10 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     "2026-07": {
       "coverageStart": "2026-07-01",
       "coverageEnd": "2026-07-31"
+    },
+    "2026-08": {
+      "coverageStart": "2026-08-07",
+      "coverageEnd": "2026-08-13"
     }
   },
   "csvMachineMetrics": {
@@ -593,6 +597,22 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         7,
         2.38
       ]
+    },
+    "2026-08": {
+      "NO5-M3-EVT-01": [
+        64,
+        103,
+        52,
+        5,
+        46,
+        69,
+        34,
+        0,
+        0,
+        95,
+        8,
+        3
+      ]
     }
   },
   "rawMonthlyMetrics": {
@@ -771,6 +791,22 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "rating": 2.66,
       "ratingCount": 90,
       "activeMachines": 7
+    },
+    "2026-08": {
+      "sessions": 64,
+      "questions": 103,
+      "voice": 52,
+      "quickReply": 5,
+      "keyboard": 46,
+      "thai": 69,
+      "english": 34,
+      "chinese": 0,
+      "others": 0,
+      "success": 95,
+      "apology": 8,
+      "rating": 3,
+      "ratingCount": 8,
+      "activeMachines": 1
     }
   },
   "dailyAssetMetrics": {
@@ -13461,6 +13497,116 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         5,
         0
       ]
+    },
+    "2026-08-13": {
+      "NO5-M3-EVT-01": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
+      ]
+    },
+    "2026-08-12": {
+      "NO5-M3-EVT-01": [
+        11,
+        14,
+        6,
+        0,
+        8,
+        8,
+        6,
+        0,
+        0,
+        13,
+        1,
+        4
+      ]
+    },
+    "2026-08-11": {
+      "NO5-M3-EVT-01": [
+        6,
+        13,
+        7,
+        1,
+        5,
+        10,
+        3,
+        0,
+        0,
+        12,
+        1,
+        2
+      ]
+    },
+    "2026-08-10": {
+      "NO5-M3-EVT-01": [
+        20,
+        42,
+        23,
+        3,
+        16,
+        25,
+        17,
+        0,
+        0,
+        38,
+        4,
+        3.67
+      ]
+    },
+    "2026-08-09": {
+      "NO5-M3-EVT-01": [
+        19,
+        23,
+        6,
+        1,
+        16,
+        17,
+        6,
+        0,
+        0,
+        22,
+        1,
+        3
+      ]
+    },
+    "2026-08-08": {
+      "NO5-M3-EVT-01": [
+        3,
+        4,
+        4,
+        0,
+        0,
+        3,
+        1,
+        0,
+        0,
+        4,
+        0
+      ]
+    },
+    "2026-08-07": {
+      "NO5-M3-EVT-01": [
+        4,
+        6,
+        5,
+        0,
+        1,
+        5,
+        1,
+        0,
+        0,
+        5,
+        1,
+        1
+      ]
     }
   },
   "topQuestionsByMonth": {
@@ -14144,6 +14290,68 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         "สวัสดีค่ะ",
         "Others",
         14
+      ]
+    ],
+    "2026-08": [
+      [
+        "promotion",
+        "Promotion",
+        9
+      ],
+      [
+        "MCard",
+        "Others",
+        9
+      ],
+      [
+        "WOMEN INSPIRED 2026 SUNFLOWER SOCIAL CLUB",
+        "Others",
+        4
+      ],
+      [
+        "Directory",
+        "Directory",
+        3
+      ],
+      [
+        "hello",
+        "Others",
+        2
+      ],
+      [
+        "สวัสดี",
+        "Others",
+        2
+      ],
+      [
+        "hi",
+        "Others",
+        2
+      ],
+      [
+        "ชื่ออะไร",
+        "Others",
+        2
+      ],
+      [
+        "วันนี้มาทำอะไรที่นี่คะ",
+        "Others",
+        2
+      ],
+      [
+        "Hello",
+        "Others",
+        1
+      ],
+      [
+        "MAGIC DISCOUNT: Instant Savings & Double Points",
+        "Promotion",
+        1
+      ],
+      [
+        "ใช่หรอ",
+        "Others",
+        1
       ]
     ]
   },
@@ -16475,6 +16683,70 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           1
         ]
       ]
+    },
+    "2026-08": {
+      "NO5-M3-EVT-01": [
+        [
+          "promotion",
+          "Promotion",
+          9
+        ],
+        [
+          "MCard",
+          "Others",
+          9
+        ],
+        [
+          "WOMEN INSPIRED 2026 SUNFLOWER SOCIAL CLUB",
+          "Others",
+          4
+        ],
+        [
+          "Directory",
+          "Directory",
+          3
+        ],
+        [
+          "hello",
+          "Others",
+          2
+        ],
+        [
+          "สวัสดี",
+          "Others",
+          2
+        ],
+        [
+          "hi",
+          "Others",
+          2
+        ],
+        [
+          "ชื่ออะไร",
+          "Others",
+          2
+        ],
+        [
+          "วันนี้มาทำอะไรที่นี่คะ",
+          "Others",
+          2
+        ],
+        [
+          "Hello",
+          "Others",
+          1
+        ],
+        [
+          "MAGIC DISCOUNT: Instant Savings & Double Points",
+          "Promotion",
+          1
+        ],
+        [
+          "ใช่หรอ",
+          "Others",
+          1
+        ]
+      ]
     }
   },
   "hourlyByAssetByMonth": {
@@ -18535,6 +18807,46 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           1
         ]
       ]
+    },
+    "2026-08": {
+      "NO5-M3-EVT-01": [
+        [
+          11,
+          6
+        ],
+        [
+          12,
+          5
+        ],
+        [
+          13,
+          3
+        ],
+        [
+          14,
+          9
+        ],
+        [
+          15,
+          11
+        ],
+        [
+          16,
+          14
+        ],
+        [
+          17,
+          10
+        ],
+        [
+          18,
+          13
+        ],
+        [
+          19,
+          32
+        ]
+      ]
     }
   },
   "weekdayByAssetByMonth": {
@@ -19699,6 +20011,38 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           0
         ]
       ]
+    },
+    "2026-08": {
+      "NO5-M3-EVT-01": [
+        [
+          "Mon",
+          42
+        ],
+        [
+          "Tue",
+          13
+        ],
+        [
+          "Wed",
+          14
+        ],
+        [
+          "Thu",
+          1
+        ],
+        [
+          "Fri",
+          6
+        ],
+        [
+          "Sat",
+          4
+        ],
+        [
+          "Sun",
+          23
+        ]
+      ]
     }
   },
   "topicSummaryByMonth": {
@@ -20358,6 +20702,38 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         1,
         0
       ]
+    ],
+    "2026-08": [
+      [
+        "Others",
+        71,
+        69
+      ],
+      [
+        "Promotion",
+        14,
+        14
+      ],
+      [
+        "Events",
+        8,
+        8
+      ],
+      [
+        "Directory",
+        7,
+        7
+      ],
+      [
+        "Store Information",
+        2,
+        2
+      ],
+      [
+        "Restaurant",
+        1,
+        1
+      ]
     ]
   },
   "brandSummaryByMonth": {
@@ -20721,6 +21097,12 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       [
         "Power Mall",
         1
+      ]
+    ],
+    "2026-08": [
+      [
+        "M Card",
+        10
       ]
     ]
   },
@@ -22262,6 +22644,34 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           1
         ]
       ]
+    },
+    "2026-08": {
+      "NO5-M3-EVT-01": [
+        [
+          "Others",
+          71
+        ],
+        [
+          "Promotion",
+          14
+        ],
+        [
+          "Events",
+          8
+        ],
+        [
+          "Directory",
+          7
+        ],
+        [
+          "Store Information",
+          2
+        ],
+        [
+          "Restaurant",
+          1
+        ]
+      ]
     }
   },
   "brandByAssetByMonth": {
@@ -23086,6 +23496,14 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           2
         ]
       ]
+    },
+    "2026-08": {
+      "NO5-M3-EVT-01": [
+        [
+          "M Card",
+          10
+        ]
+      ]
     }
   },
   "eventHistory": [
@@ -23218,6 +23636,19 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "returnDate": "2026-06-11",
       "performance": "96 sessions, 247 questions, 3.5 rating",
       "notes": "Performance calculated automatically from the Performance Reports CSV for 2026-06-11."
+    },
+    {
+      "id": 10,
+      "month": "2026-08",
+      "event": "Women Inspired 2026 Sunflower Social Club",
+      "date": "2026-08-07 to 2026-08-13",
+      "asset": "NO5-M3-EVT-01",
+      "original": "M8 Bangkapi - Dining Zone ชั้น 3",
+      "location": "The Mall Lifestore Bangkapi M8",
+      "setup": "2026-08-07",
+      "returnDate": "2026-08-13",
+      "performance": "64 sessions, 103 questions, 3.0 rating",
+      "notes": "Performance calculated automatically from the Performance Reports CSV for 2026-08-07 to 2026-08-13."
     }
   ]
 };

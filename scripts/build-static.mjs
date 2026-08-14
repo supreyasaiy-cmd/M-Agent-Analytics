@@ -49,7 +49,8 @@ const eventAssetCopies = [
   ["Power Mall Electronica.png", "event-electronica-2025.png"],
   ["SUSTAINABILITY FORUM 2026 Shift Forward.png", "event-sustainability-forum-2026.png"],
   ["World Pup - M Pet Club.png", "event-world-pup-expo-2025.png"],
-  ["อร่อยทั่วไทย M8.png", "event-aroi-thua-thai-m8.png"]
+  ["อร่อยทั่วไทย M8.png", "event-aroi-thua-thai-m8.png"],
+  ["Women Inspired 2026 Sunflower Social Club.png", "event-women-inspired-2026-sunflower-social-club.png"]
 ];
 
 if (!existsSync(dashboardFile)) {

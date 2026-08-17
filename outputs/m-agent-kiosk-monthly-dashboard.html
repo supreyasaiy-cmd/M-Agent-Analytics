@@ -729,7 +729,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-17T11:37:04.233Z",
+  "generatedAt": "2026-08-17T11:45:48.814Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "13 Aug 2026",
@@ -31693,7 +31693,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       const [page,setPage]=useState(()=>{const id=(location.hash||"").replace("#","");return pageById(id).id});
       const aggregatePages=new Set(["overview","sessions","questions-page","ratings","success-rate","language-analysis","user-behavior"]);
       const useRawAggregate=aggregatePages.has(page);
-      const monthlyAggregateMetrics=useRawAggregate?{...authoritativeMonthlyMetrics,...rawMonthlySummary}:authoritativeMonthlyMetrics;
+      const monthlyAggregateMetrics=useRawAggregate?Object.fromEntries(Object.keys({...rawMonthlySummary,...authoritativeMonthlyMetrics}).map(id=>[id,{...rawMonthlySummary[id],...authoritativeMonthlyMetrics[id]}])):authoritativeMonthlyMetrics;
       const [sidebarOpen,setSidebarOpen]=useState(false);
       useEffect(()=>{const syncPage=()=>{const id=(location.hash||"").replace("#","");if(id)setPage(pageById(id).id)};syncPage();window.addEventListener("hashchange",syncPage);return()=>window.removeEventListener("hashchange",syncPage)},[]);
       const appliedMonthId=months.some(m=>m.id===appliedPeriod.end.slice(0,7))?appliedPeriod.end.slice(0,7):month;

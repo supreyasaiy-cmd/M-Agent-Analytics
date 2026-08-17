@@ -452,6 +452,7 @@
     .compare-chart-head p{margin-top:8px;color:var(--muted);font-size:13px;line-height:1.55;max-width:620px}
     .compare-chart-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:flex-end}
     .compare-chart-actions select{min-width:170px}
+    .compare-chart-actions .compare-filter-section select{min-width:150px}
     .compare-chart-legend{display:flex;gap:10px;flex-wrap:wrap}
     .compare-chart-legend span{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:#f8fafc;border:1px solid var(--line);color:#344054;font-size:12px;font-weight:760}
     .compare-chart-legend i{display:inline-block;width:10px;height:10px;border-radius:999px;flex:0 0 10px}
@@ -731,7 +732,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-17T15:42:44.499Z",
+  "generatedAt": "2026-08-17T15:54:47.210Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "13 Aug 2026",
@@ -31415,10 +31416,6 @@ window.__PERFORMANCE_REPORT_DATA__ = {
                 :"Compare selected kiosks inside one selected date window. Best for ranking locations and operating decisions.")
             ))
           ),
-          h("div",{className:"compare-view-hint"},
-            h("span",null,activeViewLabel),
-            h("span",null,activeViewDescription)
-          ),
           h("div",{className:"compare-filter-sections"},
             h("label",{className:"compare-filter-section"},"Start Date",
               h("input",{type:"date",value:start,className:dateInvalid?"invalid":"",onChange:e=>{console.info("[M Agent Compare] startDate",e.target.value);setStart(e.target.value)},"aria-invalid":dateInvalid})
@@ -31463,9 +31460,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           !isMonthView&&h("div",{className:"compare-machine-panel"},
             h("h4",null,"Machine Selection"),
             h("div",{className:"compare-summary"},
-              h("span",null,`${selected.length} of 5 machines selected.`),
-              h("span",null,`Applied view: ${activeIds.length} machine${activeIds.length===1?"":"s"}.`),
-              h("span",null,`Date range: ${start || "not set"} to ${end || "not set"}.`)
+              h("span",null,`${selected.length} of 5 machines selected.`)
             ),
             machineCompareMode!=="All Machines"&&h("div",{className:"compare-selection-grid"},
               machineSpecsAll.map(spec=>{const master=kiosks.find(k=>k.assetId===spec.assetId), checked=selected.includes(spec.assetId), inputType=machineCompareMode==="Single Machine"?"radio":"checkbox";return h("button",{type:"button",key:spec.assetId,className:`compare-machine-card ${checked?"selected":""}`,onClick:()=>{console.info("[M Agent Compare] machine",spec.assetId);onToggleMachine?.(spec.assetId,machineCompareMode==="Single Machine")},"aria-pressed":checked},
@@ -31488,7 +31483,6 @@ window.__PERFORMANCE_REPORT_DATA__ = {
             )
           ),
           filterError&&h("div",{className:"filter-status error",role:"alert"},filterError),
-          !filterError&&appliedSummary&&h("div",{className:"filter-status","aria-live":"polite"},appliedSummary),
           !filterError&&!isApplying&&!machines.length&&h("div",{className:"filter-status empty"},"No results: choose at least one machine or reset filters.")
         ),
         h("div",{className:"compare-results-head"},

@@ -729,7 +729,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-17T10:43:42.794Z",
+  "generatedAt": "2026-08-17T11:23:39.376Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "13 Aug 2026",
@@ -31936,9 +31936,15 @@ window.__PERFORMANCE_REPORT_DATA__ = {
                 h("div",{className:"card-title"},
                   h("span",{className:"icon"},h(Icon,{name:"trend"})),
                   h("div",null,
-                    h("h3",null,"10-month trend"),
+                    h("h3",null,`${monthRows.length}-month trend`),
                     h("p",{className:"subtitle"},"Questions and sessions trend across the full available history.")
                   )
+                ),
+                h("div",{className:"chart-legend",style:{display:"flex",gap:"18px",alignItems:"center"}},
+                  h("span",{style:{display:"inline-flex",alignItems:"center",gap:"7px",fontSize:"12px",fontWeight:700,color:"#475569"}},
+                    h("i",{style:{width:"16px",height:"3px",borderRadius:"2px",background:"#2563eb",display:"inline-block"}}),"Questions"),
+                  h("span",{style:{display:"inline-flex",alignItems:"center",gap:"7px",fontSize:"12px",fontWeight:700,color:"#475569"}},
+                    h("i",{style:{width:"16px",height:"0",borderTop:"3px dashed #0891b2",display:"inline-block"}}),"Sessions")
                 )
               ),
               h(AreaChart,{monthsData:monthRows})

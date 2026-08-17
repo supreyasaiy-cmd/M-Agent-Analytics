@@ -719,7 +719,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-17T04:42:03.042Z",
+  "generatedAt": "2026-08-17T07:02:48.159Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "13 Aug 2026",
@@ -24622,10 +24622,9 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     const sidebarGroups = [
       {id:"dashboard",title:"Dashboard",subtitle:"Portfolio overview",icon:"activity",items:[["overview","Overview","Monthly command view"],["recommendation","Recommendation","Executive deployment recommendation"]]},
       {id:"machine",title:"Machine Analytics",subtitle:"Status, comparison, timeline",icon:"cpu",items:[["machine-status","Machine Status","Operational cards"],["machine-comparison","Machine Comparison","Compare all 5 machines"],["machine-timeline","Machine & Event Timeline","Movement, event, borrowing"]]},
-      {id:"performance",title:"Performance & User Analytics",subtitle:"Volume, quality, customer intent, and KM actions",icon:"trend",items:[["sessions","Sessions","Usage trend"],["questions-page","Questions & Topics","Questions, topics, brands"],["ratings","Ratings & Success","Rating and answer quality"],["user-behavior","User Behavior","Journey and peak hours"],["wrong-answers","KM Actions","Answer gaps and content fixes"]]},
-      {id:"import",title:"Import Data",subtitle:"Add a Data Report file",icon:"upload",items:[["import-data","Import Data","Add a Data Report file"]]}
+      {id:"performance",title:"Performance & User Analytics",subtitle:"Volume, quality, and customer intent",icon:"trend",items:[["sessions","Sessions","Usage trend"],["questions-page","Questions & Topics","Questions, topics, brands"],["ratings","Ratings & Success","Rating and answer quality"],["user-behavior","User Behavior","Journey and peak hours"]]}
     ];
-    const pageAliases = {machines:"machine-status",compare:"machine-comparison",movement:"machine-timeline",performance:"sessions",behavior:"user-behavior",km:"wrong-answers",events:"machine-timeline",insights:"overview","executive-summary":"overview",recommendations:"recommendation",data:"import-data",import:"import-data","monthly-report":"overview",export:"overview","missing-knowledge":"wrong-answers","ai-improvements":"wrong-answers","success-rate":"ratings","question-categories":"questions-page","brand-mentions":"questions-page","language-analysis":"overview","event-timeline":"machine-timeline","event-performance":"machine-timeline","borrowing-history":"machine-timeline"};
+    const pageAliases = {machines:"machine-status",compare:"machine-comparison",movement:"machine-timeline",performance:"sessions",behavior:"user-behavior",km:"wrong-answers",events:"machine-timeline",insights:"overview","executive-summary":"overview",recommendations:"recommendation",data:"overview",import:"overview","import-data":"overview","monthly-report":"overview",export:"overview","missing-knowledge":"wrong-answers","ai-improvements":"wrong-answers","success-rate":"ratings","question-categories":"questions-page","brand-mentions":"questions-page","language-analysis":"overview","event-timeline":"machine-timeline","event-performance":"machine-timeline","borrowing-history":"machine-timeline"};
     const pageList = sidebarGroups.flatMap(group=>group.items.map(item=>({id:item[0],label:item[1],subtitle:item[2],group:group.title,groupSubtitle:group.subtitle,icon:group.icon})));
     const pageById = id => pageList.find(p=>p.id===(pageAliases[id]||id)) || pageList[0];
     const monthPos = id => Math.max(0, months.findIndex(m=>m.id===id));
@@ -25452,7 +25451,6 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ["Highest performing location",best?`Best site: ${kioskMap.get(best.assetId)?.location}. ${n(best.questions)} questions and ${pct(best.success/best.questions*100)} success.`:"No active machine in this filter.","trend"],
         ["Lowest engagement",low?`Needs review: ${low.assetId}. Only ${n(low.sessions)} sessions, so check traffic and visibility.`:"No low-volume signal available.","map"],
         ["Most popular topic",topTopic?`Top demand: ${topTopic[0]}. ${n(topTopic[1])} questions; refresh campaign and M Card answers first.`:"No topic data for this month.","message"],
-        ["KM update priority",`Action queue: ${openErrors} open gaps. Fix store hours, parking, and event-location answers first.`,"brain"],
         ["Machine growth signal",best?`Use ${best.assetId} as the benchmark for placement and prompt design this month.`:"Growth signal needs data.","activity"],
         ["Relocation watchlist",low?`Watchlist: ${low.assetId}. Recheck placement or campaign fit before next review.`:"No relocation watchlist.","alert"]
       ];
@@ -25521,68 +25519,20 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       const renderKmCards=()=>h("div",{className:"bento km-grid"},h(KmSummaryCard,{icon:"alert",tone:"rose",title:"Wrong answers",value:`${errorRows.filter(x=>x.issue==="Wrong info").length} issue(s)`}),h(KmSummaryCard,{icon:"brain",tone:"amber",title:"Missing knowledge",value:`${errorRows.filter(x=>x.issue==="Missing info").length} item(s)`}),h(KmGaugeCard,{icon:"gauge",title:"AI Confidence",value:cur.successRate,label:"confidence"}),h(KmGaugeCard,{icon:"check",tone:"green",title:"Knowledge coverage",value:Math.max(0,100-cur.apologyRate),label:"coverage"}));
       const renderPage=()=>{
         if(page==="machine-comparison") return h(MachineComparisonSection,machineComparisonProps);
-        if(page==="import-data") return h(PageShell,null,
-          h("div",{className:"card"},
-            h("div",{className:"card-head"},
-              h("div",{className:"card-title"},
-                h("span",{className:"icon"},h(Icon,{name:"upload"})),
-                h("div",null,h("h3",null,"Import Data Report"),h("p",{className:"subtitle"},"Add the latest report file for dashboard data preparation."))
-              )
-            ),
-            h("div",{className:"upload-area"},
-              h("p",{className:"upload-note"},"Choose one Data Report file. Supported formats: CSV, Excel, and JSON."),
-              h("label",{className:"upload-btn",htmlFor:"data-report-file"},h(Icon,{name:"upload",size:18}),"Choose Data Report"),
-              h("input",{id:"data-report-file",className:"upload-file",type:"file",accept:".csv,.xlsx,.xls,.json",onChange:e=>handleImportFile(e.target.files?.[0]||null)}),
-              importFile&&h("div",{className:"upload-selection"},h(Icon,{name:isImporting?"clock":"check",size:18}),h("span",null,isImporting?`Reading ${importFile.name}...`:importFile.name)),
-              importError&&h("div",{className:"upload-error"},importError)
-            ),
-            importDataset&&h("div",{className:"import-preview-card"},
-              h("div",{className:"import-preview-head"},
-                h("div",null,
-                  h("h4",null,importDataset.fileName),
-                  h("p",null,"The file was read successfully in this local dashboard.")
-                ),
-                h("div",{className:"import-preview-badges"},
-                  h("span",{className:"import-badge"},`${n(importDataset.rowCount)} rows`),
-                  h("span",{className:"import-badge"},`${n(importDataset.columns?.length||0)} columns`)
-                )
-              ),
-              h("div",{className:"import-preview-columns"},
-                (importDataset.columns||[]).slice(0,18).map(column=>h("span",{key:column,className:"import-column-pill"},column))
-              ),
-              importDataset.preview?.length
-                ? h("div",{className:"import-preview-table"},
-                    h("table",null,
-                      h("thead",null,
-                        h("tr",null,(importDataset.columns||[]).slice(0,8).map(column=>h("th",{key:column},column)))
-                      ),
-                      h("tbody",null,
-                        importDataset.preview.slice(0,6).map((row,index)=>
-                          h("tr",{key:index},
-                            (importDataset.columns||[]).slice(0,8).map(column=>h("td",{key:column},previewCellValue(row?.[column])))
-                          )
-                        )
-                      )
-                    )
-                  )
-                : h("div",{className:"import-preview-empty"},"This file was read, but there are no preview rows to show yet.")
-            )
-          )
-        );
+        if(page==="import-data") return h(PageShell,null);
         if(page==="overview") return h(PageShell,null,
           h("section",{className:"hero"},
             h("div",{className:"hero-copy"},
               h("div",null,
                 h("span",{className:"eyebrow"},h("span",{className:"pulse"}),"Monthly command view"),
-                h("h1",null,"AI kiosk performance, movement, events, and knowledge gaps in one workspace."),
-                h("p",null,`${monthObj.label} combines machine status, usage, event borrowing, and KM action queues for management review.`)
+                h("h1",null,"AI kiosk performance, movement, and events in one workspace."),
+                h("p",null,`${monthObj.label} combines machine status, usage, and event borrowing for management review.`)
               ),
               h("div",{className:"hero-actions"},
                 h("button",{className:"hero-chip primary",onClick:()=>goPage("sessions"),type:"button","aria-label":"Open sessions monthly readout"},h(Icon,{name:"activity",size:16}),"Live monthly readout"),
                 h("button",{className:"hero-chip",onClick:()=>goPage("recommendation"),type:"button","aria-label":"Open executive recommendation"},h(Icon,{name:"check",size:16}),"Recommendation"),
                 h("button",{className:"hero-chip",onClick:()=>goPage("machine-comparison"),type:"button","aria-label":"Open Machine Comparison"},h(Icon,{name:"cpu",size:16}),"Open Machine Comparison"),
-                h("button",{className:"hero-chip",onClick:()=>goPage("machine-timeline"),type:"button","aria-label":"Open machine timeline"},h(Icon,{name:"map",size:16}),"Location and event separated"),
-                h("button",{className:"hero-chip",onClick:()=>goPage("wrong-answers"),type:"button","aria-label":"Open KM action queue"},h(Icon,{name:"brain",size:16}),"KM action queue")
+                h("button",{className:"hero-chip",onClick:()=>goPage("machine-timeline"),type:"button","aria-label":"Open machine timeline"},h(Icon,{name:"map",size:16}),"Location and event separated")
               )
             )
           ),
@@ -25895,7 +25845,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         if(page==="brand-mentions") return h(PageShell,{title:"Brand Mentions",sub:"Brands customers mention most often in kiosk conversations."},h("div",{className:"bento"},h("div",{className:"card span-6"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"search"})),h("div",null,h("h3",null,"Brand ranking"),h("p",{className:"subtitle"},"Horizontal ranking by total mentions.")))),h(BrandComparison,{brands:comparison.brandTotals})),h("div",{className:"card span-6"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"message"})),h("div",null,h("h3",null,"Brand cloud"),h("p",{className:"subtitle"},"Word size reflects mention volume.")))),h(BrandCloud,{brands:comparison.brandTotals}))));
         if(page==="language-analysis") return h(PageShell,{title:"Language Analysis",sub:"Thai, English, Chinese, Japanese, and other-language usage."},h("div",{className:"bento"},h(Donut,{title:"Language distribution",label:"Thai, English, Chinese, and others",total:langTotal,segments:[{name:"Thai",value:sum(filteredRows,"thai"),color:"#2563eb"},{name:"English",value:sum(filteredRows,"english"),color:"#0891b2"},{name:"Chinese",value:sum(filteredRows,"chinese"),color:"#f59e0b"},{name:"Others",value:sum(filteredRows,"others"),color:"#7c3aed"}]}),h("div",{className:"card span-8"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"globe"})),h("div",null,h("h3",null,"Language comparison by machine"),h("p",{className:"subtitle"},"100% stacked language share.")))),h(LanguageStacked,{rows:comparison.current}))));
         if(page==="user-behavior") return h(PageShell,{title:"User Behavior",sub:"Input methods, peak hours, conversation journey, and flow analysis."},h("div",{className:"bento"},h("div",{className:"card span-12 behavior-split-card"},h("div",{className:"behavior-split"},h("div",{className:"behavior-panel"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"activity"})),h("div",null,h("h3",null,"Peak hour heatmap"),h("p",{className:"subtitle"},"Usage intensity by weekday and operating hour.")))),h(Heatmap)),h("div",{className:"behavior-panel"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"globe"})),h("div",null,h("h3",null,"Input method distribution"),h("p",{className:"subtitle"},"How users interact with kiosks")))),h(InputMethodSummary,{total:inputTotal,voice:sum(filteredRows,"voice"),quick:sum(filteredRows,"quickReply"),keyboard:sum(filteredRows,"keyboard")})))),h("div",{className:"card span-4"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon amber"},h(Icon,{name:"activity"})),h("div",null,h("h3",null,"Conversation journey"),h("p",{className:"subtitle"},"Funnel from question to rated answer.")))),h(Funnel,{questions:cur.questions})),h("div",{className:"card span-4"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"mic"})),h("div",null,h("h3",null,"Question flow"),h("p",{className:"subtitle"},"Input modes flowing to resolved answers.")))),h(Sankey,{total:inputTotal,voice:sum(filteredRows,"voice"),quick:sum(filteredRows,"quickReply"),keyboard:sum(filteredRows,"keyboard")})),h("div",{className:"card span-4"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"gauge"})),h("div",null,h("h3",null,"Branch comparison radar"),h("p",{className:"subtitle"},"Top machine normalized profile.")))),filteredRows.length?h(Radar,{rows:filteredRows}):h("div",{className:"empty"},"No machine rows in this filter."))));
-        if(page==="wrong-answers") return h(PageShell,{title:"KM Actions",sub:"Answer gaps, missing knowledge, and improvement actions in one place."},renderKmCards(),h("div",{className:"card"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon rose"},h(Icon,{name:"alert"})),h("div",null,h("h3",null,"Answer and knowledge gap detail"),h("p",{className:"subtitle"},"Open by default when action is needed.")))),errorRows.length?h(ErrorCards,{rows:errorRows}):h("div",{className:"empty"},"No answer gaps for the current filter.")),h("div",{className:"card"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon amber"},h(Icon,{name:"brain"})),h("div",null,h("h3",null,"Machine strength analysis"),h("p",{className:"subtitle"},"Strength, weakness, opportunity, and recommendation by machine.")))),h(StrengthCards,{rows:comparison.ranking})));
+        if(page==="wrong-answers") return h(PageShell,null);
         if(page==="event-timeline") return h(PageShell,{title:"Event Timeline",sub:"Calendar-style event and portfolio movement history."},h("div",{className:"bento"},h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon amber"},h(Icon,{name:"calendar"})),h("div",null,h("h3",null,"Global timeline"),h("p",{className:"subtitle"},"Deployment, roadshow, event, avatar update, and consolidation milestones.")))),h(GlobalTimeline)),h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"map"})),h("div",null,h("h3",null,"Event calendar timeline"),h("p",{className:"subtitle"},"Borrowed machine event records.")))),h("div",{className:"timeline-strip"},events.map(e=>h("article",{className:"timeline-item",key:e.id},h("div",{className:"timeline-date"},e.date),h("b",null,e.event),h("p",null,`${e.asset} · ${e.location} · ${e.performance}`)))))));
         if(page==="event-performance") return h(PageShell,{title:"Event Performance",sub:"Event traffic, borrowed machines, and before/after impact.",action:h("button",{className:"action-btn",onClick:()=>goPage("borrowing-history")},"Open Borrowing History")},h("div",{className:"event-grid"},eventRows.length?eventRows.map(e=>h(EventCard,{event:e,key:e.id})):h("div",{className:"empty"},"No event borrowing recorded for this filter.")),h("div",{className:"summary-grid"},h(SummaryCard,{label:"Event Count",value:n(eventRows.length),note:"Selected month",icon:"calendar",tone:"amber"}),h(SummaryCard,{label:"Event Sessions",value:n(eventRows.reduce((a,e)=>a+parsePerformance(e.performance).sessions,0)),note:"From event logs",icon:"activity"}),h(SummaryCard,{label:"Event Questions",value:n(eventRows.reduce((a,e)=>a+parsePerformance(e.performance).questions,0)),note:"From event logs",icon:"message"}),h(SummaryCard,{label:"Avg Event Rating",value:(eventRows.reduce((a,e)=>a+parsePerformance(e.performance).rating,0)/(eventRows.length||1)).toFixed(1) + "/5",note:"Simple event average",icon:"gauge"})));
         if(page==="borrowing-history") return h(PageShell,{title:"Borrowing History",sub:"Detailed log for borrowed machines, setup dates, return dates, and event performance."},h("div",{className:"card"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon amber"},h(Icon,{name:"calendar"})),h("div",null,h("h3",null,"Borrowing log"),h("p",{className:"subtitle"},"Event display connects to event records only, not machine master location.")))),eventTable));

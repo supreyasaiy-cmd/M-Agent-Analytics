@@ -165,6 +165,13 @@
     .overview-summary-item p{margin:0;color:#475467;font-size:13px;line-height:1.45;overflow-wrap:anywhere}
     .overview-summary-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:18px}
     .overview-summary-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+    .overview-mentioned-list{display:grid;gap:10px}
+    .overview-mentioned-row{display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;gap:14px;border:1px solid var(--line-2);border-radius:16px;background:#fbfcfe;padding:14px 16px;min-width:0}
+    .overview-mentioned-rank{width:34px;height:34px;border-radius:12px;background:#edf4ff;color:var(--blue);display:grid;place-items:center;font-weight:900;font-size:12px}
+    .overview-mentioned-question{font-weight:900;color:var(--ink);line-height:1.25;overflow-wrap:anywhere}
+    .overview-mentioned-meta{margin-top:4px;color:#667085;font-size:12px;line-height:1.35;overflow-wrap:anywhere}
+    .overview-mentioned-count{text-align:right;color:var(--ink);font-size:20px;font-weight:900;white-space:nowrap}
+    .overview-mentioned-count span{display:block;color:#667085;font-size:10px;font-weight:850;text-transform:uppercase;letter-spacing:.04em}
     .overview-machine-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
     .overview-machine-card{border:1px solid var(--line-2);border-radius:18px;background:#fbfcfe;padding:16px 18px;display:grid;gap:12px;align-content:start;min-width:0}
     .overview-machine-photo{width:100%;aspect-ratio:16/10;border-radius:16px;overflow:hidden;border:1px solid var(--line-2);background:#fff}
@@ -601,10 +608,12 @@
     .header-filters{display:flex;align-items:center;gap:10px}
     .header-filters .field{min-width:150px}
     .period-control{min-width:min(510px,48vw)}
-    .period-range{display:grid;grid-template-columns:repeat(2,minmax(150px,1fr)) auto;gap:10px;align-items:end}
+    .period-range{display:grid;grid-template-columns:repeat(2,minmax(150px,1fr)) auto auto;gap:10px;align-items:end}
     .period-range .field{min-width:0}
     .period-apply{min-height:42px;border:1px solid #cfd6e2;border-radius:10px;background:#e9edf3;color:#101828;font-size:12px;font-weight:750;padding:0 16px;cursor:pointer;transition:.18s ease}
     .period-apply:hover{background:#dfe5ee;border-color:#b9c3d2}
+    .period-shortcut{min-height:42px;border:1px solid #bfdbfe;border-radius:10px;background:#eff6ff;color:#1d4ed8;font-size:12px;font-weight:850;padding:0 14px;white-space:nowrap;cursor:pointer;transition:.18s ease}
+    .period-shortcut:hover{background:#dbeafe;border-color:#93c5fd}
     .page-view{width:min(1540px,100%);margin:0 auto;padding:30px 36px 56px;animation:pageIn .24s ease both}
     @keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
     .page-stack{display:grid;gap:24px}
@@ -646,6 +655,7 @@
     .app-error-card button{margin-top:18px;border:0;border-radius:14px;background:#be123c;color:#fff;min-height:42px;padding:0 16px;font-weight:850}
     @media(max-width:1320px){.hero,.reco-hero{grid-template-columns:1fr}.kpi-grid{grid-template-columns:repeat(12,minmax(0,1fr))}.kpi-grid .kpi{grid-column:span 6}.span-8,.span-7,.span-6,.span-5,.span-4,.span-3{grid-column:span 12}.event-grid,.insight-grid{grid-template-columns:1fr 1fr}.compare-kpi-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.compare-filter-sections{grid-template-columns:1fr 1fr}.compare-mode-field{grid-column:span 2}}
     @media(max-width:900px){.filter-row{grid-template-columns:1fr}.context-strip{justify-content:flex-start;flex-wrap:wrap;padding:12px}.hero-copy,.hero-visual{min-height:auto;border-radius:20px;padding:24px}.hero-mini,.reco-summary-kpis{grid-template-columns:1fr 1fr}.kpi-grid,.event-grid,.insight-grid,.field-grid,.compare-kpi-grid,.compare-filter-sections,.filter-grid,.behavior-split,.overview-summary-grid,.reco-machine-grid,.reco-insight-grid,.machine-status-summary,.machine-compare-grid,.compare-view-guide{grid-template-columns:1fr}.behavior-panel+.behavior-panel{border-left:0;border-top:1px solid var(--line-2);padding-left:0;padding-top:18px}.kpi-grid .kpi{grid-column:1/-1}.compare-mode-field,.compare-filter-section.full-span{grid-column:auto}.compare-guide,.compare-chart-card{padding:20px;gap:18px}.compare-guide-head,.compare-results-head,.apply-strip,.overview-summary-head{display:grid;gap:12px}.compare-machine-panel{padding-top:18px;gap:12px}.compare-results-head{padding:0}.compare-selection-grid{gap:8px}.compare-machine-card{min-height:122px}.overview-summary-actions{justify-content:flex-start}.segment-control{grid-template-columns:1fr}.donut-layout{grid-template-columns:1fr}.heatmap{grid-template-columns:48px repeat(6,minmax(0,1fr))}.heatmap .hide-sm{display:none}.matrix-row,.stacked-row,.reco-rank-row{grid-template-columns:1fr}.matrix-bars{min-height:120px}.category-heatmap{grid-template-columns:92px repeat(3,minmax(0,1fr))}.category-heatmap .hide-sm{display:none}.hour-compare{grid-template-columns:72px repeat(6,minmax(0,1fr))}.hour-compare .hide-sm{display:none}h1{font-size:32px}.section-head{display:grid}.section-actions{justify-content:flex-start}.reco-machine-top,.reco-score-panel{grid-template-columns:1fr}.reco-kpi-primary,.reco-kpi-secondary{grid-template-columns:repeat(2,minmax(0,1fr))}.reco-machine-title h4{font-size:22px}.reco-score-panel{margin-top:0;min-width:0}}
+    @media(max-width:760px){.overview-mentioned-row{grid-template-columns:34px minmax(0,1fr)}.overview-mentioned-count{text-align:left;grid-column:2}}
     @media(min-width:901px) and (max-width:1320px){.donut-card .donut-layout{grid-template-columns:minmax(150px,176px) minmax(0,1fr)}.donut-card .donut{width:176px}}
     @media(max-width:1100px){
       .sidebar{transform:translateX(-104%);transition:transform .24s ease;box-shadow:30px 0 70px rgba(15,23,42,.14)}
@@ -719,7 +729,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-17T07:02:48.159Z",
+  "generatedAt": "2026-08-17T08:12:20.682Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "13 Aug 2026",
@@ -24433,6 +24443,9 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     const rawMonthlyMetrics = performanceReportSource?.rawMonthlyMetrics || {};
     const dailyAssetMetrics = performanceReportSource?.dailyAssetMetrics || {};
     const monthMeta = performanceReportSource?.monthMeta || {};
+    const fullHistoryRanges = Object.values(monthMeta||{}).filter(item=>item?.coverageStart&&item?.coverageEnd);
+    const fullHistoryStart = fullHistoryRanges.map(item=>item.coverageStart).sort()[0] || "2025-09-01";
+    const fullHistoryEnd = fullHistoryRanges.map(item=>item.coverageEnd).sort().slice(-1)[0] || "2026-08-13";
     const generatedTopicSummaryByMonth = performanceReportSource?.topicSummaryByMonth || {};
     const generatedTopQuestionsByMonth = performanceReportSource?.topQuestionsByMonth || {};
     const generatedTopQuestionsByAssetByMonth = performanceReportSource?.topQuestionsByAssetByMonth || {};
@@ -24631,6 +24644,37 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     const monthById = id => months.find(m=>m.id===id) || months[0];
     function periodLength(period){return period==="Quarterly"?3:period==="Yearly"?12:1}
     function periodMonthIds(anchor,period,offset=0){const start=monthPos(anchor)+offset, len=periodLength(period);return months.slice(start,start+len).map(m=>m.id)}
+    function monthIdsInDateRange(start,end){
+      const startDate=start?new Date(`${start}T00:00:00`):null;
+      const endDate=end?new Date(`${end}T00:00:00`):null;
+      if(!startDate||!endDate||Number.isNaN(+startDate)||Number.isNaN(+endDate)||endDate<startDate)return [month];
+      const selected=months.filter(item=>{
+        const monthStart=new Date(`${item.id}-01T00:00:00`);
+        const monthEnd=new Date(`${item.id}-${String(item.days).padStart(2,"0")}T23:59:59`);
+        return monthEnd>=startDate&&monthStart<=endDate;
+      }).map(item=>item.id);
+      return selected.length?selected:[(end||month).slice(0,7)];
+    }
+    function topMentionedQuestionsForRange(start,end,limit=5){
+      const totals=new Map();
+      monthIdsInDateRange(start,end).forEach(monthId=>{
+        (generatedTopQuestionsByMonth[monthId]||[]).forEach(([question,category,count])=>{
+          const label=display(question,"Question not available");
+          const group=display(category,"Uncategorized");
+          const key=`${label}|||${group}`;
+          const current=totals.get(key)||{question:label,category:group,count:0};
+          current.count+=safeNumber(count);
+          totals.set(key,current);
+        });
+      });
+      return [...totals.values()].sort((a,b)=>b.count-a.count).slice(0,limit).map((item,index)=>({
+        key:`${item.question}-${item.category}-${index}`,
+        question:item.question,
+        category:item.category,
+        machine:"All selected machines",
+        count:item.count
+      }));
+    }
     function customDayCount(start,end,fallback=30){const s=start?new Date(start):null,e=end?new Date(end):null;if(s&&e&&!Number.isNaN(+s)&&!Number.isNaN(+e)&&e>=s)return Math.max(1,Math.round((e-s)/86400000)+1);return fallback}
     function shiftDate(value,offsetDays){const date=value?new Date(`${value}T00:00:00`):null;if(!date||Number.isNaN(+date))return value;date.setDate(date.getDate()+offsetDays);return date.toISOString().slice(0,10)}
     function enumerateDates(start,end){
@@ -25297,9 +25341,9 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         )
       )
     }
-    function WorkspaceHeader({meta,periodStart,setPeriodStart,periodEnd,setPeriodEnd,onApplyPeriod,onMenu,showPeriod=true,periodMode="date",selectedMonth="",setSelectedMonth=()=>{},monthOptions=[]}){return h("header",{className:"workspace-header"},h("div",{className:"header-title"},h("button",{className:"mobile-menu",onClick:onMenu,"aria-label":"Open navigation"},h(Icon,{name:"menu",size:22})),h("span",{className:"icon"},h(Icon,{name:meta.icon||"activity"})),h("div",{style:{minWidth:0}},h("div",{className:"crumb"},h("b",null,meta.group)," / ",meta.label),h("div",{className:"page-title-line"},meta.label))),showPeriod&&h("div",{className:"header-filters"},h("div",{className:"period-control"},periodMode==="monthly"
+    function WorkspaceHeader({meta,periodStart,setPeriodStart,periodEnd,setPeriodEnd,onApplyPeriod,onMenu,showPeriod=true,periodMode="date",selectedMonth="",setSelectedMonth=()=>{},monthOptions=[],onFullHistoryPeriod=null}){return h("header",{className:"workspace-header"},h("div",{className:"header-title"},h("button",{className:"mobile-menu",onClick:onMenu,"aria-label":"Open navigation"},h(Icon,{name:"menu",size:22})),h("span",{className:"icon"},h(Icon,{name:meta.icon||"activity"})),h("div",{style:{minWidth:0}},h("div",{className:"crumb"},h("b",null,meta.group)," / ",meta.label),h("div",{className:"page-title-line"},meta.label))),showPeriod&&h("div",{className:"header-filters"},h("div",{className:"period-control"},periodMode==="monthly"
       ? h("div",{className:"period-range",style:{gridTemplateColumns:"minmax(220px,1fr) auto"}},h("label",{className:"field"},"Monthly",h("select",{value:selectedMonth,onChange:e=>setSelectedMonth(e.target.value)},monthOptions.map(option=>h("option",{key:option.id,value:option.id},option.label)))),h("button",{type:"button",className:"period-apply",onClick:onApplyPeriod},"Apply"))
-      : h("div",{className:"period-range"},h("label",{className:"field"},"Start Date",h("input",{type:"date",value:periodStart,onChange:e=>setPeriodStart(e.target.value)})),h("label",{className:"field"},"End Date",h("input",{type:"date",value:periodEnd,onChange:e=>setPeriodEnd(e.target.value)})),h("button",{type:"button",className:"period-apply",onClick:onApplyPeriod},"Apply")))))}
+      : h("div",{className:"period-range"},h("label",{className:"field"},"Start Date",h("input",{type:"date",value:periodStart,onChange:e=>setPeriodStart(e.target.value)})),h("label",{className:"field"},"End Date",h("input",{type:"date",value:periodEnd,onChange:e=>setPeriodEnd(e.target.value)})),onFullHistoryPeriod&&h("button",{type:"button",className:"period-shortcut",onClick:onFullHistoryPeriod,title:"Show data from first available record to latest record"},"Full history"),h("button",{type:"button",className:"period-apply",onClick:onApplyPeriod},"Apply")))))}
     function previewCellValue(value){
       if(value===null||value===undefined||value==="") return "—";
       if(typeof value==="number"&&Number.isFinite(value)) return String(value);
@@ -25510,12 +25554,14 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       const savePreset=()=>{const preset={name:`${compareView==="month"?"By Month":"By Machine"} · ${machineCompareMode} · ${comparePeriod} · ${topicFilter} · ${brandFilter}`,compareView,machineCompareMode,compareIds,comparePeriod,compareMode,customStart,customEnd,topLimit,topicFilter,brandFilter,languageFilter};const next=[preset,...savedPresets].slice(0,8);setSavedPresets(next);localStorage.setItem("mAgentComparisonPresets",JSON.stringify(next));setPresetMessage("Preset bookmarked")}
       const loadPreset=idx=>{const p=savedPresets[+idx];if(!p)return;setCompareView(p.compareView||"machine");setMachineCompareMode(p.machineCompareMode||"All Machines");setCompareIds(p.compareIds?.length?p.compareIds:allMachineIds);setComparePeriod(p.comparePeriod||"Monthly");setCompareMode(p.compareMode||"Current vs Previous Period");setCustomStart(p.customStart||customStart);setCustomEnd(p.customEnd||customEnd);setTopLimit(p.topLimit||"20");setTopicFilter(p.topicFilter||"All");setBrandFilter(p.brandFilter||"All");setLanguageFilter(p.languageFilter||"All");setFilterError("");setPresetMessage(`Loaded ${p.name}`)}
       const applyHeaderPeriod=()=>{if(page==="machine-status"){const selected=months.find(m=>m.id===headerMonth)||months[0],start=`${selected.id}-01`,end=`${selected.id}-${String(selected.days).padStart(2,"0")}`;setMonth(selected.id);setPeriodStart(start);setPeriodEnd(end);setAppliedPeriod({start,end});return}const id=(periodEnd||"").slice(0,7);setAppliedPeriod({start:periodStart,end:periodEnd});if(months.some(m=>m.id===id)){setMonth(id);setHeaderMonth(id)}}
+      const applyFullHistoryPeriod=()=>{const start=fullHistoryStart,end=fullHistoryEnd;setPeriodStart(start);setPeriodEnd(end);setAppliedPeriod({start,end});const id=(end||"").slice(0,7);if(months.some(m=>m.id===id)){setMonth(id);setHeaderMonth(id)}}
       const goPage=id=>{const next=pageById(id).id;setPage(next);setSidebarOpen(false);if(location.hash!==`#${next}`)location.hash=next;window.scrollTo({top:0,behavior:"smooth"})}
       const meta=pageById(page);
       const machineComparisonProps={comparison:comparisonAll,monthlyRows:comparisonMonthlyRows,compareView,onCompareViewChange:setCompareView,period:comparePeriod,setPeriod:setComparePeriod,start:customStart,setStart:customStart=>setCustomStart(customStart),end:customEnd,setEnd:customEnd=>setCustomEnd(customEnd),topLimit,setTopLimit,presets:savedPresets,onLoadPreset:loadPreset,presetMessage,topicFilter,setTopicFilter,brandFilter,setBrandFilter,languageFilter,setLanguageFilter,onApply:applyComparisonFilters,onReset:resetComparisonFilters,machineCompareMode,onCompareModeChange:changeMachineCompareMode,selected:compareIds,onToggleMachine:toggleCompare,isApplying:isApplyingComparison,filterError,appliedSummary};
       const machineTable=h("div",{className:"scroll"},h("table",{className:"data-table"},h("thead",null,h("tr",null,["Asset ID","Machine","Screen","Location","Period","Status"].map(x=>h("th",{key:x},x)))),h("tbody",null,masterRows.map(k=>h("tr",{key:k.assetId},h("td",null,h("b",null,k.assetId)),h("td",null,k.machine),h("td",null,k.screen),h("td",null,k.location),h("td",null,k.period),h("td",null,h("span",{className:`status ${k.status}`},k.status)))))));
       const eventTable=h("div",{className:"scroll"},h("table",{className:"data-table"},h("thead",null,h("tr",null,["Event","Date","Machine","Original location","Event location","Setup","Return","Performance"].map(x=>h("th",{key:x},x)))),h("tbody",null,sortedEvents.map(e=>h("tr",{key:e.id},h("td",null,h("b",null,e.event)),h("td",null,e.date),h("td",null,e.asset),h("td",null,display(e.original,"Not recorded")),h("td",null,display(e.location,"Not recorded")),h("td",null,e.performance?display(e.setup,"Not recorded"):"Not recorded"),h("td",null,e.performance?display(e.returnDate,"Not recorded"):"Not recorded"),h("td",null,e.performance?e.performance.replace("rating not available","no rating collected"):"No performance report collected"))))));
       const repeatedQuestions=h("div",{className:"question-list"},questionRows.length?questionRows.map(q=>h("div",{className:"question-item",key:q[0]},h("div",null,h("b",null,display(q[0],"Question not available")),h("div",{className:"question-meta"},h("span",null,display(q[1],"Uncategorized")),h("span",null,"All machines"))),h("span",{className:"score-pill"},n(q[2])))):h("div",{className:"empty"},"No repeated questions for this filter."));
+      const overviewTopMentionedQuestions=topMentionedQuestionsForRange(appliedPeriod.start,appliedPeriod.end,5);
       const renderKmCards=()=>h("div",{className:"bento km-grid"},h(KmSummaryCard,{icon:"alert",tone:"rose",title:"Wrong answers",value:`${errorRows.filter(x=>x.issue==="Wrong info").length} issue(s)`}),h(KmSummaryCard,{icon:"brain",tone:"amber",title:"Missing knowledge",value:`${errorRows.filter(x=>x.issue==="Missing info").length} item(s)`}),h(KmGaugeCard,{icon:"gauge",title:"AI Confidence",value:cur.successRate,label:"confidence"}),h(KmGaugeCard,{icon:"check",tone:"green",title:"Knowledge coverage",value:Math.max(0,100-cur.apologyRate),label:"coverage"}));
       const renderPage=()=>{
         if(page==="machine-comparison") return h(MachineComparisonSection,machineComparisonProps);
@@ -25558,6 +25604,27 @@ window.__PERFORMANCE_REPORT_DATA__ = {
                 h("strong",null,item.value),
                 h("p",null,item.note)
               ))
+            )
+          ),
+          h("div",{className:"card overview-summary-card"},
+            h("div",{className:"overview-summary-head"},
+              h("div",{className:"card-title"},
+                h("span",{className:"icon green"},h(Icon,{name:"message"})),
+                h("div",null,
+                  h("h3",null,"Top Mentioned by Question"),
+                  h("p",{className:"subtitle"},"Most repeated customer questions in the selected period.")
+                )
+              )
+            ),
+            h("div",{className:"overview-mentioned-list"},
+              overviewTopMentionedQuestions.length?overviewTopMentionedQuestions.map((item,index)=>h("div",{className:"overview-mentioned-row",key:item.key},
+                h("div",{className:"overview-mentioned-rank"},`#${index+1}`),
+                h("div",null,
+                  h("div",{className:"overview-mentioned-question"},item.question),
+                  h("div",{className:"overview-mentioned-meta"},`${item.category} · ${item.machine}`)
+                ),
+                h("div",{className:"overview-mentioned-count"},n(item.count),h("span",null,"mentions"))
+              )):h("div",{className:"empty"},"No question mentions for this period.")
             )
           ),
           h("div",{className:"card overview-summary-card"},
@@ -25851,7 +25918,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         if(page==="borrowing-history") return h(PageShell,{title:"Borrowing History",sub:"Detailed log for borrowed machines, setup dates, return dates, and event performance."},h("div",{className:"card"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon amber"},h(Icon,{name:"calendar"})),h("div",null,h("h3",null,"Borrowing log"),h("p",{className:"subtitle"},"Event display connects to event records only, not machine master location.")))),eventTable));
         return h(PageShell,{title:"Overview",sub:"Default dashboard page."});
       };
-      return h("div",{className:"app-shell"},h(SidebarNav,{page,onNavigate:goPage,open:sidebarOpen,onClose:()=>setSidebarOpen(false)}),h("div",{className:"workspace"},h(WorkspaceHeader,{meta,periodStart,setPeriodStart,periodEnd,setPeriodEnd,onApplyPeriod:applyHeaderPeriod,onMenu:()=>setSidebarOpen(true),showPeriod:page!=="machine-comparison"&&page!=="machine-timeline"&&page!=="import-data"&&page!=="recommendation",periodMode:page==="machine-status"?"monthly":"date",selectedMonth:headerMonth,setSelectedMonth:setHeaderMonth,monthOptions:months}),h("main",{className:"page-view",key:page},renderPage())));
+      return h("div",{className:"app-shell"},h(SidebarNav,{page,onNavigate:goPage,open:sidebarOpen,onClose:()=>setSidebarOpen(false)}),h("div",{className:"workspace"},h(WorkspaceHeader,{meta,periodStart,setPeriodStart,periodEnd,setPeriodEnd,onApplyPeriod:applyHeaderPeriod,onFullHistoryPeriod:page==="machine-status"?null:applyFullHistoryPeriod,onMenu:()=>setSidebarOpen(true),showPeriod:page!=="machine-comparison"&&page!=="machine-timeline"&&page!=="import-data"&&page!=="recommendation",periodMode:page==="machine-status"?"monthly":"date",selectedMonth:headerMonth,setSelectedMonth:setHeaderMonth,monthOptions:months}),h("main",{className:"page-view",key:page},renderPage())));
 
     }
     ReactDOM.createRoot(document.getElementById("root")).render(h(AppErrorBoundary,null,h(App)));

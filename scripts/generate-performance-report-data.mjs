@@ -12,15 +12,18 @@ const reportFiles = {
     rating: "Perfomance Reports/1025 Oct/ratings-export-2025-10-15-to-2025-10-31-98d08b98.csv"
   },
   "2025-11": {
-    message: "Perfomance Reports/1125 Nov/messageLog-export-2025-11-01-to-2025-11-30-bf667c21.csv",
+    message: "Perfomance Reports/M Agent Report 2026.xlsx",
+    messageSheet: "NOV 2025",
     rating: "Perfomance Reports/1125 Nov/ratings-export-2025-11-01-to-2025-11-30-bf667c21.csv"
   },
   "2025-12": {
-    message: "Perfomance Reports/1225 Dec/messageLog-export-2025-12-01-to-2025-12-31-0443aded.csv",
+    message: "Perfomance Reports/M Agent Report 2026.xlsx",
+    messageSheet: "DEC 2025",
     rating: "Perfomance Reports/1225 Dec/ratings-export-2025-12-01-to-2025-12-31-0443aded.csv"
   },
   "2026-01": {
-    message: "Perfomance Reports/0126 Jan/messageLog-export-2026-01-01-to-2026-01-31-cee6b8fa.csv",
+    message: "Perfomance Reports/M Agent Report 2026.xlsx",
+    messageSheet: "JAN 2026",
     rating: "Perfomance Reports/0126 Jan/ratings-export-2026-01-01-to-2026-01-31-cee6b8fa.csv"
   },
   "2026-02": {
@@ -114,7 +117,8 @@ const csvMachineIdMap = {
   "931f1948-b731-47a8-a4c2-bdd48d473584":"NO3-M6-NGW-01",
   "7cf9a0bf-c5f3-4128-aded-8f86f8879f5e":"NO3-M6-NGW-01",
   "c9f04fd5-e1d4-47a5-8866-ac555bced1d3":"NO4-M5-THA-01",
-  "16f880a4-ccd9-41b6-a3ad-0f0075b649a2":"NO5-M3-EVT-01"
+  "16f880a4-ccd9-41b6-a3ad-0f0075b649a2":"NO5-M3-EVT-01",
+  "NO5-M3-EVT-01":"NO5-M3-EVT-01"
 };
 
 const bangkokTimeZone = "Asia/Bangkok";

@@ -52,7 +52,7 @@
     input{height:46px;padding:0 14px;width:100%}
     select:focus,input:focus{border-color:#93b4ff;box-shadow:0 0 0 4px rgba(37,99,235,.1)}
     .hero{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;margin-bottom:24px}
-    .hero-copy{min-height:320px;border-radius:20px;padding:32px;background:linear-gradient(135deg,#ffffff 0%,#f8fbff 100%);box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.8);display:grid;align-content:space-between;overflow:hidden;position:relative}
+    .hero-copy{border-radius:20px;padding:26px 30px;background:linear-gradient(135deg,#ffffff 0%,#f8fbff 100%);box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.8);display:grid;align-content:start;gap:20px;overflow:hidden;position:relative}
     .hero-copy:after{content:"";position:absolute;inset:auto 0 0 0;height:5px;background:linear-gradient(90deg,var(--blue),var(--cyan),var(--green))}
     .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--blue);font-size:12px;text-transform:uppercase;font-weight:850;letter-spacing:0}
     .pulse{width:8px;height:8px;border-radius:99px;background:var(--green);box-shadow:0 0 0 6px rgba(18,183,106,.12)}
@@ -735,7 +735,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-18T08:06:33.459Z",
+  "generatedAt": "2026-08-18T08:13:50.554Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "13 Aug 2026",
@@ -31755,11 +31755,11 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       const activeMachineCount=periodSummary?.activeMachines||filteredKiosks.length;
       const sourceNote=periodSummary?.source?` Source: ${periodSummary.source}${periodSummary.coverage?` (${periodSummary.coverage})`:""}.`:"";
       const kpis=[
-        ["Sessions",n(cur.sessions),`All kiosk interactions for the selected period.${sourceNote}`,metricDeltas.sessions??delta(cur.sessions,old.sessions),false,"activity",monthRows.map(x=>x.sessions)],
-        ["Questions",n(cur.questions),`Customer questions asked during the selected period.${sourceNote}`,metricDeltas.questions??delta(cur.questions,old.questions),false,"message",kpiSeries],
-        ["Avg Rating",ratingText(cur.rating,ratingScale),`${cur.rating===null?"Rating was not included in the available source.":"Overall rating reported by the source dashboard."}${sourceNote}`,metricDeltas.rating??(cur.rating===null?0:cur.rating-old.rating),false,"gauge",monthRows.map(x=>x.rating===null?0:x.rating)],
-        ["Success Rate",pct(cur.successRate),`Successful responses / Total questions × 100.${sourceNote}`,metricDeltas.successRate??(cur.successRate-old.successRate),false,"check",monthRows.map(x=>x.successRate)],
-        ["Active Machines",activeMachineCount,`Active machines reported for the selected period.${sourceNote}`,0,false,"cpu",[3,4,5,5,5,activeMachineCount]],
+        ["Sessions",n(cur.sessions),`All kiosk interactions for the selected period.`,metricDeltas.sessions??delta(cur.sessions,old.sessions),false,"activity",monthRows.map(x=>x.sessions)],
+        ["Questions",n(cur.questions),`Customer questions asked during the selected period.`,metricDeltas.questions??delta(cur.questions,old.questions),false,"message",kpiSeries],
+        ["Avg Rating",ratingText(cur.rating,ratingScale),`${cur.rating===null?"Rating was not included in the available source.":"Overall rating reported by the source dashboard."}`,metricDeltas.rating??(cur.rating===null?0:cur.rating-old.rating),false,"gauge",monthRows.map(x=>x.rating===null?0:x.rating)],
+        ["Success Rate",pct(cur.successRate),`Successful responses / Total questions × 100.`,metricDeltas.successRate??(cur.successRate-old.successRate),false,"check",monthRows.map(x=>x.successRate)],
+        ["Active Machines",activeMachineCount,`Active machines reported for the selected period.`,0,false,"cpu",[3,4,5,5,5,activeMachineCount]],
         ["Event Count",eventRows.length,"Events overlapping the selected period. Includes timeline events and borrowing records.",delta(eventRows.length,previousEventRows.length),false,"calendar",eventSeries]
       ];
       const previousRowsByAsset=new Map(filteredPrevRows.map(r=>[r.assetId,r]));

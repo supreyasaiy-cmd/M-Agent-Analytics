@@ -733,7 +733,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-17T19:31:15.878Z",
+  "generatedAt": "2026-08-18T03:45:47.748Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "13 Aug 2026",
@@ -32163,23 +32163,16 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           ),
           h("div",{className:"machine-grid"},machineRows.map(x=>h(MachineCard,{key:x.row.assetId,row:x.row,prevRow:x.prevRow,kiosk:x.kiosk,days:monthObj.days,coverageStart:monthMeta?.[month]?.coverageStart,coverageEnd:authoritativeCur?.coverageEnd||monthMeta?.[month]?.coverageEnd,monthLabel:monthObj.label,previousMonthLabel:prev.label,selected:x.row.assetId===asset,onSelect:()=>setAsset(x.row.assetId)}))),
           h("div",{className:"card"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"cpu"})),h("div",null,h("h3",null,"Machine list"),h("p",{className:"subtitle"},"Reference list for active machines.")))),machineTable));
-        if(page==="machine-timeline") return h(PageShell,null,
-          h("div",{className:"timeline-tabs",role:"tablist","aria-label":"Timeline views"},
-            h("button",{type:"button",role:"tab","aria-selected":timelineTab==="machine",className:`timeline-tab ${timelineTab==="machine"?"active":""}`,onClick:()=>setTimelineTab("machine")},h(Icon,{name:"cpu",size:17}),"Machine Timeline"),
-            h("button",{type:"button",role:"tab","aria-selected":timelineTab==="events",className:`timeline-tab ${timelineTab==="events"?"active":""}`,onClick:()=>setTimelineTab("events")},h(Icon,{name:"calendar",size:17}),"All Events"),
-            h("button",{type:"button",role:"tab","aria-selected":timelineTab==="borrowing",className:`timeline-tab ${timelineTab==="borrowing"?"active":""}`,onClick:()=>setTimelineTab("borrowing")},h(Icon,{name:"map",size:17}),"Borrowing Log")
-          ),
-          timelineTab==="machine"
-            ? h("div",{className:"bento"},
+        if(page==="machine-timeline") return h(PageShell,{title:"Machine & Event Timeline",sub:"Machine movement, event history, and borrowing log — all in one view."},
+          h("div",{className:"bento"},
                 h("div",{className:"span-12 subnav-row"},kiosks.map(k=>h("button",{className:`quick-btn ${asset===k.assetId?"active":""}`,onClick:()=>setAsset(k.assetId),key:k.assetId},k.machine))),
-                h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"map"})),h("div",null,h("h3",null,`Selected machine: ${asset}`),h("p",{className:"subtitle"},"Permanent locations, temporary relocations, and borrowing history for this machine.")))),h(Timeline,{items:selectedHistory,asset,line:true}))
-              )
-            : timelineTab==="events"
-              ? h("div",{className:"event-split"},
+                h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"map"})),h("div",null,h("h3",null,`Machine movement: ${asset}`),h("p",{className:"subtitle"},"Permanent locations, temporary relocations, and borrowing history for this machine.")))),h(Timeline,{items:selectedHistory,asset,line:true}))
+              ),
+          h("div",{className:"event-split",style:{marginTop:"24px"}},
                 h("div",{className:"event-performance-sticky"},selectedEvent?h(EventCard,{event:selectedEvent,key:selectedEvent.id}):h("div",{className:"empty"},"Select an event to view performance.")),
                 h("div",{className:"card event-history-card"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"calendar"})),h("div",null,h("h3",null,"All event history"),h("p",{className:"subtitle"},"All events ordered by date. Select one to view performance.")))),h("div",{className:"event-history-list"},sortedEvents.map(e=>h("button",{type:"button",className:`event-history-row ${selectedEvent?.id===e.id?"selected":""}`,key:e.id,onClick:()=>setSelectedEventId(e.id),"aria-pressed":selectedEvent?.id===e.id},h("time",null,e.date),h("b",null,e.event),h(Icon,{name:"trend",size:17})))))
-              )
-              : h("div",{className:"bento"},
+              ),
+          h("div",{className:"bento",style:{marginTop:"24px"}},
                 h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon amber"},h(Icon,{name:"calendar"})),h("div",null,h("h3",null,"Borrowing log"),h("p",{className:"subtitle"},"Setup, return date, event location, and performance for all events.")))),eventTable)
               )
         );

@@ -233,7 +233,7 @@
     .reco-badge.keep{background:var(--green-soft);color:#067647}
     .reco-badge.review{background:var(--amber-soft);color:#b45309}
     .reco-badge.remove{background:var(--rose-soft);color:#be123c}
-    .reco-machine-grid{display:grid;grid-template-columns:repeat(2,minmax(420px,1fr));gap:22px}
+    .reco-machine-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
     .reco-machine-card{padding:26px;display:grid;gap:16px;align-content:start;min-width:0}
     .reco-machine-top{display:grid;grid-template-columns:1fr;gap:16px;align-items:start;min-width:0}
     .reco-machine-photo{width:100%;aspect-ratio:1.45/1;border-radius:20px;overflow:hidden;border:1px solid var(--line-2);background:#f8fafc}
@@ -283,7 +283,9 @@
     @keyframes fadeIn{from{opacity:0}to{opacity:.16}}
     .bar-animate{transform-origin:left center;animation:scaleX .9s ease both}
     @keyframes scaleX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-    .donut-layout{display:grid;grid-template-columns:minmax(150px,176px) minmax(150px,1fr);gap:22px;align-items:center}
+    .donut-layout{display:flex;flex-wrap:wrap;gap:20px;align-items:center}
+    .donut-layout>.donut{flex:0 0 auto}
+    .donut-layout>.legend-list{flex:1 1 180px}
     .donut-card{overflow:hidden}
     .donut-card .donut-layout{grid-template-columns:minmax(128px,160px) minmax(0,1fr);gap:16px}
     .donut-card .donut{width:min(160px,100%)}
@@ -305,14 +307,14 @@
     .km-detail{grid-column:span 12}
     .km-detail .card-head{margin-bottom:16px}
     .legend-list{display:grid;gap:10px}
-    .legend-item{display:grid;grid-template-columns:auto minmax(82px,1fr) auto;gap:10px;align-items:center;font-size:13px;color:#344054}
+    .legend-item{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;font-size:13px;color:#344054}
     .legend-item span{min-width:0;overflow-wrap:anywhere}
     .swatch{width:10px;height:10px;border-radius:99px}
     .legend-item b{font-size:13px;white-space:nowrap}
-    .flow-pie{display:grid;grid-template-columns:minmax(150px,180px) minmax(0,1fr);gap:18px;align-items:center;margin-top:auto}
-    .flow-pie .donut{width:170px;justify-self:center}
-    .flow-pie .legend-list{gap:9px}
-    .flow-pie .legend-item{grid-template-columns:auto minmax(74px,1fr) auto;font-size:12px}
+    .flow-pie{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:center;margin-top:auto}
+    .flow-pie .donut{width:140px;flex:0 0 auto}
+    .flow-pie .legend-list{gap:9px;flex:1 1 170px}
+    .flow-pie .legend-item{grid-template-columns:auto minmax(0,1fr) auto;font-size:12px}
     .behavior-split-card{gap:20px}
     .behavior-split{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(300px,.65fr);gap:22px;align-items:stretch}
     .behavior-panel{min-width:0;display:flex;flex-direction:column}
@@ -733,7 +735,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-18T07:35:24.580Z",
+  "generatedAt": "2026-08-18T08:06:33.459Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "13 Aug 2026",

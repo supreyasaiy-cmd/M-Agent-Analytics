@@ -905,7 +905,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-22T12:37:09.096Z",
+  "generatedAt": "2026-08-22T12:44:32.054Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "13 Aug 2026",
@@ -31920,7 +31920,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         {label:"Top language",value:topLanguage.name,note:`${pct(langTotal?topLanguage.value/langTotal*100:0)} of all conversations.`},
         {label:"Peak traffic window",value:peakWindow,note:"Calculated from actual usage timestamps in the selected reporting window."}
       ];
-      const overviewMachineCards=filteredRows.map(r=>{const kiosk=kioskMap.get(r.assetId);const machineQuestions=safeNumber(r.questions), machineSuccess=machineQuestions?safeNumber(r.success)/machineQuestions*100:0;return {assetId:r.assetId,machine:display(kiosk?.machine,r.assetId),location:display(kiosk?.location,"Location not available"),sessions:n(r.sessions),questions:n(r.questions),success:pct(machineSuccess),rating:r.rating?safeNumber(r.rating).toFixed(1):"—",imageSrc:machineImages[r.assetId]||""}});
+      const overviewMachineCards=filteredRows.map(r=>{const kiosk=kioskMap.get(r.assetId);const machineQuestions=safeNumber(r.questions), machineSuccess=machineQuestions?safeNumber(r.success)/machineQuestions*100:0;return {assetId:r.assetId,machine:display(kiosk?.machine,r.assetId),location:display(kiosk?.location,"Location not available"),sessions:n(r.sessions),avgPerDay:n(Math.round(safeNumber(r.sessions)/Math.max(1,comparableDays))),questions:n(r.questions),success:pct(machineSuccess),rating:r.rating?safeNumber(r.rating).toFixed(1):"—",imageSrc:machineImages[r.assetId]||""}});
       const kpiSeries=monthRows.map(x=>x.questions);
       const metricDeltas=isFullMonthRange&&selectedMonthMetrics.length<=1?{}:{};
       const ratingScale=periodSummary?.ratingScale||5;
@@ -32059,7 +32059,8 @@ window.__PERFORMANCE_REPORT_DATA__ = {
                   h("div",null,h("strong",null,item.sessions),h("span",null,"Sessions")),
                   h("div",null,h("strong",null,item.questions),h("span",null,"Questions")),
                   h("div",null,h("strong",null,item.success),h("span",null,"Success")),
-                  h("div",null,h("strong",null,item.rating),h("span",null,"Rating"))
+                  h("div",null,h("strong",null,item.rating),h("span",null,"Rating")),
+                  h("div",{style:{gridColumn:"1/-1"}},h("strong",null,item.avgPerDay),h("span",null,"Avg users / day"))
                 )
               ))
             )

@@ -630,6 +630,7 @@
     .period-shortcut{min-height:42px;border:1px solid #bfdbfe;border-radius:10px;background:#eff6ff;color:#1d4ed8;font-size:12px;font-weight:850;padding:0 14px;white-space:nowrap;cursor:pointer;transition:.18s ease}
     .period-shortcut:hover{background:#dbeafe;border-color:#93c5fd}
     .page-view{width:min(1540px,100%);margin:0 auto;padding:30px 36px 56px;animation:pageIn .24s ease both}
+    .page-view .card,.page-view .bento,.page-view .kpi-grid{scroll-margin-top:90px}
     @keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
     .page-stack{display:grid;gap:24px}
     .page-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
@@ -876,7 +877,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-22T01:19:23.253Z",
+  "generatedAt": "2026-08-22T01:42:46.282Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "13 Aug 2026",
@@ -31974,6 +31975,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       const applyHeaderPeriod=()=>{if(page==="machine-status"){const selected=months.find(m=>m.id===headerMonth)||months[0],start=`${selected.id}-01`,end=`${selected.id}-${String(selected.days).padStart(2,"0")}`;setMonth(selected.id);setPeriodStart(start);setPeriodEnd(end);setAppliedPeriod({start,end});return}const id=(periodEnd||"").slice(0,7);setAppliedPeriod({start:periodStart,end:periodEnd});if(months.some(m=>m.id===id)){setMonth(id);setHeaderMonth(id)}}
       const applyFullHistoryPeriod=()=>{const start=fullHistoryStart,end=fullHistoryEnd;setPeriodStart(start);setPeriodEnd(end);setAppliedPeriod({start,end});const id=(end||"").slice(0,7);if(months.some(m=>m.id===id)){setMonth(id);setHeaderMonth(id)}}
       const goPage=id=>{const next=pageById(id).id;setPage(next);setSidebarOpen(false);if(location.hash!==`#${next}`)location.hash=next;window.scrollTo({top:0,behavior:"smooth"})}
+      const scrollToOv=target=>{let el=document.getElementById(target);if(!el){const hd=[...document.querySelectorAll(".page-view h2,.page-view h3")].find(e=>e.textContent.trim()===target);el=hd?(hd.closest(".card,.bento")||hd):null;}if(el)el.scrollIntoView({behavior:"smooth",block:"start"});}
       const meta=pageById(page);
       const machineComparisonProps={comparison:comparisonAll,monthlyRows:comparisonMonthlyRows,compareView,onCompareViewChange:setCompareView,period:comparePeriod,setPeriod:setComparePeriod,start:customStart,setStart:customStart=>setCustomStart(customStart),end:customEnd,setEnd:customEnd=>setCustomEnd(customEnd),topLimit,setTopLimit,presets:savedPresets,onLoadPreset:loadPreset,presetMessage,topicFilter,setTopicFilter,brandFilter,setBrandFilter,languageFilter,setLanguageFilter,onApply:applyComparisonFilters,onReset:resetComparisonFilters,machineCompareMode,onCompareModeChange:changeMachineCompareMode,selected:compareIds,onToggleMachine:toggleCompare,isApplying:isApplyingComparison,filterError,appliedSummary};
       const machineTable=h("div",{className:"scroll"},h("table",{className:"data-table"},h("thead",null,h("tr",null,["Asset ID","Machine","Screen","Location","Period","Status"].map(x=>h("th",{key:x},x)))),h("tbody",null,masterRows.map(k=>h("tr",{key:k.assetId},h("td",null,h("b",null,k.assetId)),h("td",null,k.machine),h("td",null,k.screen),h("td",null,k.location),h("td",null,k.period),h("td",null,h("span",{className:`status ${k.status}`},k.status)))))));
@@ -31992,10 +31994,10 @@ window.__PERFORMANCE_REPORT_DATA__ = {
                 h("p",null,`${monthObj.label} combines machine status, usage, and event borrowing for management review.`)
               ),
               h("div",{className:"hero-actions"},
-                h("button",{className:"hero-chip primary",onClick:()=>goPage("sessions"),type:"button","aria-label":"Open sessions monthly readout"},h(Icon,{name:"activity",size:16}),"Live monthly readout"),
-                h("button",{className:"hero-chip",onClick:()=>goPage("recommendation"),type:"button","aria-label":"Open executive recommendation"},h(Icon,{name:"check",size:16}),"Recommendation"),
-                h("button",{className:"hero-chip",onClick:()=>goPage("machine-comparison"),type:"button","aria-label":"Open Machine Comparison"},h(Icon,{name:"cpu",size:16}),"Open Machine Comparison"),
-                h("button",{className:"hero-chip",onClick:()=>goPage("machine-timeline"),type:"button","aria-label":"Open machine timeline"},h(Icon,{name:"map",size:16}),"Location and event separated")
+                h("button",{className:"hero-chip primary",onClick:()=>scrollToOv("Machine overview"),type:"button","aria-label":"Jump to Machine overview"},h(Icon,{name:"cpu",size:16}),"Machine overview"),
+                h("button",{className:"hero-chip",onClick:()=>scrollToOv("ov-performance"),type:"button","aria-label":"Jump to Performance"},h(Icon,{name:"activity",size:16}),"Performance"),
+                h("button",{className:"hero-chip",onClick:()=>scrollToOv("Language distribution"),type:"button","aria-label":"Jump to Language and trend"},h(Icon,{name:"globe",size:16}),"Language & Trend"),
+                h("button",{className:"hero-chip",onClick:()=>scrollToOv("User Behavior"),type:"button","aria-label":"Jump to User Behavior"},h(Icon,{name:"gauge",size:16}),"User Behavior")
               )
             )
           ),
@@ -32052,7 +32054,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
               ))
             )
           ),
-          h("div",{className:"kpi-grid"},
+          h("div",{className:"kpi-grid",id:"ov-performance"},
             kpis.map(k=>h(KpiCard,{key:k[0],label:k[0],value:k[1],note:k[2],deltaValue:k[3],bad:k[0]==="Apology Rate",icon:k[5],series:k[6]}))
           ),
           h("div",{className:"bento"},h(Donut,{title:"Language distribution",label:"Thai, English, Chinese, and others",total:langTotal,span:12,segments:[{name:"Thai",value:sum(filteredRows,"thai"),color:"#2563eb"},{name:"English",value:sum(filteredRows,"english"),color:"#0891b2"},{name:"Chinese",value:sum(filteredRows,"chinese"),color:"#f59e0b"},{name:"Others",value:sum(filteredRows,"others"),color:"#7c3aed"}]})),

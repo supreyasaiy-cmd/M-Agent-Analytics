@@ -905,7 +905,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-22T11:16:55.978Z",
+  "generatedAt": "2026-08-22T11:25:15.395Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "13 Aug 2026",
@@ -32088,7 +32088,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           h("div",{className:"kpi-grid",id:"ov-performance"},
             kpis.map(k=>h(KpiCard,{key:k[0],label:k[0],value:k[1],note:k[2],deltaValue:k[3],bad:k[0]==="Apology Rate",icon:k[5],series:k[6]}))
           ),
-          h("div",{className:"bento"},h(Donut,{title:"Language distribution",label:"Thai, English, Chinese, and others",total:langTotal,span:12,segments:[{name:"Thai",value:sum(filteredRows,"thai"),color:"#2563eb"},{name:"English",value:sum(filteredRows,"english"),color:"#0891b2"},{name:"Chinese",value:sum(filteredRows,"chinese"),color:"#f59e0b"},{name:"Others",value:sum(filteredRows,"others"),color:"#7c3aed"}]})),
+          
           h("div",{className:"bento"},h("div",{className:"card span-12 overview-trend-card"},
               h("div",{className:"card-head"},
                 h("div",{className:"card-title"},
@@ -32132,7 +32132,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           ),
           h("div",{className:"bento"},h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"message"})),h("div",null,h("h3",null,"Question categories"),h("p",{className:"subtitle"},"Volume distribution by category")))),h(QuestionCategories,{rows:topicRows}))),
           h("div",{className:"bento"},h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"search"})),h("div",null,h("h3",null,"Brand ranking"),h("p",{className:"subtitle"},"Horizontal ranking by total mentions.")))),h(BrandComparison,{brands:comparison.brandTotals}))),
-          h("div",{className:"bento"},h("div",{className:"span-12",style:{marginTop:"4px"}},h("h2",{style:{margin:0,fontSize:"22px",fontWeight:850,color:"var(--ink)"}},"User Behavior"),h("p",{className:"subtitle",style:{marginTop:"4px"}},"Input methods, peak hours, conversation journey, and flow analysis.")),h("div",{className:"card span-12 behavior-split-card"},h("div",{className:"behavior-split"},h("div",{className:"behavior-panel"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"activity"})),h("div",null,h("h3",null,"Peak hours"),h("p",{className:"subtitle"},"Usage intensity by weekday and operating hour.")))),h(Heatmap)),h("div",{className:"behavior-panel"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"globe"})),h("div",null,h("h3",null,"Input methods"),h("p",{className:"subtitle"},"How users interact with kiosks")))),h(InputMethodSummary,{total:inputTotal,voice:sum(filteredRows,"voice"),quick:sum(filteredRows,"quickReply"),keyboard:sum(filteredRows,"keyboard")}))))),
+          h("div",{className:"bento"},h("div",{className:"span-12",style:{marginTop:"4px"}},h("h2",{style:{margin:0,fontSize:"22px",fontWeight:850,color:"var(--ink)"}},"User Behavior"),h("p",{className:"subtitle",style:{marginTop:"4px"}},"Input methods, peak hours, conversation journey, and flow analysis.")),h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"activity"})),h("div",null,h("h3",null,"Peak hours"),h("p",{className:"subtitle"},"Usage intensity by weekday and operating hour.")))),h(Heatmap)),h("div",{className:"card span-6"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"globe"})),h("div",null,h("h3",null,"Input methods"),h("p",{className:"subtitle"},"How users interact with kiosks")))),h(InputMethodSummary,{total:inputTotal,voice:sum(filteredRows,"voice"),quick:sum(filteredRows,"quickReply"),keyboard:sum(filteredRows,"keyboard")})),h(Donut,{title:"Language distribution",label:"Thai, English, Chinese, and others",total:langTotal,span:6,segments:[{name:"Thai",value:sum(filteredRows,"thai"),color:"#2563eb"},{name:"English",value:sum(filteredRows,"english"),color:"#0891b2"},{name:"Chinese",value:sum(filteredRows,"chinese"),color:"#f59e0b"},{name:"Others",value:sum(filteredRows,"others"),color:"#7c3aed"}]})),
           h("div",{className:"bento"},h("div",{className:"card span-12 overview-insights-card"},
               h("div",{className:"card-head"},
                 h("div",{className:"card-title"},

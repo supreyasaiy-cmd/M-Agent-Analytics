@@ -908,7 +908,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-23T12:02:36.271Z",
+  "generatedAt": "2026-08-23T12:43:33.708Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "13 Aug 2026",
@@ -32047,8 +32047,8 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
           h("section",{className:"hero"},
             h("div",{className:"hero-copy"},
               h("div",null,
-                h("h1",null,"AI kiosk overview"),
-                h("p",null,`${monthObj.label} · machine status, usage, and event borrowing at a glance.`)
+                h("h1",null,monthObj.label),
+                h("p",null,"Machine status, usage, and event borrowing at a glance.")
               ),
               h("div",{className:"hero-actions"},
                 h("button",{className:"hero-chip primary",onClick:()=>scrollToOv("Machine overview"),type:"button"},h(Icon,{name:"cpu",size:16}),"Machine overview"),

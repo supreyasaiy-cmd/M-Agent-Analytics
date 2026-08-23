@@ -911,7 +911,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-23T13:15:11.792Z",
+  "generatedAt": "2026-08-23T13:24:53.833Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "13 Aug 2026",
@@ -32366,7 +32366,7 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
             h("article",{className:"card status-kpi"},h("div",{className:"status-kpi-head"},h("span",{className:"icon green"},h(Icon,{name:"check",size:18})),h("h3",null,"Avg success")),h("div",{className:"summary-value"},h(CountUp,{text:pct(cur.successRate)})),h("div",{className:"summary-note"},"Answered without apology")),
             h("article",{className:"card status-kpi"},h("div",{className:"status-kpi-head"},h("span",{className:"icon amber"},h(Icon,{name:"gauge",size:18})),h("h3",null,"Avg rating")),h("div",{className:"summary-value"},h(CountUp,{text:`${safeNumber(cur.rating).toFixed(2)}/${(safeNumber(cur.ratingScale)||4).toFixed(2)}`})),h("div",{className:"summary-note"},"Across active machines"))
           ),
-          h("div",{className:"machine-grid"},machineRows.map(x=>h(MachineCard,{key:x.row.assetId,row:x.row,prevRow:x.prevRow,kiosk:x.kiosk,days:monthObj.days,coverageStart:monthMeta?.[month]?.coverageStart,coverageEnd:authoritativeCur?.coverageEnd||monthMeta?.[month]?.coverageEnd,monthLabel:monthObj.label,previousMonthLabel:prev.label,selected:x.row.assetId===asset,onSelect:()=>setAsset(x.row.assetId)}))),
+          h("div",{className:"machine-grid"},machineRows.map(x=>h(MachineCard,{key:x.row.assetId,row:x.row,prevRow:x.prevRow,kiosk:x.kiosk,days:monthObj.days,coverageStart:monthMeta?.[month]?.coverageStart,coverageEnd:authoritativeCur?.coverageEnd||monthMeta?.[month]?.coverageEnd,monthLabel:monthObj.label,previousMonthLabel:prev.label,selected:x.row.assetId===asset,onSelect:()=>{setAsset(x.row.assetId);goPage("machine-timeline");}}))),
           h("div",{className:"card"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"cpu"})),h("div",null,h("h3",null,"Machine list"),h("p",{className:"subtitle"},"Reference list for active machines.")))),machineTable));
         if(page==="machine-timeline") return h(PageShell,{title:"Event Report & Timeline",sub:"Event performance report first, then borrowing log, with machine movement history below."},
           h("div",{className:"event-split"},

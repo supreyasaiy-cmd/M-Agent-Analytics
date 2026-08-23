@@ -908,7 +908,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-23T08:37:38.764Z",
+  "generatedAt": "2026-08-23T08:41:49.928Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "13 Aug 2026",
@@ -32036,6 +32036,7 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
       const repeatedQuestions=h("div",{className:"question-list"},questionRows.length?questionRows.map(q=>h("div",{className:"question-item",key:q[0]},h("div",null,h("b",null,display(q[0],"Question not available")),h("div",{className:"question-meta"},h("span",null,display(q[1],"Uncategorized")),h("span",null,"All machines"))),h("span",{className:"score-pill"},n(q[2])))):h("div",{className:"empty"},"No repeated questions for this filter."));
       const overviewMentionedSplit=topMentionedSplitForRange(appliedPeriod.start,appliedPeriod.end,5);
       const overviewBrandTotals=(()=>{const monthIds=monthIdsInDateRange(appliedPeriod.start,appliedPeriod.end),assetIds=filteredRows.map(r=>r.assetId),totals=new Map();monthIds.forEach(monthId=>assetIds.forEach(assetId=>(generatedBrandByAssetByMonth[monthId]?.[assetId]||[]).forEach(([name,value])=>totals.set(name,(totals.get(name)||0)+safeNumber(value)))));const out=[...totals.entries()].map(([name,value])=>({name,value})).sort((a,b)=>b.value-a.value);return out.length?out:comparison.brandTotals;})();
+      const overviewBrandRows=overviewBrandTotals.slice(0,5).map((b,i)=>({key:`brand-${b.name}-${i}`,question:display(b.name,"Brand"),category:"Brand",machine:"All selected machines",count:safeNumber(b.value)}));
       const renderMentionGroup=(title,sub,rows)=>h("div",{className:"overview-mentioned-col"},h("div",{className:"overview-mentioned-col-head"},h("h4",null,title),h("span",null,sub)),rows.length?h("div",{className:"overview-mentioned-list"},rows.map((item,index)=>h("div",{className:"overview-mentioned-row",key:item.key},h("div",{className:"overview-mentioned-rank"},"#"+(index+1)),h("div",null,h("div",{className:"overview-mentioned-question"},item.question),h("div",{className:"overview-mentioned-meta"},item.category+" · "+item.machine),h("div",{className:"overview-mentioned-bar"},h("div",{className:"overview-mentioned-bar-fill",style:{width:((safeNumber(item.count)/Math.max(1,...rows.map(x=>safeNumber(x.count))))*100).toFixed(1)+"%"}}))),h("div",{className:"overview-mentioned-count"},h(CountUp,{text:n(item.count)}),h("span",null,"mentions"))))):h("div",{className:"empty"},"No data for this filter."));
       const renderKmCards=()=>h("div",{className:"bento km-grid"},h(KmSummaryCard,{icon:"alert",tone:"rose",title:"Wrong answers",value:`${errorRows.filter(x=>x.issue==="Wrong info").length} issue(s)`}),h(KmSummaryCard,{icon:"brain",tone:"amber",title:"Missing knowledge",value:`${errorRows.filter(x=>x.issue==="Missing info").length} item(s)`}),h(KmGaugeCard,{icon:"gauge",title:"AI Confidence",value:cur.successRate,label:"confidence"}),h(KmGaugeCard,{icon:"check",tone:"green",title:"Knowledge coverage",value:Math.max(0,100-cur.apologyRate),label:"coverage"}));
       const renderPage=()=>{
@@ -32139,13 +32140,13 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
                 h("span",{className:"icon green"},h(Icon,{name:"message"})),
                 h("div",null,
                   h("h3",null,"Top Quick Replies"),
-                  h("p",{className:"subtitle"},"Split between preset quick replies customers tapped and questions they asked in their own words.")
+                  h("p",{className:"subtitle"},"Preset quick replies customers tapped and the most mentioned brands in the selected period.")
                 )
               )
             ),
             h("div",{className:"overview-mentioned-split"},
               renderMentionGroup("Quick replies tapped","Preset buttons customers tapped",overviewMentionedSplit.quickReplies),
-              renderMentionGroup("Customer questions","Asked in their own words",overviewMentionedSplit.questions)
+              renderMentionGroup("Brand ranking","Most mentioned brands",overviewBrandRows)
             )
           ),
           h("div",{className:"bento"},h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"message"})),h("div",null,h("h3",null,"Question categories"),h("p",{className:"subtitle"},"Volume distribution by category")))),h(QuestionCategories,{rows:topicRows}))),

@@ -168,7 +168,7 @@
     .overview-summary-item p{margin:0;color:#475467;font-size:13px;line-height:1.45;overflow-wrap:anywhere}
     .overview-summary-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:18px}
     .overview-summary-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
-    .overview-mentioned-list{display:grid;gap:10px}
+    .overview-mentioned-list{display:grid;gap:10px}.overview-mentioned-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}.overview-mentioned-col-head{margin-bottom:12px}.overview-mentioned-col-head h4{margin:0;font-size:14px;font-weight:850;color:var(--ink)}.overview-mentioned-col-head span{display:block;font-size:12px;color:#667085;margin-top:2px}@media(max-width:820px){.overview-mentioned-split{grid-template-columns:1fr}}
     .overview-mentioned-row{display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;gap:14px;border:1px solid var(--line-2);border-radius:16px;background:#fbfcfe;padding:14px 16px;min-width:0}
     .overview-mentioned-rank{width:34px;height:34px;border-radius:12px;background:#edf4ff;color:var(--blue);display:grid;place-items:center;font-weight:900;font-size:12px}
     .overview-mentioned-question{font-weight:900;color:var(--ink);line-height:1.25;overflow-wrap:anywhere}
@@ -908,7 +908,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-23T08:25:04.796Z",
+  "generatedAt": "2026-08-23T08:32:04.998Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "13 Aug 2026",
@@ -31128,6 +31128,23 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         count:item.count
       }));
     }
+    function topMentionedSplitForRange(start,end,limit=5){
+      const totals=new Map();
+      monthIdsInDateRange(start,end).forEach(monthId=>{
+        (generatedTopQuestionsByMonth[monthId]||[]).forEach(([question,category,count])=>{
+          const label=display(question,"Question not available");
+          const group=display(category,"Uncategorized");
+          const key=`${label}|||${group}`;
+          const current=totals.get(key)||{question:label,category:group,count:0};
+          current.count+=safeNumber(count);
+          totals.set(key,current);
+        });
+      });
+      const all=[...totals.values()].sort((a,b)=>b.count-a.count);
+      const isQR=q=>/^\s*quick reply\s*:/i.test(q);
+      const mk=arr=>arr.slice(0,limit).map((item,index)=>({key:`${item.question}-${item.category}-${index}`,question:item.question.replace(/^\s*quick reply\s*:\s*/i,""),category:item.category,machine:"All selected machines",count:item.count}));
+      return {quickReplies:mk(all.filter(x=>isQR(x.question))),questions:mk(all.filter(x=>!isQR(x.question)))};
+    }
     function customDayCount(start,end,fallback=30){const s=start?new Date(start):null,e=end?new Date(end):null;if(s&&e&&!Number.isNaN(+s)&&!Number.isNaN(+e)&&e>=s)return Math.max(1,Math.round((e-s)/86400000)+1);return fallback}
     function shiftDate(value,offsetDays){const date=value?new Date(`${value}T00:00:00`):null;if(!date||Number.isNaN(+date))return value;date.setDate(date.getDate()+offsetDays);return date.toISOString().slice(0,10)}
     function enumerateDates(start,end){
@@ -32017,7 +32034,8 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
       const machineTable=h("div",{className:"scroll"},h("table",{className:"data-table"},h("thead",null,h("tr",null,["Asset ID","Machine","Screen","Location","Period","Status"].map(x=>h("th",{key:x},x)))),h("tbody",null,masterRows.map(k=>h("tr",{key:k.assetId},h("td",null,h("b",null,k.assetId)),h("td",null,k.machine),h("td",null,k.screen),h("td",null,k.location),h("td",null,k.period),h("td",null,h("span",{className:`status ${k.status}`},k.status)))))));
       const eventTable=h("div",{className:"scroll"},h("table",{className:"data-table"},h("thead",null,h("tr",null,["Event","Date","Machine","Original location","Event location","Setup","Return","Performance"].map(x=>h("th",{key:x},x)))),h("tbody",null,sortedEvents.map(e=>h("tr",{key:e.id},h("td",null,h("b",null,e.event)),h("td",null,e.date),h("td",null,e.asset),h("td",null,display(e.original,"Not recorded")),h("td",null,display(e.location,"Not recorded")),h("td",null,e.performance?display(e.setup,"Not recorded"):"Not recorded"),h("td",null,e.performance?display(e.returnDate,"Not recorded"):"Not recorded"),h("td",null,e.performance?e.performance.replace("rating not available","no rating collected"):"No performance report collected"))))));
       const repeatedQuestions=h("div",{className:"question-list"},questionRows.length?questionRows.map(q=>h("div",{className:"question-item",key:q[0]},h("div",null,h("b",null,display(q[0],"Question not available")),h("div",{className:"question-meta"},h("span",null,display(q[1],"Uncategorized")),h("span",null,"All machines"))),h("span",{className:"score-pill"},n(q[2])))):h("div",{className:"empty"},"No repeated questions for this filter."));
-      const overviewTopMentionedQuestions=topMentionedQuestionsForRange(appliedPeriod.start,appliedPeriod.end,5);
+      const overviewMentionedSplit=topMentionedSplitForRange(appliedPeriod.start,appliedPeriod.end,5);
+      const renderMentionGroup=(title,sub,rows)=>h("div",{className:"overview-mentioned-col"},h("div",{className:"overview-mentioned-col-head"},h("h4",null,title),h("span",null,sub)),rows.length?h("div",{className:"overview-mentioned-list"},rows.map((item,index)=>h("div",{className:"overview-mentioned-row",key:item.key},h("div",{className:"overview-mentioned-rank"},"#"+(index+1)),h("div",null,h("div",{className:"overview-mentioned-question"},item.question),h("div",{className:"overview-mentioned-meta"},item.category+" · "+item.machine),h("div",{className:"overview-mentioned-bar"},h("div",{className:"overview-mentioned-bar-fill",style:{width:((safeNumber(item.count)/Math.max(1,...rows.map(x=>safeNumber(x.count))))*100).toFixed(1)+"%"}}))),h("div",{className:"overview-mentioned-count"},h(CountUp,{text:n(item.count)}),h("span",null,"mentions"))))):h("div",{className:"empty"},"No data for this filter."));
       const renderKmCards=()=>h("div",{className:"bento km-grid"},h(KmSummaryCard,{icon:"alert",tone:"rose",title:"Wrong answers",value:`${errorRows.filter(x=>x.issue==="Wrong info").length} issue(s)`}),h(KmSummaryCard,{icon:"brain",tone:"amber",title:"Missing knowledge",value:`${errorRows.filter(x=>x.issue==="Missing info").length} item(s)`}),h(KmGaugeCard,{icon:"gauge",title:"AI Confidence",value:cur.successRate,label:"confidence"}),h(KmGaugeCard,{icon:"check",tone:"green",title:"Knowledge coverage",value:Math.max(0,100-cur.apologyRate),label:"coverage"}));
       const renderPage=()=>{
         if(page==="machine-comparison") return h(MachineComparisonSection,machineComparisonProps);
@@ -32120,20 +32138,13 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
                 h("span",{className:"icon green"},h(Icon,{name:"message"})),
                 h("div",null,
                   h("h3",null,"Top Quick Replies"),
-                  h("p",{className:"subtitle"},"Most tapped quick replies and repeated questions in the selected period.")
+                  h("p",{className:"subtitle"},"Split between preset quick replies customers tapped and questions they asked in their own words.")
                 )
               )
             ),
-            h("div",{className:"overview-mentioned-list"},
-              overviewTopMentionedQuestions.length?overviewTopMentionedQuestions.map((item,index)=>h("div",{className:"overview-mentioned-row",key:item.key},
-                h("div",{className:"overview-mentioned-rank"},`#${index+1}`),
-                h("div",null,
-                  h("div",{className:"overview-mentioned-question"},item.question),
-                  h("div",{className:"overview-mentioned-meta"},`${item.category} · ${item.machine}`),
-                  h("div",{className:"overview-mentioned-bar"},h("div",{className:"overview-mentioned-bar-fill",style:{width:((safeNumber(item.count)/Math.max(1,...overviewTopMentionedQuestions.map(x=>safeNumber(x.count))))*100).toFixed(1)+"%"}}))
-                ),
-                h("div",{className:"overview-mentioned-count"},h(CountUp,{text:n(item.count)}),h("span",null,"mentions"))
-              )):h("div",{className:"empty"},"No question mentions for this period.")
+            h("div",{className:"overview-mentioned-split"},
+              renderMentionGroup("Quick replies tapped","Preset buttons customers tapped",overviewMentionedSplit.quickReplies),
+              renderMentionGroup("Customer questions","Asked in their own words",overviewMentionedSplit.questions)
             )
           ),
           h("div",{className:"bento"},h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"message"})),h("div",null,h("h3",null,"Question categories"),h("p",{className:"subtitle"},"Volume distribution by category")))),h(QuestionCategories,{rows:topicRows}))),

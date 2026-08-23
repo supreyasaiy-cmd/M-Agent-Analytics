@@ -908,7 +908,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-23T09:01:53.740Z",
+  "generatedAt": "2026-08-23T09:05:36.151Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "13 Aug 2026",
@@ -32028,7 +32028,7 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
       const applyMonth=monthId=>{const mo=months.find(m=>m.id===monthId)||months[0];const start=`${mo.id}-01`,end=`${mo.id}-${String(mo.days).padStart(2,"0")}`;setPeriodStart(start);setPeriodEnd(end);setAppliedPeriod({start,end});setMonth(mo.id);setHeaderMonth(mo.id);};
       const applyFullHistoryPeriod=()=>{const start=fullHistoryStart,end=fullHistoryEnd;setPeriodStart(start);setPeriodEnd(end);setAppliedPeriod({start,end});const id=(end||"").slice(0,7);if(months.some(m=>m.id===id)){setMonth(id);setHeaderMonth(id)}}
       const goPage=id=>{const next=pageById(id).id;setPage(next);setSidebarOpen(false);if(location.hash!==`#${next}`)location.hash=next;window.scrollTo({top:0,behavior:"smooth"})}
-      const scrollToOv=target=>{let el=document.getElementById(target);if(!el){const hd=[...document.querySelectorAll(".page-view h2,.page-view h3")].find(e=>e.textContent.trim()===target);el=hd?(hd.closest(".card,.bento")||hd):null;}if(el)el.scrollIntoView({behavior:"smooth",block:"start"});}
+      const scrollToOv=target=>{let el=document.getElementById(target);if(!el){const hd=[...document.querySelectorAll(".page-view h2,.page-view h3")].find(e=>e.textContent.trim()===target);el=hd?(hd.closest(".card,.bento")||hd):null;}if(!el)return;const header=document.querySelector(".workspace-header");const offset=(header&&getComputedStyle(header).position==="sticky"?header.offsetHeight:0)+18;const y=Math.max(0,el.getBoundingClientRect().top+window.pageYOffset-offset);window.scrollTo({top:y,behavior:"smooth"});}
       const meta=pageById(page);
       const machineComparisonProps={comparison:comparisonAll,monthlyRows:comparisonMonthlyRows,compareView,onCompareViewChange:setCompareView,period:comparePeriod,setPeriod:setComparePeriod,start:customStart,setStart:customStart=>setCustomStart(customStart),end:customEnd,setEnd:customEnd=>setCustomEnd(customEnd),topLimit,setTopLimit,presets:savedPresets,onLoadPreset:loadPreset,presetMessage,topicFilter,setTopicFilter,brandFilter,setBrandFilter,languageFilter,setLanguageFilter,onApply:applyComparisonFilters,onReset:resetComparisonFilters,machineCompareMode,onCompareModeChange:changeMachineCompareMode,selected:compareIds,onToggleMachine:toggleCompare,isApplying:isApplyingComparison,filterError,appliedSummary};
       const machineTable=h("div",{className:"scroll"},h("table",{className:"data-table"},h("thead",null,h("tr",null,["Asset ID","Machine","Screen","Location","Period","Status"].map(x=>h("th",{key:x},x)))),h("tbody",null,masterRows.map(k=>h("tr",{key:k.assetId},h("td",null,h("b",null,k.assetId)),h("td",null,k.machine),h("td",null,k.screen),h("td",null,k.location),h("td",null,k.period),h("td",null,h("span",{className:`status ${k.status}`},k.status)))))));

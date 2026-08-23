@@ -51,8 +51,8 @@
     select{height:42px;min-width:154px;padding:0 34px 0 12px}
     input{height:46px;padding:0 14px;width:100%}
     select:focus,input:focus{border-color:#93b4ff;box-shadow:0 0 0 4px rgba(37,99,235,.1)}
-    .hero{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;margin-bottom:24px}
-    .hero-copy{border-radius:20px;padding:26px 30px;background:linear-gradient(135deg,#ffffff 0%,#f8fbff 100%);box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.8);display:grid;align-content:start;gap:20px;overflow:hidden;position:relative}
+    .hero{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;margin-bottom:16px;position:sticky;top:var(--hero-top,0px);z-index:40}.hero-copy h1{font-size:23px;line-height:1.15;margin:0 0 6px}.hero-copy p{font-size:13px;margin:0 0 12px}.hero-actions{gap:8px!important}.hero-actions .hero-chip{padding:7px 12px!important;font-size:12px!important;gap:6px}
+    .hero-copy{border-radius:20px;padding:16px 24px;background:linear-gradient(135deg,#ffffff 0%,#f8fbff 100%);box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.8);display:grid;align-content:start;gap:20px;overflow:hidden;position:relative}
     .hero-copy:after{content:"";position:absolute;inset:auto 0 0 0;height:5px;background:linear-gradient(90deg,var(--blue),var(--cyan),var(--green))}
     .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--blue);font-size:12px;text-transform:uppercase;font-weight:850;letter-spacing:0}
     .pulse{width:8px;height:8px;border-radius:99px;background:var(--green);box-shadow:0 0 0 6px rgba(18,183,106,.12)}
@@ -908,7 +908,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-23T09:12:53.225Z",
+  "generatedAt": "2026-08-23T09:23:17.586Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "13 Aug 2026",
@@ -32028,7 +32028,8 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
       const applyMonth=monthId=>{const mo=months.find(m=>m.id===monthId)||months[0];const start=`${mo.id}-01`,end=`${mo.id}-${String(mo.days).padStart(2,"0")}`;setPeriodStart(start);setPeriodEnd(end);setAppliedPeriod({start,end});setMonth(mo.id);setHeaderMonth(mo.id);};
       const applyFullHistoryPeriod=()=>{const start=fullHistoryStart,end=fullHistoryEnd;setPeriodStart(start);setPeriodEnd(end);setAppliedPeriod({start,end});const id=(end||"").slice(0,7);if(months.some(m=>m.id===id)){setMonth(id);setHeaderMonth(id)}}
       const goPage=id=>{const next=pageById(id).id;setPage(next);setSidebarOpen(false);if(location.hash!==`#${next}`)location.hash=next;window.scrollTo({top:0,behavior:"smooth"})}
-      const scrollToOv=target=>{let el=document.getElementById(target);if(!el){const hd=[...document.querySelectorAll(".page-view h2,.page-view h3")].find(e=>e.textContent.trim()===target);el=hd?(hd.closest(".card,.bento")||hd):null;}if(!el)return;const header=document.querySelector(".workspace-header");const offset=(header&&getComputedStyle(header).position==="sticky"?header.offsetHeight:0)+18;const y=Math.max(0,el.getBoundingClientRect().top+window.pageYOffset-offset);window.scrollTo({top:y,behavior:"smooth"});}
+      const scrollToOv=target=>{let el=document.getElementById(target);if(!el){const hd=[...document.querySelectorAll(".page-view h2,.page-view h3")].find(e=>e.textContent.trim()===target);el=hd?(hd.closest(".card,.bento")||hd):null;}if(!el)return;const stick=n=>n&&getComputedStyle(n).position==="sticky";const header=document.querySelector(".workspace-header"),hero=document.querySelector(".hero");const offset=(stick(header)?header.offsetHeight:0)+(stick(hero)?hero.offsetHeight:0)+16;const y=Math.max(0,el.getBoundingClientRect().top+window.pageYOffset-offset);window.scrollTo({top:y,behavior:"smooth"});}
+      useEffect(()=>{const hd=document.querySelector(".workspace-header");if(!hd)return;const set=()=>document.documentElement.style.setProperty("--hero-top",hd.offsetHeight+"px");set();let ro;if(typeof ResizeObserver!=="undefined"){ro=new ResizeObserver(set);ro.observe(hd);}window.addEventListener("resize",set);return ()=>{if(ro)ro.disconnect();window.removeEventListener("resize",set);};},[page]);
       const meta=pageById(page);
       const machineComparisonProps={comparison:comparisonAll,monthlyRows:comparisonMonthlyRows,compareView,onCompareViewChange:setCompareView,period:comparePeriod,setPeriod:setComparePeriod,start:customStart,setStart:customStart=>setCustomStart(customStart),end:customEnd,setEnd:customEnd=>setCustomEnd(customEnd),topLimit,setTopLimit,presets:savedPresets,onLoadPreset:loadPreset,presetMessage,topicFilter,setTopicFilter,brandFilter,setBrandFilter,languageFilter,setLanguageFilter,onApply:applyComparisonFilters,onReset:resetComparisonFilters,machineCompareMode,onCompareModeChange:changeMachineCompareMode,selected:compareIds,onToggleMachine:toggleCompare,isApplying:isApplyingComparison,filterError,appliedSummary};
       const machineTable=h("div",{className:"scroll"},h("table",{className:"data-table"},h("thead",null,h("tr",null,["Asset ID","Machine","Screen","Location","Period","Status"].map(x=>h("th",{key:x},x)))),h("tbody",null,masterRows.map(k=>h("tr",{key:k.assetId},h("td",null,h("b",null,k.assetId)),h("td",null,k.machine),h("td",null,k.screen),h("td",null,k.location),h("td",null,k.period),h("td",null,h("span",{className:`status ${k.status}`},k.status)))))));
@@ -32046,15 +32047,17 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
           h("section",{className:"hero"},
             h("div",{className:"hero-copy"},
               h("div",null,
-                h("span",{className:"eyebrow"},h("span",{className:"pulse"}),"Monthly command view"),
-                h("h1",null,"AI kiosk performance, movement, and events in one workspace."),
-                h("p",null,`${monthObj.label} combines machine status, usage, and event borrowing for management review.`)
+                h("h1",null,"AI kiosk overview"),
+                h("p",null,`${monthObj.label} · machine status, usage, and event borrowing at a glance.`)
               ),
               h("div",{className:"hero-actions"},
-                h("button",{className:"hero-chip primary",onClick:()=>scrollToOv("Machine overview"),type:"button","aria-label":"Jump to Machine overview"},h(Icon,{name:"cpu",size:16}),"Machine overview"),
-                h("button",{className:"hero-chip",onClick:()=>scrollToOv("ov-performance"),type:"button","aria-label":"Jump to Performance"},h(Icon,{name:"activity",size:16}),"Performance"),
-                h("button",{className:"hero-chip",onClick:()=>scrollToOv("Language distribution"),type:"button","aria-label":"Jump to Language and trend"},h(Icon,{name:"globe",size:16}),"Language & Trend"),
-                h("button",{className:"hero-chip",onClick:()=>scrollToOv("User Behavior"),type:"button","aria-label":"Jump to User Behavior"},h(Icon,{name:"gauge",size:16}),"User Behavior")
+                h("button",{className:"hero-chip primary",onClick:()=>scrollToOv("Machine overview"),type:"button"},h(Icon,{name:"cpu",size:16}),"Machine overview"),
+                h("button",{className:"hero-chip",onClick:()=>scrollToOv("Overview Summary"),type:"button"},h(Icon,{name:"activity",size:16}),"Overview Summary"),
+                h("button",{className:"hero-chip",onClick:()=>scrollToOv("ov-performance"),type:"button"},h(Icon,{name:"activity",size:16}),"Performance"),
+                h("button",{className:"hero-chip",onClick:()=>scrollToOv(`${monthRows.length}-month trend`),type:"button"},h(Icon,{name:"trend",size:16}),`${monthRows.length}-month trend`),
+                h("button",{className:"hero-chip",onClick:()=>scrollToOv("Top Quick Replies"),type:"button"},h(Icon,{name:"message",size:16}),"Top Quick Replies"),
+                h("button",{className:"hero-chip",onClick:()=>scrollToOv("Language distribution"),type:"button"},h(Icon,{name:"globe",size:16}),"Language & Trend"),
+                h("button",{className:"hero-chip",onClick:()=>scrollToOv("User Behavior"),type:"button"},h(Icon,{name:"gauge",size:16}),"User Behavior")
               )
             )
           ),

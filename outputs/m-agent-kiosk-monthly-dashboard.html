@@ -174,7 +174,8 @@
     .overview-mentioned-question{font-weight:900;color:var(--ink);line-height:1.25;overflow-wrap:anywhere}
     .overview-mentioned-meta{margin-top:4px;color:#667085;font-size:12px;line-height:1.35;overflow-wrap:anywhere}
     .overview-mentioned-bar{margin-top:9px;height:7px;border-radius:999px;background:#eef2f7;overflow:hidden}
-    .overview-mentioned-bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#2563eb,#0891b2);min-width:3px}
+    .overview-mentioned-bar-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#2563eb,#0891b2);min-width:3px;transform-origin:left;transition:width .6s ease;animation:barGrow .9s cubic-bezier(.4,0,.2,1) both}
+    @keyframes barGrow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
     .overview-mentioned-count{text-align:right;color:var(--ink);font-size:20px;font-weight:900;white-space:nowrap}
     .overview-mentioned-count span{display:block;color:#667085;font-size:10px;font-weight:850;text-transform:uppercase;letter-spacing:.04em}
     .overview-machine-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
@@ -907,7 +908,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-23T01:12:51.252Z",
+  "generatedAt": "2026-08-23T01:18:18.495Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "13 Aug 2026",
@@ -32130,7 +32131,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
                   h("div",{className:"overview-mentioned-meta"},`${item.category} · ${item.machine}`),
                   h("div",{className:"overview-mentioned-bar"},h("div",{className:"overview-mentioned-bar-fill",style:{width:((safeNumber(item.count)/Math.max(1,...overviewTopMentionedQuestions.map(x=>safeNumber(x.count))))*100).toFixed(1)+"%"}}))
                 ),
-                h("div",{className:"overview-mentioned-count"},n(item.count),h("span",null,"mentions"))
+                h("div",{className:"overview-mentioned-count"},h(CountUp,{text:n(item.count)}),h("span",null,"mentions"))
               )):h("div",{className:"empty"},"No question mentions for this period.")
             )
           ),

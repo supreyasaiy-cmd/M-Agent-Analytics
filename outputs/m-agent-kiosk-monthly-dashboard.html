@@ -149,6 +149,9 @@
     .machine-compare-note{color:#667085;font-size:12px;line-height:1.45}
     .machine-status-summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
     .machine-status-summary .card{padding:18px 20px;min-height:0}
+    .status-kpi-head{display:flex;align-items:center;gap:10px}
+    .status-kpi-head .icon{width:34px;height:34px;flex:0 0 auto}
+    .status-kpi-head h3{margin:0}
     .machine-status-summary .card h3{margin:0;color:#667085;font-size:12px;line-height:1.3;font-weight:850;text-transform:uppercase;letter-spacing:.04em}
     .machine-status-summary .summary-value{margin-top:10px;font-size:36px;line-height:.95;font-weight:900;color:#101828}
     .machine-status-summary .summary-note{margin-top:8px;color:#667085;font-size:13px;line-height:1.45}
@@ -908,7 +911,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-23T12:59:42.187Z",
+  "generatedAt": "2026-08-23T13:15:11.792Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "13 Aug 2026",
@@ -32358,7 +32361,10 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
         }
         if(page==="machine-status") return h(PageShell,{title:"Machine Status",sub:"Operational card view for all active M Agent devices."},
           h("div",{className:"machine-status-summary"},
-            h("article",{className:"card"},h("h3",null,"Active machines"),h("div",{className:"kpi-value"},String(activeMachineCount)),h("div",{className:"micro"},h("span",null,"Compared period"),h("b",null,prev.label)))
+            h("article",{className:"card status-kpi"},h("div",{className:"status-kpi-head"},h("span",{className:"icon"},h(Icon,{name:"cpu",size:18})),h("h3",null,"Active machines")),h("div",{className:"summary-value"},h(CountUp,{text:String(activeMachineCount)})),h("div",{className:"summary-note"},`Reporting in ${monthObj.label}`)),
+            h("article",{className:"card status-kpi"},h("div",{className:"status-kpi-head"},h("span",{className:"icon"},h(Icon,{name:"activity",size:18})),h("h3",null,"Sessions")),h("div",{className:"summary-value"},h(CountUp,{text:n(cur.sessions)})),h("div",{className:"summary-note"},`${n(cur.questions)} questions asked`)),
+            h("article",{className:"card status-kpi"},h("div",{className:"status-kpi-head"},h("span",{className:"icon green"},h(Icon,{name:"check",size:18})),h("h3",null,"Avg success")),h("div",{className:"summary-value"},h(CountUp,{text:pct(cur.successRate)})),h("div",{className:"summary-note"},"Answered without apology")),
+            h("article",{className:"card status-kpi"},h("div",{className:"status-kpi-head"},h("span",{className:"icon amber"},h(Icon,{name:"gauge",size:18})),h("h3",null,"Avg rating")),h("div",{className:"summary-value"},h(CountUp,{text:`${safeNumber(cur.rating).toFixed(2)}/${(safeNumber(cur.ratingScale)||4).toFixed(2)}`})),h("div",{className:"summary-note"},"Across active machines"))
           ),
           h("div",{className:"machine-grid"},machineRows.map(x=>h(MachineCard,{key:x.row.assetId,row:x.row,prevRow:x.prevRow,kiosk:x.kiosk,days:monthObj.days,coverageStart:monthMeta?.[month]?.coverageStart,coverageEnd:authoritativeCur?.coverageEnd||monthMeta?.[month]?.coverageEnd,monthLabel:monthObj.label,previousMonthLabel:prev.label,selected:x.row.assetId===asset,onSelect:()=>setAsset(x.row.assetId)}))),
           h("div",{className:"card"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"cpu"})),h("div",null,h("h3",null,"Machine list"),h("p",{className:"subtitle"},"Reference list for active machines.")))),machineTable));

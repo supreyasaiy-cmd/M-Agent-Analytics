@@ -51,8 +51,8 @@
     select{height:42px;min-width:154px;padding:0 34px 0 12px}
     input{height:46px;padding:0 14px;width:100%}
     select:focus,input:focus{border-color:#93b4ff;box-shadow:0 0 0 4px rgba(37,99,235,.1)}
-    .hero{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;margin-bottom:16px;position:sticky;top:var(--hero-top,0px);z-index:40}.hero-copy h1{font-size:23px;line-height:1.15;margin:0 0 6px}.hero-copy p{font-size:13px;margin:0 0 12px}.hero-actions{gap:8px!important}.hero-actions .hero-chip{padding:7px 12px!important;font-size:12px!important;gap:6px}
-    .hero-copy{border-radius:20px;padding:16px 24px;background:linear-gradient(135deg,#ffffff 0%,#f8fbff 100%);box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.8);display:grid;align-content:start;gap:20px;overflow:hidden;position:relative}
+    .hero{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;margin-bottom:12px;position:sticky;top:var(--hero-top,0px);z-index:40}.hero-copy h1{font-size:20px;line-height:1.12;margin:0 0 3px}.hero-copy p{font-size:12.5px;margin:0 0 10px}.hero-actions{gap:8px!important}.hero-actions .hero-chip{padding:7px 12px!important;font-size:12px!important;gap:6px}
+    .hero-copy{border-radius:20px;padding:12px 22px;background:linear-gradient(135deg,#ffffff 0%,#f8fbff 100%);box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.8);display:grid;align-content:start;gap:20px;overflow:hidden;position:relative}
     .hero-copy:after{content:"";position:absolute;inset:auto 0 0 0;height:5px;background:linear-gradient(90deg,var(--blue),var(--cyan),var(--green))}
     .eyebrow{display:inline-flex;align-items:center;gap:8px;color:var(--blue);font-size:12px;text-transform:uppercase;font-weight:850;letter-spacing:0}
     .pulse{width:8px;height:8px;border-radius:99px;background:var(--green);box-shadow:0 0 0 6px rgba(18,183,106,.12)}
@@ -908,7 +908,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-23T09:23:17.586Z",
+  "generatedAt": "2026-08-23T10:10:52.768Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "13 Aug 2026",
@@ -32056,8 +32056,8 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
                 h("button",{className:"hero-chip",onClick:()=>scrollToOv("ov-performance"),type:"button"},h(Icon,{name:"activity",size:16}),"Performance"),
                 h("button",{className:"hero-chip",onClick:()=>scrollToOv(`${monthRows.length}-month trend`),type:"button"},h(Icon,{name:"trend",size:16}),`${monthRows.length}-month trend`),
                 h("button",{className:"hero-chip",onClick:()=>scrollToOv("Top Quick Replies"),type:"button"},h(Icon,{name:"message",size:16}),"Top Quick Replies"),
-                h("button",{className:"hero-chip",onClick:()=>scrollToOv("Language distribution"),type:"button"},h(Icon,{name:"globe",size:16}),"Language & Trend"),
-                h("button",{className:"hero-chip",onClick:()=>scrollToOv("User Behavior"),type:"button"},h(Icon,{name:"gauge",size:16}),"User Behavior")
+                h("button",{className:"hero-chip",onClick:()=>scrollToOv("User Behavior"),type:"button"},h(Icon,{name:"gauge",size:16}),"User Behavior"),
+                h("button",{className:"hero-chip",onClick:()=>scrollToOv("Language distribution"),type:"button"},h(Icon,{name:"globe",size:16}),"Language & Trend")
               )
             )
           ),

@@ -905,7 +905,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-22T12:44:32.054Z",
+  "generatedAt": "2026-08-23T00:20:54.140Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "13 Aug 2026",
@@ -31789,7 +31789,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     }
     function WorkspaceHeader({meta,periodStart,setPeriodStart,periodEnd,setPeriodEnd,onApplyPeriod,onMenu,showPeriod=true,periodMode="date",selectedMonth="",setSelectedMonth=()=>{},monthOptions=[],onFullHistoryPeriod=null,onApplyMonth=()=>{}}){return h("header",{className:"workspace-header"},h("div",{className:"header-title"},h("button",{className:"mobile-menu",onClick:onMenu,"aria-label":"Open navigation"},h(Icon,{name:"menu",size:22})),h("span",{className:"icon"},h(Icon,{name:meta.icon||"activity"})),h("div",{style:{minWidth:0}},h("div",{className:"crumb"},h("b",null,meta.group)," / ",meta.label),h("div",{className:"page-title-line"},meta.label))),showPeriod&&h("div",{className:"header-filters"},h("div",{className:"period-control"},periodMode==="monthly"
       ? h("div",{className:"period-range",style:{gridTemplateColumns:"minmax(220px,1fr) auto"}},h("label",{className:"field"},"Monthly",h("select",{value:selectedMonth,onChange:e=>setSelectedMonth(e.target.value)},monthOptions.map(option=>h("option",{key:option.id,value:option.id},option.label)))),h("button",{type:"button",className:"period-apply",onClick:onApplyPeriod},"Apply"))
-      : h("div",{className:"period-range"},h("label",{className:"field"},"Start Date",h("input",{type:"date",value:periodStart,onChange:e=>setPeriodStart(e.target.value)})),h("label",{className:"field"},"End Date",h("input",{type:"date",value:periodEnd,onChange:e=>setPeriodEnd(e.target.value)})),h("label",{className:"field"},"Monthly",h("select",{value:"",onChange:e=>{if(e.target.value)onApplyMonth(e.target.value);}},h("option",{value:""},"Jump to month"),monthOptions.map(o=>h("option",{key:o.id,value:o.id},o.label)))),onFullHistoryPeriod&&h("button",{type:"button",className:"period-shortcut",onClick:onFullHistoryPeriod,title:"Show data from first available record to latest record"},"Full history"),h("button",{type:"button",className:"period-apply",onClick:onApplyPeriod},"Apply")))))}
+      : h("div",{className:"period-range"},h("label",{className:"field"},"Start Date",h("input",{type:"date",value:periodStart,onChange:e=>setPeriodStart(e.target.value)})),h("label",{className:"field"},"End Date",h("input",{type:"date",value:periodEnd,onChange:e=>setPeriodEnd(e.target.value)})),h("label",{className:"field"},"Monthly",h("select",{value:(monthOptions.find(o=>periodStart===`${o.id}-01`&&periodEnd===`${o.id}-${String(o.days).padStart(2,"0")}`)||{}).id||"",onChange:e=>{if(e.target.value)onApplyMonth(e.target.value);}},h("option",{value:""},"Select month…"),monthOptions.map(o=>h("option",{key:o.id,value:o.id},o.label)))),onFullHistoryPeriod&&h("button",{type:"button",className:"period-shortcut",onClick:onFullHistoryPeriod,title:"Show data from first available record to latest record"},"Full history"),h("button",{type:"button",className:"period-apply",onClick:onApplyPeriod},"Apply")))))}
     function previewCellValue(value){
       if(value===null||value===undefined||value==="") return "—";
       if(typeof value==="number"&&Number.isFinite(value)) return String(value);

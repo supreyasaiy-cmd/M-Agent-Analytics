@@ -917,7 +917,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-24T09:34:03.454Z",
+  "generatedAt": "2026-08-24T09:46:55.846Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "23 Aug 2026",
@@ -33413,9 +33413,9 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
             h("div",{className:"hero-copy"},
               h("div",{className:"hero-actions"},
                 h("button",{className:"hero-chip primary",onClick:()=>scrollToOv("Overview Summary"),type:"button"},h(Icon,{name:"activity",size:16}),"Overview Summary"),
+                h("button",{className:"hero-chip",onClick:()=>scrollToOv("ov-performance"),type:"button"},h(Icon,{name:"activity",size:16}),"Performance"),
                 h("button",{className:"hero-chip",onClick:()=>scrollToOv(`${monthRows.length}-month trend`),type:"button"},h(Icon,{name:"trend",size:16}),`${monthRows.length}-month trend`),
                 h("button",{className:"hero-chip",onClick:()=>scrollToOv("Machine overview"),type:"button"},h(Icon,{name:"cpu",size:16}),"Machine overview"),
-                h("button",{className:"hero-chip",onClick:()=>scrollToOv("ov-performance"),type:"button"},h(Icon,{name:"activity",size:16}),"Performance"),
                 h("button",{className:"hero-chip",onClick:()=>scrollToOv("Top Quick Replies"),type:"button"},h(Icon,{name:"message",size:16}),"Top Quick Replies"),
                 h("button",{className:"hero-chip",onClick:()=>scrollToOv("User Behavior"),type:"button"},h(Icon,{name:"gauge",size:16}),"User Behavior"),
                 h("button",{className:"hero-chip",onClick:()=>scrollToOv("Language distribution"),type:"button"},h(Icon,{name:"globe",size:16}),"Language & Trend")
@@ -33443,6 +33443,10 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
               ))
             )
           ),
+          h("div",{className:"kpi-grid",id:"ov-performance"},
+            kpis.map(k=>h(KpiCard,{key:k[0],label:k[0],value:k[1],note:k[2],deltaValue:k[3],bad:k[0]==="Apology Rate",icon:k[5],series:k[6]}))
+          ),
+          
           h("div",{className:"bento"},h("div",{className:"card span-12 overview-trend-card"},
               h("div",{className:"card-head"},
                 h("div",{className:"card-title"},
@@ -33495,10 +33499,6 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
               ))
             )
           ),
-          h("div",{className:"kpi-grid",id:"ov-performance"},
-            kpis.map(k=>h(KpiCard,{key:k[0],label:k[0],value:k[1],note:k[2],deltaValue:k[3],bad:k[0]==="Apology Rate",icon:k[5],series:k[6]}))
-          ),
-          
           h("div",{className:"card overview-summary-card"},
             h("div",{className:"overview-summary-head"},
               h("div",{className:"card-title"},

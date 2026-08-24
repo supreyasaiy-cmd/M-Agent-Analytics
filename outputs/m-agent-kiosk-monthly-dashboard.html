@@ -917,7 +917,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-24T06:51:40.762Z",
+  "generatedAt": "2026-08-24T09:34:03.454Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "23 Aug 2026",
@@ -33412,9 +33412,9 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
           h("section",{className:"hero"},
             h("div",{className:"hero-copy"},
               h("div",{className:"hero-actions"},
-                h("button",{className:"hero-chip primary",onClick:()=>scrollToOv("Machine overview"),type:"button"},h(Icon,{name:"cpu",size:16}),"Machine overview"),
+                h("button",{className:"hero-chip primary",onClick:()=>scrollToOv("Overview Summary"),type:"button"},h(Icon,{name:"activity",size:16}),"Overview Summary"),
                 h("button",{className:"hero-chip",onClick:()=>scrollToOv(`${monthRows.length}-month trend`),type:"button"},h(Icon,{name:"trend",size:16}),`${monthRows.length}-month trend`),
-                h("button",{className:"hero-chip",onClick:()=>scrollToOv("Overview Summary"),type:"button"},h(Icon,{name:"activity",size:16}),"Overview Summary"),
+                h("button",{className:"hero-chip",onClick:()=>scrollToOv("Machine overview"),type:"button"},h(Icon,{name:"cpu",size:16}),"Machine overview"),
                 h("button",{className:"hero-chip",onClick:()=>scrollToOv("ov-performance"),type:"button"},h(Icon,{name:"activity",size:16}),"Performance"),
                 h("button",{className:"hero-chip",onClick:()=>scrollToOv("Top Quick Replies"),type:"button"},h(Icon,{name:"message",size:16}),"Top Quick Replies"),
                 h("button",{className:"hero-chip",onClick:()=>scrollToOv("User Behavior"),type:"button"},h(Icon,{name:"gauge",size:16}),"User Behavior"),
@@ -33422,6 +33422,46 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
               )
             )
           ),
+          h("div",{className:"card overview-summary-card"},
+            h("div",{className:"overview-summary-head"},
+              h("div",{className:"card-title"},
+                h("span",{className:"icon"},h(Icon,{name:"trend"})),
+                h("div",null,
+                  h("h3",null,"Overview Summary"),
+                  h("p",{className:"subtitle"},"The fastest read on traffic, quality, behavior, and language mix.")
+                )
+              ),
+              h("div",{className:"overview-summary-actions"},
+                h("button",{className:"hero-chip",onClick:()=>goPage("user-behavior"),type:"button","aria-label":"Open Performance & User Analytics"},h(Icon,{name:"activity",size:16}),"Open Performance & User Analytics")
+              )
+            ),
+            h("div",{className:"overview-summary-grid"},
+              overviewBehaviorSummary.map(item=>h("div",{className:"overview-summary-item",key:item.label},
+                h("span",null,item.label),
+                h("strong",null,item.value),
+                h("p",null,item.note)
+              ))
+            )
+          ),
+          h("div",{className:"bento"},h("div",{className:"card span-12 overview-trend-card"},
+              h("div",{className:"card-head"},
+                h("div",{className:"card-title"},
+                  h("span",{className:"icon"},h(Icon,{name:"trend"})),
+                  h("div",null,
+                    h("h3",null,`${monthRows.length}-month trend`),
+                    h("p",{className:"subtitle"},"Questions and sessions trend across the full available history.")
+                  )
+                ),
+                h("div",{className:"chart-legend",style:{display:"flex",gap:"18px",alignItems:"center"}},
+                  h("span",{style:{display:"inline-flex",alignItems:"center",gap:"7px",fontSize:"12px",fontWeight:700,color:"#475569"}},
+                    h("i",{style:{width:"16px",height:"3px",borderRadius:"2px",background:"#2563eb",display:"inline-block"}}),"Questions"),
+                  h("span",{style:{display:"inline-flex",alignItems:"center",gap:"7px",fontSize:"12px",fontWeight:700,color:"#475569"}},
+                    h("i",{style:{width:"16px",height:"0",borderTop:"3px dashed #0891b2",display:"inline-block"}}),"Sessions")
+                )
+              ),
+              h(AreaChart,{monthsData:monthRows}),
+              monthRows.some(m=>isPartialMonth(m.id))?h("p",{className:"subtitle",style:{margin:"6px 46px 0",textAlign:"right",fontSize:"11px",color:"#94a3b8"}},"* Partial month — fewer days of data"):null
+            )),
           h("div",{className:"card overview-summary-card"},
             h("div",{className:"overview-summary-head"},
               h("div",{className:"card-title"},
@@ -33452,46 +33492,6 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
                   h("div",null,h("strong",null,h(CountUp,{text:item.rating})),h("span",null,"Rating")),
                   h("div",{style:{gridColumn:"1/-1"}},h("strong",null,h(CountUp,{text:item.avgPerDay})),h("span",null,"Avg users / day"))
                 )
-              ))
-            )
-          ),
-          h("div",{className:"bento"},h("div",{className:"card span-12 overview-trend-card"},
-              h("div",{className:"card-head"},
-                h("div",{className:"card-title"},
-                  h("span",{className:"icon"},h(Icon,{name:"trend"})),
-                  h("div",null,
-                    h("h3",null,`${monthRows.length}-month trend`),
-                    h("p",{className:"subtitle"},"Questions and sessions trend across the full available history.")
-                  )
-                ),
-                h("div",{className:"chart-legend",style:{display:"flex",gap:"18px",alignItems:"center"}},
-                  h("span",{style:{display:"inline-flex",alignItems:"center",gap:"7px",fontSize:"12px",fontWeight:700,color:"#475569"}},
-                    h("i",{style:{width:"16px",height:"3px",borderRadius:"2px",background:"#2563eb",display:"inline-block"}}),"Questions"),
-                  h("span",{style:{display:"inline-flex",alignItems:"center",gap:"7px",fontSize:"12px",fontWeight:700,color:"#475569"}},
-                    h("i",{style:{width:"16px",height:"0",borderTop:"3px dashed #0891b2",display:"inline-block"}}),"Sessions")
-                )
-              ),
-              h(AreaChart,{monthsData:monthRows}),
-              monthRows.some(m=>isPartialMonth(m.id))?h("p",{className:"subtitle",style:{margin:"6px 46px 0",textAlign:"right",fontSize:"11px",color:"#94a3b8"}},"* Partial month — fewer days of data"):null
-            )),
-          h("div",{className:"card overview-summary-card"},
-            h("div",{className:"overview-summary-head"},
-              h("div",{className:"card-title"},
-                h("span",{className:"icon"},h(Icon,{name:"trend"})),
-                h("div",null,
-                  h("h3",null,"Overview Summary"),
-                  h("p",{className:"subtitle"},"The fastest read on traffic, quality, behavior, and language mix.")
-                )
-              ),
-              h("div",{className:"overview-summary-actions"},
-                h("button",{className:"hero-chip",onClick:()=>goPage("user-behavior"),type:"button","aria-label":"Open Performance & User Analytics"},h(Icon,{name:"activity",size:16}),"Open Performance & User Analytics")
-              )
-            ),
-            h("div",{className:"overview-summary-grid"},
-              overviewBehaviorSummary.map(item=>h("div",{className:"overview-summary-item",key:item.label},
-                h("span",null,item.label),
-                h("strong",null,item.value),
-                h("p",null,item.note)
               ))
             )
           ),

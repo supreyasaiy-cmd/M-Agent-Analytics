@@ -917,7 +917,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-24T04:56:26.714Z",
+  "generatedAt": "2026-08-24T06:51:40.762Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "23 Aug 2026",
@@ -33280,7 +33280,7 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
       const monthRows=months.slice().reverse().map(m=>({id:m.id,label:m.label,short:m.short,...metric(perf.filter(r=>r.month===m.id),m.days),...(monthlyAggregateMetrics[m.id]||{})}));
       const ratingText=(value,scale=5)=>value===null||value===undefined?"Not available":`${safeNumber(value).toFixed(2)}/${safeNumber(scale).toFixed(2)}`;
       const topicRows=getTopics(appliedMonthId,cur.questions), questionRows=getQuestions(appliedMonthId), errorRows=errors.filter(e=>e.month===appliedMonthId && filteredMap.has(e.kiosk));
-      const eventRows=allEvents.filter(e=>filteredMap.has(e.asset)&&eventOverlapsPeriod(e,appliedPeriod.start,appliedPeriod.end));
+      const isFullHistoryRange=appliedPeriod.start===fullHistoryStart&&appliedPeriod.end===fullHistoryEnd;const eventRows=allEvents.filter(e=>filteredMap.has(e.asset)&&(isFullHistoryRange||eventOverlapsPeriod(e,appliedPeriod.start,appliedPeriod.end)));
       const previousEventRows=allEvents.filter(e=>filteredMap.has(e.asset)&&eventOverlapsPeriod(e,previousPeriodStart,previousPeriodEnd));
       const eventSeries=monthRows.map(x=>allEvents.filter(e=>e.month===x.id&&filteredMap.has(e.asset)).length);
       const best=[...filteredRows].sort((a,b)=>b.questions-a.questions)[0], low=[...filteredRows].sort((a,b)=>a.sessions-b.sessions)[0], topTopic=topicRows[0], openErrors=errorRows.filter(e=>e.status!=="Fixed").length;const insCount=filteredRows.length,insSessions=filteredRows.reduce((a,r)=>a+safeNumber(r.sessions),0),insQuestions=filteredRows.reduce((a,r)=>a+safeNumber(r.questions),0),insSuccessCount=filteredRows.reduce((a,r)=>a+safeNumber(r.success),0),insSuccessRate=insQuestions?insSuccessCount/insQuestions*100:0;

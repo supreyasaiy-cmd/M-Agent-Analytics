@@ -50,10 +50,8 @@ const reportFiles = {
     rating: "Perfomance Reports/0726 July/ratings-export-2026-07-01-to-2026-07-31-90ce9043.csv"
   },
   "2026-08": {
-    message: "Perfomance Reports/0826 Aug/M-Agent Report 07-13082026_Woman Inspired2026.xlsx",
-    messageSheet: "Raw",
-    rating: "Perfomance Reports/0826 Aug/M-Agent Report 07-13082026_Woman Inspired2026.xlsx",
-    ratingSheet: "Rating"
+    message: "Perfomance Reports/0826 Aug/messageLog-export-2026-08-01-to-2026-08-23-3fa6767a.csv",
+    rating: "Perfomance Reports/0826 Aug/ratings-export-2026-08-01-to-2026-08-23-3fa6767a.csv"
   }
 };
 
@@ -99,15 +97,6 @@ const verifiedOverviewMonthlyOverrides = {
     rating: 2.66,
     ratingCount: 90,
     activeMachines: 7
-  },
-  "2026-08": {
-    sessions: 64,
-    questions: 103,
-    success: 95,
-    apology: 8,
-    rating: 3,
-    ratingCount: 8,
-    activeMachines: 1
   }
 };
 

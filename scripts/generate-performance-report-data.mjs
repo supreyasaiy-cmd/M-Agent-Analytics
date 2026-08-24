@@ -51,7 +51,10 @@ const reportFiles = {
   },
   "2026-08": {
     message: "Perfomance Reports/0826 Aug/messageLog-export-2026-08-01-to-2026-08-23-3fa6767a.csv",
-    rating: "Perfomance Reports/0826 Aug/ratings-export-2026-08-01-to-2026-08-23-3fa6767a.csv"
+    rating: "Perfomance Reports/0826 Aug/ratings-export-2026-08-01-to-2026-08-23-3fa6767a.csv",
+    // Woman Inspired event (NO5-M3-EVT-01, 7-13 Aug) exported separately; merged into the Overview.
+    messageExtra: [{ file: "Perfomance Reports/0826 Aug/M-Agent Report 07-13082026_Woman Inspired2026.xlsx", sheet: "Raw" }],
+    ratingExtra: [{ file: "Perfomance Reports/0826 Aug/M-Agent Report 07-13082026_Woman Inspired2026.xlsx", sheet: "Rating" }]
   }
 };
 
@@ -109,6 +112,14 @@ const csvMachineIdMap = {
   "16f880a4-ccd9-41b6-a3ad-0f0075b649a2":"NO5-M3-EVT-01",
   "NO5-M3-EVT-01":"NO5-M3-EVT-01"
 };
+
+// Machines physically returned on 27 Jul 2026 — excluded from the report from Aug 2026 onward.
+const returnedFromMonth = {
+  "NO3-M6-NGW-01": "2026-08",
+  "NO4-M5-THA-01": "2026-08"
+};
+const isReturnedInMonth = (assetId, monthId) =>
+  Boolean(returnedFromMonth[assetId]) && monthId >= returnedFromMonth[assetId];
 
 const bangkokTimeZone = "Asia/Bangkok";
 
@@ -411,6 +422,9 @@ export function buildPerformanceReportData(rootDir) {
 
   for (const [monthId, files] of Object.entries(reportFiles)) {
     const messageRows = parseTabularFile(join(rootDir, files.message), files.messageSheet);
+    for (const ex of files.messageExtra || []) {
+      messageRows.push(...parseTabularFile(join(rootDir, ex.file), ex.sheet));
+    }
     const metricsByAsset = {};
     const rawMetricBucket = createMetricBucket();
     const rawMachineIds = new Set();
@@ -418,6 +432,7 @@ export function buildPerformanceReportData(rootDir) {
     let maxDate = null;
 
     for (const row of messageRows) {
+      if (isReturnedInMonth(csvMachineIdMap[row.machineId], monthId)) continue;
       rawMetricBucket.sessionIds.add(String(row.sessionId || ""));
       rawMetricBucket.questions += 1;
       rawMetricBucket[detectInput(row.question, row.audioUrl)] += 1;
@@ -493,7 +508,11 @@ export function buildPerformanceReportData(rootDir) {
 
     if (files.rating) {
       const ratingRows = parseTabularFile(join(rootDir, files.rating), files.ratingSheet);
+      for (const ex of files.ratingExtra || []) {
+        ratingRows.push(...parseTabularFile(join(rootDir, ex.file), ex.sheet));
+      }
       for (const row of ratingRows) {
+        if (isReturnedInMonth(csvMachineIdMap[row.machineId], monthId)) continue;
         const rating = Number(row.rating || 0);
         if (rating > 0) rawMetricBucket.ratings.push(rating);
         const assetId = csvMachineIdMap[row.machineId];

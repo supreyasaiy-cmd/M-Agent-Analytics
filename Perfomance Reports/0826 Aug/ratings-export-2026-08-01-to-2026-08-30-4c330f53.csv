@@ -1,4 +1,16 @@
 sessionId,askAnswerId,machineId,configId,rating,startAt,reason,reasonText,machineName,firstQuestion,firstAnswer,language
+1787981802178,RATING,53c8aecf-7c86-4034-9b84-ffa5b9bb11a1,c9cc2d27f5c76ffd8e18ecfe24419215,3,2026-08-29T12:59:38.868+07:00,speed,Speed,TheMall-002-M8-BKP-03,quick reply: Special Privilege,"""“You’re currently at The Mall Lifestore Bangkapi.
+Discover special privileges waiting for you across the mall.
+Would you like to see participating stores?”""",en-US
+1787927746216,RATING,53c8aecf-7c86-4034-9b84-ffa5b9bb11a1,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-08-28T21:35:48.693+07:00,speed,ความเร็ว,TheMall-002-M8-BKP-03,Directory,"ขณะนี้ลูกค้าอยู่ที่เดอะมอลล์ไลฟ์สโตร์ บางกะปิ นะคะ
+อยากหาร้านไหนหรือแบรนด์อะไรเป็นพิเศษไหมคะ เดี๋ยวฉันช่วยดูให้ค่ะ",th-TH
+1787907933320,RATING,16f880a4-ccd9-41b6-a3ad-0f0075b649a2,c9cc2d27f5c76ffd8e18ecfe24419215,2,2026-08-28T16:05:34.754+07:00,helpfulness,Helpfulness,TheMall-005-M8-BKP-02,Where is King Kong?,King Kong Fried Skewer is located on the **3rd Floor**.,en-US
+1787895250793,RATING,16f880a4-ccd9-41b6-a3ad-0f0075b649a2,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-08-28T16:03:07.347+07:00,,,TheMall-005-M8-BKP-02,quick reply: Directory,"You’re now at The Mall Life Store Bangkapi.
+Is there any store or brand you’d like to find? I can help you with that!",en-US
+1787819039093,RATING,16f880a4-ccd9-41b6-a3ad-0f0075b649a2,c9cc2d27f5c76ffd8e18ecfe24419215,2,2026-08-27T15:24:04.318+07:00,accuracy,ความแม่นยำ,TheMall-005-M8-BKP-02,quick reply: Directory,"ขณะนี้ลูกค้าอยู่ที่เดอะมอลล์ไลฟ์สโตร์ บางกะปิ นะคะ
+อยากหาร้านไหนหรือแบรนด์อะไรเป็นพิเศษไหมคะ เดี๋ยวฉันช่วยดูให้ค่ะ",th-TH
+1787506255761,RATING,53c8aecf-7c86-4034-9b84-ffa5b9bb11a1,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-08-24T00:31:02.851+07:00,speed,Speed,TheMall-002-M8-BKP-03,quick reply: Directory,"You’re now at The Mall Life Store Bangkapi.
+Is there any store or brand you’d like to find? I can help you with that!",en-US
 1787481219329,RATING,53c8aecf-7c86-4034-9b84-ffa5b9bb11a1,c9cc2d27f5c76ffd8e18ecfe24419215,1,2026-08-23T17:34:04.175+07:00,,,TheMall-002-M8-BKP-03,y u r so weird,I'm here to help! What would you like to know?,en-US
 1787471361408,RATING,53c8aecf-7c86-4034-9b84-ffa5b9bb11a1,c9cc2d27f5c76ffd8e18ecfe24419215,2,2026-08-23T14:49:24.496+07:00,,,TheMall-002-M8-BKP-03,quick reply: Directory,"ขณะนี้ลูกค้าอยู่ที่เดอะมอลล์ไลฟ์สโตร์ บางกะปิ นะคะ
 อยากหาร้านไหนหรือแบรนด์อะไรเป็นพิเศษไหมคะ เดี๋ยวฉันช่วยดูให้ค่ะ",th-TH
@@ -37,14 +49,23 @@ M-Agent ได้ยินชัดเจนเลยค่ะ
 1786524849945,RATING,53c8aecf-7c86-4034-9b84-ffa5b9bb11a1,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-08-12T15:54:12.207+07:00,helpfulness,Helpfulness,TheMall-002-M8-BKP-03,quick reply: Coffee or Tea,"""You are currently at The Mall Lifestore Bangkapi.
 There are currently coffee and tea drink promotions available within the mall.
 Would you like me to recommend participating stores?""",en-US
+1786509313322,RATING,16f880a4-ccd9-41b6-a3ad-0f0075b649a2,71405e8939770bc6b6244b4865835a88,4,2026-08-12T11:35:16.422+07:00,speed,ความเร็ว,TheMall-005-M3-EVT-01,สวัสดี,สวัสดีค่ะ ยินดีต้อนรับสู่เดอะมอลล์ไลฟ์สโตร์ บางกะปิค่ะมีอะไรให้ M-Agent ช่วยเหลือคุณได้บ้างคะ?,th-TH
 1786451232020,RATING,53c8aecf-7c86-4034-9b84-ffa5b9bb11a1,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-08-11T21:01:56.140+07:00,speed,Speed,TheMall-002-M8-BKP-03,quick reply: Coffee or Tea,"""You are currently at The Mall Lifestore Bangkapi.
 There are currently coffee and tea drink promotions available within the mall.
 Would you like me to recommend participating stores?""",en-US
 1786454451159,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,3,2026-08-11T20:21:00.547+07:00,helpfulness,Helpfulness,TheMall-001-M8-BKP-01,supermarket,"We have **Gourmet Market** here on the **G Floor**! It's a premium supermarket with a wide selection of groceries, fresh produce, and imported goods. They even have fresh cut flowers and pre-arranged bouquets!",en-US
+1786451496025,RATING,16f880a4-ccd9-41b6-a3ad-0f0075b649a2,71405e8939770bc6b6244b4865835a88,2,2026-08-11T19:31:40.083+07:00,,,TheMall-005-M3-EVT-01,promotion,"There are several great promotions available right now.
+You can tap the cards below to see more details.",en-US
 1786447804032,RATING,53c8aecf-7c86-4034-9b84-ffa5b9bb11a1,c9cc2d27f5c76ffd8e18ecfe24419215,4,2026-08-11T19:20:32.974+07:00,helpfulness,Helpfulness,TheMall-002-M8-BKP-03,quick reply: Coffee or Tea,"""You are currently at The Mall Lifestore Bangkapi.
 There are currently coffee and tea drink promotions available within the mall.
 Would you like me to recommend participating stores?""",en-US
+1786366350461,RATING,16f880a4-ccd9-41b6-a3ad-0f0075b649a2,71405e8939770bc6b6244b4865835a88,4,2026-08-10T19:52:31.835+07:00,accuracy,ความแม่นยำ,TheMall-005-M3-EVT-01,มอลลี่มาทำอะไรที่ The Mall คะ,ตอนนี้ที่เดอะมอลล์ไลฟ์สโตร์ บางกะปิ มีโปรโมชัน THE MALL LIFESTORE EATVENTURE ค่ะ สมาชิก M CARD ที่ทานอาหารในร้านค้าที่ร่วมรายการ วันจันทร์-ศุกร์ ครบ 400 บาท จะได้รับ 1 M STAR ค่ะ สะสมครบ 15 M STAR แลกรับคูปอง CHAGEE หรือ MOLLY TEA มูลค่า 100 บาทได้เลยค่ะ คูปอง MOLLY TEA สามารถใช้ได้ถึงวันที่ 15 สิงหาคม 2026 นะคะ,th-TH
+1786365364268,RATING,16f880a4-ccd9-41b6-a3ad-0f0075b649a2,71405e8939770bc6b6244b4865835a88,4,2026-08-10T19:36:09.074+07:00,helpfulness,Helpfulness,TheMall-005-M3-EVT-01,hello,Hi there!  How can I help you today?,en-US
+1786365301200,RATING,16f880a4-ccd9-41b6-a3ad-0f0075b649a2,71405e8939770bc6b6244b4865835a88,3,2026-08-10T19:35:02.792+07:00,speed,ความเร็ว,TheMall-005-M3-EVT-01,สวัสดี,สวัสดีค่ะ ยินดีที่ได้ช่วยเหลือคุณ มีอะไรให้ช่วยไหมคะ?,th-TH
 1786286002086,RATING,53c8aecf-7c86-4034-9b84-ffa5b9bb11a1,c9cc2d27f5c76ffd8e18ecfe24419215,1,2026-08-09T21:33:24.095+07:00,helpfulness,ความช่วยเหลือ,TheMall-002-M8-BKP-03,MCard,MCard มีหลากหลายรูปแบบ สามารถคลิกดูได้ตาม Card ด้านล่าง,th-TH
+1786271136328,RATING,16f880a4-ccd9-41b6-a3ad-0f0075b649a2,71405e8939770bc6b6244b4865835a88,3,2026-08-09T17:25:41.666+07:00,,,TheMall-005-M3-EVT-01,promotion,"ตอนนี้มีโปรโมชั่นดี ๆ หลายรายการเลยค่ะ
+ลูกค้าสามารถแตะดูรายละเอียดจากการ์ดด้านล่างได้เลยนะคะ",th-TH
+1786267984166,RATING,16f880a4-ccd9-41b6-a3ad-0f0075b649a2,71405e8939770bc6b6244b4865835a88,3,2026-08-09T16:33:07.625+07:00,speed,ความเร็ว,TheMall-005-M3-EVT-01,หาวิธีให้แม่ไม่ยอมถ่ายรูป,ฉันเข้าใจเลยค่ะ บางทีคุณแม่ก็อาจจะเขินหรือไม่มั่นใจนะคะ ลองชวนคุณแม่ถ่ายรูปในบรรยากาศสบายๆ หรือลองใช้ฟิลเตอร์น่ารักๆ ดูไหมคะ อาจจะช่วยให้คุณแม่สนุกกับการถ่ายรูปมากขึ้นค่ะ,th-TH
 1786190676335,RATING,53c8aecf-7c86-4034-9b84-ffa5b9bb11a1,c9cc2d27f5c76ffd8e18ecfe24419215,3,2026-08-08T19:04:42.004+07:00,speed,ความเร็ว,TheMall-002-M8-BKP-03,MAGIC DISCOUNT: Instant Savings & Double Points,"โปรโมชั่น MAGIC DISCOUNT นะคะ สมาชิก M Card จะได้รับส่วนลดและคะแนนสะสม X2 ในหลากหลายหมวดหมู่ค่ะ โปรโมชั่นนี้แบ่งออกเป็น 3 เฟส แต่ละเฟสจะมีส่วนลดและเงื่อนไขการแลกคะแนน M Point ที่แตกต่างกันไปนะคะ เฟส 3 จะเริ่มตั้งแต่วันที่ 1 สิงหาคม ถึง 15 กันยายน 2569 ค่ะ คุณจะได้รับส่วนลดสูงสุด 600 บาท โดยใช้ 800 M Point แลกส่วนลด 200 บาทค่ะ หมวดหมู่ที่ร่วมรายการในเฟสนี้ ได้แก่ IT, EDUCATION, BEAUTY SERVICE และ FURNITURE ค่ะ",th-TH
 1786180968378,RATING,53c8aecf-7c86-4034-9b84-ffa5b9bb11a1,c9cc2d27f5c76ffd8e18ecfe24419215,3,2026-08-08T16:56:51.726+07:00,,,TheMall-002-M8-BKP-03,promotion,"There are several great promotions available right now.
 You can tap the cards below to see more details.",en-US
@@ -54,6 +75,7 @@ If you're in the mood for Japanese, there's **Minato** in the food hall on the G
 For Chinese noodles, check out **Yuanmingyuan**, also on the Ground Floor. 
 We also have a Food Court on the **3rd Floor** with a variety of dining options, including **FUJI RESTAURANT**, **KATEI SHABU**, **HASUL KOREAN RESTAURANT**, and **COCO ICHIBANYA**.",en-US
 1786167463652,RATING,53c8aecf-7c86-4034-9b84-ffa5b9bb11a1,c9cc2d27f5c76ffd8e18ecfe24419215,3,2026-08-08T12:37:48.614+07:00,,,TheMall-002-M8-BKP-03,hi what's your name,My name is M-Agent. I'm happy to help you. What can I assist with?,en-US
+1786107074489,RATING,16f880a4-ccd9-41b6-a3ad-0f0075b649a2,71405e8939770bc6b6244b4865835a88,1,2026-08-07T19:51:17.697+07:00,helpfulness,ความช่วยเหลือ,TheMall-005-M3-EVT-01,สวยป่ะ,ฉันเป็น M-Agent ค่ะ ฉันอยู่ที่นี่เพื่อช่วยเหลือคุณค่ะ มีอะไรให้ช่วยไหมคะ?,th-TH
 1786026624953,RATING,53c8aecf-7c86-4034-9b84-ffa5b9bb11a1,c9cc2d27f5c76ffd8e18ecfe24419215,3,2026-08-06T21:30:27.540+07:00,,,TheMall-002-M8-BKP-03,promotion,"ตอนนี้มีโปรโมชั่นดี ๆ หลายรายการเลยค่ะ
 ลูกค้าสามารถแตะดูรายละเอียดจากการ์ดด้านล่างได้เลยนะคะ",th-TH
 1786022799966,RATING,135ef541-0de0-41cb-bd1f-c909b3ddb9a3,c9cc2d27f5c76ffd8e18ecfe24419215,3,2026-08-06T20:28:34.887+07:00,speed,Speed,TheMall-001-M8-BKP-01,Special Privilege,"""“You’re currently at The Mall Lifestore Bangkapi.

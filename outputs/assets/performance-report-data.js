@@ -1,8 +1,8 @@
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-24T09:46:55.846Z",
+  "generatedAt": "2026-08-31T03:16:38.806Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
-  "historyEnd": "23 Aug 2026",
+  "historyEnd": "30 Aug 2026",
   "monthMeta": {
     "2025-09": {
       "coverageStart": "2025-09-01",
@@ -50,7 +50,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     },
     "2026-08": {
       "coverageStart": "2026-08-01",
-      "coverageEnd": "2026-08-23"
+      "coverageEnd": "2026-08-30"
     }
   },
   "csvMachineMetrics": {
@@ -743,45 +743,45 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     },
     "2026-08": {
       "NO2-M7-BKE-01": [
-        276,
-        434,
-        219,
-        90,
-        125,
-        214,
-        220,
+        348,
+        531,
+        267,
+        124,
+        140,
+        261,
+        262,
+        8,
         0,
-        0,
-        395,
-        39,
-        3
+        482,
+        49,
+        3.07
       ],
       "NO5-M3-EVT-01": [
-        139,
-        240,
-        152,
-        21,
-        67,
-        133,
-        107,
+        167,
+        390,
+        242,
+        34,
+        114,
+        219,
+        165,
+        6,
         0,
-        0,
-        205,
-        35,
-        3
+        340,
+        50,
+        2.96
       ],
       "NO1-M8-BKP-01": [
-        130,
-        214,
-        125,
-        11,
-        78,
-        102,
-        112,
+        152,
+        256,
+        141,
+        24,
+        91,
+        127,
+        127,
+        2,
         0,
-        0,
-        189,
-        25,
+        223,
+        33,
         2.62
       ]
     }
@@ -804,109 +804,109 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "activeMachines": 1
     },
     "2025-10": {
-      "sessions": 701,
-      "questions": 1387,
-      "voice": 750,
-      "quickReply": 515,
-      "keyboard": 122,
-      "thai": 885,
-      "english": 488,
+      "sessions": 675,
+      "questions": 1333,
+      "voice": 742,
+      "quickReply": 473,
+      "keyboard": 118,
+      "thai": 847,
+      "english": 472,
       "chinese": 14,
       "others": 0,
-      "success": 1124,
-      "apology": 263,
-      "rating": 3.34,
-      "ratingCount": 96,
-      "activeMachines": 8
+      "success": 1072,
+      "apology": 261,
+      "rating": 3.32,
+      "ratingCount": 93,
+      "activeMachines": 5
     },
     "2025-11": {
-      "sessions": 1248,
-      "questions": 2292,
-      "voice": 1270,
-      "quickReply": 838,
+      "sessions": 1176,
+      "questions": 2182,
+      "voice": 1234,
+      "quickReply": 764,
       "keyboard": 184,
-      "thai": 1468,
-      "english": 799,
-      "chinese": 25,
+      "thai": 1383,
+      "english": 779,
+      "chinese": 20,
       "others": 0,
-      "success": 1854,
-      "apology": 438,
+      "success": 1756,
+      "apology": 426,
       "rating": 3.03,
       "ratingCount": 31,
-      "activeMachines": 10
+      "activeMachines": 5
     },
     "2025-12": {
-      "sessions": 1420,
-      "questions": 2894,
-      "voice": 1602,
-      "quickReply": 1034,
-      "keyboard": 258,
-      "thai": 1667,
-      "english": 1220,
+      "sessions": 1316,
+      "questions": 2532,
+      "voice": 1327,
+      "quickReply": 954,
+      "keyboard": 251,
+      "thai": 1452,
+      "english": 1073,
       "chinese": 7,
       "others": 0,
-      "success": 2363,
-      "apology": 531,
+      "success": 2036,
+      "apology": 496,
       "rating": 2.86,
       "ratingCount": 28,
-      "activeMachines": 10
+      "activeMachines": 5
     },
     "2026-01": {
-      "sessions": 916,
-      "questions": 1811,
-      "voice": 1017,
-      "quickReply": 609,
-      "keyboard": 185,
-      "thai": 1069,
-      "english": 742,
+      "sessions": 893,
+      "questions": 1774,
+      "voice": 998,
+      "quickReply": 601,
+      "keyboard": 175,
+      "thai": 1053,
+      "english": 721,
       "chinese": 0,
       "others": 0,
-      "success": 1468,
-      "apology": 343,
+      "success": 1437,
+      "apology": 337,
       "rating": 2.88,
       "ratingCount": 24,
-      "activeMachines": 7
+      "activeMachines": 4
     },
     "2026-02": {
-      "sessions": 786,
-      "questions": 1345,
-      "voice": 732,
+      "sessions": 780,
+      "questions": 1333,
+      "voice": 720,
       "quickReply": 428,
       "keyboard": 185,
-      "thai": 769,
+      "thai": 757,
       "english": 576,
       "chinese": 0,
       "others": 0,
-      "success": 1067,
-      "apology": 278,
+      "success": 1058,
+      "apology": 275,
       "rating": 2.35,
       "ratingCount": 20,
-      "activeMachines": 7
+      "activeMachines": 5
     },
     "2026-03": {
-      "sessions": 1299,
-      "questions": 2268,
-      "voice": 1196,
-      "quickReply": 844,
-      "keyboard": 228,
-      "thai": 1332,
-      "english": 936,
+      "sessions": 1286,
+      "questions": 2238,
+      "voice": 1192,
+      "quickReply": 819,
+      "keyboard": 227,
+      "thai": 1327,
+      "english": 911,
       "chinese": 0,
       "others": 0,
-      "success": 2014,
+      "success": 1984,
       "apology": 254,
       "rating": null,
       "ratingCount": 0,
-      "activeMachines": 7
+      "activeMachines": 5
     },
     "2026-04": {
       "sessions": 1394,
       "questions": 2294,
-      "voice": 1490,
-      "quickReply": 1258,
-      "keyboard": 344,
-      "thai": 1659,
-      "english": 1422,
+      "voice": 1445,
+      "quickReply": 1216,
+      "keyboard": 340,
+      "thai": 1607,
+      "english": 1383,
       "chinese": 11,
       "others": 0,
       "success": 2065,
@@ -918,11 +918,11 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     "2026-05": {
       "sessions": 1157,
       "questions": 1959,
-      "voice": 952,
-      "quickReply": 772,
-      "keyboard": 247,
-      "thai": 1018,
-      "english": 953,
+      "voice": 949,
+      "quickReply": 767,
+      "keyboard": 243,
+      "thai": 1016,
+      "english": 943,
       "chinese": 0,
       "others": 0,
       "success": 1612,
@@ -934,11 +934,11 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     "2026-06": {
       "sessions": 851,
       "questions": 1436,
-      "voice": 850,
-      "quickReply": 988,
-      "keyboard": 191,
-      "thai": 1137,
-      "english": 892,
+      "voice": 827,
+      "quickReply": 848,
+      "keyboard": 182,
+      "thai": 1000,
+      "english": 857,
       "chinese": 0,
       "others": 0,
       "success": 1151,
@@ -950,11 +950,11 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     "2026-07": {
       "sessions": 953,
       "questions": 1610,
-      "voice": 941,
+      "voice": 837,
       "quickReply": 185,
-      "keyboard": 593,
-      "thai": 896,
-      "english": 823,
+      "keyboard": 588,
+      "thai": 809,
+      "english": 801,
       "chinese": 0,
       "others": 0,
       "success": 1384,
@@ -964,19 +964,19 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "activeMachines": 7
     },
     "2026-08": {
-      "sessions": 545,
-      "questions": 888,
-      "voice": 496,
-      "quickReply": 122,
-      "keyboard": 270,
-      "thai": 449,
-      "english": 439,
-      "chinese": 0,
+      "sessions": 667,
+      "questions": 1177,
+      "voice": 650,
+      "quickReply": 182,
+      "keyboard": 345,
+      "thai": 607,
+      "english": 554,
+      "chinese": 16,
       "others": 0,
-      "success": 789,
-      "apology": 99,
-      "rating": 2.9,
-      "ratingCount": 49,
+      "success": 1045,
+      "apology": 132,
+      "rating": 2.94,
+      "ratingCount": 63,
       "activeMachines": 3
     }
   },
@@ -17426,6 +17426,272 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         0
       ]
     },
+    "2026-08-30": {
+      "NO2-M7-BKE-01": [
+        18,
+        29,
+        17,
+        6,
+        6,
+        11,
+        14,
+        4,
+        0,
+        25,
+        4
+      ],
+      "NO5-M3-EVT-01": [
+        7,
+        10,
+        7,
+        2,
+        1,
+        6,
+        2,
+        2,
+        0,
+        9,
+        1
+      ]
+    },
+    "2026-08-29": {
+      "NO2-M7-BKE-01": [
+        16,
+        21,
+        8,
+        10,
+        3,
+        11,
+        8,
+        2,
+        0,
+        20,
+        1,
+        3
+      ],
+      "NO1-M8-BKP-01": [
+        4,
+        13,
+        11,
+        1,
+        1,
+        9,
+        2,
+        2,
+        0,
+        11,
+        2
+      ],
+      "NO5-M3-EVT-01": [
+        2,
+        2,
+        1,
+        1,
+        0,
+        2,
+        0,
+        0,
+        0,
+        2,
+        0
+      ]
+    },
+    "2026-08-28": {
+      "NO2-M7-BKE-01": [
+        12,
+        13,
+        9,
+        3,
+        1,
+        8,
+        5,
+        0,
+        0,
+        11,
+        2,
+        4
+      ],
+      "NO1-M8-BKP-01": [
+        5,
+        8,
+        0,
+        2,
+        6,
+        6,
+        2,
+        0,
+        0,
+        7,
+        1
+      ],
+      "NO5-M3-EVT-01": [
+        11,
+        26,
+        24,
+        2,
+        0,
+        6,
+        17,
+        3,
+        0,
+        22,
+        4,
+        3
+      ]
+    },
+    "2026-08-27": {
+      "NO2-M7-BKE-01": [
+        7,
+        11,
+        6,
+        4,
+        1,
+        6,
+        5,
+        0,
+        0,
+        10,
+        1
+      ],
+      "NO5-M3-EVT-01": [
+        4,
+        4,
+        1,
+        3,
+        0,
+        3,
+        1,
+        0,
+        0,
+        4,
+        0,
+        2
+      ],
+      "NO1-M8-BKP-01": [
+        1,
+        4,
+        2,
+        0,
+        2,
+        4,
+        0,
+        0,
+        0,
+        3,
+        1
+      ]
+    },
+    "2026-08-26": {
+      "NO2-M7-BKE-01": [
+        6,
+        7,
+        2,
+        2,
+        3,
+        4,
+        2,
+        1,
+        0,
+        7,
+        0
+      ],
+      "NO1-M8-BKP-01": [
+        2,
+        4,
+        0,
+        2,
+        2,
+        1,
+        3,
+        0,
+        0,
+        2,
+        2
+      ]
+    },
+    "2026-08-25": {
+      "NO2-M7-BKE-01": [
+        7,
+        8,
+        2,
+        5,
+        1,
+        3,
+        4,
+        1,
+        0,
+        7,
+        1
+      ],
+      "NO5-M3-EVT-01": [
+        3,
+        3,
+        3,
+        0,
+        0,
+        0,
+        2,
+        1,
+        0,
+        1,
+        2
+      ],
+      "NO1-M8-BKP-01": [
+        4,
+        6,
+        1,
+        4,
+        1,
+        2,
+        4,
+        0,
+        0,
+        5,
+        1
+      ]
+    },
+    "2026-08-24": {
+      "NO2-M7-BKE-01": [
+        6,
+        8,
+        4,
+        4,
+        0,
+        4,
+        4,
+        0,
+        0,
+        7,
+        1,
+        4
+      ],
+      "NO1-M8-BKP-01": [
+        6,
+        7,
+        2,
+        4,
+        1,
+        3,
+        4,
+        0,
+        0,
+        6,
+        1
+      ],
+      "NO5-M3-EVT-01": [
+        1,
+        2,
+        2,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0,
+        2,
+        0
+      ]
+    },
     "2026-08-23": {
       "NO2-M7-BKE-01": [
         21,
@@ -17837,15 +18103,15 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ],
       "NO5-M3-EVT-01": [
         1,
-        1,
-        1,
+        2,
+        2,
         0,
         0,
-        1,
+        2,
         0,
         0,
         0,
-        1,
+        2,
         0
       ]
     },
@@ -17864,6 +18130,20 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         2,
         4
       ],
+      "NO5-M3-EVT-01": [
+        11,
+        28,
+        12,
+        0,
+        16,
+        16,
+        12,
+        0,
+        0,
+        26,
+        2,
+        4
+      ],
       "NO1-M8-BKP-01": [
         6,
         11,
@@ -17876,20 +18156,6 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         0,
         10,
         1
-      ],
-      "NO5-M3-EVT-01": [
-        11,
-        14,
-        6,
-        0,
-        8,
-        8,
-        6,
-        0,
-        0,
-        13,
-        1,
-        4
       ]
     },
     "2026-08-11": {
@@ -17923,20 +18189,34 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ],
       "NO5-M3-EVT-01": [
         6,
-        13,
-        7,
-        1,
-        5,
+        26,
+        14,
+        2,
         10,
-        3,
+        20,
+        6,
         0,
         0,
-        12,
-        1,
+        24,
+        2,
         2
       ]
     },
     "2026-08-10": {
+      "NO5-M3-EVT-01": [
+        20,
+        84,
+        46,
+        6,
+        32,
+        50,
+        34,
+        0,
+        0,
+        76,
+        8,
+        3.67
+      ],
       "NO2-M7-BKE-01": [
         5,
         7,
@@ -17962,23 +18242,23 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         0,
         1,
         1
-      ],
-      "NO5-M3-EVT-01": [
-        20,
-        42,
-        23,
-        3,
-        16,
-        25,
-        17,
-        0,
-        0,
-        38,
-        4,
-        3.67
       ]
     },
     "2026-08-09": {
+      "NO5-M3-EVT-01": [
+        19,
+        46,
+        12,
+        2,
+        32,
+        34,
+        12,
+        0,
+        0,
+        44,
+        2,
+        3
+      ],
       "NO2-M7-BKE-01": [
         17,
         25,
@@ -18005,20 +18285,6 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         0,
         13,
         1
-      ],
-      "NO5-M3-EVT-01": [
-        19,
-        23,
-        6,
-        1,
-        16,
-        17,
-        6,
-        0,
-        0,
-        22,
-        1,
-        3
       ]
     },
     "2026-08-08": {
@@ -18051,15 +18317,15 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ],
       "NO5-M3-EVT-01": [
         3,
-        4,
-        4,
+        8,
+        8,
         0,
         0,
-        3,
-        1,
+        6,
+        2,
         0,
         0,
-        4,
+        8,
         0
       ]
     },
@@ -18092,16 +18358,16 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ],
       "NO5-M3-EVT-01": [
         4,
-        6,
-        5,
+        12,
+        10,
         0,
-        1,
-        5,
-        1,
+        2,
+        10,
+        2,
         0,
         0,
-        5,
-        1,
+        10,
+        2,
         1
       ]
     },
@@ -19049,62 +19315,62 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       [
         "quick reply: Coffee or Tea",
         "Restaurant",
-        62
+        79
       ],
       [
         "promotion",
         "Promotion",
-        46
+        58
       ],
       [
         "Directory",
         "Directory",
-        40
+        47
       ],
       [
         "MCard",
         "Others",
-        27
+        36
       ],
       [
         "quick reply: promotion",
         "Promotion",
-        18
+        30
+      ],
+      [
+        "quick reply: Directory",
+        "Directory",
+        26
       ],
       [
         "hello",
         "Others",
-        17
+        20
       ],
       [
         "Coffee or Tea",
         "Restaurant",
+        19
+      ],
+      [
+        "สวัสดี",
+        "Others",
+        17
+      ],
+      [
+        "quick reply: Special Privilege",
+        "Rewards",
         16
       ],
       [
         "Special Privilege",
         "Rewards",
-        14
+        16
       ],
       [
-        "สวัสดีค่ะ",
+        "quick reply: MCard",
         "Others",
-        12
-      ],
-      [
-        "สวัสดี",
-        "Others",
-        12
-      ],
-      [
-        "quick reply: Directory",
-        "Directory",
-        11
-      ],
-      [
-        "quick reply: Special Privilege",
-        "Rewards",
-        9
+        13
       ]
     ]
   },
@@ -22124,12 +22390,22 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         [
           "quick reply: Coffee or Tea",
           "Restaurant",
-          54
+          68
         ],
         [
           "promotion",
           "Promotion",
-          25
+          27
+        ],
+        [
+          "quick reply: promotion",
+          "Promotion",
+          20
+        ],
+        [
+          "Directory",
+          "Directory",
+          16
         ],
         [
           "MCard",
@@ -22137,123 +22413,118 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           15
         ],
         [
-          "Directory",
-          "Directory",
-          13
-        ],
-        [
-          "quick reply: promotion",
-          "Promotion",
+          "hello",
+          "Others",
           11
         ],
         [
-          "hello",
-          "Others",
+          "Coffee or Tea",
+          "Restaurant",
           10
         ],
         [
           "Special Privilege",
           "Rewards",
-          8
+          10
+        ],
+        [
+          "quick reply: Directory",
+          "Directory",
+          10
+        ],
+        [
+          "quick reply: Special Privilege",
+          "Rewards",
+          9
+        ],
+        [
+          "quick reply: MCard",
+          "Others",
+          9
         ],
         [
           "สวัสดีค่ะ",
           "Others",
           8
-        ],
-        [
-          "Coffee or Tea",
-          "Restaurant",
-          8
-        ],
-        [
-          "quick reply: MCard",
-          "Others",
-          7
-        ],
-        [
-          "quick reply: Directory",
-          "Directory",
-          6
-        ],
-        [
-          "Platinum MCard",
-          "Others",
-          5
         ]
       ],
       "NO5-M3-EVT-01": [
         [
           "promotion",
           "Promotion",
-          12
+          21
         ],
         [
           "MCard",
           "Others",
-          9
-        ],
-        [
-          "quick reply: promotion",
-          "Promotion",
-          5
-        ],
-        [
-          "quick reply: Coffee or Tea",
-          "Restaurant",
-          5
-        ],
-        [
-          "Directory",
-          "Directory",
-          5
-        ],
-        [
-          "hello",
-          "Others",
-          5
+          18
         ],
         [
           "quick reply: Directory",
           "Directory",
-          4
-        ],
-        [
-          "สวัสดี",
-          "Others",
-          4
+          8
         ],
         [
           "WOMEN INSPIRED 2026 SUNFLOWER SOCIAL CLUB",
           "Others",
-          4
+          8
+        ],
+        [
+          "Directory",
+          "Directory",
+          8
+        ],
+        [
+          "quick reply: Coffee or Tea",
+          "Restaurant",
+          7
+        ],
+        [
+          "hello",
+          "Others",
+          7
+        ],
+        [
+          "quick reply: promotion",
+          "Promotion",
+          6
+        ],
+        [
+          "สวัสดี",
+          "Others",
+          6
         ],
         [
           "quick reply: Special Privilege",
           "Rewards",
-          2
+          4
         ],
         [
-          "Special Privilege",
-          "Rewards",
-          2
-        ],
-        [
-          "Do you have H&M?",
+          "hi",
           "Others",
-          2
+          4
+        ],
+        [
+          "ชื่ออะไร",
+          "Others",
+          4
         ]
       ],
       "NO1-M8-BKP-01": [
         [
           "Directory",
           "Directory",
-          22
+          23
         ],
         [
           "promotion",
           "Promotion",
-          9
+          10
+        ],
+        [
+          "quick reply: Directory",
+          "Directory",
+          8
         ],
         [
           "Coffee or Tea",
@@ -22261,6 +22532,16 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           7
         ],
         [
+          "quick reply: Coffee or Tea",
+          "Restaurant",
+          4
+        ],
+        [
+          "quick reply: promotion",
+          "Promotion",
+          4
+        ],
+        [
           "Special Privilege",
           "Rewards",
           4
@@ -22271,13 +22552,13 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           4
         ],
         [
-          "quick reply: Special Privilege",
-          "Rewards",
+          "quick reply: MCard",
+          "Others",
           3
         ],
         [
-          "quick reply: Coffee or Tea",
-          "Restaurant",
+          "quick reply: Special Privilege",
+          "Rewards",
           3
         ],
         [
@@ -22286,22 +22567,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           3
         ],
         [
-          "When will the new Baby X come?",
-          "Others",
-          2
-        ],
-        [
-          "สวัสดีค่ะ",
-          "Others",
-          2
-        ],
-        [
-          "quick reply: promotion",
-          "Promotion",
-          2
-        ],
-        [
-          "hello",
+          "Inception มีพาวเวอร์แบงค์ให้ยืมไหม",
           "Others",
           2
         ]
@@ -24949,7 +25215,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "NO2-M7-BKE-01": [
         [
           0,
-          2
+          7
         ],
         [
           1,
@@ -24961,11 +25227,11 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           4,
-          1
+          2
         ],
         [
           5,
-          2
+          3
         ],
         [
           6,
@@ -24977,105 +25243,105 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           10,
-          4
+          5
         ],
         [
           11,
-          3
+          4
         ],
         [
           12,
-          25
+          27
         ],
         [
           13,
-          17
+          22
         ],
         [
           14,
-          21
-        ],
-        [
-          15,
-          39
-        ],
-        [
-          16,
-          25
-        ],
-        [
-          17,
           23
         ],
         [
+          15,
+          47
+        ],
+        [
+          16,
+          40
+        ],
+        [
+          17,
+          28
+        ],
+        [
           18,
-          41
+          52
         ],
         [
           19,
-          81
+          88
         ],
         [
           20,
-          63
+          76
         ],
         [
           21,
-          64
+          81
         ],
         [
           22,
-          9
+          11
         ],
         [
           23,
-          4
+          5
         ]
       ],
       "NO5-M3-EVT-01": [
         [
           10,
-          7
+          8
         ],
         [
           11,
-          12
+          20
         ],
         [
           12,
-          11
+          26
         ],
         [
           13,
-          21
+          26
         ],
         [
           14,
-          11
+          20
         ],
         [
           15,
-          14
+          27
         ],
         [
           16,
-          28
+          48
         ],
         [
           17,
-          32
+          56
         ],
         [
           18,
-          25
+          46
         ],
         [
           19,
-          47
+          80
         ],
         [
           20,
-          28
+          29
         ],
         [
           21,
@@ -25085,35 +25351,35 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "NO1-M8-BKP-01": [
         [
           10,
-          5
+          8
         ],
         [
           11,
-          5
+          9
         ],
         [
           12,
-          29
-        ],
-        [
-          13,
-          12
-        ],
-        [
-          14,
-          20
-        ],
-        [
-          15,
           30
         ],
         [
+          13,
+          14
+        ],
+        [
+          14,
+          27
+        ],
+        [
+          15,
+          34
+        ],
+        [
           16,
-          5
+          8
         ],
         [
           17,
-          28
+          37
         ],
         [
           18,
@@ -25121,15 +25387,15 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           19,
-          24
+          28
         ],
         [
           20,
-          25
+          26
         ],
         [
           21,
-          7
+          11
         ]
       ]
     }
@@ -26631,87 +26897,87 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "NO2-M7-BKE-01": [
         [
           "Mon",
-          29
+          37
         ],
         [
           "Tue",
-          48
-        ],
-        [
-          "Wed",
           56
         ],
         [
+          "Wed",
+          63
+        ],
+        [
           "Thu",
-          48
+          59
         ],
         [
           "Fri",
-          42
+          55
         ],
         [
           "Sat",
-          111
+          132
         ],
         [
           "Sun",
-          100
+          129
         ]
       ],
       "NO5-M3-EVT-01": [
         [
           "Mon",
-          51
+          95
         ],
         [
           "Tue",
-          54
+          70
         ],
         [
           "Wed",
-          20
+          34
         ],
         [
           "Thu",
-          15
+          20
         ],
         [
           "Fri",
-          10
+          42
         ],
         [
           "Sat",
-          22
+          28
         ],
         [
           "Sun",
-          68
+          101
         ]
       ],
       "NO1-M8-BKP-01": [
         [
           "Mon",
-          9
+          16
         ],
         [
           "Tue",
-          42
+          48
         ],
         [
           "Wed",
-          27
+          31
         ],
         [
           "Thu",
-          23
+          27
         ],
         [
           "Fri",
-          19
+          27
         ],
         [
           "Sat",
-          59
+          72
         ],
         [
           "Sun",
@@ -27406,47 +27672,47 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     "2026-08": [
       [
         "Others",
-        487,
-        55
+        654,
+        56
       ],
       [
         "Directory",
-        144,
+        185,
         16
       ],
       [
-        "Restaurant",
-        98,
+        "Promotion",
+        125,
         11
       ],
       [
-        "Promotion",
-        92,
+        "Restaurant",
+        122,
         10
       ],
       [
         "Rewards",
-        23,
+        32,
         3
       ],
       [
-        "M Card",
-        15,
+        "Events",
+        19,
         2
       ],
       [
-        "Events",
-        10,
+        "M Card",
+        17,
         1
       ],
       [
         "Store Information",
-        8,
+        11,
         1
       ],
       [
         "Parking",
-        5,
+        6,
         1
       ],
       [
@@ -27859,7 +28125,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     "2026-08": [
       [
         "M Card",
-        59
+        73
       ],
       [
         "McDonald's",
@@ -27867,7 +28133,15 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ],
       [
         "Starbucks",
-        2
+        3
+      ],
+      [
+        "Bangkok Bank",
+        1
+      ],
+      [
+        "Apple",
+        1
       ],
       [
         "Gourmet Market",
@@ -29872,27 +30146,31 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "NO2-M7-BKE-01": [
         [
           "Others",
-          215
+          258
         ],
         [
           "Restaurant",
-          71
+          88
         ],
         [
           "Directory",
-          67
+          84
         ],
         [
           "Promotion",
-          49
+          61
         ],
         [
           "Rewards",
-          12
+          19
         ],
         [
           "M Card",
           10
+        ],
+        [
+          "Parking",
+          3
         ],
         [
           "Sports",
@@ -29900,10 +30178,6 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           "Beauty",
-          2
-        ],
-        [
-          "Parking",
           2
         ],
         [
@@ -29918,35 +30192,35 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "NO5-M3-EVT-01": [
         [
           "Others",
-          154
+          255
         ],
         [
           "Directory",
-          29
+          45
         ],
         [
           "Promotion",
-          24
+          39
         ],
         [
           "Restaurant",
-          12
+          17
         ],
         [
           "Events",
-          8
+          16
         ],
         [
           "Store Information",
-          5
+          7
         ],
         [
           "Rewards",
-          4
+          6
         ],
         [
           "M Card",
-          2
+          3
         ],
         [
           "Parking",
@@ -29956,19 +30230,19 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "NO1-M8-BKP-01": [
         [
           "Others",
-          118
+          141
         ],
         [
           "Directory",
-          48
+          56
         ],
         [
           "Promotion",
-          19
+          25
         ],
         [
           "Restaurant",
-          15
+          17
         ],
         [
           "Rewards",
@@ -29976,11 +30250,15 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           "M Card",
-          3
+          4
         ],
         [
           "Store Information",
-          2
+          3
+        ],
+        [
+          "Events",
+          1
         ],
         [
           "Sports",
@@ -31078,7 +31356,15 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "NO2-M7-BKE-01": [
         [
           "M Card",
-          36
+          38
+        ],
+        [
+          "Apple",
+          1
+        ],
+        [
+          "Starbucks",
+          1
         ],
         [
           "McDonald's",
@@ -31088,11 +31374,15 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "NO5-M3-EVT-01": [
         [
           "M Card",
-          12
+          22
         ],
         [
           "McDonald's",
           4
+        ],
+        [
+          "Bangkok Bank",
+          1
         ],
         [
           "Starbucks",
@@ -31102,7 +31392,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "NO1-M8-BKP-01": [
         [
           "M Card",
-          11
+          13
         ],
         [
           "McDonald's",
@@ -31260,7 +31550,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "location": "The Mall Lifestore Bangkapi M8",
       "setup": "2026-08-07",
       "returnDate": "2026-08-13",
-      "performance": "64 sessions, 103 questions, 3.0 rating",
+      "performance": "64 sessions, 206 questions, 3.0 rating",
       "notes": "Performance calculated automatically from the Performance Reports CSV for 2026-08-07 to 2026-08-13."
     }
   ]

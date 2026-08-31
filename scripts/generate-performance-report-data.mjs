@@ -50,8 +50,8 @@ const reportFiles = {
     rating: "Perfomance Reports/0726 July/ratings-export-2026-07-01-to-2026-07-31-90ce9043.csv"
   },
   "2026-08": {
-    message: "Perfomance Reports/0826 Aug/messageLog-export-2026-08-01-to-2026-08-23-3fa6767a.csv",
-    rating: "Perfomance Reports/0826 Aug/ratings-export-2026-08-01-to-2026-08-23-3fa6767a.csv",
+    message: "Perfomance Reports/0826 Aug/messageLog-export-2026-08-01-to-2026-08-30-4c330f53.csv",
+    rating: "Perfomance Reports/0826 Aug/ratings-export-2026-08-01-to-2026-08-30-4c330f53.csv",
     // Woman Inspired event (NO5-M3-EVT-01, 7-13 Aug) exported separately; merged into the Overview.
     messageExtra: [{ file: "Perfomance Reports/0826 Aug/M-Agent Report 07-13082026_Woman Inspired2026.xlsx", sheet: "Raw" }],
     ratingExtra: [{ file: "Perfomance Reports/0826 Aug/M-Agent Report 07-13082026_Woman Inspired2026.xlsx", sheet: "Rating" }]
@@ -432,7 +432,9 @@ export function buildPerformanceReportData(rootDir) {
     let maxDate = null;
 
     for (const row of messageRows) {
-      if (isReturnedInMonth(csvMachineIdMap[row.machineId], monthId)) continue;
+      const assetId = csvMachineIdMap[row.machineId];
+      if (!assetId) continue;
+      if (isReturnedInMonth(assetId, monthId)) continue;
       rawMetricBucket.sessionIds.add(String(row.sessionId || ""));
       rawMetricBucket.questions += 1;
       rawMetricBucket[detectInput(row.question, row.audioUrl)] += 1;
@@ -441,8 +443,6 @@ export function buildPerformanceReportData(rootDir) {
       if (String(row.isApology || "").toLowerCase() === "true") rawMetricBucket.apology += 1;
       else rawMetricBucket.success += 1;
 
-      const assetId = csvMachineIdMap[row.machineId];
-      if (!assetId) continue;
       const questionText = String(row.question || "").trim();
       const category = detectCategory(questionText);
       const brands = detectBrands(questionText);
@@ -512,11 +512,11 @@ export function buildPerformanceReportData(rootDir) {
         ratingRows.push(...parseTabularFile(join(rootDir, ex.file), ex.sheet));
       }
       for (const row of ratingRows) {
-        if (isReturnedInMonth(csvMachineIdMap[row.machineId], monthId)) continue;
-        const rating = Number(row.rating || 0);
-        if (rating > 0) rawMetricBucket.ratings.push(rating);
         const assetId = csvMachineIdMap[row.machineId];
         if (!assetId) continue;
+        if (isReturnedInMonth(assetId, monthId)) continue;
+        const rating = Number(row.rating || 0);
+        if (rating > 0) rawMetricBucket.ratings.push(rating);
         if (!metricsByAsset[assetId]) metricsByAsset[assetId] = createMetricBucket();
         if (rating > 0) metricsByAsset[assetId].ratings.push(rating);
         const localDate = formatLocalIsoDate(row.startAt);

@@ -1,5 +1,5 @@
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-08-31T03:16:38.806Z",
+  "generatedAt": "2026-08-31T03:31:34.738Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "30 Aug 2026",
@@ -127,17 +127,18 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         3.13
       ],
       "NO5-M3-EVT-01": [
+        7,
+        28,
         1,
-        2,
-        0,
+        26,
         1,
-        1,
-        2,
+        24,
+        4,
         0,
         0,
+        28,
         0,
-        2,
-        0
+        4
       ]
     },
     "2025-11": {
@@ -156,17 +157,17 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         3.03
       ],
       "NO5-M3-EVT-01": [
-        170,
-        347,
-        230,
-        96,
+        224,
+        439,
+        266,
+        152,
         21,
-        300,
-        27,
-        20,
+        372,
+        42,
+        25,
         0,
-        304,
-        43
+        384,
+        55
       ],
       "NO3-M6-NGW-01": [
         329,
@@ -263,17 +264,17 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         151
       ],
       "NO5-M3-EVT-01": [
-        101,
-        235,
-        153,
-        64,
+        147,
+        517,
+        406,
+        93,
         18,
-        214,
-        14,
+        382,
+        128,
         7,
         0,
-        191,
-        44
+        438,
+        79
       ]
     },
     "2026-01": {
@@ -329,6 +330,19 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         0,
         175,
         49
+      ],
+      "NO5-M3-EVT-01": [
+        7,
+        21,
+        19,
+        2,
+        0,
+        11,
+        10,
+        0,
+        0,
+        18,
+        3
       ]
     },
     "2026-02": {
@@ -384,20 +398,33 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         0,
         172,
         39
+      ],
+      "NO5-M3-EVT-01": [
+        3,
+        9,
+        9,
+        0,
+        0,
+        9,
+        0,
+        0,
+        0,
+        6,
+        3
       ]
     },
     "2026-03": {
       "NO5-M3-EVT-01": [
-        105,
-        184,
-        93,
-        61,
-        30,
-        78,
-        106,
+        116,
+        207,
+        97,
+        79,
+        31,
+        83,
+        124,
         0,
         0,
-        163,
+        186,
         21
       ],
       "NO4-M5-THA-01": [
@@ -497,18 +524,18 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         2.48
       ],
       "NO5-M3-EVT-01": [
-        243,
-        460,
-        227,
-        159,
-        74,
-        207,
-        251,
+        274,
+        522,
+        263,
+        181,
+        78,
+        255,
+        265,
         2,
         0,
-        421,
-        39,
-        3.64
+        480,
+        42,
+        3.67
       ],
       "NO4-M5-THA-01": [
         214,
@@ -541,18 +568,18 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         2.38
       ],
       "NO5-M3-EVT-01": [
-        174,
-        350,
-        197,
-        105,
-        48,
+        179,
+        358,
+        198,
+        110,
+        50,
         230,
-        120,
+        128,
         0,
         0,
-        272,
-        78,
-        2.88
+        278,
+        80,
+        2.9
       ],
       "NO1-M8-BKP-01": [
         222,
@@ -613,18 +640,18 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         3.23
       ],
       "NO5-M3-EVT-01": [
-        169,
-        296,
-        155,
-        97,
-        44,
-        136,
-        160,
+        215,
+        406,
+        176,
+        185,
+        45,
+        226,
+        180,
         0,
         0,
-        235,
-        61,
-        2
+        339,
+        67,
+        3.13
       ],
       "NO3-M6-NGW-01": [
         120,
@@ -699,18 +726,18 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         3.07
       ],
       "NO5-M3-EVT-01": [
-        142,
-        262,
+        145,
+        265,
         179,
         14,
-        69,
-        124,
-        138,
+        72,
+        125,
+        140,
         0,
         0,
-        211,
+        214,
         51,
-        2.77
+        2.86
       ],
       "NO3-M6-NGW-01": [
         95,
@@ -757,16 +784,16 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         3.07
       ],
       "NO5-M3-EVT-01": [
-        167,
-        390,
-        242,
-        34,
-        114,
-        219,
-        165,
+        186,
+        410,
+        249,
+        37,
+        124,
+        232,
+        172,
         6,
         0,
-        340,
+        360,
         50,
         2.96
       ],
@@ -804,109 +831,109 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "activeMachines": 1
     },
     "2025-10": {
-      "sessions": 675,
-      "questions": 1333,
-      "voice": 742,
-      "quickReply": 473,
+      "sessions": 681,
+      "questions": 1359,
+      "voice": 743,
+      "quickReply": 498,
       "keyboard": 118,
-      "thai": 847,
-      "english": 472,
+      "thai": 869,
+      "english": 476,
       "chinese": 14,
       "others": 0,
-      "success": 1072,
+      "success": 1098,
       "apology": 261,
-      "rating": 3.32,
-      "ratingCount": 93,
-      "activeMachines": 5
+      "rating": 3.34,
+      "ratingCount": 96,
+      "activeMachines": 6
     },
     "2025-11": {
-      "sessions": 1176,
-      "questions": 2182,
-      "voice": 1234,
-      "quickReply": 764,
+      "sessions": 1230,
+      "questions": 2274,
+      "voice": 1270,
+      "quickReply": 820,
       "keyboard": 184,
-      "thai": 1383,
-      "english": 779,
-      "chinese": 20,
+      "thai": 1455,
+      "english": 794,
+      "chinese": 25,
       "others": 0,
-      "success": 1756,
-      "apology": 426,
+      "success": 1836,
+      "apology": 438,
       "rating": 3.03,
       "ratingCount": 31,
-      "activeMachines": 5
+      "activeMachines": 6
     },
     "2025-12": {
-      "sessions": 1316,
-      "questions": 2532,
-      "voice": 1327,
-      "quickReply": 954,
+      "sessions": 1362,
+      "questions": 2814,
+      "voice": 1580,
+      "quickReply": 983,
       "keyboard": 251,
-      "thai": 1452,
-      "english": 1073,
+      "thai": 1620,
+      "english": 1187,
       "chinese": 7,
       "others": 0,
-      "success": 2036,
-      "apology": 496,
+      "success": 2283,
+      "apology": 531,
       "rating": 2.86,
       "ratingCount": 28,
-      "activeMachines": 5
+      "activeMachines": 6
     },
     "2026-01": {
-      "sessions": 893,
-      "questions": 1774,
-      "voice": 998,
-      "quickReply": 601,
+      "sessions": 900,
+      "questions": 1795,
+      "voice": 1017,
+      "quickReply": 603,
       "keyboard": 175,
-      "thai": 1053,
-      "english": 721,
+      "thai": 1064,
+      "english": 731,
       "chinese": 0,
       "others": 0,
-      "success": 1437,
-      "apology": 337,
+      "success": 1455,
+      "apology": 340,
       "rating": 2.88,
       "ratingCount": 24,
-      "activeMachines": 4
+      "activeMachines": 5
     },
     "2026-02": {
-      "sessions": 780,
-      "questions": 1333,
-      "voice": 720,
+      "sessions": 783,
+      "questions": 1342,
+      "voice": 729,
       "quickReply": 428,
       "keyboard": 185,
-      "thai": 757,
+      "thai": 766,
       "english": 576,
       "chinese": 0,
       "others": 0,
-      "success": 1058,
-      "apology": 275,
+      "success": 1064,
+      "apology": 278,
       "rating": 2.35,
       "ratingCount": 20,
-      "activeMachines": 5
+      "activeMachines": 6
     },
     "2026-03": {
-      "sessions": 1286,
-      "questions": 2238,
-      "voice": 1192,
-      "quickReply": 819,
-      "keyboard": 227,
-      "thai": 1327,
-      "english": 911,
+      "sessions": 1297,
+      "questions": 2261,
+      "voice": 1196,
+      "quickReply": 837,
+      "keyboard": 228,
+      "thai": 1332,
+      "english": 929,
       "chinese": 0,
       "others": 0,
-      "success": 1984,
+      "success": 2007,
       "apology": 254,
       "rating": null,
       "ratingCount": 0,
-      "activeMachines": 5
+      "activeMachines": 6
     },
     "2026-04": {
       "sessions": 1394,
       "questions": 2294,
-      "voice": 1445,
-      "quickReply": 1216,
-      "keyboard": 340,
-      "thai": 1607,
-      "english": 1383,
+      "voice": 1481,
+      "quickReply": 1238,
+      "keyboard": 344,
+      "thai": 1655,
+      "english": 1397,
       "chinese": 11,
       "others": 0,
       "success": 2065,
@@ -918,11 +945,11 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     "2026-05": {
       "sessions": 1157,
       "questions": 1959,
-      "voice": 949,
-      "quickReply": 767,
-      "keyboard": 243,
+      "voice": 950,
+      "quickReply": 772,
+      "keyboard": 245,
       "thai": 1016,
-      "english": 943,
+      "english": 951,
       "chinese": 0,
       "others": 0,
       "success": 1612,
@@ -934,11 +961,11 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     "2026-06": {
       "sessions": 851,
       "questions": 1436,
-      "voice": 827,
-      "quickReply": 848,
-      "keyboard": 182,
-      "thai": 1000,
-      "english": 857,
+      "voice": 848,
+      "quickReply": 936,
+      "keyboard": 183,
+      "thai": 1090,
+      "english": 877,
       "chinese": 0,
       "others": 0,
       "success": 1151,
@@ -952,9 +979,9 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "questions": 1610,
       "voice": 837,
       "quickReply": 185,
-      "keyboard": 588,
-      "thai": 809,
-      "english": 801,
+      "keyboard": 591,
+      "thai": 810,
+      "english": 803,
       "chinese": 0,
       "others": 0,
       "success": 1384,
@@ -964,20 +991,20 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "activeMachines": 7
     },
     "2026-08": {
-      "sessions": 667,
-      "questions": 1177,
-      "voice": 650,
-      "quickReply": 182,
-      "keyboard": 345,
-      "thai": 607,
-      "english": 554,
+      "sessions": 686,
+      "questions": 1197,
+      "voice": 657,
+      "quickReply": 185,
+      "keyboard": 355,
+      "thai": 620,
+      "english": 561,
       "chinese": 16,
       "others": 0,
-      "success": 1045,
+      "success": 1065,
       "apology": 132,
       "rating": 2.94,
       "ratingCount": 63,
-      "activeMachines": 3
+      "activeMachines": 5
     }
   },
   "dailyAssetMetrics": {
@@ -1194,6 +1221,19 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         0,
         27,
         5
+      ],
+      "NO5-M3-EVT-01": [
+        6,
+        26,
+        1,
+        25,
+        0,
+        22,
+        4,
+        0,
+        0,
+        26,
+        0
       ],
       "NO4-M5-THA-01": [
         4,
@@ -2198,17 +2238,17 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     },
     "2025-11-27": {
       "NO5-M3-EVT-01": [
-        26,
-        62,
-        42,
-        13,
+        31,
+        72,
+        51,
+        14,
         7,
-        53,
+        63,
         3,
         6,
         0,
-        57,
-        5
+        66,
+        6
       ],
       "NO3-M6-NGW-01": [
         16,
@@ -2265,16 +2305,16 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     },
     "2025-11-26": {
       "NO5-M3-EVT-01": [
-        3,
-        9,
-        6,
+        4,
+        11,
+        8,
         2,
         1,
-        9,
+        11,
         0,
         0,
         0,
-        8,
+        10,
         1
       ],
       "NO1-M8-BKP-01": [
@@ -2670,6 +2710,19 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         0,
         1,
         1
+      ],
+      "NO5-M3-EVT-01": [
+        9,
+        9,
+        0,
+        9,
+        0,
+        6,
+        3,
+        0,
+        0,
+        9,
+        0
       ],
       "NO2-M7-BKE-01": [
         3,
@@ -3079,17 +3132,17 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         1
       ],
       "NO5-M3-EVT-01": [
-        5,
-        9,
-        7,
+        12,
+        34,
+        32,
         2,
         0,
-        4,
+        29,
         5,
         0,
         0,
-        9,
-        0
+        23,
+        11
       ],
       "NO1-M8-BKP-01": [
         14,
@@ -3214,6 +3267,19 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         2,
         2
       ],
+      "NO5-M3-EVT-01": [
+        19,
+        37,
+        16,
+        21,
+        0,
+        27,
+        7,
+        3,
+        0,
+        33,
+        4
+      ],
       "NO4-M5-THA-01": [
         1,
         1,
@@ -3239,19 +3305,6 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         0,
         4,
         0
-      ],
-      "NO5-M3-EVT-01": [
-        5,
-        17,
-        16,
-        1,
-        0,
-        17,
-        0,
-        0,
-        0,
-        13,
-        4
       ]
     },
     "2025-11-10": {
@@ -3309,16 +3362,16 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         2.5
       ],
       "NO5-M3-EVT-01": [
-        6,
-        10,
+        16,
+        24,
         5,
-        4,
+        18,
         1,
-        10,
+        18,
+        4,
+        2,
         0,
-        0,
-        0,
-        10,
+        24,
         0
       ]
     },
@@ -3432,16 +3485,16 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         2.5
       ],
       "NO5-M3-EVT-01": [
-        15,
-        34,
         21,
-        12,
+        44,
+        21,
+        22,
         1,
-        34,
+        44,
         0,
         0,
         0,
-        33,
+        43,
         1
       ],
       "NO4-M5-THA-01": [
@@ -3674,6 +3727,19 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         15,
         5,
         3
+      ],
+      "NO5-M3-EVT-01": [
+        2,
+        2,
+        0,
+        2,
+        0,
+        1,
+        1,
+        0,
+        0,
+        2,
+        0
       ],
       "NO4-M5-THA-01": [
         1,
@@ -4354,6 +4420,19 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         0,
         13,
         3
+      ],
+      "NO5-M3-EVT-01": [
+        2,
+        3,
+        3,
+        0,
+        0,
+        3,
+        0,
+        0,
+        0,
+        2,
+        1
       ],
       "NO1-M8-BKP-01": [
         3,
@@ -5554,32 +5633,32 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         4
       ],
       "NO5-M3-EVT-01": [
-        7,
-        35,
-        28,
-        7,
+        43,
+        275,
+        246,
+        29,
         0,
-        35,
+        161,
+        114,
         0,
         0,
-        0,
-        28,
-        7
+        238,
+        37
       ]
     },
     "2025-12-01": {
       "NO5-M3-EVT-01": [
-        4,
-        8,
-        3,
-        4,
+        12,
+        47,
+        35,
+        11,
         1,
-        8,
+        47,
         0,
         0,
         0,
-        7,
-        1
+        42,
+        5
       ],
       "NO3-M6-NGW-01": [
         9,
@@ -5893,6 +5972,19 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         0,
         2,
         1
+      ],
+      "NO5-M3-EVT-01": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0
       ]
     },
     "2026-01-26": {
@@ -6098,6 +6190,19 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         0,
         8,
         0
+      ],
+      "NO5-M3-EVT-01": [
+        5,
+        19,
+        18,
+        1,
+        0,
+        10,
+        9,
+        0,
+        0,
+        16,
+        3
       ],
       "NO3-M6-NGW-01": [
         2,
@@ -6999,6 +7104,19 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         1,
         4
       ],
+      "NO5-M3-EVT-01": [
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
       "NO3-M6-NGW-01": [
         7,
         13,
@@ -7796,6 +7914,19 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         0,
         5,
         1
+      ],
+      "NO5-M3-EVT-01": [
+        3,
+        9,
+        9,
+        0,
+        0,
+        9,
+        0,
+        0,
+        0,
+        6,
+        3
       ]
     },
     "2026-02-15": {
@@ -8458,16 +8589,16 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     },
     "2026-03-31": {
       "NO5-M3-EVT-01": [
-        9,
+        20,
+        36,
+        10,
+        23,
+        3,
         13,
-        6,
-        5,
-        2,
-        8,
-        5,
+        23,
         0,
         0,
-        13,
+        36,
         0
       ],
       "NO4-M5-THA-01": [
@@ -10714,17 +10845,17 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         3.63
       ],
       "NO5-M3-EVT-01": [
+        66,
+        107,
         44,
-        71,
-        26,
-        20,
-        25,
-        37,
         34,
+        29,
+        61,
+        46,
         0,
         0,
-        68,
-        3,
+        103,
+        4,
         4
       ],
       "NO1-M8-BKP-01": [
@@ -10793,6 +10924,20 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         0,
         0,
         23,
+        4
+      ],
+      "NO5-M3-EVT-01": [
+        9,
+        26,
+        18,
+        8,
+        0,
+        24,
+        2,
+        0,
+        0,
+        24,
+        2,
         4
       ],
       "NO3-M6-NGW-01": [
@@ -13114,6 +13259,20 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         9,
         2.33
       ],
+      "NO5-M3-EVT-01": [
+        6,
+        9,
+        1,
+        6,
+        2,
+        0,
+        9,
+        0,
+        0,
+        7,
+        2,
+        3
+      ],
       "NO3-M6-NGW-01": [
         5,
         12,
@@ -13126,19 +13285,6 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         0,
         9,
         3
-      ],
-      "NO5-M3-EVT-01": [
-        1,
-        1,
-        0,
-        1,
-        0,
-        0,
-        1,
-        0,
-        0,
-        1,
-        0
       ]
     },
     "2026-05-13": {
@@ -15010,17 +15156,18 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         4
       ],
       "NO5-M3-EVT-01": [
-        3,
-        4,
+        17,
+        55,
+        11,
+        44,
         0,
-        4,
-        0,
-        2,
-        2,
+        49,
+        6,
         0,
         0,
-        4,
-        0
+        49,
+        6,
+        4
       ],
       "NO4-M5-THA-01": [
         2,
@@ -15078,6 +15225,20 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         8,
         2
       ],
+      "NO5-M3-EVT-01": [
+        11,
+        23,
+        0,
+        23,
+        0,
+        22,
+        1,
+        0,
+        0,
+        23,
+        0,
+        4
+      ],
       "NO4-M5-THA-01": [
         3,
         6,
@@ -15090,19 +15251,6 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         0,
         5,
         1
-      ],
-      "NO5-M3-EVT-01": [
-        1,
-        1,
-        0,
-        1,
-        0,
-        0,
-        1,
-        0,
-        0,
-        1,
-        0
       ],
       "NO3-M6-NGW-01": [
         2,
@@ -15555,17 +15703,18 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         3
       ],
       "NO5-M3-EVT-01": [
-        3,
-        9,
-        8,
+        25,
+        46,
+        18,
+        27,
         1,
+        25,
+        21,
         0,
-        4,
-        5,
         0,
-        0,
-        3,
-        6
+        40,
+        6,
+        3.94
       ],
       "NO4-M5-THA-01": [
         3,
@@ -15778,17 +15927,18 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         2
       ],
       "NO5-M3-EVT-01": [
-        5,
-        10,
+        7,
+        12,
         8,
         0,
-        2,
-        8,
-        2,
+        4,
+        9,
+        3,
         0,
         0,
-        10,
-        0
+        12,
+        0,
+        4
       ],
       "NO1-M8-BKP-01": [
         8,
@@ -17036,16 +17186,16 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         2
       ],
       "NO5-M3-EVT-01": [
-        3,
-        14,
+        4,
+        15,
         11,
         0,
-        3,
+        4,
         12,
-        2,
+        3,
         0,
         0,
-        11,
+        12,
         3
       ]
     },
@@ -18415,6 +18565,19 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ]
     },
     "2026-08-05": {
+      "NO5-M3-EVT-01": [
+        21,
+        23,
+        10,
+        3,
+        10,
+        13,
+        10,
+        0,
+        0,
+        22,
+        1
+      ],
       "NO2-M7-BKE-01": [
         9,
         17,
@@ -18427,19 +18590,6 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         0,
         15,
         2
-      ],
-      "NO5-M3-EVT-01": [
-        2,
-        3,
-        3,
-        0,
-        0,
-        0,
-        3,
-        0,
-        0,
-        2,
-        1
       ],
       "NO1-M8-BKP-01": [
         1,
@@ -18695,12 +18845,12 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       [
         "quick reply: Directory",
         "Directory",
-        168
+        169
       ],
       [
         "quick reply: promotion",
         "Promotion",
-        148
+        149
       ],
       [
         "quick reply: MCard",
@@ -18710,7 +18860,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       [
         "quick reply: Power Mall Gamer Festival",
         "Events",
-        32
+        43
       ],
       [
         "M Card",
@@ -18743,13 +18893,13 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         6
       ],
       [
-        "quick reply: Tasty Month Promotion",
-        "Promotion",
+        "quick reply: กิจกรรมไฮไลท์",
+        "Others",
         5
       ],
       [
-        "MCard มีหลากหลายรูปแบบ สามารถคลิกดูได้ตาม Card ด้านล่าง",
-        "Others",
+        "quick reply: Tasty Month Promotion",
+        "Promotion",
         5
       ]
     ],
@@ -18757,17 +18907,22 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       [
         "quick reply: Directory",
         "Directory",
-        308
+        310
       ],
       [
         "quick reply: promotion",
         "Promotion",
-        245
+        267
       ],
       [
         "quick reply: MCard",
         "Others",
         119
+      ],
+      [
+        "quick reply: Power Mall Electronica",
+        "Others",
+        40
       ],
       [
         "quick reply: Power Mall Gamer Festival",
@@ -18785,11 +18940,6 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         23
       ],
       [
-        "quick reply: Power Mall Electronica",
-        "Others",
-        22
-      ],
-      [
         "สวัสดีค่ะ",
         "Others",
         17
@@ -18800,17 +18950,17 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         11
       ],
       [
+        "quick reply: Highlight Promotions",
+        "Promotion",
+        11
+      ],
+      [
         "คนละครึ่งพลัส",
         "Others",
         10
       ],
       [
         "hello",
-        "Others",
-        9
-      ],
-      [
-        "สวัสดีจ้า",
         "Others",
         9
       ]
@@ -18839,7 +18989,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       [
         "quick reply: แยกประเภทขยะกันค่ะ",
         "Others",
-        31
+        47
       ],
       [
         "สวัสดี",
@@ -18857,6 +19007,11 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         16
       ],
       [
+        "quick reply: Waste Separation",
+        "Others",
+        15
+      ],
+      [
         "ฮัลโหล",
         "Others",
         12
@@ -18867,13 +19022,8 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         11
       ],
       [
-        "Scarlet MCard",
+        "hello",
         "Others",
-        10
-      ],
-      [
-        "quick reply: Festival of Joy Parade",
-        "Events",
         10
       ]
     ],
@@ -18886,7 +19036,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       [
         "quick reply: promotion",
         "Promotion",
-        163
+        165
       ],
       [
         "quick reply: MCard",
@@ -18991,14 +19141,14 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         5
       ],
       [
-        "Hello",
+        "Starbucks",
         "Others",
         4
       ],
       [
-        "Thank you.",
+        "Hello",
         "Others",
-        3
+        4
       ]
     ],
     "2026-03": [
@@ -19040,7 +19190,12 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       [
         "Hello",
         "Others",
-        9
+        10
+      ],
+      [
+        "quick reply: Coffee and Tea",
+        "Restaurant",
+        8
       ],
       [
         "ร้านอาหาร",
@@ -19056,38 +19211,33 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         "quick reply: Coffee or Tea",
         "Restaurant",
         6
-      ],
-      [
-        "THE MALL LIFESTORE SUMMER CATION 2026",
-        "Store Information",
-        6
       ]
     ],
     "2026-04": [
       [
         "quick reply: Coffee or Tea",
         "Restaurant",
-        290
+        293
       ],
       [
         "quick reply: promotion",
         "Promotion",
-        280
+        284
       ],
       [
         "quick reply: Directory",
         "Directory",
-        223
+        226
       ],
       [
         "quick reply: Special Privilege",
         "Rewards",
-        145
+        152
       ],
       [
         "quick reply: MCard",
         "Others",
-        143
+        147
       ],
       [
         "สวัสดีค่ะ",
@@ -19196,7 +19346,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       [
         "quick reply: promotion",
         "Promotion",
-        117
+        120
       ],
       [
         "quick reply: Directory",
@@ -19206,7 +19356,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       [
         "quick reply: MCard",
         "Others",
-        94
+        96
       ],
       [
         "quick reply: Special Privilege",
@@ -19214,14 +19364,19 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         69
       ],
       [
-        "quick reply: Shopping",
-        "Others",
-        48
-      ],
-      [
         "quick reply: Global Privileges",
         "Rewards",
-        47
+        62
+      ],
+      [
+        "quick reply: Shopping",
+        "Others",
+        61
+      ],
+      [
+        "quick reply: SPORTS BRAND",
+        "Sports",
+        29
       ],
       [
         "quick reply: UK",
@@ -19234,19 +19389,14 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         24
       ],
       [
+        "quick reply: SPORTS FEST",
+        "Sports",
+        21
+      ],
+      [
         "hello",
         "Others",
         20
-      ],
-      [
-        "quick reply: SPORTS BRAND",
-        "Sports",
-        19
-      ],
-      [
-        "quick reply: SPORTS FEST",
-        "Sports",
-        16
       ]
     ],
     "2026-07": [
@@ -19258,12 +19408,12 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       [
         "Coffee or Tea",
         "Restaurant",
-        78
+        79
       ],
       [
         "promotion",
         "Promotion",
-        59
+        60
       ],
       [
         "quick reply: Coffee or Tea",
@@ -19690,13 +19840,63 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ],
       "NO5-M3-EVT-01": [
         [
-          "MCard มีหลากหลายรูปแบบ สามารถคลิกดูได้ตาม Card ด้านล่าง",
+          "quick reply: Power Mall Gamer Festival",
+          "Events",
+          11
+        ],
+        [
+          "quick reply: โปรโมชั่นไฮไลท์",
+          "Promotion",
+          3
+        ],
+        [
+          "quick reply: กิจกรรมไฮไลท์",
+          "Others",
+          2
+        ],
+        [
+          "quick reply: รับคะแนน M Point x5 เท่า",
+          "M Card",
+          1
+        ],
+        [
+          "quick reply: แบ่งชำระ 0% นานสูงสุด 24 เดือน",
           "Others",
           1
         ],
         [
-          "quick reply: MCard",
+          "quick reply: สินค้าเกมมิ่ง ไอที ลดสูงสุด 90%",
           "Others",
+          1
+        ],
+        [
+          "quick reply: M Card Privilege",
+          "M Card",
+          1
+        ],
+        [
+          "quick reply: AR Hunting",
+          "Others",
+          1
+        ],
+        [
+          "quick reply: Gamer Community",
+          "Others",
+          1
+        ],
+        [
+          "Gamer Community",
+          "Others",
+          1
+        ],
+        [
+          "quick reply: วันที่ 9 พ.ย. 68",
+          "Others",
+          1
+        ],
+        [
+          "quick reply: Directory",
+          "Directory",
           1
         ]
       ]
@@ -19768,12 +19968,12 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         [
           "quick reply: promotion",
           "Promotion",
-          32
+          54
         ],
         [
           "quick reply: Power Mall Electronica",
           "Others",
-          22
+          40
         ],
         [
           "quick reply: MCard",
@@ -19783,12 +19983,22 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         [
           "quick reply: Directory",
           "Directory",
-          13
+          15
+        ],
+        [
+          "quick reply: Highlight Promotions",
+          "Promotion",
+          9
         ],
         [
           "<transcript not available>",
           "Others",
           6
+        ],
+        [
+          "quick reply: EATELIER PROMOTION",
+          "Promotion",
+          5
         ],
         [
           "คนละครึ่งพลัส",
@@ -19806,18 +20016,8 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           3
         ],
         [
-          "quick reply: EATELIER PROMOTION",
-          "Promotion",
-          3
-        ],
-        [
           "สวัสดีครับ",
           "Others",
-          3
-        ],
-        [
-          "quick reply: Highlight Promotions",
-          "Promotion",
           3
         ],
         [
@@ -20266,7 +20466,12 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         [
           "quick reply: แยกประเภทขยะกันค่ะ",
           "Others",
-          31
+          47
+        ],
+        [
+          "quick reply: Waste Separation",
+          "Others",
+          15
         ],
         [
           "quick reply: Power Mall Electronica",
@@ -20286,42 +20491,37 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         [
           "ฟองน้ำ",
           "Others",
-          4
+          6
         ],
         [
-          "ร่วมฉลองส่งท้ายปีกับงาน Power Mall Electronica ภายใต้คอนเซ็ปต์ “Master of A.I. Innovation” รวบรวมสินค้าเครื่องใช้ไฟฟ้า, สินค้า A.I., สินค้าไอที และ มือถือ รวมถึงของขวัญพรีเมี่ยมหลากสไตล์ ลดสูงสุดถึง 50% พร้อมโปรโมชันสุดพิเศษตั้งแต่วันที่ 10 พ.ย. 68 – 7 ม.ค. 69 ที่ Power Mall เดอะมอลล์ไลฟ์สโตร์ทุกสาขา เอ็มโพเรียม และพารากอน",
-          "Promotion",
-          2
-        ],
-        [
-          "สวัสดีค่ะ",
+          "จาน",
           "Others",
-          2
-        ],
-        [
-          "type link",
-          "Others",
-          2
+          5
         ],
         [
           "How to Dispose of Paint Bucket",
           "Others",
-          2
+          4
         ],
         [
-          "แยกขยะอันนี้แยกยังไง",
+          "อ่างล้างหน้า",
           "Others",
-          2
+          4
         ],
         [
-          "quick reply: Waste Separation",
+          "ขวดแก้ว",
           "Others",
-          2
+          4
         ],
         [
           "หวีพลาสติก",
           "Others",
-          2
+          3
+        ],
+        [
+          "เปลือกกล้วย",
+          "Others",
+          3
         ]
       ]
     },
@@ -20573,6 +20773,68 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           "Promotion",
           2
         ]
+      ],
+      "NO5-M3-EVT-01": [
+        [
+          "The Living promotion",
+          "Promotion",
+          4
+        ],
+        [
+          "the leaping promotion",
+          "Promotion",
+          2
+        ],
+        [
+          "quick reply: promotion",
+          "Promotion",
+          2
+        ],
+        [
+          "โปรโมชั่น The Living",
+          "Promotion",
+          2
+        ],
+        [
+          "โปรโมชัน The Living",
+          "Promotion",
+          1
+        ],
+        [
+          "The period.",
+          "Others",
+          1
+        ],
+        [
+          "ESSE' The Living promotion",
+          "Promotion",
+          1
+        ],
+        [
+          "the living promotion",
+          "Promotion",
+          1
+        ],
+        [
+          "The Living",
+          "Lifestyle",
+          1
+        ],
+        [
+          "The Living โปรโมชั่น มีถึงวันไหน",
+          "Promotion",
+          1
+        ],
+        [
+          "ระยะเวลาโปรโมชั่น",
+          "Promotion",
+          1
+        ],
+        [
+          "The Living Promotion",
+          "Promotion",
+          1
+        ]
       ]
     },
     "2026-02": {
@@ -20823,6 +21085,43 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           "M Card",
           1
         ]
+      ],
+      "NO5-M3-EVT-01": [
+        [
+          "Stock of luck",
+          "Others",
+          3
+        ],
+        [
+          "Taste of Luck",
+          "Others",
+          1
+        ],
+        [
+          "Store of Luck",
+          "Store Information",
+          1
+        ],
+        [
+          "KKV คืออะไร",
+          "Others",
+          1
+        ],
+        [
+          "Starbucks",
+          "Others",
+          1
+        ],
+        [
+          "UNIQLO",
+          "Fashion",
+          1
+        ],
+        [
+          "Monchhichi",
+          "Others",
+          1
+        ]
       ]
     },
     "2026-03": {
@@ -20843,6 +21142,16 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           9
         ],
         [
+          "quick reply: Coffee and Tea",
+          "Restaurant",
+          8
+        ],
+        [
+          "quick reply: Special Privilege",
+          "Rewards",
+          4
+        ],
+        [
           "hello",
           "Others",
           4
@@ -20858,6 +21167,11 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           3
         ],
         [
+          "What's your name?",
+          "Others",
+          2
+        ],
+        [
           "quick reply: Coffee or Tea",
           "Restaurant",
           2
@@ -20868,23 +21182,8 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           2
         ],
         [
-          "Summer cation",
+          "quick reply: Oh! Juice Friday Free Day Buy 1 Get 1 Free",
           "Others",
-          2
-        ],
-        [
-          "quick reply: The Mall Lifestore Chill & Dine UOB Credit Card Promotions",
-          "Promotion",
-          2
-        ],
-        [
-          "คุณมาจากประเทศอะไร",
-          "Others",
-          2
-        ],
-        [
-          "UNIQLO",
-          "Fashion",
           2
         ]
       ],
@@ -21328,30 +21627,30 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         [
           "quick reply: Coffee or Tea",
           "Restaurant",
-          37
+          40
         ],
         [
           "quick reply: Special Privilege",
           "Rewards",
-          29
-        ],
-        [
-          "quick reply: Directory",
-          "Directory",
-          25
+          36
         ],
         [
           "quick reply: promotion",
           "Promotion",
-          24
+          28
         ],
         [
-          "hello",
-          "Others",
-          12
+          "quick reply: Directory",
+          "Directory",
+          28
         ],
         [
           "quick reply: MCard",
+          "Others",
+          16
+        ],
+        [
+          "hello",
           "Others",
           12
         ],
@@ -21838,6 +22137,16 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         [
           "quick reply: promotion",
           "Promotion",
+          16
+        ],
+        [
+          "quick reply: Global Privileges",
+          "Rewards",
+          15
+        ],
+        [
+          "quick reply: Shopping",
+          "Others",
           13
         ],
         [
@@ -21848,7 +22157,22 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         [
           "quick reply: MCard",
           "Others",
+          10
+        ],
+        [
+          "quick reply: SPORTS BRAND",
+          "Sports",
+          10
+        ],
+        [
+          "quick reply: Japan Mall",
+          "Others",
           8
+        ],
+        [
+          "quick reply: SPORTS FEST",
+          "Sports",
+          5
         ],
         [
           "สวัสดี",
@@ -21859,31 +22183,6 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           "สวัสดีค่ะ",
           "Others",
           4
-        ],
-        [
-          "are you gay",
-          "Others",
-          3
-        ],
-        [
-          "สวัสดีครับ",
-          "Others",
-          3
-        ],
-        [
-          "โปรโมชั่น",
-          "Promotion",
-          3
-        ],
-        [
-          "hello",
-          "Others",
-          3
-        ],
-        [
-          "quick reply: M Card 1 M Point Redemption",
-          "M Card",
-          2
         ]
       ],
       "NO3-M6-NGW-01": [
@@ -22210,19 +22509,19 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           10
         ],
         [
-          "สวัสดี",
-          "Others",
-          7
-        ],
-        [
           "Coffee or Tea",
           "Restaurant",
-          7
+          8
         ],
         [
           "promotion",
           "Promotion",
-          6
+          7
+        ],
+        [
+          "สวัสดี",
+          "Others",
+          7
         ],
         [
           "MCard",
@@ -22460,13 +22759,13 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           18
         ],
         [
-          "quick reply: Directory",
-          "Directory",
-          8
-        ],
-        [
           "WOMEN INSPIRED 2026 SUNFLOWER SOCIAL CLUB",
           "Others",
+          11
+        ],
+        [
+          "quick reply: Directory",
+          "Directory",
           8
         ],
         [
@@ -22500,12 +22799,12 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           4
         ],
         [
-          "hi",
+          "quick reply: WOMEN INSPIRED 2026 SUNFLOWER SOCIAL CLUB",
           "Others",
           4
         ],
         [
-          "ชื่ออะไร",
+          "hi",
           "Others",
           4
         ]
@@ -22832,6 +23131,14 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         [
           13,
           2
+        ],
+        [
+          15,
+          1
+        ],
+        [
+          16,
+          25
         ]
       ]
     },
@@ -22893,7 +23200,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           10,
-          22
+          32
         ],
         [
           11,
@@ -22905,23 +23212,23 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           13,
-          63
+          68
         ],
         [
           14,
-          25
+          28
         ],
         [
           15,
-          24
+          56
         ],
         [
           16,
-          20
+          22
         ],
         [
           17,
-          53
+          91
         ],
         [
           18,
@@ -22929,7 +23236,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           19,
-          25
+          27
         ],
         [
           20,
@@ -23319,31 +23626,31 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           10,
-          16
+          50
         ],
         [
           11,
-          25
+          183
         ],
         [
           12,
-          9
+          22
         ],
         [
           13,
-          37
+          54
         ],
         [
           14,
-          42
+          58
         ],
         [
           15,
-          21
+          59
         ],
         [
           16,
-          44
+          50
         ],
         [
           17,
@@ -23567,6 +23874,20 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           21,
           14
         ]
+      ],
+      "NO5-M3-EVT-01": [
+        [
+          14,
+          4
+        ],
+        [
+          15,
+          16
+        ],
+        [
+          17,
+          1
+        ]
       ]
     },
     "2026-02": {
@@ -23781,6 +24102,12 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           22,
           3
         ]
+      ],
+      "NO5-M3-EVT-01": [
+        [
+          16,
+          9
+        ]
       ]
     },
     "2026-03": {
@@ -23819,7 +24146,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           17,
-          18
+          37
         ],
         [
           18,
@@ -23831,7 +24158,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           20,
-          20
+          24
         ],
         [
           21,
@@ -24273,11 +24600,11 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           15,
-          58
+          74
         ],
         [
           16,
-          39
+          59
         ],
         [
           17,
@@ -24289,7 +24616,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           19,
-          63
+          89
         ],
         [
           20,
@@ -24465,11 +24792,11 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           13,
-          10
+          11
         ],
         [
           14,
-          17
+          24
         ],
         [
           15,
@@ -24728,8 +25055,16 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ],
       "NO5-M3-EVT-01": [
         [
+          7,
+          30
+        ],
+        [
+          8,
+          21
+        ],
+        [
           10,
-          6
+          29
         ],
         [
           11,
@@ -24741,7 +25076,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           13,
-          20
+          36
         ],
         [
           14,
@@ -24757,11 +25092,11 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           17,
-          24
+          25
         ],
         [
           18,
-          57
+          76
         ],
         [
           19,
@@ -25087,7 +25422,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           13,
-          8
+          10
         ],
         [
           14,
@@ -25099,7 +25434,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           16,
-          25
+          26
         ],
         [
           17,
@@ -25321,11 +25656,11 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           15,
-          27
+          39
         ],
         [
           16,
-          48
+          56
         ],
         [
           17,
@@ -25569,7 +25904,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           "Thu",
-          2
+          28
         ],
         [
           "Fri",
@@ -25619,19 +25954,19 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "NO5-M3-EVT-01": [
         [
           "Mon",
-          18
+          32
         ],
         [
           "Tue",
-          19
+          41
         ],
         [
           "Wed",
-          24
+          26
         ],
         [
           "Thu",
-          71
+          115
         ],
         [
           "Fri",
@@ -25639,7 +25974,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           "Sat",
-          66
+          76
         ],
         [
           "Sun",
@@ -25861,11 +26196,11 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "NO5-M3-EVT-01": [
         [
           "Mon",
-          16
+          58
         ],
         [
           "Tue",
-          40
+          280
         ],
         [
           "Wed",
@@ -26009,6 +26344,36 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           "Sun",
           51
         ]
+      ],
+      "NO5-M3-EVT-01": [
+        [
+          "Mon",
+          1
+        ],
+        [
+          "Tue",
+          1
+        ],
+        [
+          "Wed",
+          0
+        ],
+        [
+          "Thu",
+          0
+        ],
+        [
+          "Fri",
+          19
+        ],
+        [
+          "Sat",
+          0
+        ],
+        [
+          "Sun",
+          0
+        ]
       ]
     },
     "2026-02": {
@@ -26131,6 +26496,36 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           "Sun",
           16
         ]
+      ],
+      "NO5-M3-EVT-01": [
+        [
+          "Mon",
+          9
+        ],
+        [
+          "Tue",
+          0
+        ],
+        [
+          "Wed",
+          0
+        ],
+        [
+          "Thu",
+          0
+        ],
+        [
+          "Fri",
+          0
+        ],
+        [
+          "Sat",
+          0
+        ],
+        [
+          "Sun",
+          0
+        ]
       ]
     },
     "2026-03": {
@@ -26141,7 +26536,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           "Tue",
-          20
+          43
         ],
         [
           "Wed",
@@ -26383,11 +26778,11 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           "Tue",
-          30
+          56
         ],
         [
           "Wed",
-          121
+          157
         ],
         [
           "Thu",
@@ -26483,7 +26878,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           "Thu",
-          7
+          15
         ],
         [
           "Fri",
@@ -26627,15 +27022,15 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           "Tue",
-          55
+          92
         ],
         [
           "Wed",
-          14
+          36
         ],
         [
           "Thu",
-          19
+          70
         ],
         [
           "Fri",
@@ -26813,7 +27208,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           "Wed",
-          36
+          39
         ],
         [
           "Thu",
@@ -26935,7 +27330,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           "Wed",
-          34
+          54
         ],
         [
           "Thu",
@@ -27037,32 +27432,32 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     "2025-10": [
       [
         "Others",
-        633,
+        641,
         47
       ],
       [
         "Directory",
-        282,
+        283,
         21
       ],
       [
         "Promotion",
-        233,
+        237,
         17
       ],
       [
         "Events",
-        58,
-        4
+        69,
+        5
+      ],
+      [
+        "M Card",
+        38,
+        3
       ],
       [
         "Restaurant",
         37,
-        3
-      ],
-      [
-        "M Card",
-        36,
         3
       ],
       [
@@ -27099,18 +27494,23 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     "2025-11": [
       [
         "Others",
-        1136,
+        1181,
         52
       ],
       [
         "Directory",
-        488,
+        490,
         22
       ],
       [
         "Promotion",
-        339,
-        16
+        378,
+        17
+      ],
+      [
+        "Events",
+        60,
+        3
       ],
       [
         "Restaurant",
@@ -27118,18 +27518,13 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         3
       ],
       [
-        "Events",
-        56,
-        3
-      ],
-      [
         "Store Information",
-        44,
+        45,
         2
       ],
       [
         "M Card",
-        23,
+        24,
         1
       ],
       [
@@ -27140,7 +27535,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       [
         "Parking",
         11,
-        1
+        0
       ],
       [
         "Fashion",
@@ -27161,38 +27556,43 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     "2025-12": [
       [
         "Others",
-        1484,
-        59
+        1754,
+        62
       ],
       [
         "Directory",
         389,
-        15
+        14
       ],
       [
         "Promotion",
         294,
-        12
+        10
       ],
       [
         "Store Information",
-        211,
+        212,
         8
       ],
       [
         "Restaurant",
-        69,
+        73,
         3
       ],
       [
         "Events",
-        23,
+        24,
         1
       ],
       [
         "M Card",
         23,
         1
+      ],
+      [
+        "Fashion",
+        14,
+        0
       ],
       [
         "Parking",
@@ -27205,12 +27605,12 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         0
       ],
       [
-        "Fashion",
-        11,
+        "Lifestyle",
+        3,
         0
       ],
       [
-        "Lifestyle",
+        "Beauty",
         3,
         0
       ],
@@ -27223,8 +27623,8 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     "2026-01": [
       [
         "Others",
-        915,
-        52
+        917,
+        51
       ],
       [
         "Directory",
@@ -27233,8 +27633,8 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ],
       [
         "Promotion",
-        193,
-        11
+        211,
+        12
       ],
       [
         "Store Information",
@@ -27272,13 +27672,13 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         0
       ],
       [
-        "Beauty",
+        "Lifestyle",
         2,
         0
       ],
       [
-        "Lifestyle",
-        1,
+        "Beauty",
+        2,
         0
       ],
       [
@@ -27290,7 +27690,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     "2026-02": [
       [
         "Others",
-        675,
+        682,
         51
       ],
       [
@@ -27306,11 +27706,11 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       [
         "Restaurant",
         60,
-        5
+        4
       ],
       [
         "Store Information",
-        43,
+        44,
         3
       ],
       [
@@ -27335,7 +27735,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ],
       [
         "Fashion",
-        3,
+        4,
         0
       ],
       [
@@ -27352,8 +27752,8 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     "2026-03": [
       [
         "Others",
-        1136,
-        51
+        1141,
+        50
       ],
       [
         "Directory",
@@ -27362,12 +27762,12 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ],
       [
         "Promotion",
-        383,
+        387,
         17
       ],
       [
         "Restaurant",
-        79,
+        88,
         4
       ],
       [
@@ -27377,7 +27777,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ],
       [
         "M Card",
-        23,
+        25,
         1
       ],
       [
@@ -27396,13 +27796,13 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         0
       ],
       [
-        "Fashion",
+        "Rewards",
         8,
         0
       ],
       [
-        "Rewards",
-        5,
+        "Fashion",
+        8,
         0
       ],
       [
@@ -27414,32 +27814,32 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     "2026-04": [
       [
         "Others",
-        1448,
+        1466,
         48
       ],
       [
         "Directory",
-        454,
+        460,
         15
       ],
       [
         "Restaurant",
-        407,
+        421,
         14
       ],
       [
         "Promotion",
-        388,
+        400,
         13
       ],
       [
         "Rewards",
-        149,
+        156,
         5
       ],
       [
         "M Card",
-        55,
+        56,
         2
       ],
       [
@@ -27448,13 +27848,13 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         2
       ],
       [
-        "Events",
-        17,
+        "Fashion",
+        20,
         1
       ],
       [
-        "Fashion",
-        16,
+        "Events",
+        17,
         1
       ],
       [
@@ -27481,7 +27881,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     "2026-05": [
       [
         "Others",
-        1064,
+        1066,
         54
       ],
       [
@@ -27496,7 +27896,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ],
       [
         "Promotion",
-        192,
+        196,
         10
       ],
       [
@@ -27506,7 +27906,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ],
       [
         "M Card",
-        58,
+        60,
         3
       ],
       [
@@ -27543,51 +27943,51 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     "2026-06": [
       [
         "Others",
-        1017,
-        55
+        1065,
+        54
       ],
       [
         "Directory",
-        218,
-        12
+        220,
+        11
+      ],
+      [
+        "Promotion",
+        196,
+        10
       ],
       [
         "Restaurant",
         186,
-        10
-      ],
-      [
-        "Promotion",
-        177,
-        10
+        9
       ],
       [
         "Rewards",
-        118,
-        6
+        133,
+        7
       ],
       [
         "Sports",
-        49,
+        65,
         3
       ],
       [
-        "Store Information",
-        34,
-        2
-      ],
-      [
         "M Card",
-        33,
+        38,
         2
       ],
       [
-        "Parking",
-        11,
-        1
+        "Store Information",
+        35,
+        2
       ],
       [
         "Events",
+        15,
+        1
+      ],
+      [
+        "Parking",
         11,
         1
       ],
@@ -27615,12 +28015,12 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ],
       [
         "Restaurant",
-        169,
-        10
+        170,
+        11
       ],
       [
         "Promotion",
-        124,
+        125,
         8
       ],
       [
@@ -27635,7 +28035,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ],
       [
         "Store Information",
-        17,
+        18,
         1
       ],
       [
@@ -27672,18 +28072,18 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     "2026-08": [
       [
         "Others",
-        654,
+        669,
         56
       ],
       [
         "Directory",
         185,
-        16
+        15
       ],
       [
         "Promotion",
         125,
-        11
+        10
       ],
       [
         "Restaurant",
@@ -27697,7 +28097,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ],
       [
         "Events",
-        19,
+        24,
         2
       ],
       [
@@ -27753,11 +28153,11 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     "2025-10": [
       [
         "M Card",
-        147
+        148
       ],
       [
         "Power Mall",
-        48
+        59
       ],
       [
         "Starbucks",
@@ -27795,11 +28195,11 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     "2025-11": [
       [
         "M Card",
-        174
+        175
       ],
       [
         "Power Mall",
-        89
+        117
       ],
       [
         "Uniqlo",
@@ -27811,7 +28211,11 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ],
       [
         "McDonald's",
-        5
+        6
+      ],
+      [
+        "Apple",
+        6
       ],
       [
         "Nike",
@@ -27819,10 +28223,6 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ],
       [
         "Adidas",
-        4
-      ],
-      [
-        "Apple",
         4
       ],
       [
@@ -27865,7 +28265,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ],
       [
         "Apple",
-        1
+        2
       ]
     ],
     "2026-01": [
@@ -27917,7 +28317,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ],
       [
         "Starbucks",
-        8
+        9
       ],
       [
         "McDonald's",
@@ -27925,7 +28325,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ],
       [
         "Uniqlo",
-        4
+        5
       ],
       [
         "Adidas",
@@ -27943,7 +28343,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     "2026-03": [
       [
         "M Card",
-        180
+        181
       ],
       [
         "Power Mall",
@@ -27981,15 +28381,15 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     "2026-04": [
       [
         "M Card",
-        241
+        247
       ],
       [
         "Uniqlo",
-        13
+        14
       ],
       [
         "Starbucks",
-        13
+        14
       ],
       [
         "Power Mall",
@@ -28038,26 +28438,26 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         4
       ],
       [
+        "Bangkok Bank",
+        3
+      ],
+      [
         "Apple",
         1
       ],
       [
         "Power Mall",
         1
-      ],
-      [
-        "Bangkok Bank",
-        1
       ]
     ],
     "2026-06": [
       [
         "M Card",
-        143
+        149
       ],
       [
         "Adidas",
-        5
+        6
       ],
       [
         "McDonald's",
@@ -28361,8 +28761,24 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ],
       "NO5-M3-EVT-01": [
         [
+          "Events",
+          11
+        ],
+        [
           "Others",
+          10
+        ],
+        [
+          "Promotion",
+          4
+        ],
+        [
+          "M Card",
           2
+        ],
+        [
+          "Directory",
+          1
         ]
       ]
     },
@@ -28408,30 +28824,30 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "NO5-M3-EVT-01": [
         [
           "Others",
-          209
+          254
         ],
         [
           "Promotion",
-          63
+          102
         ],
         [
           "Directory",
-          40
+          42
         ],
         [
           "Store Information",
-          14
+          15
         ],
         [
           "M Card",
-          9
-        ],
-        [
-          "Restaurant",
-          4
+          10
         ],
         [
           "Events",
+          8
+        ],
+        [
+          "Restaurant",
           4
         ],
         [
@@ -28762,7 +29178,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "NO5-M3-EVT-01": [
         [
           "Others",
-          204
+          474
         ],
         [
           "Promotion",
@@ -28770,10 +29186,18 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           "Restaurant",
-          6
+          10
+        ],
+        [
+          "Fashion",
+          5
         ],
         [
           "Store Information",
+          4
+        ],
+        [
+          "Beauty",
           3
         ],
         [
@@ -28781,8 +29205,8 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           2
         ],
         [
-          "Fashion",
-          2
+          "Events",
+          1
         ]
       ]
     },
@@ -28958,6 +29382,20 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           "Sports",
           1
         ]
+      ],
+      "NO5-M3-EVT-01": [
+        [
+          "Promotion",
+          18
+        ],
+        [
+          "Others",
+          2
+        ],
+        [
+          "Lifestyle",
+          1
+        ]
       ]
     },
     "2026-02": {
@@ -29116,13 +29554,27 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           "Sports",
           1
         ]
+      ],
+      "NO5-M3-EVT-01": [
+        [
+          "Others",
+          7
+        ],
+        [
+          "Store Information",
+          1
+        ],
+        [
+          "Fashion",
+          1
+        ]
       ]
     },
     "2026-03": {
       "NO5-M3-EVT-01": [
         [
           "Others",
-          110
+          115
         ],
         [
           "Directory",
@@ -29130,23 +29582,27 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           "Promotion",
-          23
+          27
+        ],
+        [
+          "Restaurant",
+          14
         ],
         [
           "Store Information",
           7
         ],
         [
-          "Restaurant",
-          5
+          "Rewards",
+          4
+        ],
+        [
+          "M Card",
+          2
         ],
         [
           "Fashion",
           2
-        ],
-        [
-          "Rewards",
-          1
         ],
         [
           "Events",
@@ -29464,27 +29920,27 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "NO5-M3-EVT-01": [
         [
           "Others",
-          219
+          237
         ],
         [
           "Restaurant",
-          64
+          78
         ],
         [
           "Promotion",
-          56
+          68
         ],
         [
           "Directory",
-          56
+          62
         ],
         [
           "Rewards",
-          30
+          37
         ],
         [
           "M Card",
-          17
+          18
         ],
         [
           "Store Information",
@@ -29492,7 +29948,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           "Fashion",
-          5
+          9
         ],
         [
           "Parking",
@@ -29596,7 +30052,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "NO5-M3-EVT-01": [
         [
           "Others",
-          225
+          227
         ],
         [
           "Directory",
@@ -29608,7 +30064,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           "Promotion",
-          16
+          20
         ],
         [
           "Rewards",
@@ -29616,7 +30072,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           "M Card",
-          6
+          8
         ],
         [
           "Store Information",
@@ -29796,11 +30252,11 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "NO5-M3-EVT-01": [
         [
           "Others",
-          164
+          212
         ],
         [
           "Directory",
-          47
+          49
         ],
         [
           "Restaurant",
@@ -29808,23 +30264,27 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           "Promotion",
-          20
+          39
         ],
         [
           "Rewards",
-          12
-        ],
-        [
-          "Store Information",
-          6
-        ],
-        [
-          "M Card",
-          4
+          27
         ],
         [
           "Sports",
-          1
+          17
+        ],
+        [
+          "M Card",
+          9
+        ],
+        [
+          "Store Information",
+          7
+        ],
+        [
+          "Events",
+          4
         ],
         [
           "Parking",
@@ -30054,15 +30514,15 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           "Restaurant",
-          16
+          17
         ],
         [
           "Promotion",
-          14
+          15
         ],
         [
           "Store Information",
-          4
+          5
         ],
         [
           "Rewards",
@@ -30192,7 +30652,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "NO5-M3-EVT-01": [
         [
           "Others",
-          255
+          270
         ],
         [
           "Directory",
@@ -30203,12 +30663,12 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           39
         ],
         [
-          "Restaurant",
-          17
+          "Events",
+          21
         ],
         [
-          "Events",
-          16
+          "Restaurant",
+          17
         ],
         [
           "Store Information",
@@ -30399,8 +30859,12 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ],
       "NO5-M3-EVT-01": [
         [
+          "Power Mall",
+          11
+        ],
+        [
           "M Card",
-          2
+          3
         ]
       ]
     },
@@ -30442,15 +30906,15 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "NO5-M3-EVT-01": [
         [
           "Power Mall",
-          47
+          75
         ],
         [
           "M Card",
-          32
+          33
         ],
         [
           "Apple",
-          2
+          4
         ],
         [
           "Nike",
@@ -30458,6 +30922,10 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           "Bangkok Bank",
+          1
+        ],
+        [
+          "McDonald's",
           1
         ]
       ],
@@ -30653,6 +31121,10 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         [
           "M Card",
           8
+        ],
+        [
+          "Apple",
+          1
         ]
       ]
     },
@@ -30752,7 +31224,8 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           "Power Mall",
           1
         ]
-      ]
+      ],
+      "NO5-M3-EVT-01": []
     },
     "2026-02": {
       "NO3-M6-NGW-01": [
@@ -30830,13 +31303,23 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           "Adidas",
           1
         ]
+      ],
+      "NO5-M3-EVT-01": [
+        [
+          "Starbucks",
+          1
+        ],
+        [
+          "Uniqlo",
+          1
+        ]
       ]
     },
     "2026-03": {
       "NO5-M3-EVT-01": [
         [
           "M Card",
-          12
+          13
         ],
         [
           "Power Mall",
@@ -31054,19 +31537,19 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "NO5-M3-EVT-01": [
         [
           "M Card",
-          35
+          41
         ],
         [
           "Starbucks",
-          7
+          8
+        ],
+        [
+          "Uniqlo",
+          4
         ],
         [
           "Bangkok Bank",
           4
-        ],
-        [
-          "Uniqlo",
-          3
         ],
         [
           "McDonald's",
@@ -31122,6 +31605,10 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           "Nike",
+          2
+        ],
+        [
+          "Bangkok Bank",
           2
         ],
         [
@@ -31210,7 +31697,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "NO5-M3-EVT-01": [
         [
           "M Card",
-          14
+          20
         ],
         [
           "Starbucks",
@@ -31222,6 +31709,10 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         ],
         [
           "Power Mall",
+          1
+        ],
+        [
+          "Adidas",
           1
         ]
       ],
@@ -31485,7 +31976,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "location": "Siam Paragon",
       "setup": "2025-11-10",
       "returnDate": "2025-12-10",
-      "performance": "218 sessions, 481 questions, rating not available",
+      "performance": "308 sessions, 840 questions, rating not available",
       "notes": "Performance calculated automatically from the Performance Reports CSV for 2025-11-10 to 2025-12-10."
     },
     {

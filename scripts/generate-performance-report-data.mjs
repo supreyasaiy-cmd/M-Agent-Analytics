@@ -110,6 +110,8 @@ const csvMachineIdMap = {
   "7cf9a0bf-c5f3-4128-aded-8f86f8879f5e":"NO3-M6-NGW-01",
   "c9f04fd5-e1d4-47a5-8866-ac555bced1d3":"NO4-M5-THA-01",
   "16f880a4-ccd9-41b6-a3ad-0f0075b649a2":"NO5-M3-EVT-01",
+  "63afc003-fb0e-4f64-ba6f-aba88d92f3f0":"NO5-M3-EVT-01",
+  "52862bc1-4493-49fe-ba8f-6fdb4af31764":"NO5-M3-EVT-01",
   "NO5-M3-EVT-01":"NO5-M3-EVT-01"
 };
 

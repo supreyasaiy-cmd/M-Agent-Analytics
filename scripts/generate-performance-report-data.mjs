@@ -50,11 +50,10 @@ const reportFiles = {
     rating: "Perfomance Reports/0726 July/ratings-export-2026-07-01-to-2026-07-31-90ce9043.csv"
   },
   "2026-08": {
-    message: "Perfomance Reports/0826 Aug/messageLog-export-2026-08-01-to-2026-08-30-4c330f53.csv",
-    rating: "Perfomance Reports/0826 Aug/ratings-export-2026-08-01-to-2026-08-30-4c330f53.csv",
-    // Woman Inspired event (NO5-M3-EVT-01, 7-13 Aug) exported separately; merged into the Overview.
-    messageExtra: [{ file: "Perfomance Reports/0826 Aug/M-Agent Report 07-13082026_Woman Inspired2026.xlsx", sheet: "Raw" }],
-    ratingExtra: [{ file: "Perfomance Reports/0826 Aug/M-Agent Report 07-13082026_Woman Inspired2026.xlsx", sheet: "Rating" }]
+    // Full-month export (1-31 Aug); already includes the Woman Inspired event traffic
+    // (7-13 Aug on NO5-M3-EVT-01), so it is NOT merged separately to avoid double-counting.
+    message: "Perfomance Reports/0826 Aug/messageLog-export-2026-08-01-to-2026-08-31-e4e8b37f.csv",
+    rating: "Perfomance Reports/0826 Aug/ratings-export-2026-08-01-to-2026-08-31-e4e8b37f.csv"
   }
 };
 
@@ -801,7 +800,81 @@ export function buildPerformanceReportData(rootDir) {
     brandSummaryByMonth,
     categoryByAssetByMonth,
     brandByAssetByMonth,
-    eventHistory
+    eventHistory,
+    accuracyReview: buildAccuracyReview(rootDir)
+  };
+}
+
+function buildAccuracyReview(rootDir) {
+  const file = "Perfomance Reports/Random Question Accuracy Review/202607 Random 100_The MALL - Raw.csv";
+  let rows;
+  try {
+    rows = parseTabularFile(join(rootDir, file));
+  } catch {
+    return null;
+  }
+  if (!rows || !rows.length) return null;
+  const asBool = value => String(value ?? "").trim().toUpperCase() === "TRUE";
+  const clip = (value, max) => {
+    const text = String(value ?? "").replace(/\s+/g, " ").trim();
+    return text.length > max ? `${text.slice(0, max)}…` : text;
+  };
+  const records = rows
+    .map(row => {
+      const assetId = csvMachineIdMap[row.machineId] || null;
+      const input = String(row.audioUrl ?? "").trim()
+        ? "Voice"
+        : String(row.quickReplyParentTitle ?? "").trim()
+          ? "Quick Reply"
+          : "Text";
+      return {
+        question: clip(row.question, 260),
+        answer: clip(row.answer, 240),
+        category: String(row.category ?? "").trim() || "Uncategorized",
+        subCategory: String(row.subCategory ?? "").trim(),
+        apology: asBool(row.isApology),
+        helpful: asBool(row.isHelpful),
+        language: String(row.language ?? "").trim(),
+        input,
+        machine: assetId || "Test machine",
+        registered: Boolean(assetId),
+        time: String(row.startAt ?? "").trim()
+      };
+    })
+    .filter(record => record.question);
+  const total = records.length;
+  const rate = predicate => (total ? (records.filter(predicate).length / total) * 100 : 0);
+  const tally = key => {
+    const map = {};
+    records.forEach(record => {
+      const value = record[key] || "Unknown";
+      map[value] = (map[value] || 0) + 1;
+    });
+    return map;
+  };
+  const categoryMap = new Map();
+  records.forEach(record => {
+    const bucket = categoryMap.get(record.category) || { category: record.category, count: 0, apology: 0 };
+    bucket.count += 1;
+    if (record.apology) bucket.apology += 1;
+    categoryMap.set(record.category, bucket);
+  });
+  const dates = records.map(r => r.time.slice(0, 10)).filter(d => /^\d{4}/.test(d)).sort();
+  return {
+    label: "Random 100 accuracy review",
+    month: "2026-07",
+    total,
+    sessions: new Set(rows.map(r => String(r.sessionId))).size,
+    dateStart: dates[0] || null,
+    dateEnd: dates[dates.length - 1] || null,
+    apologyRate: rate(r => r.apology),
+    transcriptionRate: rate(r => r.category === "TranscriptionError"),
+    outOfScopeRate: rate(r => r.category === "Out of Scope"),
+    cleanRate: rate(r => !r.apology && r.category !== "TranscriptionError" && r.category !== "Out of Scope"),
+    inputMix: tally("input"),
+    langMix: tally("language"),
+    categories: [...categoryMap.values()].sort((a, b) => b.count - a.count),
+    rows: records
   };
 }
 

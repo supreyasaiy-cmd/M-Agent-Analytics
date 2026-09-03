@@ -401,6 +401,11 @@ function detectBrands(question = "") {
   return brandRules.filter(rule => rule.patterns.some(pattern => pattern.test(text))).map(rule => rule.name);
 }
 
+function clipText(value, max) {
+  const text = String(value ?? "").replace(/\s+/g, " ").trim();
+  return text.length > max ? `${text.slice(0, max)}…` : text;
+}
+
 function incrementCounter(map, key, amount = 1) {
   map.set(key, (map.get(key) || 0) + amount);
 }
@@ -411,6 +416,8 @@ export function buildPerformanceReportData(rootDir) {
   const monthMeta = {};
   const allMessageRows = [];
   const allRatingRows = [];
+  const accuracyRows = [];
+  const accuracySessionIds = new Set();
   const dailyAssetMetrics = {};
   const monthQuestionCounts = {};
   const monthQuestionCategoryCounts = {};
@@ -447,6 +454,22 @@ export function buildPerformanceReportData(rootDir) {
       const questionText = String(row.question || "").trim();
       const category = detectCategory(questionText);
       const brands = detectBrands(questionText);
+      if (questionText) {
+        const inputBucket = detectInput(row.question, row.audioUrl);
+        accuracyRows.push({
+          question: clipText(row.question, 260),
+          answer: clipText(row.answer, 240),
+          category: String(row.category ?? "").trim() || "Uncategorized",
+          apology: String(row.isApology || "").toLowerCase() === "true",
+          helpful: String(row.isHelpful || "").toLowerCase() === "true",
+          language: String(row.language ?? "").trim(),
+          input: inputBucket === "voice" ? "Voice" : inputBucket === "quickReply" ? "Quick Reply" : "Text",
+          machine: assetId,
+          time: String(row.startAt ?? "").trim(),
+          monthId
+        });
+        accuracySessionIds.add(String(row.sessionId || ""));
+      }
       if (!metricsByAsset[assetId]) metricsByAsset[assetId] = createMetricBucket();
       const bucket = metricsByAsset[assetId];
       bucket.sessionIds.add(String(row.sessionId || ""));
@@ -801,47 +824,12 @@ export function buildPerformanceReportData(rootDir) {
     categoryByAssetByMonth,
     brandByAssetByMonth,
     eventHistory,
-    accuracyReview: buildAccuracyReview(rootDir)
+    accuracyReview: buildAccuracyReviewSummary(accuracyRows, accuracySessionIds)
   };
 }
 
-function buildAccuracyReview(rootDir) {
-  const file = "Perfomance Reports/Random Question Accuracy Review/202607 Random 100_The MALL - Raw.csv";
-  let rows;
-  try {
-    rows = parseTabularFile(join(rootDir, file));
-  } catch {
-    return null;
-  }
-  if (!rows || !rows.length) return null;
-  const asBool = value => String(value ?? "").trim().toUpperCase() === "TRUE";
-  const clip = (value, max) => {
-    const text = String(value ?? "").replace(/\s+/g, " ").trim();
-    return text.length > max ? `${text.slice(0, max)}…` : text;
-  };
-  const records = rows
-    .map(row => {
-      const assetId = csvMachineIdMap[row.machineId] || null;
-      const input = String(row.audioUrl ?? "").trim()
-        ? "Voice"
-        : String(row.quickReplyParentTitle ?? "").trim()
-          ? "Quick Reply"
-          : "Text";
-      return {
-        question: clip(row.question, 260),
-        answer: clip(row.answer, 240),
-        category: String(row.category ?? "").trim() || "Uncategorized",
-        subCategory: String(row.subCategory ?? "").trim(),
-        apology: asBool(row.isApology),
-        helpful: asBool(row.isHelpful),
-        language: String(row.language ?? "").trim(),
-        input,
-        machine: assetId || "Test machine",
-        registered: Boolean(assetId),
-        time: String(row.startAt ?? "").trim()
-      };
-    })
-    .filter(record => record.question);
+function buildAccuracyReviewSummary(records, sessionIds) {
+  if (!records || !records.length) return null;
   const total = records.length;
   const rate = predicate => (total ? (records.filter(predicate).length / total) * 100 : 0);
   const tally = key => {
@@ -860,11 +848,20 @@ function buildAccuracyReview(rootDir) {
     categoryMap.set(record.category, bucket);
   });
   const dates = records.map(r => r.time.slice(0, 10)).filter(d => /^\d{4}/.test(d)).sort();
+
+  // The browsable "What customers asked" list ships only the most recent 3 months of
+  // question text (keeps the page payload light); every rate/category stat above is
+  // still computed from the FULL history across all `records`.
+  const recentMonths = [...new Set(records.map(r => r.monthId))].sort().slice(-3);
+  const visibleRows = records
+    .filter(r => recentMonths.includes(r.monthId))
+    .map(({ monthId, ...rest }) => rest);
+  const visibleDates = visibleRows.map(r => r.time.slice(0, 10)).filter(d => /^\d{4}/.test(d)).sort();
+
   return {
-    label: "Random 100 accuracy review",
-    month: "2026-07",
+    label: "Full-history question review",
     total,
-    sessions: new Set(rows.map(r => String(r.sessionId))).size,
+    sessions: sessionIds ? sessionIds.size : new Set(records.map(r => r.time)).size,
     dateStart: dates[0] || null,
     dateEnd: dates[dates.length - 1] || null,
     apologyRate: rate(r => r.apology),
@@ -874,7 +871,9 @@ function buildAccuracyReview(rootDir) {
     inputMix: tally("input"),
     langMix: tally("language"),
     categories: [...categoryMap.values()].sort((a, b) => b.count - a.count),
-    rows: records
+    rowsDateStart: visibleDates[0] || null,
+    rowsDateEnd: visibleDates[visibleDates.length - 1] || null,
+    rows: visibleRows
   };
 }
 

@@ -30,7 +30,11 @@ function stampPerformanceDataVersion(filePath, cacheKey) {
 
 function inlinePerformanceData(filePath, dataFilePath) {
   const html = readFileSync(filePath, "utf8");
-  const dataScript = readFileSync(dataFilePath, "utf8").trim();
+  // Customer-typed question/answer text is embedded verbatim in this JSON payload, and a
+  // literal "</script" sequence anywhere in it (accidental or adversarial kiosk input) makes
+  // the HTML parser close the <script> tag early, corrupting the page. Escape it so the tag
+  // always closes exactly where we intend, regardless of what's inside the JSON strings.
+  const dataScript = readFileSync(dataFilePath, "utf8").trim().replace(/<\/script/gi, "<\\/script");
   const externalScriptPattern = /<script src="\.\/assets\/performance-report-data\.js(?:\?v=[^"]+)?"><\/script>/;
   const inlineScriptTag = `<script id="performance-report-data-inline">\n${dataScript}\n</script>`;
   const updated = externalScriptPattern.test(html)

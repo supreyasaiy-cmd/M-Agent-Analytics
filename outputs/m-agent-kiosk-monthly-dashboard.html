@@ -158,10 +158,12 @@
     .aqr-cat-track{height:10px;border-radius:999px;background:#eef2f7;overflow:hidden}
     .aqr-cat-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#f59e0b,#e11d48)}
     .aqr-cat-val{font-size:12px;font-weight:800;color:#667085;white-space:nowrap;font-variant-numeric:tabular-nums}
-    .aqr-controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:14px 0}
-    .aqr-search{flex:1 1 240px;min-width:200px;padding:10px 14px;border:1px solid var(--line);border-radius:12px;font-size:14px;background:#fff}
-    .aqr-select{padding:10px 12px;border:1px solid var(--line);border-radius:12px;font-size:13px;background:#fff;font-weight:700}
-    .aqr-check{display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;color:#344054;cursor:pointer}
+    .aqr-controls{display:grid;gap:10px;margin:14px 0}
+    .aqr-controls-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+    .aqr-search{width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:12px;font-size:14px;background:#fff;height:auto}
+    .aqr-select{padding:10px 12px;border:1px solid var(--line);border-radius:12px;font-size:13px;background:#fff;font-weight:700;height:auto;width:auto}
+    .aqr-check{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#344054;cursor:pointer}
+    .aqr-check input{width:17px;height:17px;min-width:17px;padding:0;margin:0;flex:0 0 auto;accent-color:var(--blue);border-radius:5px;cursor:pointer}
     .aqr-reset{margin-left:auto;border:0;background:transparent;font-size:12.5px;font-weight:800;color:#1d4ed8;cursor:pointer;padding:6px 4px;text-decoration:underline;text-underline-offset:2px}
     .aqr-reset:hover{color:#1e40af}
     .aqr-count{font-size:12px;font-weight:800;color:#667085;margin-bottom:10px}
@@ -971,7 +973,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-09-02T14:40:09.847Z",
+  "generatedAt": "2026-09-03T06:33:51.986Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "31 Aug 2026",
@@ -52590,13 +52592,17 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         h("div",{className:"card aqr-block"},
           h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon green"},h(Icon,{name:"message"})),h("div",null,h("h3",null,"What customers asked"),h("p",{className:"subtitle"},"Actual questions and the AI's answer from the review sample — apology answers are shown first.")))),
           h("div",{className:"aqr-controls"},
-            h("input",{className:"aqr-search",type:"search",placeholder:"Search question or answer…",value:q,onChange:e=>setQP(e.target.value)}),
-            h("select",{className:"aqr-select",value:cat,onChange:e=>setCatP(e.target.value),"aria-label":"Filter by category"},cats.map(c=>h("option",{key:c,value:c},c))),
-            h("select",{className:"aqr-select",value:lang,onChange:e=>setLangP(e.target.value),"aria-label":"Filter by language"},langs.map(l=>h("option",{key:l,value:l},l==="All"?"All languages":l))),
-            h("select",{className:"aqr-select",value:inp,onChange:e=>setInpP(e.target.value),"aria-label":"Filter by input type"},inputs.map(i=>h("option",{key:i,value:i},i==="All"?"All input types":i))),
-            h("select",{className:"aqr-select",value:mach,onChange:e=>setMachP(e.target.value),"aria-label":"Filter by machine"},machines.map(m=>h("option",{key:m,value:m},m==="All"?"All machines":m))),
-            h("label",{className:"aqr-check"},h("input",{type:"checkbox",checked:onlyApology,onChange:e=>setOnlyApologyP(e.target.checked)}),"Only apologies"),
-            filtersActive?h("button",{type:"button",className:"aqr-reset",onClick:resetFilters},"Clear filters"):null
+            h("div",{className:"aqr-controls-row"},
+              h("input",{className:"aqr-search",type:"search",placeholder:"Search question or answer…",value:q,onChange:e=>setQP(e.target.value)})
+            ),
+            h("div",{className:"aqr-controls-row"},
+              h("select",{className:"aqr-select",value:cat,onChange:e=>setCatP(e.target.value),"aria-label":"Filter by category"},cats.map(c=>h("option",{key:c,value:c},c==="All"?"All categories":c))),
+              h("select",{className:"aqr-select",value:lang,onChange:e=>setLangP(e.target.value),"aria-label":"Filter by language"},langs.map(l=>h("option",{key:l,value:l},l==="All"?"All languages":l))),
+              h("select",{className:"aqr-select",value:inp,onChange:e=>setInpP(e.target.value),"aria-label":"Filter by input type"},inputs.map(i=>h("option",{key:i,value:i},i==="All"?"All input types":i))),
+              h("select",{className:"aqr-select",value:mach,onChange:e=>setMachP(e.target.value),"aria-label":"Filter by machine"},machines.map(m=>h("option",{key:m,value:m},m==="All"?"All machines":m))),
+              h("label",{className:"aqr-check"},h("input",{type:"checkbox",checked:onlyApology,onChange:e=>setOnlyApologyP(e.target.checked)}),"Only apologies"),
+              filtersActive?h("button",{type:"button",className:"aqr-reset",onClick:resetFilters},"Clear filters"):null
+            )
           ),
           h("div",{className:"aqr-count"},sorted.length?("Showing "+rangeStart+"–"+rangeEnd+" of "+sorted.length+" questions"):"Showing 0 questions",filtered.length!==data.total?" (of "+data.total+" total)":""),
           filtered.length?h("div",{className:"aqr-list"},shown.map((r,i)=>h("div",{className:"aqr-item"+(r.apology?" apology":""),key:i},

@@ -150,6 +150,41 @@
     .aqr-hero-chip span{font-size:11.5px;font-weight:700;color:#667085;line-height:1.35}
     .aqr-cat-more{margin-top:12px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font-size:12px;font-weight:800;color:#1d4ed8;cursor:pointer}
     .aqr-cat-more:hover{border-color:#93c5fd}
+    .aqr-guide-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .aqr-guide-actions .aqr-cat-more{margin-top:0}
+    .aqr-lang-toggle{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;gap:2px}
+    .aqr-lang-btn{border:0;background:transparent;padding:5px 13px;border-radius:999px;font-size:11.5px;font-weight:850;color:#667085;cursor:pointer}
+    .aqr-lang-btn.active{background:var(--blue);color:#fff}
+    .aqr-matrix{display:grid;grid-template-columns:130px 1fr 1fr;gap:10px;margin-top:16px}
+    .aqr-matrix-corner{}
+    .aqr-matrix-colhead{align-self:end;padding-bottom:6px;font-size:10.5px;font-weight:850;text-transform:uppercase;letter-spacing:.03em;color:#667085;text-align:center}
+    .aqr-matrix-rowhead{display:flex;align-items:center;font-size:12.5px;font-weight:800;color:#344054;line-height:1.3}
+    .aqr-matrix-cell{border-radius:14px;padding:14px 10px;text-align:center}
+    .aqr-matrix-cell.green{background:var(--green-soft);border:1px solid #b7ebd1}
+    .aqr-matrix-cell.rose{background:var(--rose-soft);border:1px solid #fecdd3}
+    .aqr-matrix-verdict{font-size:14px;font-weight:850;color:#101828}
+    .aqr-matrix-count{margin-top:2px;font-size:11px;font-weight:700;color:#667085}
+    .aqr-matrix-types{margin-top:9px;display:flex;flex-wrap:wrap;gap:5px;justify-content:center}
+    .aqr-matrix-aside{margin-top:12px;display:flex;align-items:center;gap:9px;font-size:12.5px;color:#667085}
+    .aqr-guide-table{margin-top:18px;border:1px solid var(--line-2);border-radius:14px;overflow:hidden}
+    .aqr-guide-thead{display:grid;grid-template-columns:32px 1fr 138px 150px;gap:14px;padding:10px 16px;background:#f8fafc;font-size:10.5px;font-weight:850;text-transform:uppercase;letter-spacing:.04em;color:#667085}
+    .aqr-guide-row{display:grid;grid-template-columns:32px 1fr 138px 150px;gap:14px;align-items:center;padding:13px 16px;background:#fff;border-top:1px solid var(--line-2)}
+    .aqr-guide-row.tone-rose{box-shadow:inset 4px 0 0 var(--rose)}
+    .aqr-guide-row.tone-green{box-shadow:inset 4px 0 0 var(--green)}
+    .aqr-guide-no{font-size:12px;font-weight:850;color:#98a2b3;text-align:center}
+    .aqr-guide-text{font-size:13px;color:#344054;line-height:1.5}
+    .aqr-guide-notes{margin-top:14px;display:grid;gap:6px}
+    .aqr-guide-notes p{margin:0;font-size:12px;color:#667085;line-height:1.5}
+    @media(max-width:720px){
+      .aqr-matrix{grid-template-columns:78px 1fr 1fr;gap:6px}
+      .aqr-matrix-colhead{font-size:9px;padding-bottom:4px}
+      .aqr-matrix-rowhead{font-size:11px}
+      .aqr-matrix-cell{padding:10px 6px}
+      .aqr-matrix-verdict{font-size:12px}
+      .aqr-guide-thead{display:none}
+      .aqr-guide-row{grid-template-columns:20px 1fr;grid-template-areas:"no text" ". verdict" ". type";row-gap:6px}
+      .aqr-guide-no{grid-area:no}.aqr-guide-text{grid-area:text}.aqr-guide-verdict{grid-area:verdict}.aqr-guide-type{grid-area:type}
+    }
     .aqr-cat-list{display:grid;gap:9px}
     .aqr-cat-row{display:grid;grid-template-columns:minmax(120px,190px) 1fr auto;gap:12px;align-items:center}
     .aqr-cat-name{text-align:left;border:0;background:transparent;font:inherit;font-size:13px;font-weight:800;color:#344054;cursor:pointer;padding:2px 0;border-radius:6px}
@@ -246,6 +281,9 @@
     .overview-mentioned-count{text-align:right;color:var(--ink);font-size:20px;font-weight:900;white-space:nowrap}
     .overview-mentioned-count span{display:block;color:#667085;font-size:10px;font-weight:850;text-transform:uppercase;letter-spacing:.04em}
     .overview-machine-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+    @media(max-width:1320px){.overview-machine-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+    @media(max-width:900px){.overview-machine-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media(max-width:560px){.overview-machine-grid{grid-template-columns:minmax(0,1fr)}}
     .overview-machine-card{border:1px solid var(--line-2);border-radius:18px;background:#fbfcfe;padding:16px 18px;display:grid;gap:12px;align-content:start;min-width:0}
     .overview-machine-photo{width:100%;aspect-ratio:16/10;border-radius:16px;overflow:hidden;border:1px solid var(--line-2);background:#fff}
     .overview-machine-photo img{width:100%;height:100%;object-fit:cover;display:block}
@@ -687,29 +725,34 @@
     .exec-list{display:grid;gap:10px}
     .exec-list li{list-style:none;border:1px solid var(--line-2);border-radius:16px;background:#fbfcfe;padding:13px;color:#344054;font-size:13px;line-height:1.45;overflow-wrap:anywhere}.exec-summary{margin-bottom:14px;padding:15px 17px;border-radius:16px;background:linear-gradient(90deg,#eef4ff,#f8fbff);border:1px solid var(--line-2)}.exec-summary-eyebrow{display:block;font-size:10px;font-weight:850;letter-spacing:.06em;text-transform:uppercase;color:#667085;margin-bottom:5px}.exec-summary-text{margin:0;font-size:15px;line-height:1.55;color:#1d2939}.exec-summary-text b{color:#1d4ed8;font-weight:850}.exec-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.exec-tile{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line-2);border-radius:16px;background:#fbfcfe;padding:14px}.exec-tile-icon{flex:0 0 auto;width:34px;height:34px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:var(--blue-soft);color:#1d4ed8}.exec-tile-body{min-width:0}.exec-tile-label{display:block;font-size:11px;font-weight:850;letter-spacing:.04em;text-transform:uppercase;color:#475467;margin-bottom:3px}.exec-tile-text{margin:0;font-size:13px;line-height:1.5;color:#344054;overflow-wrap:anywhere}@media(max-width:720px){.exec-grid{grid-template-columns:1fr}}
     .app-shell{min-height:100vh;background:var(--bg)}
-    .sidebar{position:fixed;z-index:70;inset:0 auto 0 0;width:264px;background:rgba(255,255,255,.94);border-right:1px solid rgba(230,234,240,.9);box-shadow:16px 0 44px rgba(15,23,42,.04);backdrop-filter:blur(18px);display:flex;flex-direction:column;overflow:auto}
-    .sidebar-inner{padding:18px 14px 16px;display:grid;gap:12px}
-    .sidebar-brand{display:flex;align-items:center;gap:10px;padding:4px 6px 14px;border-bottom:1px solid var(--line-2)}
-    .sidebar-brand .brand-mark{width:42px;height:42px;border-radius:15px}
+    .sidebar{position:fixed;z-index:70;inset:16px auto 16px 16px;width:248px;height:calc(100% - 32px);background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-soft);display:flex;flex-direction:column;overflow:auto}
+    .sidebar-inner{padding:18px 16px 20px;display:grid;gap:18px}
+    .sidebar-brand{display:flex;align-items:center;gap:10px;padding:0 0 16px;border-bottom:1px solid var(--line-2)}
+    .sidebar-brand .brand-mark{width:38px;height:38px;border-radius:13px}
     .sidebar-brand b{display:block;font-size:15px;line-height:1.1}
     .sidebar-brand span:not(.brand-m):not(.brand-agent){display:block;margin-top:3px;color:var(--muted);font-size:11px}
-    .sidebar-section{display:grid;gap:5px;padding:0 2px}
-    .sidebar-section-head{width:100%;min-height:38px;border:0;border-radius:13px;background:transparent;color:#344054;display:grid;grid-template-columns:24px minmax(0,1fr) 18px;gap:8px;align-items:center;padding:0 8px;text-align:left;transition:.18s ease}
-    .sidebar-section-head:hover{background:#f5f8ff;color:#1d4ed8}
-    .sidebar-section-head.active{background:#f8fbff;color:#1d4ed8}
-    .sidebar-section-head.expanded{background:var(--blue-soft);color:#1d4ed8;box-shadow:inset 0 0 0 1px #bfdbfe}
-    .sidebar-section-icon{width:24px;height:24px;border-radius:8px;background:#f4f7fb;color:currentColor;display:grid;place-items:center}
-    .sidebar-section-title{display:block;font-size:14px;font-weight:720;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .sidebar-chevron{color:#98a2b3;font-size:12px;line-height:1;text-align:center;transition:.18s ease}
-    .sidebar-section-head.active .sidebar-chevron,.sidebar-section-head.expanded .sidebar-chevron{color:#1d4ed8}
-    .sidebar-menu{display:grid;gap:3px;padding-left:30px;overflow:hidden;max-height:0;opacity:0;transition:max-height .22s ease,opacity .16s ease,padding-top .22s ease,padding-bottom .22s ease}
-    .sidebar-menu.expanded{max-height:240px;opacity:1;padding-top:2px;padding-bottom:4px}
-    .sidebar-link{width:100%;min-height:30px;border:0;border-radius:11px;background:transparent;color:#475467;display:flex;gap:8px;align-items:center;text-align:left;padding:0 8px;font-size:13px;font-weight:560;transition:.18s ease}
-    .sidebar-link svg{display:none}
+    .sidebar-section{display:grid;gap:2px;padding:0}
+    .sidebar-section+.sidebar-section{margin-top:6px;padding-top:14px;border-top:1px solid var(--line-2)}
+    .sidebar-section-head{width:100%;min-height:32px;border:0;border-radius:9px;background:transparent;color:#98a2b3;display:grid;grid-template-columns:18px minmax(0,1fr) 14px;gap:9px;align-items:center;padding:0 6px;text-align:left;transition:.18s ease;text-transform:uppercase;letter-spacing:.04em}
+    .sidebar-section-head:hover{color:#667085}
+    .sidebar-section-head.active{color:#344054}
+    .sidebar-section-head.expanded{color:#344054}
+    .sidebar-section-icon{width:18px;height:18px;color:currentColor;display:grid;place-items:center}
+    .sidebar-section-icon svg{width:16px;height:16px}
+    .sidebar-section-title{display:block;font-size:10.5px;font-weight:800;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .sidebar-chevron{color:#c3cad6;font-size:11px;line-height:1;text-align:center;transition:.18s ease}
+    .sidebar-section-head.active .sidebar-chevron,.sidebar-section-head.expanded .sidebar-chevron{color:#98a2b3}
+    .sidebar-menu{display:grid;gap:1px;padding-left:0;overflow:hidden;max-height:0;opacity:0;transition:max-height .22s ease,opacity .16s ease,padding-top .22s ease,padding-bottom .22s ease}
+    .sidebar-menu.expanded{max-height:600px;opacity:1;padding-top:6px;padding-bottom:4px}
+    .sidebar-submenu{display:grid;gap:1px;padding:2px 0 6px 25px;margin-bottom:2px}
+    .sidebar-sublink{display:flex;align-items:center;gap:7px;padding:5px 8px;border-radius:8px;border:none;background:transparent;color:#a0a8b5;font-size:11.5px;font-weight:600;text-align:left;cursor:pointer;line-height:1.3;width:100%}
+    .sidebar-sublink:hover{background:#f7f8fa;color:#0f172a}
+    .sidebar-link{width:100%;min-height:36px;border:0;border-radius:10px;background:transparent;color:#667085;display:flex;gap:9px;align-items:center;text-align:left;padding:0 6px;font-size:13.5px;font-weight:600;transition:.18s ease}
+    .sidebar-link svg{width:16px;height:16px;flex:0 0 auto;color:currentColor}
     .sidebar-link span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-    .sidebar-link:hover{background:#f5f8ff;color:#1d4ed8}
-    .sidebar-link.active{background:var(--blue-soft);color:#1d4ed8;box-shadow:inset 0 0 0 1px #bfdbfe}
-    .workspace{min-width:0;margin-left:264px}
+    .sidebar-link:hover{background:#f7f8fa;color:#0f172a}
+    .sidebar-link.active{background:transparent;color:#0f172a;font-weight:800;box-shadow:none}
+    .workspace{min-width:0;margin-left:296px}
     .workspace-header{position:sticky;top:0;z-index:60;min-height:74px;border-bottom:1px solid rgba(230,234,240,.88);background:rgba(247,248,250,.84);backdrop-filter:blur(18px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center;padding:14px 34px}
     .mobile-menu{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:14px;background:#fff;color:#344054;align-items:center;justify-content:center}
     .header-title{display:flex;align-items:center;gap:12px;min-width:0}
@@ -794,7 +837,7 @@
       .timeline-line .timeline-item:last-child:after{display:none}
     }
     @media(max-width:640px){
-      .sidebar{width:min(264px,88vw)}
+      .sidebar{width:min(248px,88vw)}
       .page-title-line{font-size:18px}
       .header-title .icon{display:none}
       .header-filters .field{min-width:0;flex:1 1 100%}
@@ -905,18 +948,18 @@
 
     /* Dashboard compact readability pass */
     @media (min-width:901px){
-      .sidebar{width:224px!important}
-      .workspace{margin-left:224px!important}
+      .sidebar{width:232px!important}
+      .workspace{margin-left:280px!important}
     }
-    .sidebar-inner{padding:16px 12px!important;gap:10px!important}
-    .sidebar-brand{gap:9px!important;padding:4px 4px 12px!important}
-    .brand-mark{width:38px!important;height:38px!important}
+    .sidebar-inner{padding:18px 14px!important;gap:16px!important}
+    .sidebar-brand{gap:9px!important;padding:0 2px 14px!important}
+    .brand-mark{width:36px!important;height:36px!important}
     .brand-title{font-size:13px!important;line-height:1.15!important}
     .brand-subtitle{font-size:9.5px!important;line-height:1.25!important}
-    .sidebar-section-head{min-height:34px!important;padding:6px 8px!important;border-radius:12px!important;gap:8px!important}
-    .sidebar-section-title{font-size:13px!important;line-height:1.2!important}
-    .sidebar-icon{width:22px!important;height:22px!important;border-radius:9px!important}
-    .sidebar-link{min-height:28px!important;padding:5px 9px 5px 40px!important;font-size:12px!important;border-radius:11px!important}
+    .sidebar-section-head{min-height:30px!important;padding:0 6px!important;border-radius:8px!important;gap:8px!important}
+    .sidebar-section-title{font-size:10px!important;line-height:1.2!important}
+    .sidebar-icon{width:18px!important;height:18px!important;border-radius:6px!important}
+    .sidebar-link{min-height:34px!important;padding:0 6px!important;font-size:12.5px!important;border-radius:9px!important}
 
     .workspace-header{padding:20px 24px!important;gap:18px!important}
     .page-title-line{font-size:20px!important;line-height:1.12!important;letter-spacing:0!important}
@@ -975,7 +1018,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-09-03T08:47:05.886Z",
+  "generatedAt": "2026-09-07T06:18:23.810Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "31 Aug 2026",
@@ -32903,7 +32946,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "event": "Marketing Oops 2025",
       "date": "2025-06-27 to 2025-06-28",
       "asset": "NO1-M8-BKP-01",
-      "original": "M8 Bangkapi - Information Counter (G)",
+      "original": "M8 Bangkapi - Information Counter ชั้น G",
       "location": "QSNCC",
       "setup": "2025-06-27",
       "returnDate": "2025-06-28",
@@ -32916,7 +32959,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "event": "อร่อยทั่วไทย M8",
       "date": "2025-07-04 to 2025-07-13",
       "asset": "NO1-M8-BKP-01",
-      "original": "M8 Bangkapi - Information Counter (G)",
+      "original": "M8 Bangkapi - Information Counter ชั้น G",
       "location": "M8 Bangkapi",
       "setup": "2025-07-04",
       "returnDate": "2025-07-13",
@@ -32929,7 +32972,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "event": "PTT OPEX DAY 2025",
       "date": "2025-07-09 to 2025-07-10",
       "asset": "NO1-M8-BKP-01",
-      "original": "M8 Bangkapi - Information Counter (G)",
+      "original": "M8 Bangkapi - Information Counter ชั้น G",
       "location": "Centara Grand Ladprao",
       "setup": "2025-07-09",
       "returnDate": "2025-07-10",
@@ -32942,7 +32985,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "event": "WORLD PUP EXPO 2025",
       "date": "2025-08-28 to 2025-08-31",
       "asset": "NO1-M8-BKP-01",
-      "original": "M8 Bangkapi - Information Counter (G)",
+      "original": "M8 Bangkapi - Information Counter ชั้น G",
       "location": "M7 Bangkae",
       "setup": "2025-08-28",
       "returnDate": "2025-08-31",
@@ -32955,7 +32998,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "event": "Power Mall Gamer Festival",
       "date": "2025-10-28 to 2025-11-09",
       "asset": "NO1-M8-BKP-01",
-      "original": "M8 Bangkapi - Information Counter (G)",
+      "original": "M8 Bangkapi - Information Counter ชั้น G",
       "location": "M7 Bangkae",
       "setup": "2025-10-28",
       "returnDate": "2025-11-09",
@@ -32994,7 +33037,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "event": "Bangkok Bank M VISA",
       "date": "2026-05-15 to 2026-05-16",
       "asset": "NO2-M7-BKE-01",
-      "original": "M8 Bangkapi - E-Stamp (G)",
+      "original": "M8 Bangkapi - E-Stamp ชั้น G",
       "location": "Bangkok Bank Event",
       "setup": "2026-05-15",
       "returnDate": "2026-05-16",
@@ -33020,7 +33063,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       "event": "Marketing Oops 2026",
       "date": "2026-06-11",
       "asset": "NO2-M7-BKE-01",
-      "original": "M8 Bangkapi - E-Stamp (G)",
+      "original": "M8 Bangkapi - E-Stamp ชั้น G",
       "location": "QSNCC",
       "setup": "2026-06-11",
       "returnDate": "2026-06-11",
@@ -84732,8 +84775,8 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       {id:"2025-09",label:"September 2025",short:"Sep",days:30}
     ];
     const kiosks = [
-      {assetId:"NO1-M8-BKP-01",machine:"TheMall-001",screen:"Not provided",branch:"M8 Bangkapi",location:"M8 Bangkapi - Information Counter (G)",period:"10 Apr 2026-Present",status:"Active",notes:"Returned to M8 Bangkapi after 2025 roadshows, event borrowing, and internal relocations."},
-      {assetId:"NO2-M7-BKE-01",machine:"TheMall-002",screen:"43 in",branch:"M8 Bangkapi",location:"M8 Bangkapi - E-Stamp (G)",period:"10 Apr 2026-Present",status:"Active",notes:"Consolidated from M7 Bangkae; borrowed for Bangkok Bank M VISA and Marketing Oops 2026."},
+      {assetId:"NO1-M8-BKP-01",machine:"TheMall-001",screen:"Not provided",branch:"M8 Bangkapi",location:"M8 Bangkapi - Information Counter ชั้น G",period:"10 Apr 2026-Present",status:"Active",notes:"Returned to M8 Bangkapi after 2025 roadshows, event borrowing, and internal relocations."},
+      {assetId:"NO2-M7-BKE-01",machine:"TheMall-002",screen:"43 in",branch:"M8 Bangkapi",location:"M8 Bangkapi - E-Stamp ชั้น G",period:"10 Apr 2026-Present",status:"Active",notes:"Consolidated from M7 Bangkae; borrowed for Bangkok Bank M VISA and Marketing Oops 2026."},
       {assetId:"NO3-M6-NGW-01",machine:"TheMall-003",screen:"Not provided",branch:"M8 Bangkapi",location:"M8 Bangkapi - Bank Zone ชั้น 2",period:"10 Apr 2026-27 Jul 2026",status:"Returned",notes:"Consolidated from M6 Ngamwongwan to M8 Bank Zone; returned on 27 Jul 2026. Not counted from Aug 2026."},
       {assetId:"NO4-M5-THA-01",machine:"TheMall-004",screen:"Not provided",branch:"M8 Bangkapi",location:"M8 Bangkapi - Platinum Lounge ชั้น 2",period:"10 Apr 2026-27 Jul 2026",status:"Returned",notes:"Consolidated from M5 Thapra; borrowed for The Mall Lifestore Sports Fest; returned on 27 Jul 2026. Not counted from Aug 2026."},
       {assetId:"NO5-M3-EVT-01",machine:"TheMall-005",screen:"55 in",branch:"M8 Bangkapi",location:"M8 Bangkapi - Dining Zone ชั้น 3",period:"10 Apr 2026-Present",status:"Active",notes:"Former event pool machine, now permanent at M8 Dining Zone."}
@@ -84862,7 +84905,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       return {assetId:k.assetId,month:m.id,sessions,questions,voice,quickReply,keyboard,thai,english,chinese,others,success,apology,rating:rating??0};
     }));
     const history = [
-      ["NO1-M8-BKP-01","Initial-26 Jun 2025","Initial Deployment","M8 Bangkapi - Information Counter (G)","Branch","Permanent · Active"],
+      ["NO1-M8-BKP-01","Initial-26 Jun 2025","Initial Deployment","M8 Bangkapi - Information Counter ชั้น G","Branch","Permanent · Active"],
       ["NO1-M8-BKP-01","27-28 Jun 2025","Marketing Oops 2025","QSNCC","Event","Borrowed"],
       ["NO1-M8-BKP-01","4-13 Jul 2025","อร่อยทั่วไทย M8","M8 Bangkapi","Event","Borrowed"],
       ["NO1-M8-BKP-01","9-10 Jul 2025","PTT OPEX DAY 2025","Centara Grand Ladprao","Event","Borrowed"],
@@ -84871,9 +84914,9 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       ["NO1-M8-BKP-01","29 Jul-27 Aug 2025","Information Counter M6","M6 Information Counter","Branch","Permanent · Active"],
       ["NO1-M8-BKP-01","28-31 Aug 2025","WORLD PUP EXPO 2025","M7 Bangkae","Event","Borrowed"],
       ["NO1-M8-BKP-01","28 Oct-9 Nov 2025","Power Mall Gamer Festival","M7 Bangkae","Event","Borrowed"],
-      ["NO1-M8-BKP-01","10 Apr 2026-Present","Machine Consolidation","M8 Bangkapi - Information Counter (G)","Branch","Permanent · Active"],
+      ["NO1-M8-BKP-01","10 Apr 2026-Present","Machine Consolidation","M8 Bangkapi - Information Counter ชั้น G","Branch","Permanent · Active"],
       ["NO2-M7-BKE-01","Initial-9 Apr 2026","Initial Deployment","M7 Bangkae - Information Counter","Branch","Permanent · Active"],
-      ["NO2-M7-BKE-01","10 Apr 2026-Present","Machine Consolidation","M8 Bangkapi - E-Stamp (G)","Branch","Permanent · Active"],
+      ["NO2-M7-BKE-01","10 Apr 2026-Present","Machine Consolidation","M8 Bangkapi - E-Stamp ชั้น G","Branch","Permanent · Active"],
       ["NO2-M7-BKE-01","15-16 May 2026","Bangkok Bank M VISA","Bangkok Bank Event","Event","Borrowed"],
       ["NO2-M7-BKE-01","11 Jun 2026","Marketing Oops 2026","QSNCC","Event","Borrowed"],
       ["NO3-M6-NGW-01","Initial-9 Apr 2026","Initial Deployment","M6 Ngamwongwan - Information Counter","Branch","Permanent · Active"],
@@ -84894,7 +84937,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     ].map(([date,activity])=>({date,activity}));
     const errors = [
       ["2026-06","2026-06-04","NO3-M6-NGW-01","ร้าน Apple เปิดถึงกี่โมง","เปิดถึง 21:00 น.","Outdated content","เปิดถึง 22:00 น. ในวันศุกร์-อาทิตย์","To fix","KM Team","Update store hours source."],
-      ["2026-06","2026-06-11","NO2-M7-BKE-01","บูธ Marketing Oops อยู่ฮอลล์ไหน","อยู่บริเวณ M8 Bangkapi - E-Stamp (G)","Wrong info","QSNCC, Marketing Oops 2026 event area","Fixed","Event Ops","Event location pushed after borrowing log confirmation."],
+      ["2026-06","2026-06-11","NO2-M7-BKE-01","บูธ Marketing Oops อยู่ฮอลล์ไหน","อยู่บริเวณ M8 Bangkapi - E-Stamp ชั้น G","Wrong info","QSNCC, Marketing Oops 2026 event area","Fixed","Event Ops","Event location pushed after borrowing log confirmation."],
       ["2026-06","2026-06-16","NO4-M5-THA-01","จอดรถมอเตอร์ไซค์ตรงไหน","ขออภัยค่ะ ฉันยังไม่มีข้อมูลนี้","Missing info","อาคารจอดรถ B ชั้น 1","Need confirmation","Branch Ops","Need branch confirmation."],
       ["2026-05","2026-05-21","NO2-M7-BKE-01","แลกคูปองร้านอาหารยังไง","กดรับสิทธิ์ในแอปแล้วใช้ได้ทันที","Confusing answer","กดรับสิทธิ์ใน M Card app แล้วแสดง QR ก่อนชำระเงิน","Fixed","CRM","Template improved."]
     ].map((x,i)=>({id:i,month:x[0],date:x[1],kiosk:x[2],question:x[3],answer:x[4],issue:x[5],correct:x[6],status:x[7],owner:x[8],note:x[9]}));
@@ -84982,12 +85025,22 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     const comparisonModes = ["Current vs Previous Period","Month vs Month","Year vs Year"];
     const compareColors = ["#2563eb","#0891b2","#12b76a","#f59e0b","#7c3aed"];
     const sidebarGroups = [
-      {id:"dashboard",title:"Dashboard",subtitle:"Portfolio overview",icon:"activity",items:[["overview","Overview","Monthly command view"],["recommendation","Recommendation","Executive deployment recommendation"]]},
-      {id:"machine",title:"Machine Analytics",subtitle:"Status, comparison, timeline",icon:"cpu",items:[["machine-status","Machine Status","Operational cards"],["machine-comparison","Machine Comparison","Compare all 5 machines"],["machine-timeline","Event Report & Timeline","Event performance, borrowing, movement"]]},
-      {id:"performance",title:"Performance & User Analytics",subtitle:"Volume, quality, and customer intent",icon:"trend",items:[["sessions","Sessions","Usage trend"],["ratings","Ratings & Success","Rating and answer quality"],["answer-quality","Answer Quality Review","What customers asked & answer quality"]]}
+      {id:"dashboard",title:"Dashboard",subtitle:"Portfolio overview",icon:"activity",items:[["overview","Overview","Monthly command view","gauge"],["answer-quality","Answer Quality Review","What customers asked & answer quality","message"]]},
+      {id:"machine",title:"Machine Analytics",subtitle:"Status, comparison, timeline",icon:"cpu",items:[["machine-status","Machine Status","Operational cards","activity"],["machine-comparison","Machine Comparison","Compare all 5 machines","trend"],["machine-timeline","Event Report & Timeline","Event performance, borrowing, movement","calendar"]]},
+      {id:"performance",title:"Performance & User Analytics",subtitle:"Volume, quality, and customer intent",icon:"trend",items:[["sessions","Sessions","Usage trend","activity"],["ratings","Ratings & Success","Rating and answer quality","gauge"],["recommendation","Recommendation","Executive deployment recommendation","brain"]]}
     ];
     const pageAliases = {machines:"machine-status",compare:"machine-comparison",movement:"machine-timeline",performance:"sessions",behavior:"overview",km:"wrong-answers",events:"machine-timeline",insights:"overview","executive-summary":"overview",recommendations:"recommendation",data:"overview",import:"overview","import-data":"overview","monthly-report":"overview",export:"overview","missing-knowledge":"wrong-answers","ai-improvements":"wrong-answers","success-rate":"ratings","question-categories":"overview","brand-mentions":"overview","language-analysis":"overview","event-timeline":"machine-timeline","event-performance":"machine-timeline","borrowing-history":"machine-timeline","questions-page":"overview","user-behavior":"overview"};
     const pageList = sidebarGroups.flatMap(group=>group.items.map(item=>({id:item[0],label:item[1],subtitle:item[2],group:group.title,groupSubtitle:group.subtitle,icon:group.icon})));
+    const overviewSections = [
+      {target:"Overview Summary",label:"Overview Summary",th:"สรุปภาพรวม"},
+      {target:"ov-performance",label:"Performance",th:"ประสิทธิภาพ"},
+      {target:"ov-trend",label:"Monthly Trend",th:"เทรนด์รายเดือน"},
+      {target:"Usage Trend by Machine",label:"Usage Trend by Machine",th:"เทรนด์การใช้งานตามเครื่อง"},
+      {target:"Machine overview",label:"Machine overview",th:"ภาพรวมเครื่อง"},
+      {target:"Top Quick Replies",label:"Top Quick Replies",th:"Quick Reply ยอดนิยม"},
+      {target:"User Behavior",label:"User Behavior",th:"พฤติกรรมผู้ใช้"},
+      {target:"Language distribution",label:"Language & Trend",th:"ภาษา & เทรนด์"}
+    ];
     const pageById = id => pageList.find(p=>p.id===(pageAliases[id]||id)) || pageList[0];
     const monthPos = id => Math.max(0, months.findIndex(m=>m.id===id));
     const monthById = id => months.find(m=>m.id===id) || months[0];
@@ -85328,7 +85381,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     function Icon({name,size=18}){return h("svg",{width:size,height:size,viewBox:"0 0 24 24",fill:"none",stroke:"currentColor",strokeWidth:2,strokeLinecap:"round",strokeLinejoin:"round","aria-hidden":"true"},h("path",{d:iconPaths[name]||iconPaths.activity}))}
     function Section({id,title,sub,children,action}){return h("section",{id,className:"section"},h("div",{className:"section-head"},h("div",null,h("h2",null,title),sub&&h("p",null,sub)),action&&h("div",{className:"section-actions"},action)),children)}
     function Delta({value,bad}){const good=bad?value<=0:value>=0;return h("span",{className:`delta ${good?"":"down"}`},`${value>0?"+":""}${value.toFixed(1)}%`)}
-    function AnswerQualityReview({data}){
+    function AnswerQualityReview({data,kiosks,lang:uiLang="en"}){
       const [q,setQ]=useState("");
       const [cat,setCat]=useState("All");
       const [lang,setLang]=useState("All");
@@ -85337,7 +85390,43 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       const [onlyApology,setOnlyApology]=useState(false);
       const [showAllCats,setShowAllCats]=useState(false);
       const [page,setPage]=useState(1);
-      if(!data||!data.rows) return h("div",{className:"empty"},"No accuracy review sample available.");
+      const aqrT={
+        struggleTitle:{en:"Where the AI struggles",th:"จุดที่ AI ยังตอบได้ไม่ดี"},
+        struggleSub:{en:"Content topics ranked by apology rate — the knowledge gaps to fix first. (Voice-transcription and out-of-scope failures are summarized above.) Click a category to filter the list below.",th:"หัวข้อเนื้อหาเรียงตามอัตราการขอโทษ — ช่องว่างความรู้ที่ควรแก้ก่อน (ความผิดพลาดจากการถอดเสียงและคำถามนอกขอบเขตสรุปไว้ด้านบนแล้ว) คลิกหมวดหมู่เพื่อกรองรายการด้านล่าง"},
+        showFewer:{en:"Show fewer",th:"แสดงน้อยลง"},
+        showAllCats:{en:n=>`Show all ${n} categories`,th:n=>`แสดงทั้งหมด ${n} หมวดหมู่`},
+        askedTitle:{en:"What customers asked",th:"คำถามที่ลูกค้าถาม"},
+        askedSub:{en:(a,b)=>`Actual questions and the AI's answer, apology-first. Showing the most recent period (${a} → ${b}); the quality score above covers the full history.`,th:(a,b)=>`คำถามจริงและคำตอบของ AI เรียงคำขอโทษก่อน แสดงเฉพาะช่วงล่าสุด (${a} → ${b}) ส่วนคะแนนคุณภาพด้านบนคำนวณจากประวัติทั้งหมด`},
+        searchPh:{en:"Search question or answer…",th:"ค้นหาคำถามหรือคำตอบ…"},
+        allCategories:{en:"All categories",th:"ทุกหมวดหมู่"},
+        allLanguages:{en:"All languages",th:"ทุกภาษา"},
+        allInputs:{en:"All input types",th:"ทุกวิธีป้อนข้อมูล"},
+        allMachines:{en:"All machines",th:"ทุกเครื่อง"},
+        onlyApologies:{en:"Only apologies",th:"เฉพาะคำขอโทษ"},
+        clearFilters:{en:"Clear filters",th:"ล้างตัวกรอง"},
+        showingRange:{en:(a,b,c)=>`Showing ${a}–${b} of ${c} unique questions`,th:(a,b,c)=>`แสดง ${a}–${b} จาก ${c} คำถามที่ไม่ซ้ำกัน`},
+        showingZero:{en:"Showing 0 questions",th:"ไม่พบคำถาม"},
+        repeatsMerged:{en:n=>`${n} exact repeats merged`,th:n=>`รวมคำถามซ้ำ ${n} รายการ`},
+        filteredFrom:{en:n=>`filtered from ${n} recent interactions`,th:n=>`กรองจาก ${n} การสนทนาล่าสุด`},
+        noMatch:{en:"No questions match your filters.",th:"ไม่พบคำถามที่ตรงกับตัวกรอง"},
+        apology:{en:"Apology",th:"ขอโทษ"},
+        helpful:{en:"Helpful",th:"เป็นประโยชน์"},
+        prev:{en:"Prev",th:"ก่อนหน้า"},
+        next:{en:"Next",th:"ถัดไป"},
+        guideTitle:{en:"Grading Guidelines",th:"หลักเกณฑ์การให้คะแนน"},
+        guideSub:{en:"How each answer is classified — Inaudible, False/True Positive, False/True Negative.",th:"แต่ละคำตอบถูกจัดประเภทอย่างไร — ฟังไม่ออก, False/True Positive, False/True Negative"},
+        scoreEyebrow:{en:"Answer quality score",th:"คะแนนคุณภาพคำตอบ"},
+        heroNote:{en:(a,b)=>`Share of answers with no apology, transcription error, or out-of-scope response — the clearest single read on quality across the full ${a} → ${b} history.`,th:(a,b)=>`สัดส่วนคำตอบที่ไม่มีการขอโทษ ไม่ผิดพลาดจากการถอดเสียง และไม่ใช่คำถามนอกขอบเขต — ตัวชี้วัดคุณภาพที่ชัดเจนที่สุดจากประวัติทั้งหมดช่วง ${a} → ${b}`},
+        qaReviewed:{en:"Q&A reviewed",th:"คำถาม-คำตอบที่ตรวจสอบ"},
+        sessionsWord:{en:"sessions",th:"เซสชัน"},
+        apologyChip:{en:"Apology — AI could not answer",th:"ขอโทษ — AI ตอบไม่ได้"},
+        transcriptionChip:{en:"Transcription — voice not understood",th:"ถอดเสียงผิด — ฟังเสียงไม่ออก"},
+        outOfScopeChip:{en:"Out of scope — off-topic questions",th:"นอกขอบเขต — คำถามไม่เกี่ยวข้อง"}
+      };
+      const at=(key,...args)=>{const entry=aqrT[key]?.[uiLang]||aqrT[key]?.en;return typeof entry==="function"?entry(...args):entry;};
+      if(!data||!data.rows) return h("div",{className:"empty"},uiLang==="th"?"ไม่มีตัวอย่างรีวิวความแม่นยำ":"No accuracy review sample available.");
+      const locationByAsset=new Map((kiosks||[]).map(k=>[k.assetId,k.location]));
+      const machineName=id=>locationByAsset.get(id)||id;
       const pct1=x=>Number(x||0).toFixed(1)+"%";
       const cats=["All",...data.categories.map(c=>c.category)];
       const langs=["All",...[...new Set(data.rows.map(r=>r.language))].filter(Boolean).sort()];
@@ -85364,7 +85453,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         g.machineSet.add(r.machine);
         g.languageSet.add(r.language);
       });
-      const deduped=[...dedupMap.values()].map(g=>({...g,machineLabel:g.machineSet.size>1?g.machineSet.size+" machines":[...g.machineSet][0],languageLabel:g.languageSet.size>1?g.languageSet.size+" languages":[...g.languageSet][0]}));
+      const deduped=[...dedupMap.values()].map(g=>({...g,machineLabel:g.machineSet.size>1?g.machineSet.size+" machines":machineName([...g.machineSet][0]),languageLabel:g.languageSet.size>1?g.languageSet.size+" languages":[...g.languageSet][0]}));
       const mergedCount=filtered.length-deduped.length;
       const sorted=deduped.sort((a,b)=>(b.apology?1:0)-(a.apology?1:0));
       const pageSize=20;
@@ -85379,61 +85468,126 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       const failureModes=new Set(["TranscriptionError","Out of Scope"]);
       const sortedCats=data.categories.filter(c=>!failureModes.has(c.category)).sort((a,b)=>(b.count?b.apology/b.count:0)-(a.count?a.apology/a.count:0));
       const visibleCats=showAllCats?sortedCats:sortedCats.slice(0,6);
+      const guidelineRows=[
+        {no:1,en:"If the audio is unclear, cannot catch word or sentence.",th:"หากเสียงไม่ชัดเจน ฟังคำหรือประโยคไม่ออก",verdict:"Inaudible",type:""},
+        {no:2,en:"If the audio is clear but the question (transcript) is incorrect — different meaning from the audio. If AI still provides an answer, this is False Positive > Transcription Error.",th:"หากเสียงชัดเจนแต่คำถาม (ที่ถอดเป็นข้อความ) ผิดความหมายจากเสียงจริง — ถ้า AI ยังตอบคำถามนั้นไป ถือเป็น False Positive > Transcription Error",verdict:"False Positive",type:"Transcription Error"},
+        {no:3,en:"If the audio is clear and the question is correct (same meaning as the audio), but AI gives an answer that is not relevant to the question.",th:"หากเสียงชัดเจนและคำถามถูกต้อง (ความหมายตรงกับเสียง) แต่ AI ตอบคำถามที่ไม่เกี่ยวข้องกับคำถามนั้น",verdict:"False Positive",type:"Prompt Engineering"},
+        {no:5,en:"If the question is correct and the answer is not an apology.",th:"หากคำถามถูกต้องและคำตอบไม่ใช่การขอโทษ (Apology)",verdict:"True Positive",type:""},
+        {no:6,en:"If the question is correct and the apology is correct because we don't have that data in the KM tab — e.g. \"Are you looking for Roblox?\", \"How do I get to MBK?\"",th:"หากคำถามถูกต้องและการขอโทษนั้นถูกต้องแล้ว เพราะไม่มีข้อมูลอยู่ในชีต KM เช่น ถามหา Roblox หรือถามทางไป MBK",verdict:"True Negative",type:""},
+        {no:7,en:"If the question is correct and the answer is an apology, but the data actually exists in the KM Tab sheet.",th:"หากคำถามถูกต้องและคำตอบเป็นการขอโทษ แต่จริงๆ แล้วมีข้อมูลอยู่ในชีต KM",verdict:"False Negative",type:"Search Miss"},
+        {no:8,en:"If the question is correct and the answer is an apology, but the information is actually still available via another source (e.g. FB Page, Google Map).",th:"หากคำถามถูกต้องและคำตอบเป็นการขอโทษ แต่จริงๆ แล้วยังเปิดให้บริการอยู่ (ตรวจสอบได้จากแหล่งอื่น เช่น เพจ FB, Google Map)",verdict:"False Negative",type:"Missing KM"},
+        {no:4,en:"If the audio is clear but the question is incorrect (different meaning from the audio) and AI's answer is an apology.",th:"หากเสียงชัดเจนแต่คำถามผิดความหมายจากเสียงจริง และ AI ตอบด้วยการขอโทษ (Apology)",verdict:"False Negative",type:"Transcription Error"}
+      ];
+      const guideNotes=[
+        {en:"Prompt Engineering = AI can answer, but the style or content of the answer is off from expectation.",th:"Prompt Engineering = AI ตอบได้ แต่รูปแบบหรือเนื้อหาของคำตอบไม่ตรงกับที่คาดหวัง"},
+        {en:"Missing KM / Search Miss = the bot fails to find and give the right information at all.",th:"Missing KM / Search Miss = บอทไม่สามารถค้นหาและให้ข้อมูลที่ถูกต้องได้เลย"}
+      ];
+      const verdictTone=v=>(v==="True Positive"||v==="True Negative")?"green":"rose";
+      const guideText={
+        colCorrect:{en:"Question / Audio Correct",th:"คำถาม/เสียงถูกต้อง"},
+        colIncorrect:{en:"Question / Audio Incorrect",th:"คำถาม/เสียงผิดพลาด"},
+        rowAnswered:{en:"AI Gave an Answer",th:"AI ตอบคำถาม"},
+        rowApologized:{en:"AI Apologized",th:"AI ขอโทษ"},
+        inaudibleNote:{en:"Audio unclear — cannot be classified",th:"เสียงไม่ชัดเจน — ไม่สามารถจัดประเภทได้"},
+        thNo:{en:"#",th:"#"},
+        thCondition:{en:"Condition",th:"เงื่อนไข"},
+        thVerdict:{en:"Verdict",th:"ผลตัดสิน"},
+        thType:{en:"Type",th:"ประเภท"}
+      };
+      const gt=key=>guideText[key][uiLang];
+      const byVerdict=v=>guidelineRows.filter(g=>g.verdict===v);
+      const matrixCell=(tone,label,rows)=>{
+        const types=[...new Set(rows.map(r=>r.type).filter(Boolean))];
+        return h("div",{className:"aqr-matrix-cell "+tone},
+          h("div",{className:"aqr-matrix-verdict"},label),
+          h("div",{className:"aqr-matrix-count"},rows.length+(rows.length===1?" rule":" rules")),
+          types.length?h("div",{className:"aqr-matrix-types"},types.map(t=>h("span",{className:"aqr-chip gray",key:t},t))):null
+        );
+      };
       return h("div",{className:"bento"},
         h("div",{className:"card aqr-hero span-12"},
           h("div",{className:"aqr-hero-top"},
             h("div",{className:"aqr-hero-main"},
-              h("span",{className:"aqr-hero-eyebrow"},"Answer quality score"),
+              h("span",{className:"aqr-hero-eyebrow"},at("scoreEyebrow")),
               h("div",{className:"aqr-hero-score"},h(CountUp,{text:pct1(data.cleanRate)})),
-              h("p",{className:"aqr-hero-note"},"Share of answers with no apology, transcription error, or out-of-scope response — the clearest single read on quality across the full "+(data.dateStart||"")+" → "+(data.dateEnd||"")+" history.")
+              h("p",{className:"aqr-hero-note"},at("heroNote",data.dateStart||"",data.dateEnd||""))
             ),
             h("div",{className:"aqr-hero-meta"},
               h("div",{className:"aqr-hero-meta-value"},n(data.total)),
-              h("div",{className:"aqr-hero-meta-label"},"Q&A reviewed"),
-              h("div",{className:"aqr-hero-meta-sub"},data.sessions+" sessions · "+(data.dateStart||"")+" → "+(data.dateEnd||""))
+              h("div",{className:"aqr-hero-meta-label"},at("qaReviewed")),
+              h("div",{className:"aqr-hero-meta-sub"},data.sessions+" "+at("sessionsWord")+" · "+(data.dateStart||"")+" → "+(data.dateEnd||""))
             )
           ),
           h("div",{className:"aqr-hero-breakdown"},
-            h("div",{className:"aqr-hero-chip rose"},h(Icon,{name:"alert",size:15}),h("b",null,pct1(data.apologyRate)),h("span",null,"Apology — AI could not answer")),
-            h("div",{className:"aqr-hero-chip amber"},h(Icon,{name:"mic",size:15}),h("b",null,pct1(data.transcriptionRate)),h("span",null,"Transcription — voice not understood")),
-            h("div",{className:"aqr-hero-chip"},h(Icon,{name:"map",size:15}),h("b",null,pct1(data.outOfScopeRate)),h("span",null,"Out of scope — off-topic questions"))
+            h("div",{className:"aqr-hero-chip rose"},h(Icon,{name:"alert",size:15}),h("b",null,pct1(data.apologyRate)),h("span",null,at("apologyChip"))),
+            h("div",{className:"aqr-hero-chip amber"},h(Icon,{name:"mic",size:15}),h("b",null,pct1(data.transcriptionRate)),h("span",null,at("transcriptionChip"))),
+            h("div",{className:"aqr-hero-chip"},h(Icon,{name:"map",size:15}),h("b",null,pct1(data.outOfScopeRate)),h("span",null,at("outOfScopeChip")))
           )
         ),
         h("div",{className:"card aqr-block span-12"},
-          h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"brain"})),h("div",null,h("h3",null,"Where the AI struggles"),h("p",{className:"subtitle"},"Content topics ranked by apology rate — the knowledge gaps to fix first. (Voice-transcription and out-of-scope failures are summarized above.) Click a category to filter the list below.")))),
+          h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"brain"})),h("div",null,h("h3",null,at("struggleTitle")),h("p",{className:"subtitle"},at("struggleSub"))))),
           h("div",{className:"aqr-cat-list"},visibleCats.map(c=>{const rate=c.count?c.apology/c.count*100:0;return h("div",{className:"aqr-cat-row",key:c.category},h("button",{type:"button",className:"aqr-cat-name"+(cat===c.category?" active":""),onClick:()=>setCatP(cat===c.category?"All":c.category)},c.category),h("div",{className:"aqr-cat-track"},h("div",{className:"aqr-cat-fill",style:{width:Math.max(2,rate).toFixed(0)+"%"}})),h("div",{className:"aqr-cat-val"},c.apology+"/"+c.count+" · "+rate.toFixed(0)+"%"));})),
-          sortedCats.length>6?h("button",{type:"button",className:"aqr-cat-more",onClick:()=>setShowAllCats(!showAllCats)},showAllCats?"Show fewer":"Show all "+sortedCats.length+" categories"):null
+          sortedCats.length>6?h("button",{type:"button",className:"aqr-cat-more",onClick:()=>setShowAllCats(!showAllCats)},showAllCats?at("showFewer"):at("showAllCats",sortedCats.length)):null
         ),
         h("div",{className:"card aqr-block span-12"},
-          h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon green"},h(Icon,{name:"message"})),h("div",null,h("h3",null,"What customers asked"),h("p",{className:"subtitle"},"Actual questions and the AI's answer, apology-first. Showing the most recent period ("+(data.rowsDateStart||"")+" → "+(data.rowsDateEnd||"")+"); the quality score above covers the full history.")))),
+          h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon green"},h(Icon,{name:"message"})),h("div",null,h("h3",null,at("askedTitle")),h("p",{className:"subtitle"},at("askedSub",data.rowsDateStart||"",data.rowsDateEnd||""))))),
           h("div",{className:"aqr-controls"},
             h("div",{className:"aqr-controls-row"},
-              h("input",{className:"aqr-search",type:"search",placeholder:"Search question or answer…",value:q,onChange:e=>setQP(e.target.value)})
+              h("input",{className:"aqr-search",type:"search",placeholder:at("searchPh"),value:q,onChange:e=>setQP(e.target.value)})
             ),
             h("div",{className:"aqr-controls-row"},
-              h("select",{className:"aqr-select",value:cat,onChange:e=>setCatP(e.target.value),"aria-label":"Filter by category"},cats.map(c=>h("option",{key:c,value:c},c==="All"?"All categories":c))),
-              h("select",{className:"aqr-select",value:lang,onChange:e=>setLangP(e.target.value),"aria-label":"Filter by language"},langs.map(l=>h("option",{key:l,value:l},l==="All"?"All languages":l))),
-              h("select",{className:"aqr-select",value:inp,onChange:e=>setInpP(e.target.value),"aria-label":"Filter by input type"},inputs.map(i=>h("option",{key:i,value:i},i==="All"?"All input types":i))),
-              h("select",{className:"aqr-select",value:mach,onChange:e=>setMachP(e.target.value),"aria-label":"Filter by machine"},machines.map(m=>h("option",{key:m,value:m},m==="All"?"All machines":m))),
-              h("label",{className:"aqr-check"},h("input",{type:"checkbox",checked:onlyApology,onChange:e=>setOnlyApologyP(e.target.checked)}),"Only apologies"),
-              filtersActive?h("button",{type:"button",className:"aqr-reset",onClick:resetFilters},"Clear filters"):null
+              h("select",{className:"aqr-select",value:cat,onChange:e=>setCatP(e.target.value),"aria-label":"Filter by category"},cats.map(c=>h("option",{key:c,value:c},c==="All"?at("allCategories"):c))),
+              h("select",{className:"aqr-select",value:lang,onChange:e=>setLangP(e.target.value),"aria-label":"Filter by language"},langs.map(l=>h("option",{key:l,value:l},l==="All"?at("allLanguages"):l))),
+              h("select",{className:"aqr-select",value:inp,onChange:e=>setInpP(e.target.value),"aria-label":"Filter by input type"},inputs.map(i=>h("option",{key:i,value:i},i==="All"?at("allInputs"):i))),
+              h("select",{className:"aqr-select",value:mach,onChange:e=>setMachP(e.target.value),"aria-label":"Filter by machine"},machines.map(m=>h("option",{key:m,value:m},m==="All"?at("allMachines"):machineName(m)))),
+              h("label",{className:"aqr-check"},h("input",{type:"checkbox",checked:onlyApology,onChange:e=>setOnlyApologyP(e.target.checked)}),at("onlyApologies")),
+              filtersActive?h("button",{type:"button",className:"aqr-reset",onClick:resetFilters},at("clearFilters")):null
             )
           ),
           h("div",{className:"aqr-count"},
-            h("span",null,sorted.length?("Showing "+rangeStart+"–"+rangeEnd+" of "+sorted.length+" unique questions"):"Showing 0 questions"),
-            (mergedCount>0||filtersActive)?h("span",{className:"aqr-count-sub"},[mergedCount>0?mergedCount+" exact repeats merged":null,filtersActive?"filtered from "+n(data.rows.length)+" recent interactions":null].filter(Boolean).join(" · ")):null
+            h("span",null,sorted.length?at("showingRange",rangeStart,rangeEnd,sorted.length):at("showingZero")),
+            (mergedCount>0||filtersActive)?h("span",{className:"aqr-count-sub"},[mergedCount>0?at("repeatsMerged",mergedCount):null,filtersActive?at("filteredFrom",n(data.rows.length)):null].filter(Boolean).join(" · ")):null
           ),
           sorted.length?h("div",{className:"aqr-list"},shown.map((r,i)=>h("div",{className:"aqr-item"+(r.apology?" apology":""),key:i},
             h("div",{className:"aqr-q"},inputTag(r.input),h("span",null,r.question),r.count>1?h("span",{className:"aqr-chip gray"},"×"+r.count):null),
             h("div",{className:"aqr-a"},r.answer||"—"),
-            h("div",{className:"aqr-item-meta"},h("span",{className:"aqr-chip"},r.category),r.apology?h("span",{className:"aqr-chip rose"},r.count>1?"Apology "+r.apologyCount+"/"+r.count:"Apology"):null,r.helpful?h("span",{className:"aqr-chip green"},"Helpful"):null,h("span",{className:"aqr-mut"},r.languageLabel),h("span",{className:"aqr-mut"},r.machineLabel))
-          ))):h("div",{className:"empty"},"No questions match your filters."),
+            h("div",{className:"aqr-item-meta"},h("span",{className:"aqr-chip"},r.category),r.apology?h("span",{className:"aqr-chip rose"},r.count>1?at("apology")+" "+r.apologyCount+"/"+r.count:at("apology")):null,r.helpful?h("span",{className:"aqr-chip green"},at("helpful")):null,h("span",{className:"aqr-mut"},r.languageLabel),h("span",{className:"aqr-mut"},r.machineLabel))
+          ))):h("div",{className:"empty"},at("noMatch")),
           totalPages>1?h("div",{className:"aqr-pager"},
-            h("button",{type:"button",className:"aqr-page-btn",disabled:safePage<=1,onClick:()=>goPage(safePage-1)},"Prev"),
+            h("button",{type:"button",className:"aqr-page-btn",disabled:safePage<=1,onClick:()=>goPage(safePage-1)},at("prev")),
             pageNumbers.map((p,idx)=>h(React.Fragment,{key:p},idx>0&&p-pageNumbers[idx-1]>1?h("span",{className:"aqr-page-ellipsis"},"…"):null,h("button",{type:"button",className:"aqr-page-btn"+(p===safePage?" active":""),onClick:()=>goPage(p)},p))),
-            h("button",{type:"button",className:"aqr-page-btn",disabled:safePage>=totalPages,onClick:()=>goPage(safePage+1)},"Next")
+            h("button",{type:"button",className:"aqr-page-btn",disabled:safePage>=totalPages,onClick:()=>goPage(safePage+1)},at("next"))
           ):null
-        )
+        ),
+        h("div",{className:"card aqr-block span-12"},
+          h("div",{className:"card-head"},
+            h("div",{className:"card-title"},h("span",{className:"icon amber"},h(Icon,{name:"check",size:18})),h("div",null,h("h3",null,at("guideTitle")),h("p",{className:"subtitle"},at("guideSub"))))
+          ),
+          h("div",null,
+            h("div",{className:"aqr-matrix"},
+              h("div",{className:"aqr-matrix-corner"}),
+              h("div",{className:"aqr-matrix-colhead"},gt("colCorrect")),
+              h("div",{className:"aqr-matrix-colhead"},gt("colIncorrect")),
+              h("div",{className:"aqr-matrix-rowhead"},gt("rowAnswered")),
+              matrixCell("green","True Positive",byVerdict("True Positive")),
+              matrixCell("rose","False Positive",byVerdict("False Positive")),
+              h("div",{className:"aqr-matrix-rowhead"},gt("rowApologized")),
+              matrixCell("green","True Negative",byVerdict("True Negative")),
+              matrixCell("rose","False Negative",byVerdict("False Negative"))
+            ),
+            h("div",{className:"aqr-matrix-aside"},h("span",{className:"aqr-chip gray"},"Inaudible"),h("span",null,gt("inaudibleNote")+" ("+byVerdict("Inaudible").length+")")),
+            h("div",{className:"aqr-guide-table"},
+              h("div",{className:"aqr-guide-thead"},h("div",null,gt("thNo")),h("div",null,gt("thCondition")),h("div",null,gt("thVerdict")),h("div",null,gt("thType"))),
+              guidelineRows.map(g=>h("div",{className:"aqr-guide-row tone-"+verdictTone(g.verdict),key:g.no},
+                h("div",{className:"aqr-guide-no"},g.no),
+                h("div",{className:"aqr-guide-text"},uiLang==="th"?g.th:g.en),
+                h("div",{className:"aqr-guide-verdict"},h("span",{className:"aqr-chip "+verdictTone(g.verdict)},g.verdict)),
+                h("div",{className:"aqr-guide-type"},g.type?h("span",{className:"aqr-chip gray"},g.type):null)
+              ))
+            ),
+            h("div",{className:"aqr-guide-notes"},guideNotes.map((note,i)=>h("p",{key:i},uiLang==="th"?note.th:note.en)))
+          )
+        ),
       );
     }
 function Sparkline({values,color="#2563eb"}){let safe=(values||[]).map(safeNumber);if(!safe.length)safe=[0,0];if(safe.length===1)safe=[safe[0],safe[0]];const max=Math.max(...safe), min=Math.min(...safe), pts=safe.map((v,i)=>`${i/(safe.length-1)*110},${28-((v-min)/(max-min||1)*22+3)}`).join(" ");return h("svg",{className:"spark",viewBox:"0 0 110 32",preserveAspectRatio:"none"},h("polyline",{points:pts,fill:"none",stroke:color,strokeWidth:2.4,strokeLinecap:"round",strokeLinejoin:"round"}))}
@@ -85496,6 +85650,38 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
     function CompareKpi({label,value,note,growth,bad}){const safeGrowth=safeNumber(growth);return h("div",{className:"compare-kpi"},h("div",null,h("span",null,display(label,"Metric")),h("strong",null,display(value))),h("small",null,display(note,"No comparison note")," · ",h("b",{style:{color:(bad?safeGrowth<=0:safeGrowth>=0)?"#067647":"#be123c"}},`${safeGrowth>0?"+":""}${safeGrowth.toFixed(1)}%`)))}
     function MachineSelection({selected=[],onToggle,onAll,onPair,onClear}){return h("div",{className:"machine-picker"},h("div",{className:"panel-title"},h("b",null,"Machine selection"),h("span",null,`${selected.length} of 5 selected`)),h("div",{className:"chip-set"},kiosks.map(k=>h("button",{className:`compare-chip ${selected.includes(k.assetId)?"selected":""}`,onClick:()=>onToggle?.(k.assetId),key:k.assetId,title:k.assetId},h(Icon,{name:"cpu",size:14}),k.machine))),h("div",{className:"chip-set"},h("button",{className:"quick-btn active",onClick:onAll},"All 5 machines"),h("button",{className:"quick-btn",onClick:onPair},"Compare first 2"),h("button",{className:"quick-btn",onClick:onClear},"Single focus")))}
     function ComparisonMatrix({rows}){if(!rows?.length)return h("div",{className:"empty"},"No comparison matrix data for this filter.");const max={sessions:Math.max(...rows.map(r=>safeNumber(r.sessions)),1),questions:Math.max(...rows.map(r=>safeNumber(r.questions)),1),successRate:100,rating:5};return h("div",{className:"matrix"},rows.map(r=>{const k=kiosks.find(x=>x.assetId===r.assetId);return h("div",{className:"matrix-row",key:r.assetId},h("b",null,display(k?.machine,r.assetId)),h("div",{className:"matrix-bars"},[["Sessions",safeNumber(r.sessions),max.sessions],["Questions",safeNumber(r.questions),max.questions],["Success",safeNumber(r.successRate),max.successRate],["Rating",safeNumber(r.rating),max.rating]].map(([label,value,m])=>h("div",{className:"matrix-bar",key:label,title:`${display(k?.machine,"Machine")} ${label}: ${label==="Rating"?value.toFixed(1):n(value)}`,style:{height:`${Math.max(8,value/(m||1)*126)}px`}},h("span",null,label==="Rating"?value.toFixed(1):compact(value))))))}))}
+    function UsageTrendChart({ids=[],names={}}){
+      const [hover,setHover]=useState(null);
+      if(!ids.length) return h("div",{className:"empty"},"No trend data for this filter.");
+      const w=760,hgt=300,CPAD=46,monthSeries=months.slice().reverse();
+      const step=(w-CPAD*2)/Math.max(1,monthSeries.length-1),xAt=i=>CPAD+i*step;
+      const rawSeries=ids.map(id=>monthSeries.map(m=>{const row=perf.find(r=>r.assetId===id&&r.month===m.id);const v=safeNumber(row?.sessions);return v>0?v:null;}));
+      const flatVals=rawSeries.flat().filter(v=>v!=null);
+      const max=Math.max(1,...flatVals);
+      const yAt=v=>hgt-CPAD-((v||0)/max)*(hgt-CPAD*2);
+      const catmull=pts=>{if(pts.length<2)return "";let d="M"+pts[0][0].toFixed(1)+" "+pts[0][1].toFixed(1);for(let i=0;i<pts.length-1;i++){const p0=pts[i-1]||pts[i],p1=pts[i],p2=pts[i+1],p3=pts[i+2]||p2;const c1x=p1[0]+(p2[0]-p0[0])/6,c1y=p1[1]+(p2[1]-p0[1])/6,c2x=p2[0]-(p3[0]-p1[0])/6,c2y=p2[1]-(p3[1]-p1[1])/6;d+="C"+c1x.toFixed(1)+" "+c1y.toFixed(1)+" "+c2x.toFixed(1)+" "+c2y.toFixed(1)+" "+p2[0].toFixed(1)+" "+p2[1].toFixed(1);}return d;};
+      const segmentsFor=values=>{const segs=[];let cur=[];values.forEach((v,i)=>{if(v==null){if(cur.length)segs.push(cur);cur=[];return;}cur.push([xAt(i),yAt(v)]);});if(cur.length)segs.push(cur);return segs;};
+      const hv=hover!=null?monthSeries[hover]:null;
+      const hoverYs=hv?ids.map((id,i)=>rawSeries[i][hover]).filter(v=>v!=null).map(yAt):[];
+      const hoverMonthTotal=hover!=null?ids.reduce((sum,id,i)=>sum+(rawSeries[i][hover]||0),0):0;
+      const topY=hoverYs.length?Math.min(...hoverYs):CPAD;
+      const tip=hv?h("div",{className:"chart-tip",style:{left:`${(xAt(hover)/w*100).toFixed(2)}%`,top:`${(topY/hgt*100).toFixed(2)}%`,transform:`translate(${hover===0?"0":hover===monthSeries.length-1?"-100%":"-50%"},calc(-100% - 14px))`}},
+        h("div",{className:"chart-tip-title"},display(hv.label||hv.short,"")+(isPartialMonth(hv.id)?" (partial)":"")),
+        ids.map((id,i)=>{const v=rawSeries[i][hover];const share=v!=null&&hoverMonthTotal>0?(v/hoverMonthTotal*100):null;return {id,i,v,share};}).sort((a,b)=>(b.v??-1)-(a.v??-1)).map(r=>h("div",{className:"chart-tip-row",key:r.id},h("i",{style:{background:compareColors[r.i%compareColors.length]}}),h("span",null,names[r.id]||r.id),h("b",null,r.v!=null?n(r.v)+" ("+r.share.toFixed(0)+"%)":"Not in use"))),
+        h("div",{className:"chart-tip-avg"},"% = this machine's share of total sessions that month")
+      ):null;
+      return h("div",{className:"chart-wrap",onMouseLeave:()=>setHover(null)},
+        h("svg",{className:"chart",viewBox:`0 0 ${w} ${hgt}`,role:"img","aria-label":"Machine usage comparison"},
+          [0,1,2,3].map(i=>h("line",{key:i,x1:CPAD,x2:w-CPAD,y1:CPAD+i*((hgt-CPAD*2)/3),y2:CPAD+i*((hgt-CPAD*2)/3),className:"grid-line"})),
+          hover!=null?h("line",{x1:xAt(hover),x2:xAt(hover),y1:CPAD-12,y2:hgt-CPAD,className:"chart-guide"}):null,
+          ids.map((id,si)=>h("g",{key:id},segmentsFor(rawSeries[si]).map((pts,segIdx)=>h("path",{key:segIdx,d:catmull(pts),fill:"none",stroke:compareColors[si%compareColors.length],strokeWidth:3,strokeLinecap:"round",strokeLinejoin:"round"})))),
+          ids.map((id,si)=>rawSeries[si].map((v,i)=>v!=null?h("circle",{key:id+"-"+i,cx:xAt(i),cy:yAt(v),r:hover===i?4.5:3,fill:compareColors[si%compareColors.length]}):null)),
+          monthSeries.map((m,i)=>h("text",{key:m.id,x:xAt(i),y:hgt-12,textAnchor:"middle",className:"axis-label"},display(m.short,"")+(isPartialMonth(m.id)?"*":""))),
+          monthSeries.map((m,i)=>h("rect",{key:"hz-"+m.id,x:(xAt(i)-step/2).toFixed(1),y:0,width:step.toFixed(1),height:hgt,fill:"transparent",style:{cursor:"pointer"},onMouseEnter:()=>setHover(i)}))
+        ),
+        tip
+      );
+    }
     function ComparisonTrend({ids=[],metricName}){if(!ids.length)return h("div",{className:"empty"},"No trend data for this filter.");const w=760,hgt=270,pad=34,monthSeries=months.slice().reverse(),values=ids.map(id=>monthSeries.map(m=>safeNumber(perf.find(r=>r.assetId===id&&r.month===m.id)?.[metricName]))),flat=values.flat(),max=Math.max(...flat,1),min=Math.min(...flat,0),span=max-min||1;const point=(v,i)=>[pad+i*((w-pad*2)/(monthSeries.length-1)),hgt-pad-((v-min)/span)*(hgt-pad*2)];const line=pts=>{if(!pts||pts.length<2)return (pts||[]).map((p,i)=>(i?"L":"M")+p[0].toFixed(1)+" "+p[1].toFixed(1)).join(" ");let dPath="M"+pts[0][0].toFixed(1)+" "+pts[0][1].toFixed(1);for(let i=0;i<pts.length-1;i++){const p0=pts[i-1]||pts[i],p1=pts[i],p2=pts[i+1],p3=pts[i+2]||p2;const c1x=p1[0]+(p2[0]-p0[0])/6,c1y=p1[1]+(p2[1]-p0[1])/6,c2x=p2[0]-(p3[0]-p1[0])/6,c2y=p2[1]-(p3[1]-p1[1])/6;dPath+="C"+c1x.toFixed(1)+" "+c1y.toFixed(1)+" "+c2x.toFixed(1)+" "+c2y.toFixed(1)+" "+p2[0].toFixed(1)+" "+p2[1].toFixed(1);}return dPath;};return h("svg",{className:"line-compare",viewBox:`0 0 ${w} ${hgt}`,role:"img","aria-label":"Machine comparison trend"},[0,1,2,3].map(i=>h("line",{key:i,x1:pad,x2:w-pad,y1:pad+i*52,y2:pad+i*52,className:"grid-line"})),values.map((series,si)=>{const pts=series.map(point);return h("path",{key:ids[si],d:line(pts),fill:"none",stroke:compareColors[si%compareColors.length],strokeWidth:3.4,strokeLinecap:"round",strokeLinejoin:"round",className:"draw-line"})}),monthSeries.map((m,i)=>h("text",{key:m.id,x:pad+i*((w-pad*2)/(monthSeries.length-1)),y:hgt-8,textAnchor:"middle",className:"axis-label"},m.short)))}
     function LanguageStacked({rows}){if(!rows?.length)return h("div",{className:"empty"},"No language data for this filter.");return h("div",{className:"stacked-list"},rows.map(r=>{const k=kiosks.find(x=>x.assetId===r.assetId), mix=languageMix(r), total=mix.reduce((a,b)=>a+safeNumber(b.value),0)||1;return h("div",{className:"stacked-row",key:r.assetId},h("b",null,display(k?.machine,r.assetId)),h("div",{className:"stacked-bar"},mix.map(seg=>h("div",{className:"stacked-seg",key:seg.name,title:`${seg.name}: ${pct(safeNumber(seg.value)/total*100)}`,style:{width:`${safeNumber(seg.value)/total*100}%`,background:seg.color}}))))}))}
     function CategoryComparison({categoryRows}){if(!categoryRows?.length)return h("div",{className:"empty"},"No category data for this filter.");const cats=categorySeed.slice(0,6).map(x=>x[0]),max=Math.max(...categoryRows.flatMap(r=>(r.items||[]).map(i=>safeNumber(i.value))),1);return h("div",{className:"category-heatmap"},h("span",null,""),cats.map((c,i)=>h("span",{key:c,className:i>2?"hide-sm":""},c)),categoryRows.flatMap(row=>[h("span",{key:row.assetId},display(row.machine,row.assetId)),...cats.map((c,i)=>{const item=(row.items||[]).find(x=>x.name===c)||{value:0};return h("div",{key:row.assetId+c,className:`category-cell ${i>2?"hide-sm":""}`,title:`${display(row.machine,"Machine")} ${c}: ${n(item.value)}`,style:{background:`rgba(37,99,235,${.08+safeNumber(item.value)/max*.78})`}},compact(item.value))})]))}
@@ -85773,7 +85959,7 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
       componentDidCatch(error,info){console.error("[M Agent Dashboard] render error",error,info)}
       render(){if(this.state.error)return h("div",{className:"app-error"},h("div",{className:"app-error-card"},h("h1",null,"Dashboard view needs a refresh"),h("p",null,"A display error occurred while rendering this page. Your data is still in the dashboard file."),h("p",null,String(this.state.error?.message||this.state.error||"Unknown error")),h("button",{type:"button",onClick:()=>{this.setState({error:null});location.hash="#overview";location.reload()}},"Reset dashboard view")));return this.props.children}
     }
-    function SidebarNav({page,onNavigate,open,onClose}){
+    function SidebarNav({page,onNavigate,onSection,open,onClose,lang="en"}){
       const activeGroupId=sidebarGroups.find(group=>group.items.some(item=>item[0]===page))?.id||"dashboard";
       const [expandedGroup,setExpandedGroup]=useState(()=>activeGroupId);
       const previousPage=useRef(page);
@@ -85801,9 +85987,16 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
                 ),
                 !isSolo&&h("div",{className:`sidebar-menu ${isExpanded?"expanded":"collapsed"}`},
                   group.items.map(item=>
-                    h("button",{key:item[0],"data-page-id":item[0],className:`sidebar-link ${page===item[0]?"active":""}`,onClick:()=>onNavigate(item[0]),title:item[2]},
-                      h(Icon,{name:group.icon,size:15}),
-                      h("span",null,item[1])
+                    h(React.Fragment,{key:item[0]},
+                      h("button",{"data-page-id":item[0],className:`sidebar-link ${page===item[0]?"active":""}`,onClick:()=>onNavigate(item[0]),title:item[2]},
+                        h(Icon,{name:item[3]||group.icon,size:16}),
+                        h("span",null,item[1])
+                      ),
+                      item[0]==="overview"&&h("div",{className:"sidebar-submenu"},
+                        overviewSections.map(sec=>h("button",{key:sec.target,className:"sidebar-sublink",onClick:()=>onSection(sec.target),title:sec.label},
+                          h("span",null,lang==="th"?(sec.th||sec.label):sec.label)
+                        ))
+                      )
                     )
                   )
                 )
@@ -85892,6 +86085,7 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
       const useRawAggregate=aggregatePages.has(page);
       const monthlyAggregateMetrics=useRawAggregate?Object.fromEntries(Object.keys({...rawMonthlySummary,...authoritativeMonthlyMetrics}).map(id=>[id,{...rawMonthlySummary[id],...authoritativeMonthlyMetrics[id]}])):authoritativeMonthlyMetrics;
       const [sidebarOpen,setSidebarOpen]=useState(false);
+      const [aqrLang,setAqrLang]=useState("en");
       useEffect(()=>{const syncPage=()=>{const id=(location.hash||"").replace("#","");if(id)setPage(pageById(id).id)};syncPage();window.addEventListener("hashchange",syncPage);return()=>window.removeEventListener("hashchange",syncPage)},[]);
       const appliedMonthId=months.some(m=>m.id===appliedPeriod.end.slice(0,7))?appliedPeriod.end.slice(0,7):month;
       const monthObj=months.find(m=>m.id===appliedMonthId)||months[0], prev=months[months.findIndex(m=>m.id===appliedMonthId)+1]||monthObj;
@@ -85940,25 +86134,39 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
       const topLanguage=languageMix[0]||{name:"No language data",value:0};
       const overviewMonthIds=months.filter(m=>m.id>=appliedPeriod.start.slice(0,7)&&m.id<=appliedPeriod.end.slice(0,7)).map(m=>m.id);
       const peakWindow=peakWindowLabel(filteredRows,overviewMonthIds);
+      const ovIsTh=aqrLang==="th";
+      const ov=(en,th)=>ovIsTh?th:en;
       const overviewBehaviorSummary=[
-        {label:"Performance snapshot",value:pct(cur.successRate),note:`${n(cur.sessions)} sessions · ${n(cur.questions)} questions this period.`},
-        {label:"Top input method",value:topInput.name,note:`${pct(inputTotal?topInput.value/inputTotal*100:0)} of all user inputs.`},
-        {label:"Top language",value:topLanguage.name,note:`${pct(langTotal?topLanguage.value/langTotal*100:0)} of all conversations.`},
-        {label:"Peak traffic window",value:peakWindow,note:"Calculated from actual usage timestamps in the selected reporting window."}
+        {label:ov("Performance snapshot","สรุปประสิทธิภาพ"),value:pct(cur.successRate),note:ov(`${n(cur.sessions)} sessions · ${n(cur.questions)} questions this period.`,`${n(cur.sessions)} เซสชัน · ${n(cur.questions)} คำถามในช่วงนี้`)},
+        {label:ov("Top input method","วิธีป้อนข้อมูลยอดนิยม"),value:topInput.name,note:ov(`${pct(inputTotal?topInput.value/inputTotal*100:0)} of all user inputs.`,`${pct(inputTotal?topInput.value/inputTotal*100:0)} ของการป้อนข้อมูลทั้งหมด`)},
+        {label:ov("Top language","ภาษายอดนิยม"),value:topLanguage.name,note:ov(`${pct(langTotal?topLanguage.value/langTotal*100:0)} of all conversations.`,`${pct(langTotal?topLanguage.value/langTotal*100:0)} ของบทสนทนาทั้งหมด`)},
+        {label:ov("Peak traffic window","ช่วงเวลาใช้งานสูงสุด"),value:peakWindow,note:ov("Calculated from actual usage timestamps in the selected reporting window.","คำนวณจากเวลาการใช้งานจริงในช่วงที่เลือก")}
       ];
-      const overviewMachineCards=filteredRows.map(r=>{const kiosk=kioskMap.get(r.assetId);const machineQuestions=safeNumber(r.questions), machineSuccess=machineQuestions?safeNumber(r.success)/machineQuestions*100:0;return {assetId:r.assetId,machine:display(kiosk?.machine,r.assetId),location:display(kiosk?.location,"Location not available"),sessions:n(r.sessions),avgPerDay:n(Math.round(safeNumber(r.sessions)/Math.max(1,comparableDays))),questions:n(r.questions),success:pct(machineSuccess),rating:r.rating?safeNumber(r.rating).toFixed(1):"—",imageSrc:machineImages[r.assetId]||""}});
+      const overviewMachineCards=filteredRows.map(r=>{const kiosk=kioskMap.get(r.assetId);const machineQuestions=safeNumber(r.questions), machineSuccess=machineQuestions?safeNumber(r.success)/machineQuestions*100:0;const branchFull=kiosk?.branch||"",branchShort=branchFull.split(" ")[0]||"",locationFull=display(kiosk?.location,"Location not available"),locationShort=branchFull?locationFull.replace(new RegExp("^"+branchFull.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+"\\s*-\\s*"),""):locationFull,locationLabel=branchShort&&locationShort!==locationFull?`${locationShort} · ${branchShort}`:locationFull;return {assetId:r.assetId,machine:display(kiosk?.machine,r.assetId),location:locationFull,locationLabel,sessions:n(r.sessions),avgPerDay:n(Math.round(safeNumber(r.sessions)/Math.max(1,comparableDays))),questions:n(r.questions),success:pct(machineSuccess),rating:r.rating?safeNumber(r.rating).toFixed(1):"—",imageSrc:machineImages[r.assetId]||""}});
+      const overviewUsageIds=overviewMachineCards.map(item=>item.assetId);
+      const overviewUsageTotals=overviewUsageIds.map(id=>perf.filter(r=>r.assetId===id).reduce((sum,r)=>sum+safeNumber(r.sessions),0));
+      const overviewUsageGrandTotal=overviewUsageTotals.reduce((a,b)=>a+b,0)||1;
+      const overviewUsageShares=overviewMachineCards.map((item,i)=>({assetId:item.assetId,machine:item.machine,share:overviewUsageTotals[i]/overviewUsageGrandTotal*100}));
+      const overviewUsageNames=Object.fromEntries(overviewMachineCards.map(item=>[item.assetId,item.machine]));
+      const overviewUsageStats=overviewUsageIds.map((id,i)=>{
+        const rows=perf.filter(r=>r.assetId===id);
+        const totalSessions=overviewUsageTotals[i];
+        const totalQuestions=rows.reduce((sum,r)=>sum+safeNumber(r.questions),0);
+        const activeDays=rows.filter(r=>safeNumber(r.sessions)>0).reduce((sum,r)=>{const mo=months.find(x=>x.id===r.month);return sum+(mo?safeNumber(mo.days):0)}, 0)||1;
+        return {assetId:id,machine:overviewUsageNames[id]||id,sessions:totalSessions,questions:totalQuestions,avgPerDay:totalSessions/activeDays,qps:totalSessions?totalQuestions/totalSessions:0,share:overviewUsageGrandTotal?totalSessions/overviewUsageGrandTotal*100:0};
+      }).sort((a,b)=>b.sessions-a.sessions);
       const kpiSeries=monthRows.map(x=>x.questions);
       const metricDeltas=isFullMonthRange&&selectedMonthMetrics.length<=1?{}:{};
       const ratingScale=periodSummary?.ratingScale||5;
       const activeMachineCount=periodSummary?.activeMachines||filteredKiosks.length;
       const sourceNote=periodSummary?.source?` Source: ${periodSummary.source}${periodSummary.coverage?` (${periodSummary.coverage})`:""}.`:"";
       const kpis=[
-        ["Sessions",n(cur.sessions),`All kiosk interactions for the selected period.`,metricDeltas.sessions??delta(cur.sessions,old.sessions),false,"activity",monthRows.map(x=>x.sessions)],
-        ["Questions",n(cur.questions),`Customer questions asked during the selected period.`,metricDeltas.questions??delta(cur.questions,old.questions),false,"message",kpiSeries],
-        ["Avg Rating",ratingText(cur.rating,ratingScale),`${cur.rating===null?"Rating was not included in the available source.":"Overall rating reported by the source dashboard."}`,metricDeltas.rating??(cur.rating===null?0:cur.rating-old.rating),false,"gauge",monthRows.map(x=>x.rating===null?0:x.rating)],
-        ["Success Rate",pct(cur.successRate),`Successful responses / Total questions × 100.`,metricDeltas.successRate??(cur.successRate-old.successRate),false,"check",monthRows.map(x=>x.successRate)],
-        ["Active Machines",activeMachineCount,`Active machines reported for the selected period.`,0,false,"cpu",[3,4,5,5,5,activeMachineCount]],
-        ["Event Count",eventRows.length,"Events overlapping the selected period. Includes timeline events and borrowing records.",delta(eventRows.length,previousEventRows.length),false,"calendar",eventSeries]
+        [ov("Sessions","เซสชัน"),n(cur.sessions),ov(`All kiosk interactions for the selected period.`,"การใช้งานตู้ทั้งหมดในช่วงที่เลือก"),metricDeltas.sessions??delta(cur.sessions,old.sessions),false,"activity",monthRows.map(x=>x.sessions)],
+        [ov("Questions","คำถาม"),n(cur.questions),ov(`Customer questions asked during the selected period.`,"คำถามที่ลูกค้าถามในช่วงที่เลือก"),metricDeltas.questions??delta(cur.questions,old.questions),false,"message",kpiSeries],
+        [ov("Avg Rating","คะแนนเฉลี่ย"),ratingText(cur.rating,ratingScale),ov(`${cur.rating===null?"Rating was not included in the available source.":"Overall rating reported by the source dashboard."}`,cur.rating===null?"ไม่มีคะแนนในแหล่งข้อมูล":"คะแนนรวมจากแหล่งข้อมูล"),metricDeltas.rating??(cur.rating===null?0:cur.rating-old.rating),false,"gauge",monthRows.map(x=>x.rating===null?0:x.rating)],
+        [ov("Success Rate","อัตราความสำเร็จ"),pct(cur.successRate),ov(`Successful responses / Total questions × 100.`,"คำตอบสำเร็จ / คำถามทั้งหมด × 100"),metricDeltas.successRate??(cur.successRate-old.successRate),false,"check",monthRows.map(x=>x.successRate)],
+        [ov("Active Machines","เครื่องที่ใช้งาน"),activeMachineCount,ov(`Active machines reported for the selected period.`,"เครื่องที่ใช้งานในช่วงที่เลือก"),0,false,"cpu",[3,4,5,5,5,activeMachineCount]],
+        [ov("Event Count","จำนวนอีเวนต์"),eventRows.length,ov("Events overlapping the selected period. Includes timeline events and borrowing records.","อีเวนต์ที่อยู่ในช่วงที่เลือก รวมอีเวนต์และประวัติการยืม"),delta(eventRows.length,previousEventRows.length),false,"calendar",eventSeries]
       ];
       const previousRowsByAsset=new Map(filteredPrevRows.map(r=>[r.assetId,r]));
       const machineRows=filteredRows.map(r=>({row:r,prevRow:previousRowsByAsset.get(r.assetId)||{},kiosk:kioskMap.get(r.assetId)})).filter(x=>x.kiosk);
@@ -86033,6 +86241,7 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
       const applyFullHistoryPeriod=()=>{const start=fullHistoryStart,end=fullHistoryEnd;setPeriodStart(start);setPeriodEnd(end);setAppliedPeriod({start,end});const id=(end||"").slice(0,7);if(months.some(m=>m.id===id)){setMonth(id);setHeaderMonth(id)}}
       const goPage=id=>{const next=pageById(id).id;setPage(next);setSidebarOpen(false);if(location.hash!==`#${next}`)location.hash=next;window.scrollTo({top:0,behavior:"smooth"})}
       const scrollToOv=target=>{let el=document.getElementById(target);if(!el){const hd=[...document.querySelectorAll(".page-view h2,.page-view h3")].find(e=>e.textContent.trim()===target);el=hd?(hd.closest(".card,.bento")||hd):null;}if(!el)return;const stick=n=>n&&getComputedStyle(n).position==="sticky";const header=document.querySelector(".workspace-header"),hero=document.querySelector(".hero");const offset=(stick(header)?header.offsetHeight:0)+(stick(hero)?hero.offsetHeight:0)+16;const y=Math.max(0,el.getBoundingClientRect().top+window.pageYOffset-offset);window.scrollTo({top:y,behavior:"smooth"});}
+      const goOverviewSection=target=>{if(page!=="overview"){goPage("overview");setTimeout(()=>scrollToOv(target),160)}else scrollToOv(target)}
       useEffect(()=>{const hd=document.querySelector(".workspace-header");if(!hd)return;const set=()=>document.documentElement.style.setProperty("--hero-top",hd.offsetHeight+"px");set();let ro;if(typeof ResizeObserver!=="undefined"){ro=new ResizeObserver(set);ro.observe(hd);}window.addEventListener("resize",set);return ()=>{if(ro)ro.disconnect();window.removeEventListener("resize",set);};},[page]);
       const meta=pageById(page);
       const machineComparisonProps={comparison:comparisonAll,monthlyRows:comparisonMonthlyRows,compareView,onCompareViewChange:setCompareView,period:comparePeriod,setPeriod:setComparePeriod,start:customStart,setStart:customStart=>setCustomStart(customStart),end:customEnd,setEnd:customEnd=>setCustomEnd(customEnd),topLimit,setTopLimit,presets:savedPresets,onLoadPreset:loadPreset,presetMessage,topicFilter,setTopicFilter,brandFilter,setBrandFilter,languageFilter,setLanguageFilter,onApply:applyComparisonFilters,onReset:resetComparisonFilters,machineCompareMode,onCompareModeChange:changeMachineCompareMode,selected:compareIds,onToggleMachine:toggleCompare,isApplying:isApplyingComparison,filterError,appliedSummary};
@@ -86048,30 +86257,18 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
       const renderPage=()=>{
         if(page==="machine-comparison") return h(MachineComparisonSection,machineComparisonProps);
         if(page==="overview") return h(PageShell,null,
-          h("section",{className:"hero"},
-            h("div",{className:"hero-copy"},
-              h("div",{className:"hero-actions"},
-                h("button",{className:"hero-chip primary",onClick:()=>scrollToOv("Overview Summary"),type:"button"},h(Icon,{name:"activity",size:16}),"Overview Summary"),
-                h("button",{className:"hero-chip",onClick:()=>scrollToOv("ov-performance"),type:"button"},h(Icon,{name:"activity",size:16}),"Performance"),
-                h("button",{className:"hero-chip",onClick:()=>scrollToOv(`${monthRows.length}-month trend`),type:"button"},h(Icon,{name:"trend",size:16}),`${monthRows.length}-month trend`),
-                h("button",{className:"hero-chip",onClick:()=>scrollToOv("Machine overview"),type:"button"},h(Icon,{name:"cpu",size:16}),"Machine overview"),
-                h("button",{className:"hero-chip",onClick:()=>scrollToOv("Top Quick Replies"),type:"button"},h(Icon,{name:"message",size:16}),"Top Quick Replies"),
-                h("button",{className:"hero-chip",onClick:()=>scrollToOv("User Behavior"),type:"button"},h(Icon,{name:"gauge",size:16}),"User Behavior"),
-                h("button",{className:"hero-chip",onClick:()=>scrollToOv("Language distribution"),type:"button"},h(Icon,{name:"globe",size:16}),"Language & Trend")
-              )
-            )
-          ),
           h("div",{className:"card overview-summary-card"},
             h("div",{className:"overview-summary-head"},
               h("div",{className:"card-title"},
                 h("span",{className:"icon"},h(Icon,{name:"trend"})),
                 h("div",null,
-                  h("h3",null,"Overview Summary"),
-                  h("p",{className:"subtitle"},"The fastest read on traffic, quality, behavior, and language mix.")
+                  h("h3",null,ov("Overview Summary","สรุปภาพรวม")),
+                  h("p",{className:"subtitle"},ov("The fastest read on traffic, quality, behavior, and language mix.","ภาพรวมที่เร็วที่สุดของทราฟฟิก คุณภาพ พฤติกรรม และการใช้ภาษา"))
                 )
               ),
               h("div",{className:"overview-summary-actions"},
-                h("button",{className:"hero-chip",onClick:()=>goPage("user-behavior"),type:"button","aria-label":"Open Performance & User Analytics"},h(Icon,{name:"activity",size:16}),"Open Performance & User Analytics")
+                h("div",{className:"aqr-lang-toggle"},h("button",{type:"button",className:"aqr-lang-btn"+(aqrLang==="en"?" active":""),onClick:()=>setAqrLang("en")},"EN"),h("button",{type:"button",className:"aqr-lang-btn"+(aqrLang==="th"?" active":""),onClick:()=>setAqrLang("th")},"TH")),
+                h("button",{className:"hero-chip",onClick:()=>goPage("user-behavior"),type:"button","aria-label":"Open Performance & User Analytics"},h(Icon,{name:"activity",size:16}),ov("Open Performance & User Analytics","เปิดหน้าประสิทธิภาพและพฤติกรรมผู้ใช้"))
               )
             ),
             h("div",{className:"overview-summary-grid"},
@@ -86086,54 +86283,86 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
             kpis.map(k=>h(KpiCard,{key:k[0],label:k[0],value:k[1],note:k[2],deltaValue:k[3],bad:k[0]==="Apology Rate",icon:k[5],series:k[6]}))
           ),
           
-          h("div",{className:"bento"},h("div",{className:"card span-12 overview-trend-card"},
+          h("div",{className:"bento"},h("div",{className:"card span-12 overview-trend-card",id:"ov-trend"},
               h("div",{className:"card-head"},
                 h("div",{className:"card-title"},
                   h("span",{className:"icon"},h(Icon,{name:"trend"})),
                   h("div",null,
-                    h("h3",null,`${monthRows.length}-month trend`),
-                    h("p",{className:"subtitle"},"Questions and sessions trend across the full available history.")
+                    h("h3",null,`${monthRows.length}${ov("-month trend","-เดือนที่ผ่านมา")}`),
+                    h("p",{className:"subtitle"},ov("Questions and sessions trend across the full available history.","เทรนด์คำถามและเซสชันจากประวัติทั้งหมดที่มี"))
                   )
                 ),
                 h("div",{className:"chart-legend",style:{display:"flex",gap:"18px",alignItems:"center"}},
                   h("span",{style:{display:"inline-flex",alignItems:"center",gap:"7px",fontSize:"12px",fontWeight:700,color:"#475569"}},
-                    h("i",{style:{width:"16px",height:"3px",borderRadius:"2px",background:"#2563eb",display:"inline-block"}}),"Questions"),
+                    h("i",{style:{width:"16px",height:"3px",borderRadius:"2px",background:"#2563eb",display:"inline-block"}}),ov("Questions","คำถาม")),
                   h("span",{style:{display:"inline-flex",alignItems:"center",gap:"7px",fontSize:"12px",fontWeight:700,color:"#475569"}},
-                    h("i",{style:{width:"16px",height:"0",borderTop:"3px dashed #0891b2",display:"inline-block"}}),"Sessions")
+                    h("i",{style:{width:"16px",height:"0",borderTop:"3px dashed #0891b2",display:"inline-block"}}),ov("Sessions","เซสชัน"))
                 )
               ),
               h(AreaChart,{monthsData:monthRows}),
-              monthRows.some(m=>isPartialMonth(m.id))?h("p",{className:"subtitle",style:{margin:"6px 46px 0",textAlign:"right",fontSize:"11px",color:"#94a3b8"}},"* Partial month — fewer days of data"):null
+              monthRows.some(m=>isPartialMonth(m.id))?h("p",{className:"subtitle",style:{margin:"6px 46px 0",textAlign:"right",fontSize:"11px",color:"#94a3b8"}},ov("* Partial month — fewer days of data","* เดือนที่ยังไม่ครบ — มีข้อมูลไม่ครบทุกวัน")):null
+            )),
+          h("div",{className:"bento"},h("div",{className:"card span-12"},
+              h("div",{className:"card-head"},
+                h("div",{className:"card-title"},
+                  h("span",{className:"icon"},h(Icon,{name:"trend"})),
+                  h("div",null,
+                    h("h3",null,ov("Usage Trend by Machine","เทรนด์การใช้งานตามเครื่อง")),
+                    h("p",{className:"subtitle"},ov("Monthly sessions across the full available history. Hover a point for that month's sessions and usage share per kiosk — the line breaks for months a kiosk wasn't in use.","เซสชันรายเดือนจากประวัติทั้งหมด ชี้ที่จุดเพื่อดูเซสชันและส่วนแบ่งการใช้งานของแต่ละเครื่องในเดือนนั้น — เส้นจะขาดในเดือนที่เครื่องไม่ได้ใช้งาน"))
+                  )
+                )
+              ),
+              h(UsageTrendChart,{ids:overviewUsageIds,names:overviewUsageNames}),
+              h("div",{className:"scroll",style:{marginTop:"16px"}},
+                h("table",{className:"rank-table"},
+                  h("thead",null,
+                    h("tr",null,[ov("Machine","เครื่อง"),ov("Questions","คำถาม"),ov("Sessions","เซสชัน"),ov("Avg users / day","ผู้ใช้เฉลี่ย/วัน"),ov("Avg questions / person","คำถามเฉลี่ย/คน"),ov("Share (full year)","ส่วนแบ่ง (ทั้งปี)")].map(x=>h("th",{key:x},x)))
+                  ),
+                  h("tbody",null,
+                    overviewUsageStats.map((u,i)=>{
+                      const colorIndex=overviewUsageIds.indexOf(u.assetId);
+                      return h("tr",{key:u.assetId},
+                        h("td",null,h("i",{style:{background:compareColors[colorIndex%compareColors.length],width:"10px",height:"10px",borderRadius:"3px",display:"inline-block",marginRight:"8px",verticalAlign:"middle"}}),h("b",null,u.machine)),
+                        h("td",null,n(Math.round(u.questions))),
+                        h("td",null,n(Math.round(u.sessions))),
+                        h("td",null,u.avgPerDay.toFixed(1)+" คน/วัน"),
+                        h("td",null,u.qps.toFixed(1)+" คำถาม/คน"),
+                        h("td",null,pct(u.share))
+                      )
+                    })
+                  )
+                )
+              )
             )),
           h("div",{className:"card overview-summary-card"},
             h("div",{className:"overview-summary-head"},
               h("div",{className:"card-title"},
                 h("span",{className:"icon"},h(Icon,{name:"cpu"})),
                 h("div",null,
-                  h("h3",null,"Machine overview"),
-                  h("p",{className:"subtitle"},"A quick comparison of every machine for the selected period.")
+                  h("h3",null,ov("Machine overview","ภาพรวมเครื่อง")),
+                  h("p",{className:"subtitle"},ov("A quick comparison of every machine for the selected period.","เปรียบเทียบทุกเครื่องอย่างรวดเร็วในช่วงที่เลือก"))
                 )
               ),
               h("div",{className:"overview-summary-actions"},
-                h("button",{className:"hero-chip",onClick:()=>goPage("machine-status"),type:"button","aria-label":"Open Machine Status"},h(Icon,{name:"cpu",size:16}),"Open Machine Status")
+                h("button",{className:"hero-chip",onClick:()=>goPage("machine-status"),type:"button","aria-label":"Open Machine Status"},h(Icon,{name:"cpu",size:16}),ov("Open Machine Status","เปิดหน้าสถานะเครื่อง"))
               )
             ),
             h("div",{className:"overview-machine-grid"},
               overviewMachineCards.map(item=>h("div",{className:"overview-machine-card",key:item.assetId},
-                item.imageSrc&&h("div",{className:"overview-machine-photo"},h("img",{src:item.imageSrc,alt:`${item.assetId} at ${item.location}`})),
+                item.imageSrc&&h("div",{className:"overview-machine-photo"},h("img",{src:item.imageSrc,alt:`${item.machine} at ${item.location}`})),
                 h("div",{className:"overview-machine-head"},
                   h("div",null,
-                    h("b",null,item.assetId),
-                    h("span",null,`${item.machine} · ${item.location}`)
+                    h("b",null,item.machine),
+                    h("span",null,item.locationLabel)
                   ),
-                  h("span",{className:"score-pill",title:"Rank by avg users / day"},"#"+([...overviewMachineCards].sort((a,b)=>(safeNumber(b.avgPerDay)-safeNumber(a.avgPerDay))||(safeNumber(b.sessions)-safeNumber(a.sessions))).findIndex(x=>x.assetId===item.assetId)+1))
+                  h("span",{className:"score-pill",title:ov("Rank by avg users / day","จัดอันดับตามผู้ใช้เฉลี่ย/วัน")},"#"+([...overviewMachineCards].sort((a,b)=>(safeNumber(b.avgPerDay)-safeNumber(a.avgPerDay))||(safeNumber(b.sessions)-safeNumber(a.sessions))).findIndex(x=>x.assetId===item.assetId)+1))
                 ),
                 h("div",{className:"overview-machine-metrics"},
-                  h("div",null,h("strong",null,h(CountUp,{text:item.sessions})),h("span",null,"Sessions")),
-                  h("div",null,h("strong",null,h(CountUp,{text:item.questions})),h("span",null,"Questions")),
-                  h("div",null,h("strong",null,h(CountUp,{text:String(item.success).replace("%","")}),/\d/.test(String(item.success))?h("span",{className:"metric-unit"},"%"):null),h("span",null,"Success")),
-                  h("div",null,h("strong",null,h(CountUp,{text:item.rating})),h("span",null,"Rating")),
-                  h("div",{style:{gridColumn:"1/-1"}},h("strong",null,h(CountUp,{text:item.avgPerDay})),h("span",null,"Avg users / day"))
+                  h("div",null,h("strong",null,h(CountUp,{text:item.sessions})),h("span",null,ov("Sessions","เซสชัน"))),
+                  h("div",null,h("strong",null,h(CountUp,{text:item.questions})),h("span",null,ov("Questions","คำถาม"))),
+                  h("div",null,h("strong",null,h(CountUp,{text:String(item.success).replace("%","")}),/\d/.test(String(item.success))?h("span",{className:"metric-unit"},"%"):null),h("span",null,ov("Success","สำเร็จ"))),
+                  h("div",null,h("strong",null,h(CountUp,{text:item.rating})),h("span",null,ov("Rating","คะแนน"))),
+                  h("div",{style:{gridColumn:"1/-1"}},h("strong",null,h(CountUp,{text:item.avgPerDay})),h("span",null,ov("Avg users / day","ผู้ใช้เฉลี่ย/วัน")))
                 )
               ))
             )
@@ -86143,31 +86372,31 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
               h("div",{className:"card-title"},
                 h("span",{className:"icon green"},h(Icon,{name:"message"})),
                 h("div",null,
-                  h("h3",null,"Top Quick Replies"),
-                  h("p",{className:"subtitle"},"Preset quick replies customers tapped and the most mentioned brands in the selected period.")
+                  h("h3",null,ov("Top Quick Replies","Quick Reply ยอดนิยม")),
+                  h("p",{className:"subtitle"},ov("Preset quick replies customers tapped and the most mentioned brands in the selected period.","Quick Reply ที่ลูกค้ากดและแบรนด์ที่ถูกพูดถึงมากที่สุดในช่วงที่เลือก"))
                 )
               )
             ),
             h("div",{className:"overview-mentioned-split"},
-              renderMentionGroup("Quick replies tapped","Preset buttons customers tapped",overviewMentionedSplit.quickReplies),
-              renderMentionGroup("Brand ranking","Most mentioned brands",overviewBrandRows)
+              renderMentionGroup(ov("Quick replies tapped","Quick Reply ที่ถูกกด"),ov("Preset buttons customers tapped","ปุ่มที่ลูกค้ากด"),overviewMentionedSplit.quickReplies),
+              renderMentionGroup(ov("Brand ranking","อันดับแบรนด์"),ov("Most mentioned brands","แบรนด์ที่ถูกพูดถึงมากที่สุด"),overviewBrandRows)
             )
           ),
-          h("div",{className:"bento"},h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"message"})),h("div",null,h("h3",null,"Question categories"),h("p",{className:"subtitle"},"Volume distribution by category")))),h(QuestionCategories,{rows:topicRows}))),
-          h("div",{className:"bento"},h("div",{className:"span-12",style:{marginTop:"4px"}},h("h2",{style:{margin:0,fontSize:"22px",fontWeight:850,color:"var(--ink)"}},"User Behavior"),h("p",{className:"subtitle",style:{marginTop:"4px"}},"Input methods, peak hours, conversation journey, and flow analysis.")),h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"activity"})),h("div",null,h("h3",null,"Peak hours"),h("p",{className:"subtitle"},"Usage intensity by weekday and operating hour.")))),h(Heatmap,{data:overviewHeatData})),h(Donut,{title:"Input methods",label:"How users interact with kiosks",total:inputTotal,span:6,icon:"mic",segments:[{name:"Voice",value:sum(filteredRows,"voice"),color:"#2563eb"},{name:"Quick Reply",value:sum(filteredRows,"quickReply"),color:"#0891b2"},{name:"Keyboard",value:sum(filteredRows,"keyboard"),color:"#e11d48"}]}),h(Donut,{title:"Language distribution",label:"Thai, English, Chinese, and others",total:langTotal,span:6,segments:[{name:"Thai",value:sum(filteredRows,"thai"),color:"#2563eb"},{name:"English",value:sum(filteredRows,"english"),color:"#0891b2"},{name:"Chinese",value:sum(filteredRows,"chinese"),color:"#f59e0b"},{name:"Others",value:sum(filteredRows,"others"),color:"#7c3aed"}]})),
+          h("div",{className:"bento"},h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"message"})),h("div",null,h("h3",null,ov("Question categories","หมวดหมู่คำถาม")),h("p",{className:"subtitle"},ov("Volume distribution by category","สัดส่วนปริมาณตามหมวดหมู่"))))),h(QuestionCategories,{rows:topicRows}))),
+          h("div",{className:"bento"},h("div",{className:"span-12",style:{marginTop:"4px"}},h("h2",{style:{margin:0,fontSize:"22px",fontWeight:850,color:"var(--ink)"}},ov("User Behavior","พฤติกรรมผู้ใช้")),h("p",{className:"subtitle",style:{marginTop:"4px"}},ov("Input methods, peak hours, conversation journey, and flow analysis.","วิธีป้อนข้อมูล ช่วงเวลาใช้งานสูงสุด เส้นทางการสนทนา และการวิเคราะห์ flow"))),h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"activity"})),h("div",null,h("h3",null,ov("Peak hours","ช่วงเวลาใช้งานสูงสุด")),h("p",{className:"subtitle"},ov("Usage intensity by weekday and operating hour.","ความหนาแน่นการใช้งานตามวันและเวลา"))))),h(Heatmap,{data:overviewHeatData})),h(Donut,{title:ov("Input methods","วิธีป้อนข้อมูล"),label:ov("How users interact with kiosks","วิธีที่ผู้ใช้โต้ตอบกับตู้"),total:inputTotal,span:6,icon:"mic",segments:[{name:"Voice",value:sum(filteredRows,"voice"),color:"#2563eb"},{name:"Quick Reply",value:sum(filteredRows,"quickReply"),color:"#0891b2"},{name:"Keyboard",value:sum(filteredRows,"keyboard"),color:"#e11d48"}]}),h(Donut,{title:ov("Language distribution","การกระจายภาษา"),label:ov("Thai, English, Chinese, and others","ไทย อังกฤษ จีน และอื่นๆ"),total:langTotal,span:6,segments:[{name:"Thai",value:sum(filteredRows,"thai"),color:"#2563eb"},{name:"English",value:sum(filteredRows,"english"),color:"#0891b2"},{name:"Chinese",value:sum(filteredRows,"chinese"),color:"#f59e0b"},{name:"Others",value:sum(filteredRows,"others"),color:"#7c3aed"}]})),
           h("div",{className:"bento"},h("div",{className:"card span-12 overview-insights-card"},
               h("div",{className:"card-head"},
                 h("div",{className:"card-title"},
                   h("span",{className:"icon amber"},h(Icon,{name:"brain"})),
                   h("div",null,
-                    h("h3",null,"Executive insights"),
-                    h("p",{className:"subtitle"},"High-signal notes for this month.")
+                    h("h3",null,ov("Executive insights","ข้อมูลเชิงลึกสำหรับผู้บริหาร")),
+                    h("p",{className:"subtitle"},ov("High-signal notes for this month.","ประเด็นสำคัญของเดือนนี้"))
                   )
                 )
               ),
               h("div",{className:"exec-summary"},
-                h("span",{className:"exec-summary-eyebrow"},"Overall this period"),
-                h("p",{className:"exec-summary-text"},insCount+" machines served ",h("b",null,n(insSessions))," sessions and ",h("b",null,n(insQuestions))," questions at ",h("b",null,pct(insSuccessRate))," overall success.")
+                h("span",{className:"exec-summary-eyebrow"},ov("Overall this period","ภาพรวมช่วงนี้")),
+                h("p",{className:"exec-summary-text"},insCount+ov(" machines served "," เครื่องให้บริการ "),h("b",null,n(insSessions)),ov(" sessions and "," เซสชัน และ "),h("b",null,n(insQuestions)),ov(" questions at "," คำถาม ที่ "),h("b",null,pct(insSuccessRate)),ov(" overall success."," ความสำเร็จโดยรวม"))
               ),
               h("div",{className:"exec-grid"},insights.slice(0,4).map(([title,text,icon])=>h("div",{className:"exec-tile",key:title},h("span",{className:"exec-tile-icon"},h(Icon,{name:icon||"activity",size:16})),h("div",{className:"exec-tile-body"},h("span",{className:"exec-tile-label"},title),h("p",{className:"exec-tile-text"},text)))))
             ))
@@ -86382,12 +86611,12 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
                 h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"map"})),h("div",null,h("h3",null,`Machine movement: ${asset}`),h("p",{className:"subtitle"},"Permanent locations, temporary relocations, and borrowing history for this machine.")))),h(Timeline,{items:selectedHistory,asset,line:true}))
               )
         );
-        if(page==="answer-quality") return h(PageShell,{title:"Answer Quality Review",sub:accuracyReview?`Random ${n(accuracyReview.total)} Q&A sample (${accuracyReview.dateStart} → ${accuracyReview.dateEnd}) — what customers asked and how the AI answered.`:"Accuracy review sample."},h(AnswerQualityReview,{data:accuracyReview}));
+        if(page==="answer-quality") return h(PageShell,{title:aqrLang==="th"?"รีวิวคุณภาพคำตอบ":"Answer Quality Review",sub:accuracyReview?(aqrLang==="th"?`สุ่มตัวอย่าง ${n(accuracyReview.total)} คำถาม-คำตอบ (${accuracyReview.dateStart} → ${accuracyReview.dateEnd}) — ลูกค้าถามอะไร และ AI ตอบอย่างไร`:`Random ${n(accuracyReview.total)} Q&A sample (${accuracyReview.dateStart} → ${accuracyReview.dateEnd}) — what customers asked and how the AI answered.`):(aqrLang==="th"?"ตัวอย่างรีวิวความแม่นยำ":"Accuracy review sample."),action:h("div",{className:"aqr-lang-toggle"},h("button",{type:"button",className:"aqr-lang-btn"+(aqrLang==="en"?" active":""),onClick:()=>setAqrLang("en")},"EN"),h("button",{type:"button",className:"aqr-lang-btn"+(aqrLang==="th"?" active":""),onClick:()=>setAqrLang("th")},"TH"))},h(AnswerQualityReview,{data:accuracyReview,kiosks,lang:aqrLang}));
         if(page==="sessions") return h(PageShell,{title:"Sessions",sub:"Usage volume over time, by month and by machine."},h("div",{className:"bento"},h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"activity"})),h("div",null,h("h3",null,"Sessions trend"),h("p",{className:"subtitle"},"Dashed line tracks sessions across all 10 months.")))),h(AreaChart,{monthsData:monthRows})),h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon green"},h(Icon,{name:"check"})),h("div",null,h("h3",null,"Leaderboard"),h("p",{className:"subtitle"},"Highest traffic machines this month.")))),h(Leaderboard,{rows:filteredRows,kiosksMap:kioskMap}))));
         if(page==="ratings") return h(PageShell,{title:"Ratings & Success",sub:"Customer satisfaction, answer quality, apology/error rate, and machine comparison in one view."},h("div",{className:"bento success-grid"},h("div",{className:"card span-3"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"gauge"})),h("div",null,h("h3",null,"Average rating"),h("p",{className:"subtitle"},authoritativeCur?.source||"Weighted by sessions.")))),h("div",{className:"kpi-value"},ratingText(cur.rating,ratingScale)),h(LineChart,{values:monthRows.map(x=>x.rating===null?0:x.rating),labels:monthRows.map(x=>x.short),color:"#2563eb"})),h("div",{className:"card span-3"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon green"},h(Icon,{name:"check"})),h("div",null,h("h3",null,"Success gauge"),h("p",{className:"subtitle"},"Answered without apology.")))),h("div",{className:"gauge-holder"},h(Gauge,{value:cur.successRate,label:"success"}))),h("div",{className:"card span-3"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon rose"},h(Icon,{name:"alert"})),h("div",null,h("h3",null,"Apology rate"),h("p",{className:"subtitle"},"Failed or apologetic answers.")))),h("div",{className:"kpi-value"},pct(cur.apologyRate)),h("p",{className:"subtitle"},"Lower is better.")),h("div",{className:"card span-3"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"trend"})),h("div",null,h("h3",null,"Success trend"),h("p",{className:"subtitle"},"10-month quality movement.")))),h(LineChart,{values:monthRows.map(x=>x.successRate),labels:monthRows.map(x=>x.short),color:"#12b76a"})),h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon green"},h(Icon,{name:"check"})),h("div",null,h("h3",null,"Ratings by machine"),h("p",{className:"subtitle"},"Ranked with usage and quality context.")))),h(RankingTable,{rows:comparison.ranking,onDrill:id=>{toggleCompare(id,true);goPage("machine-comparison")}}))));
         return h(PageShell,{title:"Overview",sub:"Default dashboard page."});
       };
-      return h("div",{className:"app-shell"},h(SidebarNav,{page,onNavigate:goPage,open:sidebarOpen,onClose:()=>setSidebarOpen(false)}),h("div",{className:"workspace"},h(WorkspaceHeader,{meta,periodStart,setPeriodStart,periodEnd,setPeriodEnd,onApplyPeriod:applyHeaderPeriod,onApplyMonth:applyMonth,onFullHistoryPeriod:page==="machine-status"?null:applyFullHistoryPeriod,onMenu:()=>setSidebarOpen(true),showPeriod:page!=="machine-comparison"&&page!=="machine-timeline"&&page!=="import-data"&&page!=="recommendation"&&page!=="answer-quality",periodMode:page==="machine-status"?"monthly":"date",selectedMonth:headerMonth,setSelectedMonth:setHeaderMonth,monthOptions:months}),h("main",{className:"page-view",key:page},renderPage())));
+      return h("div",{className:"app-shell"},h(SidebarNav,{page,onNavigate:goPage,onSection:goOverviewSection,open:sidebarOpen,onClose:()=>setSidebarOpen(false),lang:aqrLang}),h("div",{className:"workspace"},h(WorkspaceHeader,{meta,periodStart,setPeriodStart,periodEnd,setPeriodEnd,onApplyPeriod:applyHeaderPeriod,onApplyMonth:applyMonth,onFullHistoryPeriod:page==="machine-status"?null:applyFullHistoryPeriod,onMenu:()=>setSidebarOpen(true),showPeriod:page!=="machine-comparison"&&page!=="machine-timeline"&&page!=="import-data"&&page!=="recommendation"&&page!=="answer-quality",periodMode:page==="machine-status"?"monthly":"date",selectedMonth:headerMonth,setSelectedMonth:setHeaderMonth,monthOptions:months}),h("main",{className:"page-view",key:page},renderPage())));
 
     }
     ReactDOM.createRoot(document.getElementById("root")).render(h(AppErrorBoundary,null,h(App)));

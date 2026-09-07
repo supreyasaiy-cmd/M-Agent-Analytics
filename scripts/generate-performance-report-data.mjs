@@ -128,7 +128,7 @@ const eventCatalog = [
   {
     event: "Marketing Oops 2025",
     asset: "NO1-M8-BKP-01",
-    original: "M8 Bangkapi - Information Counter (G)",
+    original: "M8 Bangkapi - Information Counter ชั้น G",
     location: "QSNCC",
     setup: "2025-06-27",
     returnDate: "2025-06-28",
@@ -137,7 +137,7 @@ const eventCatalog = [
   {
     event: "อร่อยทั่วไทย M8",
     asset: "NO1-M8-BKP-01",
-    original: "M8 Bangkapi - Information Counter (G)",
+    original: "M8 Bangkapi - Information Counter ชั้น G",
     location: "M8 Bangkapi",
     setup: "2025-07-04",
     returnDate: "2025-07-13",
@@ -153,7 +153,7 @@ const eventCatalog = [
   {
     event: "PTT OPEX DAY 2025",
     asset: "NO1-M8-BKP-01",
-    original: "M8 Bangkapi - Information Counter (G)",
+    original: "M8 Bangkapi - Information Counter ชั้น G",
     location: "Centara Grand Ladprao",
     setup: "2025-07-09",
     returnDate: "2025-07-10",
@@ -165,7 +165,7 @@ const eventCatalog = [
   {
     event: "WORLD PUP EXPO 2025",
     asset: "NO1-M8-BKP-01",
-    original: "M8 Bangkapi - Information Counter (G)",
+    original: "M8 Bangkapi - Information Counter ชั้น G",
     location: "M7 Bangkae",
     setup: "2025-08-28",
     returnDate: "2025-08-31",
@@ -174,7 +174,7 @@ const eventCatalog = [
   {
     event: "Power Mall Gamer Festival",
     asset: "NO1-M8-BKP-01",
-    original: "M8 Bangkapi - Information Counter (G)",
+    original: "M8 Bangkapi - Information Counter ชั้น G",
     location: "M7 Bangkae",
     setup: "2025-10-28",
     returnDate: "2025-11-09"
@@ -198,7 +198,7 @@ const eventCatalog = [
   {
     event: "Bangkok Bank M VISA",
     asset: "NO2-M7-BKE-01",
-    original: "M8 Bangkapi - E-Stamp (G)",
+    original: "M8 Bangkapi - E-Stamp ชั้น G",
     location: "Bangkok Bank Event",
     setup: "2026-05-15",
     returnDate: "2026-05-16"
@@ -214,7 +214,7 @@ const eventCatalog = [
   {
     event: "Marketing Oops 2026",
     asset: "NO2-M7-BKE-01",
-    original: "M8 Bangkapi - E-Stamp (G)",
+    original: "M8 Bangkapi - E-Stamp ชั้น G",
     location: "QSNCC",
     setup: "2026-06-11",
     returnDate: "2026-06-11"

@@ -9,6 +9,7 @@ import {
   writeFileSync
 } from "node:fs";
 import { join } from "node:path";
+import { execFileSync } from "node:child_process";
 import { writePerformanceReportData } from "./generate-performance-report-data.mjs";
 import { validatePerformanceReportData } from "./validate-performance-report-data.mjs";
 
@@ -47,15 +48,25 @@ function inlinePerformanceData(filePath, dataFilePath) {
 }
 
 const eventAssetCopies = [
-  ["Default.png", "event-default.png"],
-  ["THE MALL LIFESTORE SPORTS FEST .png", "event-the-mall-lifestore-sports-fest.png"],
-  ["Power Mall Gamer Festival.png", "event-power-mall-gamer-festival.png"],
-  ["Power Mall Electronica.png", "event-electronica-2025.png"],
-  ["SUSTAINABILITY FORUM 2026 Shift Forward.png", "event-sustainability-forum-2026.png"],
-  ["World Pup - M Pet Club.png", "event-world-pup-expo-2025.png"],
-  ["อร่อยทั่วไทย M8.png", "event-aroi-thua-thai-m8.png"],
-  ["Women Inspired 2026 Sunflower Social Club.png", "event-women-inspired-2026-sunflower-social-club.png"]
+  ["Default.png", "event-default.jpg"],
+  ["THE MALL LIFESTORE SPORTS FEST .png", "event-the-mall-lifestore-sports-fest.jpg"],
+  ["Power Mall Gamer Festival.png", "event-power-mall-gamer-festival.jpg"],
+  ["Power Mall Electronica.png", "event-electronica-2025.jpg"],
+  ["SUSTAINABILITY FORUM 2026 Shift Forward.png", "event-sustainability-forum-2026.jpg"],
+  ["World Pup - M Pet Club.png", "event-world-pup-expo-2025.jpg"],
+  ["อร่อยทั่วไทย M8.png", "event-aroi-thua-thai-m8.jpg"],
+  ["Women Inspired 2026 Sunflower Social Club.png", "event-women-inspired-2026-sunflower-social-club.jpg"]
 ];
+
+// Source event posters are full-resolution kiosk-screen exports (multi-MB PNGs) but only ever
+// render at a few hundred px wide in the dashboard, so downscale + re-encode as JPEG on copy.
+function copyEventAsset(sourcePath, targetPath) {
+  try {
+    execFileSync("sips", ["--resampleWidth", "640", "-s", "format", "jpeg", "-s", "formatOptions", "85", sourcePath, "--out", targetPath], { stdio: "ignore" });
+  } catch {
+    copyFileSync(sourcePath, targetPath);
+  }
+}
 
 if (!existsSync(dashboardFile)) {
   throw new Error("Missing outputs/m-agent-kiosk-monthly-dashboard.html");
@@ -69,7 +80,7 @@ inlinePerformanceData(dashboardFile, performanceDataFile);
 mkdirSync(assetsDir, { recursive: true });
 for (const [sourceName, targetName] of eventAssetCopies) {
   const sourcePath = join(designDir, sourceName);
-  if (existsSync(sourcePath)) copyFileSync(sourcePath, join(assetsDir, targetName));
+  if (existsSync(sourcePath)) copyEventAsset(sourcePath, join(assetsDir, targetName));
 }
 
 rmSync(distDir, { recursive: true, force: true });

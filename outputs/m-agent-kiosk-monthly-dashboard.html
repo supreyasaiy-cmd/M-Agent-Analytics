@@ -1023,7 +1023,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-09-07T07:04:48.369Z",
+  "generatedAt": "2026-09-07T07:15:53.403Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "31 Aug 2026",
@@ -84786,19 +84786,19 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       {assetId:"NO4-M5-THA-01",machine:"TheMall-004",screen:"Not provided",branch:"M8 Bangkapi",location:"M8 Bangkapi - Platinum Lounge ชั้น 2",period:"10 Apr 2026-27 Jul 2026",status:"Returned",notes:"Consolidated from M5 Thapra; borrowed for The Mall Lifestore Sports Fest; returned on 27 Jul 2026. Not counted from Aug 2026."},
       {assetId:"NO5-M3-EVT-01",machine:"TheMall-005",screen:"55 in",branch:"M8 Bangkapi",location:"M8 Bangkapi - Dining Zone ชั้น 3",period:"10 Apr 2026-Present",status:"Active",notes:"Former event pool machine, now permanent at M8 Dining Zone."}
     ];
-    const coverImage = "./assets/event-default.png";
+    const coverImage = "./assets/event-default.jpg";
     const eventImages = {
-      "The Mall Lifestore Sports Fest":"./assets/event-the-mall-lifestore-sports-fest.png",
-      "Marketing Oops 2026":"./assets/event-default.png",
-      "Bangkok Bank M VISA":"./assets/event-default.png",
-      "Power Mall Gamer Festival":"./assets/event-power-mall-gamer-festival.png",
-      "Electronica 2025":"./assets/event-electronica-2025.png",
-      "Sustainability Forum 2026":"./assets/event-sustainability-forum-2026.png",
-      "WORLD PUP EXPO 2025":"./assets/event-world-pup-expo-2025.png",
-      "อร่อยทั่วไทย M8":"./assets/event-aroi-thua-thai-m8.png",
-      "Women Inspired 2026 Sunflower Social Club":"./assets/event-women-inspired-2026-all-events-poster.png",
-      "Marketing Oops 2025":"./assets/event-default.png",
-      "PTT OPEX DAY 2025":"./assets/event-default.png"
+      "The Mall Lifestore Sports Fest":"./assets/event-the-mall-lifestore-sports-fest.jpg",
+      "Marketing Oops 2026":"./assets/event-default.jpg",
+      "Bangkok Bank M VISA":"./assets/event-default.jpg",
+      "Power Mall Gamer Festival":"./assets/event-power-mall-gamer-festival.jpg",
+      "Electronica 2025":"./assets/event-electronica-2025.jpg",
+      "Sustainability Forum 2026":"./assets/event-sustainability-forum-2026.jpg",
+      "WORLD PUP EXPO 2025":"./assets/event-world-pup-expo-2025.jpg",
+      "อร่อยทั่วไทย M8":"./assets/event-aroi-thua-thai-m8.jpg",
+      "Women Inspired 2026 Sunflower Social Club":"./assets/event-women-inspired-2026-all-events-poster.jpg",
+      "Marketing Oops 2025":"./assets/event-default.jpg",
+      "PTT OPEX DAY 2025":"./assets/event-default.jpg"
     };
     const eventImageKey = value => String(value||"").trim().toLowerCase();
     const eventImageLookup = Object.fromEntries(Object.entries(eventImages).map(([key,value])=>[eventImageKey(key),value]));
@@ -86288,8 +86288,8 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
                 h("div",{className:"card-title"},
                   h("span",{className:"icon"},h(Icon,{name:"trend"})),
                   h("div",null,
-                    h("h3",null,`${monthRows.length}${ov("-month trend","-เดือนที่ผ่านมา")}`),
-                    h("p",{className:"subtitle"},ov("Questions and sessions trend across the full available history.","เทรนด์คำถามและเซสชันจากประวัติทั้งหมดที่มี"))
+                    h("h3",null,ov("Monthly Usage Trend","เทรนด์การใช้งานรายเดือน")),
+                    h("p",{className:"subtitle"},ov(`How many questions were asked and sessions used, month by month, over the last ${monthRows.length} months.`,`จำนวนคำถามและเซสชันในแต่ละเดือน ย้อนหลัง ${monthRows.length} เดือน`))
                   )
                 ),
                 h("div",{style:{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:"10px"}},

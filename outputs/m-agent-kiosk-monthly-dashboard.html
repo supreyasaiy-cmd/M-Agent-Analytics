@@ -726,7 +726,9 @@
     .exec-list li{list-style:none;border:1px solid var(--line-2);border-radius:16px;background:#fbfcfe;padding:13px;color:#344054;font-size:13px;line-height:1.45;overflow-wrap:anywhere}.exec-summary{margin-bottom:14px;padding:15px 17px;border-radius:16px;background:linear-gradient(90deg,#eef4ff,#f8fbff);border:1px solid var(--line-2)}.exec-summary-eyebrow{display:block;font-size:10px;font-weight:850;letter-spacing:.06em;text-transform:uppercase;color:#667085;margin-bottom:5px}.exec-summary-text{margin:0;font-size:15px;line-height:1.55;color:#1d2939}.exec-summary-text b{color:#1d4ed8;font-weight:850}.exec-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.exec-tile{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line-2);border-radius:16px;background:#fbfcfe;padding:14px}.exec-tile-icon{flex:0 0 auto;width:34px;height:34px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:var(--blue-soft);color:#1d4ed8}.exec-tile-body{min-width:0}.exec-tile-label{display:block;font-size:11px;font-weight:850;letter-spacing:.04em;text-transform:uppercase;color:#475467;margin-bottom:3px}.exec-tile-text{margin:0;font-size:13px;line-height:1.5;color:#344054;overflow-wrap:anywhere}@media(max-width:720px){.exec-grid{grid-template-columns:1fr}}
     .app-shell{min-height:100vh;background:var(--bg)}
     .sidebar{position:fixed;z-index:70;inset:16px auto 16px 16px;width:248px;height:calc(100% - 32px);background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-soft);display:flex;flex-direction:column;overflow:auto}
-    .sidebar-inner{padding:18px 16px 20px;display:grid;gap:18px}
+    .sidebar-inner{padding:18px 16px 20px;display:flex;flex-direction:column;gap:18px;min-height:100%}
+    .sidebar-lang-footer{margin-top:auto;padding-top:16px;border-top:1px solid var(--line-2);display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .sidebar-lang-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#98a2b3}
     .sidebar-brand{display:flex;align-items:center;gap:10px;padding:0 0 16px;border-bottom:1px solid var(--line-2)}
     .sidebar-brand .brand-mark{width:38px;height:38px;border-radius:13px}
     .sidebar-brand b{display:block;font-size:15px;line-height:1.1}
@@ -763,7 +765,7 @@
     .header-filters{display:flex;align-items:center;gap:10px}
     .header-filters .field{min-width:150px}
     .period-control{min-width:min(680px,62vw)}
-    .period-range{display:grid;grid-template-columns:repeat(3,minmax(118px,1fr)) auto auto;gap:10px;align-items:end}
+    .period-range{display:grid;grid-template-columns:repeat(2,minmax(118px,1fr)) auto minmax(150px,1fr) auto;gap:10px;align-items:end}
     .period-range .field{min-width:0}
     .period-apply{min-height:42px;border:1px solid #cfd6e2;border-radius:10px;background:#e9edf3;color:#101828;font-size:12px;font-weight:750;padding:0 16px;cursor:pointer;transition:.18s ease}
     .period-apply:hover{background:#dfe5ee;border-color:#b9c3d2}
@@ -1018,7 +1020,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-09-07T06:25:43.606Z",
+  "generatedAt": "2026-09-07T06:41:25.805Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "31 Aug 2026",
@@ -85025,15 +85027,14 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     const comparisonModes = ["Current vs Previous Period","Month vs Month","Year vs Year"];
     const compareColors = ["#2563eb","#0891b2","#12b76a","#f59e0b","#7c3aed"];
     const sidebarGroups = [
-      {id:"dashboard",title:"Dashboard",subtitle:"Portfolio overview",icon:"activity",items:[["overview","Overview","Monthly command view","gauge"],["answer-quality","Answer Quality Review","What customers asked & answer quality","message"]]},
+      {id:"dashboard",title:"Dashboard",subtitle:"Portfolio overview",icon:"activity",items:[["overview","Overview Summary","Monthly command view","gauge"],["answer-quality","Answer Quality Review","What customers asked & answer quality","message"]]},
       {id:"machine",title:"Machine Analytics",subtitle:"Status, comparison, timeline",icon:"cpu",items:[["machine-status","Machine Status","Operational cards","activity"],["machine-comparison","Machine Comparison","Compare all 5 machines","trend"],["machine-timeline","Event Report & Timeline","Event performance, borrowing, movement","calendar"]]},
       {id:"performance",title:"Performance & User Analytics",subtitle:"Volume, quality, and customer intent",icon:"trend",items:[["sessions","Sessions","Usage trend","activity"],["ratings","Ratings & Success","Rating and answer quality","gauge"],["recommendation","Recommendation","Executive deployment recommendation","brain"]]}
     ];
     const pageAliases = {machines:"machine-status",compare:"machine-comparison",movement:"machine-timeline",performance:"sessions",behavior:"overview",km:"wrong-answers",events:"machine-timeline",insights:"overview","executive-summary":"overview",recommendations:"recommendation",data:"overview",import:"overview","import-data":"overview","monthly-report":"overview",export:"overview","missing-knowledge":"wrong-answers","ai-improvements":"wrong-answers","success-rate":"ratings","question-categories":"overview","brand-mentions":"overview","language-analysis":"overview","event-timeline":"machine-timeline","event-performance":"machine-timeline","borrowing-history":"machine-timeline","questions-page":"overview","user-behavior":"overview"};
     const pageList = sidebarGroups.flatMap(group=>group.items.map(item=>({id:item[0],label:item[1],subtitle:item[2],group:group.title,groupSubtitle:group.subtitle,icon:group.icon})));
     const overviewSections = [
-      {target:"Overview Summary",label:"Overview Summary",th:"สรุปภาพรวม"},
-      {target:"ov-performance",label:"Performance",th:"ประสิทธิภาพ"},
+      {target:"ov-summary",label:"Performance",th:"ประสิทธิภาพ"},
       {target:"ov-trend",label:"Monthly Trend",th:"เทรนด์รายเดือน"},
       {target:"Usage Trend by Machine",label:"Usage Trend by Machine",th:"เทรนด์การใช้งานตามเครื่อง"},
       {target:"Machine overview",label:"Machine overview",th:"ภาพรวมเครื่อง"},
@@ -85959,7 +85960,7 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
       componentDidCatch(error,info){console.error("[M Agent Dashboard] render error",error,info)}
       render(){if(this.state.error)return h("div",{className:"app-error"},h("div",{className:"app-error-card"},h("h1",null,"Dashboard view needs a refresh"),h("p",null,"A display error occurred while rendering this page. Your data is still in the dashboard file."),h("p",null,String(this.state.error?.message||this.state.error||"Unknown error")),h("button",{type:"button",onClick:()=>{this.setState({error:null});location.hash="#overview";location.reload()}},"Reset dashboard view")));return this.props.children}
     }
-    function SidebarNav({page,onNavigate,onSection,open,onClose,lang="en"}){
+    function SidebarNav({page,onNavigate,onSection,open,onClose,lang="en",onLangChange=()=>{}}){
       const activeGroupId=sidebarGroups.find(group=>group.items.some(item=>item[0]===page))?.id||"dashboard";
       const [expandedGroup,setExpandedGroup]=useState(()=>activeGroupId);
       const previousPage=useRef(page);
@@ -86001,14 +86002,21 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
                   )
                 )
               )
-            })
+            }),
+            h("div",{className:"sidebar-lang-footer"},
+              h("span",{className:"sidebar-lang-label"},"Language"),
+              h("div",{className:"aqr-lang-toggle"},
+                h("button",{type:"button",className:"aqr-lang-btn"+(lang==="en"?" active":""),onClick:()=>onLangChange("en")},"EN"),
+                h("button",{type:"button",className:"aqr-lang-btn"+(lang==="th"?" active":""),onClick:()=>onLangChange("th")},"TH")
+              )
+            )
           )
         )
       )
     }
     function WorkspaceHeader({meta,periodStart,setPeriodStart,periodEnd,setPeriodEnd,onApplyPeriod,onMenu,showPeriod=true,periodMode="date",selectedMonth="",setSelectedMonth=()=>{},monthOptions=[],onFullHistoryPeriod=null,onApplyMonth=()=>{}}){return h("header",{className:"workspace-header"},h("div",{className:"header-title"},h("button",{className:"mobile-menu",onClick:onMenu,"aria-label":"Open navigation"},h(Icon,{name:"menu",size:22})),h("span",{className:"icon"},h(Icon,{name:meta.icon||"activity"})),h("div",{style:{minWidth:0}},h("div",{className:"crumb"},h("b",null,meta.group)),h("div",{className:"page-title-line"},meta.label))),showPeriod&&h("div",{className:"header-filters"},h("div",{className:"period-control"},periodMode==="monthly"
       ? h("div",{className:"period-range",style:{gridTemplateColumns:"minmax(220px,1fr) auto"}},h("label",{className:"field"},"Monthly",h("select",{value:selectedMonth,onChange:e=>setSelectedMonth(e.target.value)},monthOptions.map(option=>h("option",{key:option.id,value:option.id},option.label)))),h("button",{type:"button",className:"period-apply",onClick:onApplyPeriod},"Apply"))
-      : h("div",{className:"period-range"},h("label",{className:"field"},"Start Date",h("input",{type:"date",value:periodStart,onChange:e=>setPeriodStart(e.target.value)})),h("label",{className:"field"},"End Date",h("input",{type:"date",value:periodEnd,onChange:e=>setPeriodEnd(e.target.value)})),h("label",{className:"field"},"Monthly",h("select",{value:(monthOptions.find(o=>periodStart===`${o.id}-01`&&periodEnd===`${o.id}-${String(o.days).padStart(2,"0")}`)||{}).id||"",onChange:e=>{if(e.target.value)onApplyMonth(e.target.value);}},h("option",{value:""},"Select month…"),monthOptions.map(o=>h("option",{key:o.id,value:o.id},o.label)))),onFullHistoryPeriod&&h("button",{type:"button",className:"period-shortcut",onClick:onFullHistoryPeriod,title:"Show data from first available record to latest record"},"Full history"),h("button",{type:"button",className:"period-apply",onClick:onApplyPeriod},"Apply")))))}
+      : h("div",{className:"period-range"},h("label",{className:"field"},"Start Date",h("input",{type:"date",value:periodStart,onChange:e=>setPeriodStart(e.target.value)})),h("label",{className:"field"},"End Date",h("input",{type:"date",value:periodEnd,onChange:e=>setPeriodEnd(e.target.value)})),h("button",{type:"button",className:"period-apply",onClick:onApplyPeriod},"Apply"),h("label",{className:"field"},"Monthly",h("select",{value:(monthOptions.find(o=>periodStart===`${o.id}-01`&&periodEnd===`${o.id}-${String(o.days).padStart(2,"0")}`)||{}).id||"",onChange:e=>{if(e.target.value)onApplyMonth(e.target.value);}},h("option",{value:""},"Select month…"),monthOptions.map(o=>h("option",{key:o.id,value:o.id},o.label)))),onFullHistoryPeriod&&h("button",{type:"button",className:"period-shortcut",onClick:onFullHistoryPeriod,title:"Show data from first available record to latest record"},"Full history")))))}
     function previewCellValue(value){
       if(value===null||value===undefined||value==="") return "—";
       if(typeof value==="number"&&Number.isFinite(value)) return String(value);
@@ -86257,19 +86265,7 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
       const renderPage=()=>{
         if(page==="machine-comparison") return h(MachineComparisonSection,machineComparisonProps);
         if(page==="overview") return h(PageShell,null,
-          h("div",{className:"card overview-summary-card"},
-            h("div",{className:"overview-summary-head"},
-              h("div",{className:"card-title"},
-                h("span",{className:"icon"},h(Icon,{name:"trend"})),
-                h("div",null,
-                  h("h3",null,ov("Overview Summary","สรุปภาพรวม")),
-                  h("p",{className:"subtitle"},ov("The fastest read on traffic, quality, behavior, and language mix.","ภาพรวมที่เร็วที่สุดของทราฟฟิก คุณภาพ พฤติกรรม และการใช้ภาษา"))
-                )
-              ),
-              h("div",{className:"overview-summary-actions"},
-                h("div",{className:"aqr-lang-toggle"},h("button",{type:"button",className:"aqr-lang-btn"+(aqrLang==="en"?" active":""),onClick:()=>setAqrLang("en")},"EN"),h("button",{type:"button",className:"aqr-lang-btn"+(aqrLang==="th"?" active":""),onClick:()=>setAqrLang("th")},"TH"))
-              )
-            ),
+          h("div",{className:"card overview-summary-card",id:"ov-summary"},
             h("div",{className:"overview-summary-grid"},
               overviewBehaviorSummary.map(item=>h("div",{className:"overview-summary-item",key:item.label},
                 h("span",null,item.label),
@@ -86610,12 +86606,12 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
                 h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"map"})),h("div",null,h("h3",null,`Machine movement: ${asset}`),h("p",{className:"subtitle"},"Permanent locations, temporary relocations, and borrowing history for this machine.")))),h(Timeline,{items:selectedHistory,asset,line:true}))
               )
         );
-        if(page==="answer-quality") return h(PageShell,{title:aqrLang==="th"?"รีวิวคุณภาพคำตอบ":"Answer Quality Review",sub:accuracyReview?(aqrLang==="th"?`สุ่มตัวอย่าง ${n(accuracyReview.total)} คำถาม-คำตอบ (${accuracyReview.dateStart} → ${accuracyReview.dateEnd}) — ลูกค้าถามอะไร และ AI ตอบอย่างไร`:`Random ${n(accuracyReview.total)} Q&A sample (${accuracyReview.dateStart} → ${accuracyReview.dateEnd}) — what customers asked and how the AI answered.`):(aqrLang==="th"?"ตัวอย่างรีวิวความแม่นยำ":"Accuracy review sample."),action:h("div",{className:"aqr-lang-toggle"},h("button",{type:"button",className:"aqr-lang-btn"+(aqrLang==="en"?" active":""),onClick:()=>setAqrLang("en")},"EN"),h("button",{type:"button",className:"aqr-lang-btn"+(aqrLang==="th"?" active":""),onClick:()=>setAqrLang("th")},"TH"))},h(AnswerQualityReview,{data:accuracyReview,kiosks,lang:aqrLang}));
+        if(page==="answer-quality") return h(PageShell,{title:aqrLang==="th"?"รีวิวคุณภาพคำตอบ":"Answer Quality Review",sub:accuracyReview?(aqrLang==="th"?`สุ่มตัวอย่าง ${n(accuracyReview.total)} คำถาม-คำตอบ (${accuracyReview.dateStart} → ${accuracyReview.dateEnd}) — ลูกค้าถามอะไร และ AI ตอบอย่างไร`:`Random ${n(accuracyReview.total)} Q&A sample (${accuracyReview.dateStart} → ${accuracyReview.dateEnd}) — what customers asked and how the AI answered.`):(aqrLang==="th"?"ตัวอย่างรีวิวความแม่นยำ":"Accuracy review sample.")},h(AnswerQualityReview,{data:accuracyReview,kiosks,lang:aqrLang}));
         if(page==="sessions") return h(PageShell,{title:"Sessions",sub:"Usage volume over time, by month and by machine."},h("div",{className:"bento"},h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"activity"})),h("div",null,h("h3",null,"Sessions trend"),h("p",{className:"subtitle"},"Dashed line tracks sessions across all 10 months.")))),h(AreaChart,{monthsData:monthRows})),h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon green"},h(Icon,{name:"check"})),h("div",null,h("h3",null,"Leaderboard"),h("p",{className:"subtitle"},"Highest traffic machines this month.")))),h(Leaderboard,{rows:filteredRows,kiosksMap:kioskMap}))));
         if(page==="ratings") return h(PageShell,{title:"Ratings & Success",sub:"Customer satisfaction, answer quality, apology/error rate, and machine comparison in one view."},h("div",{className:"bento success-grid"},h("div",{className:"card span-3"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"gauge"})),h("div",null,h("h3",null,"Average rating"),h("p",{className:"subtitle"},authoritativeCur?.source||"Weighted by sessions.")))),h("div",{className:"kpi-value"},ratingText(cur.rating,ratingScale)),h(LineChart,{values:monthRows.map(x=>x.rating===null?0:x.rating),labels:monthRows.map(x=>x.short),color:"#2563eb"})),h("div",{className:"card span-3"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon green"},h(Icon,{name:"check"})),h("div",null,h("h3",null,"Success gauge"),h("p",{className:"subtitle"},"Answered without apology.")))),h("div",{className:"gauge-holder"},h(Gauge,{value:cur.successRate,label:"success"}))),h("div",{className:"card span-3"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon rose"},h(Icon,{name:"alert"})),h("div",null,h("h3",null,"Apology rate"),h("p",{className:"subtitle"},"Failed or apologetic answers.")))),h("div",{className:"kpi-value"},pct(cur.apologyRate)),h("p",{className:"subtitle"},"Lower is better.")),h("div",{className:"card span-3"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"trend"})),h("div",null,h("h3",null,"Success trend"),h("p",{className:"subtitle"},"10-month quality movement.")))),h(LineChart,{values:monthRows.map(x=>x.successRate),labels:monthRows.map(x=>x.short),color:"#12b76a"})),h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon green"},h(Icon,{name:"check"})),h("div",null,h("h3",null,"Ratings by machine"),h("p",{className:"subtitle"},"Ranked with usage and quality context.")))),h(RankingTable,{rows:comparison.ranking,onDrill:id=>{toggleCompare(id,true);goPage("machine-comparison")}}))));
         return h(PageShell,{title:"Overview",sub:"Default dashboard page."});
       };
-      return h("div",{className:"app-shell"},h(SidebarNav,{page,onNavigate:goPage,onSection:goOverviewSection,open:sidebarOpen,onClose:()=>setSidebarOpen(false),lang:aqrLang}),h("div",{className:"workspace"},h(WorkspaceHeader,{meta,periodStart,setPeriodStart,periodEnd,setPeriodEnd,onApplyPeriod:applyHeaderPeriod,onApplyMonth:applyMonth,onFullHistoryPeriod:page==="machine-status"?null:applyFullHistoryPeriod,onMenu:()=>setSidebarOpen(true),showPeriod:page!=="machine-comparison"&&page!=="machine-timeline"&&page!=="import-data"&&page!=="recommendation"&&page!=="answer-quality",periodMode:page==="machine-status"?"monthly":"date",selectedMonth:headerMonth,setSelectedMonth:setHeaderMonth,monthOptions:months}),h("main",{className:"page-view",key:page},renderPage())));
+      return h("div",{className:"app-shell"},h(SidebarNav,{page,onNavigate:goPage,onSection:goOverviewSection,open:sidebarOpen,onClose:()=>setSidebarOpen(false),lang:aqrLang,onLangChange:setAqrLang}),h("div",{className:"workspace"},h(WorkspaceHeader,{meta,periodStart,setPeriodStart,periodEnd,setPeriodEnd,onApplyPeriod:applyHeaderPeriod,onApplyMonth:applyMonth,onFullHistoryPeriod:page==="machine-status"?null:applyFullHistoryPeriod,onMenu:()=>setSidebarOpen(true),showPeriod:page!=="machine-comparison"&&page!=="machine-timeline"&&page!=="import-data"&&page!=="recommendation"&&page!=="answer-quality",periodMode:page==="machine-status"?"monthly":"date",selectedMonth:headerMonth,setSelectedMonth:setHeaderMonth,monthOptions:months}),h("main",{className:"page-view",key:page},renderPage())));
 
     }
     ReactDOM.createRoot(document.getElementById("root")).render(h(AppErrorBoundary,null,h(App)));

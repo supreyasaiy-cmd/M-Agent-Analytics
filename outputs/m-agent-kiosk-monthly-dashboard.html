@@ -1018,7 +1018,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-09-07T06:18:23.810Z",
+  "generatedAt": "2026-09-07T06:25:43.606Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "31 Aug 2026",
@@ -86267,8 +86267,7 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
                 )
               ),
               h("div",{className:"overview-summary-actions"},
-                h("div",{className:"aqr-lang-toggle"},h("button",{type:"button",className:"aqr-lang-btn"+(aqrLang==="en"?" active":""),onClick:()=>setAqrLang("en")},"EN"),h("button",{type:"button",className:"aqr-lang-btn"+(aqrLang==="th"?" active":""),onClick:()=>setAqrLang("th")},"TH")),
-                h("button",{className:"hero-chip",onClick:()=>goPage("user-behavior"),type:"button","aria-label":"Open Performance & User Analytics"},h(Icon,{name:"activity",size:16}),ov("Open Performance & User Analytics","เปิดหน้าประสิทธิภาพและพฤติกรรมผู้ใช้"))
+                h("div",{className:"aqr-lang-toggle"},h("button",{type:"button",className:"aqr-lang-btn"+(aqrLang==="en"?" active":""),onClick:()=>setAqrLang("en")},"EN"),h("button",{type:"button",className:"aqr-lang-btn"+(aqrLang==="th"?" active":""),onClick:()=>setAqrLang("th")},"TH"))
               )
             ),
             h("div",{className:"overview-summary-grid"},
@@ -86325,8 +86324,8 @@ function QuestionCategories({rows}){if(!rows?.length)return h("div",{className:"
                         h("td",null,h("i",{style:{background:compareColors[colorIndex%compareColors.length],width:"10px",height:"10px",borderRadius:"3px",display:"inline-block",marginRight:"8px",verticalAlign:"middle"}}),h("b",null,u.machine)),
                         h("td",null,n(Math.round(u.questions))),
                         h("td",null,n(Math.round(u.sessions))),
-                        h("td",null,u.avgPerDay.toFixed(1)+" คน/วัน"),
-                        h("td",null,u.qps.toFixed(1)+" คำถาม/คน"),
+                        h("td",null,u.avgPerDay.toFixed(1)+ov(" per day"," คน/วัน")),
+                        h("td",null,u.qps.toFixed(1)+ov(" per person"," คำถาม/คน")),
                         h("td",null,pct(u.share))
                       )
                     })

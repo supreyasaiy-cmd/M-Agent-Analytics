@@ -1,5 +1,5 @@
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-09-08T03:00:02.910Z",
+  "generatedAt": "2026-09-08T08:05:08.658Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "31 Aug 2026",
@@ -31937,7 +31937,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     {
       "id": 1,
       "month": "2025-07",
-      "event": "อร่อยทั่วไทย M8",
+      "event": "Aroi Tour Thai 2025",
       "date": "2025-07-04 to 2025-07-13",
       "asset": "NO1-M8-BKP-01",
       "original": "M8 Bangkapi - Information Counter ชั้น G",
@@ -31976,7 +31976,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     {
       "id": 4,
       "month": "2025-10",
-      "event": "Power Mall Gamer Festival",
+      "event": "Power Mall Gamer Festival 2025",
       "date": "2025-10-28 to 2025-11-09",
       "asset": "NO1-M8-BKP-01",
       "original": "M8 Bangkapi - Information Counter ชั้น G",
@@ -32015,7 +32015,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     {
       "id": 7,
       "month": "2026-05",
-      "event": "Bangkok Bank M VISA",
+      "event": "Bangkok Bank M VISA 2026",
       "date": "2026-05-15 to 2026-05-16",
       "asset": "NO2-M7-BKE-01",
       "original": "M8 Bangkapi - E-Stamp ชั้น G",
@@ -32028,7 +32028,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
     {
       "id": 8,
       "month": "2026-06",
-      "event": "The Mall Lifestore Sports Fest",
+      "event": "The Mall Lifestore Sports Fest 2026",
       "date": "2026-06-05 to 2026-06-10",
       "asset": "NO4-M5-THA-01",
       "original": "M8 Bangkapi - Platinum Lounge ชั้น 2",

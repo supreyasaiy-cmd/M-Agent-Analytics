@@ -135,7 +135,7 @@ const eventCatalog = [
     machineIds: ["303564c4-1183-4c81-8ca9-7abbc8ade1c8"]
   },
   {
-    event: "อร่อยทั่วไทย M8",
+    event: "Aroi Tour Thai 2025",
     asset: "NO1-M8-BKP-01",
     original: "M8 Bangkapi - Information Counter ชั้น G",
     location: "M8 Bangkapi",
@@ -172,7 +172,7 @@ const eventCatalog = [
     machineIds: ["135ef541-0de0-41cb-bd1f-c909b3ddb9a3"]
   },
   {
-    event: "Power Mall Gamer Festival",
+    event: "Power Mall Gamer Festival 2025",
     asset: "NO1-M8-BKP-01",
     original: "M8 Bangkapi - Information Counter ชั้น G",
     location: "M7 Bangkae",
@@ -196,7 +196,7 @@ const eventCatalog = [
     returnDate: "2025-12-04"
   },
   {
-    event: "Bangkok Bank M VISA",
+    event: "Bangkok Bank M VISA 2026",
     asset: "NO2-M7-BKE-01",
     original: "M8 Bangkapi - E-Stamp ชั้น G",
     location: "Bangkok Bank Event",
@@ -204,7 +204,7 @@ const eventCatalog = [
     returnDate: "2026-05-16"
   },
   {
-    event: "The Mall Lifestore Sports Fest",
+    event: "The Mall Lifestore Sports Fest 2026",
     asset: "NO4-M5-THA-01",
     original: "M8 Bangkapi - Platinum Lounge ชั้น 2",
     location: "M7 Bangkae",

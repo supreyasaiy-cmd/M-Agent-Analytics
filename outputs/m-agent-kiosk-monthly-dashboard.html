@@ -202,7 +202,14 @@
     .aqr-cat-val{font-size:12px;font-weight:800;color:#667085;white-space:nowrap;font-variant-numeric:tabular-nums}
     .aqr-controls{display:grid;gap:10px;margin:14px 0}
     .aqr-controls-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-    .aqr-search{width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:12px;font-size:14px;background:#fff;height:auto}
+    .aqr-search-wrap{position:relative;display:flex;align-items:center;width:100%}
+    .aqr-search-wrap svg{position:absolute;left:14px;color:#98a2b3;pointer-events:none}
+    .aqr-search{width:100%;padding:10px 14px 10px 40px;border:1px solid var(--line);border-radius:12px;font-size:14px;background:#fff;height:auto}
+    .aqr-search:focus{border-color:#93b4ff;box-shadow:0 0 0 4px rgba(37,99,235,.1);outline:none}
+    .aqr-chips-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    .aqr-filter-chip{display:inline-flex;align-items:center;gap:6px;background:var(--blue-soft);color:#1d4ed8;border-radius:999px;padding:6px 8px 6px 12px;font-size:12.5px;font-weight:700}
+    .aqr-filter-chip button{border:0;background:rgba(37,99,235,.14);color:#1d4ed8;width:18px;height:18px;border-radius:50%;font-size:13px;line-height:1;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;padding:0}
+    .aqr-filter-chip button:hover{background:rgba(37,99,235,.24)}
     .aqr-select{padding:10px 12px;border:1px solid var(--line);border-radius:12px;font-size:13px;background:#fff;font-weight:700;height:auto;width:auto}
     .aqr-check{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#344054;cursor:pointer}
     .aqr-check input{width:17px;height:17px;min-width:17px;padding:0;margin:0;flex:0 0 auto;accent-color:var(--blue);border-radius:5px;cursor:pointer}
@@ -266,7 +273,7 @@
     .click-hint{display:flex;align-items:center;gap:8px;color:#1d4ed8;font-size:12px;font-weight:800}
     .chart{width:100%;height:auto;display:block;overflow:visible;max-width:100%}.trend-wipe{width:0}.chart-in .trend-wipe{animation:trendWipe 1.25s cubic-bezier(.4,0,.2,1) forwards}@keyframes trendWipe{to{width:760px}}
     @keyframes chartDraw{from{clip-path:inset(-45% 100% -45% -8%)}to{clip-path:inset(-45% -8% -45% -8%)}}
-    .overview-trend-card,.overview-insights-card{min-height:520px}
+    .overview-trend-card{min-height:520px}
     .overview-trend-card .chart{margin-top:auto}
     .overview-insights-card .exec-list{height:100%;align-content:stretch}
     .overview-insights-card .exec-list li{min-height:0}
@@ -305,6 +312,9 @@
     .overview-machine-metrics div{border-radius:14px;background:#fff;padding:12px}
     .overview-machine-metrics strong{display:block;font-size:18px;line-height:1.05;white-space:nowrap}.overview-machine-metrics .metric-unit{display:inline;font-size:.6em;font-weight:800;margin-left:1px;overflow-wrap:normal;white-space:nowrap}
     .overview-machine-metrics span{display:block;margin-top:6px;color:var(--muted);font-size:11px}
+    .overview-machine-metrics .metric-highlight{background:var(--blue-soft);border:1px solid #bfdbfe}
+    .overview-machine-metrics .metric-highlight strong{color:#1d4ed8}
+    .overview-machine-metrics .metric-highlight span{color:#3b5998}
     .reco-hero{display:grid;grid-template-columns:1fr;gap:24px}
     .reco-hero-card{min-height:0;padding:34px 36px}
     .reco-hero-card .card-title{align-items:flex-start}
@@ -734,7 +744,7 @@
     .strength-card h4{margin:0;font-size:15px;line-height:1.3;overflow-wrap:anywhere}.strength-card p{color:var(--muted);font-size:12px;line-height:1.45;overflow-wrap:anywhere}
     .strength-card b{font-size:12px;color:#344054}
     .exec-list{display:grid;gap:10px}
-    .exec-list li{list-style:none;border:1px solid var(--line-2);border-radius:16px;background:#fbfcfe;padding:13px;color:#344054;font-size:13px;line-height:1.45;overflow-wrap:anywhere}.exec-summary{margin-bottom:14px;padding:15px 17px;border-radius:16px;background:linear-gradient(90deg,#eef4ff,#f8fbff);border:1px solid var(--line-2)}.exec-summary-eyebrow{display:block;font-size:10px;font-weight:850;letter-spacing:.06em;text-transform:uppercase;color:#667085;margin-bottom:5px}.exec-summary-text{margin:0;font-size:15px;line-height:1.55;color:#1d2939}.exec-summary-text b{color:#1d4ed8;font-weight:850}.exec-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.exec-tile{display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line-2);border-radius:16px;background:#fbfcfe;padding:14px}.exec-tile-icon{flex:0 0 auto;width:34px;height:34px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:var(--blue-soft);color:#1d4ed8}.exec-tile-body{min-width:0}.exec-tile-label{display:block;font-size:11px;font-weight:850;letter-spacing:.04em;text-transform:uppercase;color:#475467;margin-bottom:3px}.exec-tile-text{margin:0;font-size:13px;line-height:1.5;color:#344054;overflow-wrap:anywhere}@media(max-width:720px){.exec-grid{grid-template-columns:1fr}}
+    .exec-list li{list-style:none;border:1px solid var(--line-2);border-radius:16px;background:#fbfcfe;padding:13px;color:#344054;font-size:13px;line-height:1.45;overflow-wrap:anywhere}.exec-summary{margin-bottom:14px;padding:15px 17px;border-radius:16px;background:linear-gradient(90deg,#eef4ff,#f8fbff);border:1px solid var(--line-2)}.exec-summary-eyebrow{display:block;font-size:10px;font-weight:850;letter-spacing:.06em;text-transform:uppercase;color:#667085;margin-bottom:5px}.exec-summary-text{margin:0;font-size:15px;line-height:1.55;color:#1d2939}.exec-summary-text b{color:#1d4ed8;font-weight:850}.exec-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.exec-tile{position:relative;display:flex;gap:12px;align-items:flex-start;border:1px solid var(--line-2);border-radius:16px;background:#fbfcfe;padding:14px 14px 14px 18px;overflow:hidden;transition:transform .18s ease,box-shadow .18s ease}.exec-tile:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent-color,#2563eb)}.exec-tile:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(15,23,42,.08)}.exec-tile.tone-blue{--accent-color:#2563eb}.exec-tile.tone-green{--accent-color:#12b76a}.exec-tile.tone-rose{--accent-color:#e11d48}.exec-tile.tone-purple{--accent-color:#7c3aed}.exec-tile.tone-cyan{--accent-color:#0891b2}.exec-tile.tone-amber{--accent-color:#f59e0b}.exec-tile-icon{flex:0 0 auto;width:34px;height:34px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;background:var(--blue-soft);color:#1d4ed8}.exec-tile-icon.green{background:var(--green-soft);color:#067647}.exec-tile-icon.rose{background:var(--rose-soft);color:#be123c}.exec-tile-icon.amber{background:var(--amber-soft);color:#b45309}.exec-tile-icon.purple{background:#f3e8ff;color:var(--purple)}.exec-tile-icon.cyan{background:#e0f7fa;color:var(--cyan)}.exec-tile-body{min-width:0}.exec-tile-label{display:block;font-size:11px;font-weight:850;letter-spacing:.04em;text-transform:uppercase;color:#475467;margin-bottom:3px}.exec-tile-text{margin:0;font-size:13px;line-height:1.5;color:#344054;overflow-wrap:anywhere}@media(max-width:720px){.exec-grid{grid-template-columns:1fr}}
     .app-shell{min-height:100vh;background:var(--bg)}
     .sidebar{position:fixed;z-index:70;inset:16px auto 16px 16px;width:248px;height:calc(100% - 32px);background:#fff;border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow-soft);display:flex;flex-direction:column;overflow:auto}
     .sidebar-inner{padding:18px 16px 20px;display:flex;flex-direction:column;gap:18px;min-height:100%}
@@ -1030,7 +1040,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-09-07T10:50:18.111Z",
+  "generatedAt": "2026-09-08T03:00:02.910Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "31 Aug 2026",
@@ -85400,21 +85410,26 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       const [lang,setLang]=useState("All");
       const [inp,setInp]=useState("All");
       const [mach,setMach]=useState("All");
+      const [grade,setGrade]=useState("All");
       const [onlyApology,setOnlyApology]=useState(false);
       const [showAllCats,setShowAllCats]=useState(false);
       const [page,setPage]=useState(1);
       const aqrT={
         struggleTitle:{en:"Where the AI struggles",th:"จุดที่ AI ยังตอบได้ไม่ดี"},
-        struggleSub:{en:"Content topics ranked by apology rate — the knowledge gaps to fix first. (Voice-transcription and out-of-scope failures are summarized above.) Click a category to filter the list below.",th:"หัวข้อเนื้อหาเรียงตามอัตราการขอโทษ — ช่องว่างความรู้ที่ควรแก้ก่อน (ความผิดพลาดจากการถอดเสียงและคำถามนอกขอบเขตสรุปไว้ด้านบนแล้ว) คลิกหมวดหมู่เพื่อกรองรายการด้านล่าง"},
+        struggleSub:{en:"Content topics ranked by apology rate — the knowledge gaps to fix first. Click a category to filter the list below.",th:"หัวข้อเนื้อหาเรียงตามอัตราการขอโทษ — ช่องว่างความรู้ที่ควรแก้ก่อน คลิกหมวดหมู่เพื่อกรองรายการด้านล่าง"},
         showFewer:{en:"Show fewer",th:"แสดงน้อยลง"},
         showAllCats:{en:n=>`Show all ${n} categories`,th:n=>`แสดงทั้งหมด ${n} หมวดหมู่`},
         askedTitle:{en:"What customers asked",th:"คำถามที่ลูกค้าถาม"},
-        askedSub:{en:(a,b)=>`Actual questions and the AI's answer, apology-first. Showing the most recent period (${a} → ${b}); the quality score above covers the full history.`,th:(a,b)=>`คำถามจริงและคำตอบของ AI เรียงคำขอโทษก่อน แสดงเฉพาะช่วงล่าสุด (${a} → ${b}) ส่วนคะแนนคุณภาพด้านบนคำนวณจากประวัติทั้งหมด`},
+        askedSub:{en:(a,b)=>`Actual questions and the AI's answer, apology-first, for the most recent period (${a} → ${b}).`,th:(a,b)=>`คำถามจริงและคำตอบของ AI เรียงคำขอโทษก่อน เฉพาะช่วงล่าสุด (${a} → ${b})`},
         searchPh:{en:"Search question or answer…",th:"ค้นหาคำถามหรือคำตอบ…"},
         allCategories:{en:"All categories",th:"ทุกหมวดหมู่"},
         allLanguages:{en:"All languages",th:"ทุกภาษา"},
         allInputs:{en:"All input types",th:"ทุกวิธีป้อนข้อมูล"},
         allMachines:{en:"All machines",th:"ทุกเครื่อง"},
+        allGrades:{en:"All grading types",th:"ทุกประเภทการให้คะแนน"},
+        gradeTranscription:{en:"Transcription Error",th:"ถอดเสียงผิด"},
+        gradeOutOfScope:{en:"Out of Scope",th:"นอกขอบเขต"},
+        gradeAnswered:{en:"Answered",th:"ตอบได้"},
         onlyApologies:{en:"Only apologies",th:"เฉพาะคำขอโทษ"},
         clearFilters:{en:"Clear filters",th:"ล้างตัวกรอง"},
         showingRange:{en:(a,b,c)=>`Showing ${a}–${b} of ${c} unique questions`,th:(a,b,c)=>`แสดง ${a}–${b} จาก ${c} คำถามที่ไม่ซ้ำกัน`},
@@ -85429,7 +85444,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         guideTitle:{en:"Grading Guidelines",th:"หลักเกณฑ์การให้คะแนน"},
         guideSub:{en:"How each answer is classified — Inaudible, False/True Positive, False/True Negative.",th:"แต่ละคำตอบถูกจัดประเภทอย่างไร — ฟังไม่ออก, False/True Positive, False/True Negative"},
         scoreEyebrow:{en:"Answer quality score",th:"คะแนนคุณภาพคำตอบ"},
-        heroNote:{en:(a,b)=>`Share of answers with no apology, transcription error, or out-of-scope response — the clearest single read on quality across the full ${a} → ${b} history.`,th:(a,b)=>`สัดส่วนคำตอบที่ไม่มีการขอโทษ ไม่ผิดพลาดจากการถอดเสียง และไม่ใช่คำถามนอกขอบเขต — ตัวชี้วัดคุณภาพที่ชัดเจนที่สุดจากประวัติทั้งหมดช่วง ${a} → ${b}`},
+        heroNote:{en:"Share of answers with no apology, transcription error, or out-of-scope response — the clearest single read on answer quality.",th:"สัดส่วนคำตอบที่ไม่มีการขอโทษ ไม่ผิดพลาดจากการถอดเสียง และไม่ใช่คำถามนอกขอบเขต — ตัวชี้วัดคุณภาพคำตอบที่ชัดเจนที่สุด"},
         qaReviewed:{en:"Q&A reviewed",th:"คำถาม-คำตอบที่ตรวจสอบ"},
         sessionsWord:{en:"sessions",th:"เซสชัน"},
         apologyChip:{en:"Apology — AI could not answer",th:"ขอโทษ — AI ตอบไม่ได้"},
@@ -85445,16 +85460,20 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       const langs=["All",...[...new Set(data.rows.map(r=>r.language))].filter(Boolean).sort()];
       const inputs=["All","Voice","Quick Reply","Text"];
       const machines=["All",...[...new Set(data.rows.map(r=>r.machine))].sort()];
+      const gradeOf=r=>r.category==="TranscriptionError"?"Transcription Error":r.category==="Out of Scope"?"Out of Scope":r.apology?"Apology":r.helpful?"Helpful":"Answered";
+      const grades=["All","Transcription Error","Out of Scope","Apology","Helpful","Answered"];
+      const gradeLabel=g=>({"All":at("allGrades"),"Transcription Error":at("gradeTranscription"),"Out of Scope":at("gradeOutOfScope"),"Apology":at("apology"),"Helpful":at("helpful"),"Answered":at("gradeAnswered")}[g]||g);
       const query=q.trim().toLowerCase();
-      const filtered=data.rows.filter(r=>(cat==="All"||r.category===cat)&&(lang==="All"||r.language===lang)&&(inp==="All"||r.input===inp)&&(mach==="All"||r.machine===mach)&&(!onlyApology||r.apology)&&(!query||(r.question||"").toLowerCase().includes(query)||(r.answer||"").toLowerCase().includes(query)));
-      const filtersActive=q.trim()!==""||cat!=="All"||lang!=="All"||inp!=="All"||mach!=="All"||onlyApology;
+      const filtered=data.rows.filter(r=>(cat==="All"||r.category===cat)&&(lang==="All"||r.language===lang)&&(inp==="All"||r.input===inp)&&(mach==="All"||r.machine===mach)&&(grade==="All"||gradeOf(r)===grade)&&(!onlyApology||r.apology)&&(!query||(r.question||"").toLowerCase().includes(query)||(r.answer||"").toLowerCase().includes(query)));
+      const filtersActive=q.trim()!==""||cat!=="All"||lang!=="All"||inp!=="All"||mach!=="All"||grade!=="All"||onlyApology;
       const setQP=v=>{setQ(v);setPage(1);};
       const setCatP=v=>{setCat(v);setPage(1);};
       const setLangP=v=>{setLang(v);setPage(1);};
       const setInpP=v=>{setInp(v);setPage(1);};
       const setMachP=v=>{setMach(v);setPage(1);};
+      const setGradeP=v=>{setGrade(v);setPage(1);};
       const setOnlyApologyP=v=>{setOnlyApology(v);setPage(1);};
-      const resetFilters=()=>{setQ("");setCat("All");setLang("All");setInp("All");setMach("All");setOnlyApology(false);setPage(1);};
+      const resetFilters=()=>{setQ("");setCat("All");setLang("All");setInp("All");setMach("All");setGrade("All");setOnlyApology(false);setPage(1);};
       const dedupMap=new Map();
       filtered.forEach(r=>{
         const key=(r.question||"")+"␟"+(r.answer||"");
@@ -85523,7 +85542,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
             h("div",{className:"aqr-hero-main"},
               h("span",{className:"aqr-hero-eyebrow"},at("scoreEyebrow")),
               h("div",{className:"aqr-hero-score"},h(CountUp,{text:pct1(data.cleanRate)})),
-              h("p",{className:"aqr-hero-note"},at("heroNote",data.dateStart||"",data.dateEnd||""))
+              h("p",{className:"aqr-hero-note"},at("heroNote"))
             ),
             h("div",{className:"aqr-hero-meta"},
               h("div",{className:"aqr-hero-meta-value"},n(data.total)),
@@ -85546,16 +85565,29 @@ window.__PERFORMANCE_REPORT_DATA__ = {
           h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon green"},h(Icon,{name:"message"})),h("div",null,h("h3",null,at("askedTitle")),h("p",{className:"subtitle"},at("askedSub",data.rowsDateStart||"",data.rowsDateEnd||""))))),
           h("div",{className:"aqr-controls"},
             h("div",{className:"aqr-controls-row"},
-              h("input",{className:"aqr-search",type:"search",placeholder:at("searchPh"),value:q,onChange:e=>setQP(e.target.value)})
+              h("div",{className:"aqr-search-wrap"},
+                h(Icon,{name:"search",size:16}),
+                h("input",{className:"aqr-search",type:"search",placeholder:at("searchPh"),value:q,onChange:e=>setQP(e.target.value)})
+              )
             ),
             h("div",{className:"aqr-controls-row"},
               h("select",{className:"aqr-select",value:cat,onChange:e=>setCatP(e.target.value),"aria-label":"Filter by category"},cats.map(c=>h("option",{key:c,value:c},c==="All"?at("allCategories"):c))),
               h("select",{className:"aqr-select",value:lang,onChange:e=>setLangP(e.target.value),"aria-label":"Filter by language"},langs.map(l=>h("option",{key:l,value:l},l==="All"?at("allLanguages"):l))),
               h("select",{className:"aqr-select",value:inp,onChange:e=>setInpP(e.target.value),"aria-label":"Filter by input type"},inputs.map(i=>h("option",{key:i,value:i},i==="All"?at("allInputs"):i))),
               h("select",{className:"aqr-select",value:mach,onChange:e=>setMachP(e.target.value),"aria-label":"Filter by machine"},machines.map(m=>h("option",{key:m,value:m},m==="All"?at("allMachines"):machineName(m)))),
+              h("select",{className:"aqr-select",value:grade,onChange:e=>setGradeP(e.target.value),"aria-label":"Filter by grading type"},grades.map(g=>h("option",{key:g,value:g},gradeLabel(g)))),
               h("label",{className:"aqr-check"},h("input",{type:"checkbox",checked:onlyApology,onChange:e=>setOnlyApologyP(e.target.checked)}),at("onlyApologies")),
               filtersActive?h("button",{type:"button",className:"aqr-reset",onClick:resetFilters},at("clearFilters")):null
-            )
+            ),
+            filtersActive?h("div",{className:"aqr-chips-row"},
+              q.trim()?h("span",{className:"aqr-filter-chip"},`"${q.trim()}"`,h("button",{type:"button",onClick:()=>setQP("")},"×")):null,
+              cat!=="All"?h("span",{className:"aqr-filter-chip"},cat,h("button",{type:"button",onClick:()=>setCatP("All")},"×")):null,
+              lang!=="All"?h("span",{className:"aqr-filter-chip"},lang,h("button",{type:"button",onClick:()=>setLangP("All")},"×")):null,
+              inp!=="All"?h("span",{className:"aqr-filter-chip"},inp,h("button",{type:"button",onClick:()=>setInpP("All")},"×")):null,
+              mach!=="All"?h("span",{className:"aqr-filter-chip"},machineName(mach),h("button",{type:"button",onClick:()=>setMachP("All")},"×")):null,
+              grade!=="All"?h("span",{className:"aqr-filter-chip"},gradeLabel(grade),h("button",{type:"button",onClick:()=>setGradeP("All")},"×")):null,
+              onlyApology?h("span",{className:"aqr-filter-chip"},at("onlyApologies"),h("button",{type:"button",onClick:()=>setOnlyApologyP(false)},"×")):null
+            ):null
           ),
           h("div",{className:"aqr-count"},
             h("span",null,sorted.length?at("showingRange",rangeStart,rangeEnd,sorted.length):at("showingZero")),
@@ -85612,7 +85644,7 @@ function Sparkline({values,color="#2563eb"}){let safe=(values||[]).map(safeNumbe
     function MiniRing({pctValue=null,color="#2563eb"}){const R=15.915,C=2*Math.PI*R,v=Math.max(0,Math.min(100,safeNumber(pctValue)));return h("svg",{viewBox:"0 0 36 36",width:60,height:60,className:"mini-ring"},h("circle",{cx:18,cy:18,r:R,fill:"none",stroke:"#eef2f7",strokeWidth:4}),pctValue!=null?h("circle",{cx:18,cy:18,r:R,fill:"none",stroke:color,strokeWidth:4,strokeLinecap:"round",strokeDasharray:`${(v/100*C).toFixed(2)} ${C.toFixed(2)}`,transform:"rotate(-90 18 18)"}):null,pctValue!=null?h("text",{x:18,y:21,textAnchor:"middle",fontSize:9,fontWeight:850,fill:"#101828"},Math.round(v)+"%"):null)}
     function MiniPie({segments=[],colors=["#2563eb","#7c3aed","#0891b2","#f59e0b","#12b76a"]}){const total=segments.reduce((a,s)=>a+safeNumber(s.value),0);let acc=-90;const paths=total?segments.map((s,i)=>{const val=safeNumber(s.value),share=val/total*100,angle=share/100*360,start=acc,end=acc+angle;acc=end;const toXY=a=>{const rad=a*Math.PI/180;return [18+16*Math.cos(rad),18+16*Math.sin(rad)];};const [x1,y1]=toXY(start),[x2,y2]=toXY(end),largeArc=angle>180?1:0;const d=`M18,18 L${x1.toFixed(2)},${y1.toFixed(2)} A16,16 0 ${largeArc} 1 ${x2.toFixed(2)},${y2.toFixed(2)} Z`;return h("path",{key:s.name||i,d,fill:colors[i%colors.length],stroke:"#fff",strokeWidth:.6},h("title",null,`${display(s.name,"—")}: ${pct(share)}`));}):[h("circle",{key:"empty",cx:18,cy:18,r:16,fill:"#eef2f7"})];return h("svg",{viewBox:"0 0 36 36",width:60,height:60},paths)}
     function MiniBars({values=[],color="#f59e0b"}){const max=Math.max(1,...values.map(safeNumber));const w=76,hgt=44,gap=w/Math.max(1,values.length);return h("svg",{viewBox:`0 0 ${w} ${hgt}`,width:76,height:44},values.map((v,i)=>{const bh=Math.max(2,(safeNumber(v)/max)*hgt);return h("rect",{key:i,x:(i*gap+gap*.22).toFixed(1),y:(hgt-bh).toFixed(1),width:(gap*.56).toFixed(1),height:bh.toFixed(1),rx:1.5,fill:color,opacity:.85})}))}
-    function Donut({title,segments=[],total,label,span=4,icon="globe"}){const colors=["#2563eb","#0891b2","#12b76a","#f59e0b","#7c3aed","#e11d48"],safeSegments=segments.length?segments:[{name:"No data",value:0,color:"#e5e7eb"}],segTotal=safeSegments.reduce((a,s)=>a+safeNumber(s.value),0),safeTotal=segTotal>0?segTotal:safeNumber(total);const R=15.915,C=2*Math.PI*R;let acc=0;const arcs=safeSegments.map((s,i)=>{const val=safeNumber(s.value),share=safeTotal?val/safeTotal*100:0,len=share/100*C,off=-acc/100*C;acc+=share;return {color:s.color||colors[i%colors.length],len,off,name:display(s.name,"No data"),val,share};});return h("article",{className:`card donut-card span-${span}`},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:icon})),h("div",null,h("h3",null,display(title,"Distribution")),h("p",{className:"subtitle"},display(label,"No description"))))),h("div",{className:"donut-stack"},h("div",{className:"donut-svg-wrap"},h("svg",{viewBox:"0 0 36 36",className:"donut-svg",role:"img","aria-label":display(title,"Distribution")},h("circle",{cx:18,cy:18,r:R,fill:"none",stroke:"#eef2f7",strokeWidth:4.4}),safeTotal?arcs.map((a,k)=>a.share>0?h("circle",{key:k,className:"donut-arc",cx:18,cy:18,r:R,fill:"none",stroke:a.color,strokeWidth:4.4,strokeLinecap:"butt",strokeDasharray:`${a.len.toFixed(3)} ${(C-a.len).toFixed(3)}`,strokeDashoffset:a.off.toFixed(3),transform:"rotate(-90 18 18)"},h("title",null,`${a.name}: ${n(a.val)} (${pct(a.share)})`)):null):null,h("text",{x:18,y:16.6,className:"donut-svg-total",textAnchor:"middle"},h(CountUp,{text:compact(safeTotal)})),h("text",{x:18,y:22,className:"donut-svg-label",textAnchor:"middle"},"total"))),h("div",{className:"legend-list"},safeSegments.map((s,k)=>h("div",{className:"legend-item",key:s.name||k,title:`${display(s.name,"No data")}: ${n(safeNumber(s.value))} · ${pct(safeTotal?safeNumber(s.value)/safeTotal*100:0)}`},h("i",{className:"swatch",style:{background:s.color||colors[k%colors.length]}}),h("span",null,display(s.name,"No data")),h("b",null,`${n(safeNumber(s.value))} · ${pct(safeTotal?safeNumber(s.value)/safeTotal*100:0)}`))))));}
+    function Donut({title,segments=[],total,label,span=4,icon="globe"}){const colors=["#2563eb","#0891b2","#12b76a","#f59e0b","#7c3aed","#e11d48"],safeSegments=segments.length?segments:[{name:"No data",value:0,color:"#e5e7eb"}],segTotal=safeSegments.reduce((a,s)=>a+safeNumber(s.value),0),safeTotal=segTotal>0?segTotal:safeNumber(total);const R=15.915,C=2*Math.PI*R;let acc=0;const arcs=safeSegments.map((s,i)=>{const val=safeNumber(s.value),share=safeTotal?val/safeTotal*100:0,len=share/100*C,off=-acc/100*C;acc+=share;return {color:s.color||colors[i%colors.length],len,off,name:display(s.name,"No data"),val,share};});return h("article",{className:`card donut-card span-${span}`},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:icon})),h("div",null,h("h3",null,display(title,"Distribution")),h("p",{className:"subtitle"},display(label,"No description"))))),h("div",{className:"donut-stack"},h("div",{className:"donut-svg-wrap"},h("svg",{viewBox:"0 0 36 36",className:"donut-svg",role:"img","aria-label":display(title,"Distribution")},h("circle",{cx:18,cy:18,r:R,fill:"none",stroke:"#eef2f7",strokeWidth:4.4}),safeTotal?arcs.map((a,k)=>a.share>0?h("circle",{key:k,className:"donut-arc",cx:18,cy:18,r:R,fill:"none",stroke:a.color,strokeWidth:4.4,strokeLinecap:"butt",strokeDasharray:`${a.len.toFixed(3)} ${(C-a.len).toFixed(3)}`,strokeDashoffset:a.off.toFixed(3),transform:"rotate(-90 18 18)"},h("title",null,`${a.name}: ${n(a.val)} (${pct(a.share)})`)):null):null,h("text",{x:18,y:16.6,className:"donut-svg-total",textAnchor:"middle",dominantBaseline:"central"},h(CountUp,{text:compact(safeTotal)})),h("text",{x:18,y:21.6,className:"donut-svg-label",textAnchor:"middle",dominantBaseline:"central"},"total"))),h("div",{className:"legend-list"},safeSegments.map((s,k)=>h("div",{className:"legend-item",key:s.name||k,title:`${display(s.name,"No data")}: ${n(safeNumber(s.value))} · ${pct(safeTotal?safeNumber(s.value)/safeTotal*100:0)}`},h("i",{className:"swatch",style:{background:s.color||colors[k%colors.length]}}),h("span",null,display(s.name,"No data")),h("b",null,`${n(safeNumber(s.value))} · ${pct(safeTotal?safeNumber(s.value)/safeTotal*100:0)}`))))));}
     function Gauge({value,label}){const safe=Math.max(0,Math.min(100,safeNumber(value)));return h("div",{className:"donut gauge",style:{background:`conic-gradient(#12b76a 0 ${safe}%, #eef2f7 ${safe}% 100%)`}},h("div",{className:"donut-center"},h("strong",null,pct(safe)),h("span",null,display(label,"score"))))}
     function ScoreArc({value,tone="#12b76a"}){
       const safe=Math.max(0,Math.min(100,safeNumber(value)));
@@ -86211,11 +86243,11 @@ function QuestionCategories({rows,questions=[]}){if(!rows?.length)return h("div"
       const sortedEvents=[...allEvents].sort((a,b)=>String(b.setup||eventSortDate(b.date)).localeCompare(String(a.setup||eventSortDate(a.date))));
       const masterRows=filteredKiosks;
       const insights=[
-        ["Highest performing location",best?`Best site: ${kioskMap.get(best.assetId)?.location}. ${n(best.questions)} questions and ${pct(best.success/best.questions*100)} success.`:"No active machine in this filter.","trend"],
-        ["Lowest engagement",low?`Needs review: ${low.assetId}. Only ${n(low.sessions)} sessions, so check traffic and visibility.`:"No low-volume signal available.","map"],
-        ["Most popular topic",topTopic?`Top demand: ${topTopic[0]}. ${n(topTopic[1])} questions; refresh campaign and M Card answers first.`:"No topic data for this month.","message"],
-        ["Machine growth signal",best?`Use ${best.assetId} as the benchmark for placement and prompt design this month.`:"Growth signal needs data.","activity"],
-        ["Relocation watchlist",low?`Watchlist: ${low.assetId}. Recheck placement or campaign fit before next review.`:"No relocation watchlist.","alert"]
+        [ov("Highest performing location","สาขาที่ทำผลงานดีที่สุด"),best?ov(`Best site: ${kioskMap.get(best.assetId)?.location}. ${n(best.questions)} questions and ${pct(best.success/best.questions*100)} success.`,`สาขาที่ดีที่สุด: ${kioskMap.get(best.assetId)?.location} คำถาม ${n(best.questions)} รายการ ความสำเร็จ ${pct(best.success/best.questions*100)}`):ov("No active machine in this filter.","ไม่มีเครื่องที่ใช้งานในตัวกรองนี้"),"trend","green"],
+        [ov("Lowest engagement","การใช้งานต่ำสุด"),low?ov(`Needs review: ${low.assetId}. Only ${n(low.sessions)} sessions, so check traffic and visibility.`,`ควรตรวจสอบ: ${low.assetId} มีแค่ ${n(low.sessions)} เซสชัน ควรเช็คทราฟฟิกและการมองเห็น`):ov("No low-volume signal available.","ไม่มีสัญญาณการใช้งานต่ำ"),"map","rose"],
+        [ov("Most popular topic","หัวข้อยอดนิยม"),topTopic?ov(`Top demand: ${topTopic[0]}. ${n(topTopic[1])} questions; refresh campaign and M Card answers first.`,`ความต้องการสูงสุด: ${topTopic[0]} คำถาม ${n(topTopic[1])} รายการ ควรอัปเดตแคมเปญและคำตอบ M Card ก่อน`):ov("No topic data for this month.","ไม่มีข้อมูลหัวข้อในเดือนนี้"),"message","purple"],
+        [ov("Machine growth signal","สัญญาณเครื่องที่เติบโต"),best?ov(`Use ${best.assetId} as the benchmark for placement and prompt design this month.`,`ใช้ ${best.assetId} เป็นมาตรฐานสำหรับการวางตำแหน่งและออกแบบคำถามในเดือนนี้`):ov("Growth signal needs data.","สัญญาณการเติบโตต้องการข้อมูลเพิ่ม"),"activity","cyan"],
+        [ov("Relocation watchlist","รายชื่อเครื่องที่ควรพิจารณาย้าย"),low?ov(`Watchlist: ${low.assetId}. Recheck placement or campaign fit before next review.`,`ควรจับตา: ${low.assetId} ควรตรวจสอบตำแหน่งหรือความเหมาะสมของแคมเปญก่อนรีวิวครั้งถัดไป`):ov("No relocation watchlist.","ไม่มีรายชื่อเครื่องที่ต้องย้าย"),"alert","amber"]
       ];
       const recommendationData=useMemo(()=>buildRecommendationData(),[]);
       const smallMultiples=filteredRows.map(r=>({id:r.assetId,values:monthRows.map(m=>perf.find(x=>x.month===m.id&&x.assetId===r.assetId)?.questions||0)}));
@@ -86344,7 +86376,7 @@ function QuestionCategories({rows,questions=[]}){if(!rows?.length)return h("div"
                   )
                 )
               ),
-              h(UsageTrendChart,{ids:overviewUsageIds,names:overviewUsageNames}),
+              h(UsageTrendChart,{key:appliedPeriod.start+"_"+appliedPeriod.end,ids:overviewUsageIds,names:overviewUsageNames}),
               h("div",{className:"scroll",style:{marginTop:"16px"}},
                 h("table",{className:"rank-table"},
                   h("thead",null,
@@ -86394,7 +86426,7 @@ function QuestionCategories({rows,questions=[]}){if(!rows?.length)return h("div"
                   h("div",null,h("strong",null,h(CountUp,{text:item.questions})),h("span",null,ov("Questions","คำถาม"))),
                   h("div",null,h("strong",null,h(CountUp,{text:String(item.success).replace("%","")}),/\d/.test(String(item.success))?h("span",{className:"metric-unit"},"%"):null),h("span",null,ov("Success","สำเร็จ"))),
                   h("div",null,h("strong",null,h(CountUp,{text:item.rating})),h("span",null,ov("Rating","คะแนน"))),
-                  h("div",{style:{gridColumn:"1/-1"}},h("strong",null,h(CountUp,{text:item.avgPerDay})),h("span",null,ov("Avg users / day","ผู้ใช้เฉลี่ย/วัน")))
+                  h("div",{className:"metric-highlight",style:{gridColumn:"1/-1"}},h("strong",null,h(CountUp,{text:item.avgPerDay})),h("span",null,ov("Avg users / day","ผู้ใช้เฉลี่ย/วัน")))
                 )
               ))
             )
@@ -86430,7 +86462,7 @@ function QuestionCategories({rows,questions=[]}){if(!rows?.length)return h("div"
                 h("span",{className:"exec-summary-eyebrow"},ov("Overall this period","ภาพรวมช่วงนี้")),
                 h("p",{className:"exec-summary-text"},insCount+ov(" machines served "," เครื่องให้บริการ "),h("b",null,n(insSessions)),ov(" sessions and "," เซสชัน และ "),h("b",null,n(insQuestions)),ov(" questions at "," คำถาม ที่ "),h("b",null,pct(insSuccessRate)),ov(" overall success."," ความสำเร็จโดยรวม"))
               ),
-              h("div",{className:"exec-grid"},insights.slice(0,4).map(([title,text,icon])=>h("div",{className:"exec-tile",key:title},h("span",{className:"exec-tile-icon"},h(Icon,{name:icon||"activity",size:16})),h("div",{className:"exec-tile-body"},h("span",{className:"exec-tile-label"},title),h("p",{className:"exec-tile-text"},text)))))
+              h("div",{className:"exec-grid"},insights.slice(0,4).map(([title,text,icon,tone])=>h("div",{className:`exec-tile tone-${tone||"blue"}`,key:title},h("span",{className:`exec-tile-icon ${tone||""}`},h(Icon,{name:icon||"activity",size:16})),h("div",{className:"exec-tile-body"},h("span",{className:"exec-tile-label"},title),h("p",{className:"exec-tile-text"},text)))))
             ))
         );
         if(page==="recommendation"){

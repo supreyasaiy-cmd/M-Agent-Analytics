@@ -147,6 +147,7 @@
     .aqr-hero-meta-value{font-size:26px;font-weight:900;color:#101828;font-variant-numeric:tabular-nums}
     .aqr-hero-meta-label{font-size:11px;font-weight:850;text-transform:uppercase;letter-spacing:.04em;color:#667085;margin-top:2px}
     .aqr-hero-meta-sub{margin-top:8px;font-size:12px;color:#98a2b3;font-weight:700}
+    .aqr-hero-meta-source{margin-top:4px;font-size:10.5px;color:#b0b7c3;font-weight:600}
     .aqr-hero-breakdown{margin-top:20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
     .aqr-hero-chip{display:flex;align-items:center;gap:9px;padding:12px 14px;border-radius:14px;background:#fff;border:1px solid var(--line-2);color:#1d4ed8}
     .aqr-hero-chip.rose{color:#be123c}
@@ -171,6 +172,7 @@
     .aqr-matrix-cell.green{background:var(--green-soft);border:1px solid #b7ebd1}
     .aqr-matrix-cell.rose{background:var(--rose-soft);border:1px solid #fecdd3}
     .aqr-matrix-verdict{font-size:14px;font-weight:850;color:#101828}
+    .aqr-matrix-verdict-tech{margin-top:1px;font-size:10px;font-weight:700;color:#98a2b3;letter-spacing:.02em}
     .aqr-matrix-count{margin-top:2px;font-size:11px;font-weight:700;color:#667085}
     .aqr-matrix-types{margin-top:9px;display:flex;flex-wrap:wrap;gap:5px;justify-content:center}
     .aqr-matrix-aside{margin-top:12px;display:flex;align-items:center;gap:9px;font-size:12.5px;color:#667085}
@@ -786,16 +788,16 @@
     .sidebar-link:hover{background:#f7f8fa;color:#0f172a}
     .sidebar-link.active{background:transparent;color:#0f172a;font-weight:800;box-shadow:none}
     .workspace{min-width:0;margin-left:296px}
-    .workspace-header{position:sticky;top:0;z-index:60;min-height:74px;border-bottom:1px solid rgba(230,234,240,.88);background:rgba(247,248,250,.84);backdrop-filter:blur(18px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:center;padding:14px 34px}
+    .workspace-header{position:sticky;top:0;z-index:60;min-height:74px;border-bottom:1px solid rgba(230,234,240,.88);background:rgba(247,248,250,.84);backdrop-filter:blur(18px);display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;justify-content:space-between;padding:14px 34px}
     .mobile-menu{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:14px;background:#fff;color:#344054;align-items:center;justify-content:center}
-    .header-title{display:flex;align-items:center;gap:12px;min-width:0}
-    .header-title .icon{width:42px;height:42px;border-radius:15px}
+    .header-title{display:flex;align-items:center;gap:12px;min-width:0;flex:1 1 auto}
+    .header-title .icon{width:42px;height:42px;border-radius:15px;flex:0 0 auto}
     .crumb{color:#667085;font-size:12px;font-weight:760;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .crumb b{color:#1d4ed8}
     .page-title-line{margin-top:3px;font-size:22px;font-weight:850;line-height:1.1;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .header-filters{display:flex;align-items:center;gap:10px}
+    .header-filters{display:flex;align-items:center;gap:10px;flex-wrap:wrap;flex:0 0 auto;justify-content:flex-end;margin-left:auto}
     .header-filters .field{min-width:150px}
-    .period-control{min-width:min(680px,62vw)}
+    .period-control{flex:0 0 auto}
     .period-range{display:grid;grid-template-columns:repeat(2,minmax(118px,1fr)) auto minmax(150px,1fr) auto;gap:10px;align-items:end}
     .period-range .field{min-width:0}
     .period-apply{min-height:42px;border:1px solid #cfd6e2;border-radius:10px;background:#e9edf3;color:#101828;font-size:12px;font-weight:750;padding:0 16px;cursor:pointer;transition:.18s ease}
@@ -861,10 +863,10 @@
       body .sidebar.open{transform:translateX(0)!important}
       .sidebar-backdrop.show{display:block;position:fixed;z-index:65;inset:0;background:rgba(15,23,42,.22);backdrop-filter:blur(2px)}
       .workspace{margin-left:0}
-      .workspace-header{grid-template-columns:minmax(0,1fr);padding:12px 18px}
+      .workspace-header{padding:12px 18px}
       .mobile-menu{display:inline-flex;flex:0 0 auto}
-      .header-title{align-items:flex-start}
-      .header-filters{justify-content:flex-start;flex-wrap:wrap}
+      .header-title{align-items:flex-start;flex:1 1 100%}
+      .header-filters{justify-content:flex-start;flex-wrap:wrap;flex:1 1 100%}
       .period-control{min-width:0;width:100%}
       .period-range{grid-template-columns:1fr 1fr}
       .page-view{padding:20px 18px 44px}
@@ -1049,7 +1051,7 @@
   <script src="./vendor/xlsx.full.min.js"></script>
   <script id="performance-report-data-inline">
 window.__PERFORMANCE_REPORT_DATA__ = {
-  "generatedAt": "2026-09-17T04:19:37.427Z",
+  "generatedAt": "2026-09-17T06:43:31.545Z",
   "source": "Performance Reports CSV",
   "historyStart": "1 Sep 2025",
   "historyEnd": "31 Aug 2026",
@@ -273686,11 +273688,11 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       const [page,setPage]=useState(1);
       const aqrT={
         struggleTitle:{en:"Where the AI struggles",th:"จุดที่ AI ยังตอบได้ไม่ดี"},
-        struggleSub:{en:"Content topics ranked by apology rate — the knowledge gaps to fix first. Click a category to filter the list below.",th:"หัวข้อเนื้อหาเรียงตามอัตราการขอโทษ — ช่องว่างความรู้ที่ควรแก้ก่อน คลิกหมวดหมู่เพื่อกรองรายการด้านล่าง"},
+        struggleSub:{en:"Topics ranked by how often the AI said \"sorry, I don't know\" instead of answering — the knowledge gaps to fix first. Click a category to filter the list below.",th:"หัวข้อเรียงตามความถี่ที่ AI ตอบว่า \"ขอโทษ ไม่มีข้อมูล\" แทนที่จะตอบคำถามได้ — ช่องว่างความรู้ที่ควรแก้ก่อน คลิกหมวดหมู่เพื่อกรองรายการด้านล่าง"},
         showFewer:{en:"Show fewer",th:"แสดงน้อยลง"},
         showAllCats:{en:n=>`Show all ${n} categories`,th:n=>`แสดงทั้งหมด ${n} หมวดหมู่`},
         askedTitle:{en:"What customers asked",th:"คำถามที่ลูกค้าถาม"},
-        askedSub:{en:(a,b)=>`Actual questions and the AI's answer, apology-first, for the most recent period (${a} → ${b}).`,th:(a,b)=>`คำถามจริงและคำตอบของ AI เรียงคำขอโทษก่อน เฉพาะช่วงล่าสุด (${a} → ${b})`},
+        askedSub:{en:(a,b)=>`Real customer questions and the AI's actual answer, from ${a} to ${b}. Answers the AI apologized for are shown first, so you can spot problems quickly.`,th:(a,b)=>`คำถามจริงจากลูกค้าและคำตอบจริงของ AI ตั้งแต่ ${a} ถึง ${b} คำตอบที่ AI ขอโทษจะถูกเรียงไว้บนสุด เพื่อให้เห็นปัญหาได้เร็ว`},
         searchPh:{en:"Search question or answer…",th:"ค้นหาคำถามหรือคำตอบ…"},
         allCategories:{en:"All categories",th:"ทุกหมวดหมู่"},
         allLanguages:{en:"All languages",th:"ทุกภาษา"},
@@ -273711,15 +273713,16 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         helpful:{en:"Helpful",th:"เป็นประโยชน์"},
         prev:{en:"Prev",th:"ก่อนหน้า"},
         next:{en:"Next",th:"ถัดไป"},
-        guideTitle:{en:"Grading Guidelines",th:"หลักเกณฑ์การให้คะแนน"},
-        guideSub:{en:"How each answer is classified — Inaudible, False/True Positive, False/True Negative.",th:"แต่ละคำตอบถูกจัดประเภทอย่างไร — ฟังไม่ออก, False/True Positive, False/True Negative"},
+        guideTitle:{en:"How we grade each answer",th:"เราให้คะแนนแต่ละคำตอบอย่างไร"},
+        guideSub:{en:"Every question gets checked in 2 steps: did the AI hear/read it correctly, and did it give a helpful answer? The grid below shows all 4 possible outcomes — technical term shown small under each, for the QA team's reference.",th:"ทุกคำถามจะถูกตรวจ 2 ขั้นตอน: AI ฟัง/อ่านคำถามถูกไหม และ AI ตอบได้เป็นประโยชน์ไหม ตารางด้านล่างแสดงผลลัพธ์ที่เป็นไปได้ทั้ง 4 แบบ (คำศัพท์ทางเทคนิคแสดงตัวเล็กไว้ให้ทีม QA อ้างอิง)"},
         scoreEyebrow:{en:"Answer quality score",th:"คะแนนคุณภาพคำตอบ"},
-        heroNote:{en:"Share of answers with no apology, transcription error, or out-of-scope response — the clearest single read on answer quality.",th:"สัดส่วนคำตอบที่ไม่มีการขอโทษ ไม่ผิดพลาดจากการถอดเสียง และไม่ใช่คำถามนอกขอบเขต — ตัวชี้วัดคุณภาพคำตอบที่ชัดเจนที่สุด"},
+        heroNote:{en:"The share of AI answers that were fully correct — understood the question right, and gave a real, on-topic answer (not an apology). Calculated from every question in the selected period.",th:"สัดส่วนคำตอบของ AI ที่ถูกต้องสมบูรณ์ — เข้าใจคำถามถูกต้อง และตอบตรงประเด็น (ไม่ใช่การขอโทษ) คำนวณจากคำถามทั้งหมดในช่วงเวลาที่เลือก"},
         qaReviewed:{en:"Q&A reviewed",th:"คำถาม-คำตอบที่ตรวจสอบ"},
         sessionsWord:{en:"sessions",th:"เซสชัน"},
         apologyChip:{en:"Apology — AI could not answer",th:"ขอโทษ — AI ตอบไม่ได้"},
         transcriptionChip:{en:"Transcription — voice not understood",th:"ถอดเสียงผิด — ฟังเสียงไม่ออก"},
-        outOfScopeChip:{en:"Out of scope — off-topic questions",th:"นอกขอบเขต — คำถามไม่เกี่ยวข้อง"}
+        outOfScopeChip:{en:"Out of scope — off-topic questions",th:"นอกขอบเขต — คำถามไม่เกี่ยวข้อง"},
+        dataSource:{en:"Data source: real conversation logs from the kiosks (Performance Reports CSV).",th:"แหล่งข้อมูล: บันทึกบทสนทนาจริงจากตู้คีออส (Performance Reports CSV)"}
       };
       const at=(key,...args)=>{const entry=aqrT[key]?.[uiLang]||aqrT[key]?.en;return typeof entry==="function"?entry(...args):entry;};
       if(!data||!data.rows) return h("div",{className:"empty"},uiLang==="th"?"ไม่มีตัวอย่างรีวิวความแม่นยำ":"No accuracy review sample available.");
@@ -273785,6 +273788,13 @@ window.__PERFORMANCE_REPORT_DATA__ = {
         {en:"Missing KM / Search Miss = the bot fails to find and give the right information at all.",th:"Missing KM / Search Miss = บอทไม่สามารถค้นหาและให้ข้อมูลที่ถูกต้องได้เลย"}
       ];
       const verdictTone=v=>(v==="True Positive"||v==="True Negative")?"green":"rose";
+      const verdictFriendly={
+        "True Positive":{en:"Correct answer",th:"ตอบถูกต้อง"},
+        "False Positive":{en:"Wrong answer",th:"ตอบผิด"},
+        "True Negative":{en:"Correctly said \"I don't know\"",th:"ขอโทษถูกต้อง (ไม่มีข้อมูลจริง)"},
+        "False Negative":{en:"Missed an answer that existed",th:"พลาดคำตอบที่มีข้อมูลอยู่จริง"}
+      };
+      const verdictLabel=v=>verdictFriendly[v]?.[uiLang]||v;
       const guideText={
         colCorrect:{en:"Question / Audio Correct",th:"คำถาม/เสียงถูกต้อง"},
         colIncorrect:{en:"Question / Audio Incorrect",th:"คำถาม/เสียงผิดพลาด"},
@@ -273801,8 +273811,9 @@ window.__PERFORMANCE_REPORT_DATA__ = {
       const matrixCell=(tone,label,rows)=>{
         const types=[...new Set(rows.map(r=>r.type).filter(Boolean))];
         return h("div",{className:"aqr-matrix-cell "+tone},
-          h("div",{className:"aqr-matrix-verdict"},label),
-          h("div",{className:"aqr-matrix-count"},rows.length+(rows.length===1?" rule":" rules")),
+          h("div",{className:"aqr-matrix-verdict"},verdictLabel(label)),
+          h("div",{className:"aqr-matrix-verdict-tech"},label),
+          h("div",{className:"aqr-matrix-count"},rows.length+(rows.length===1?(uiLang==="th"?" เงื่อนไข":" rule"):(uiLang==="th"?" เงื่อนไข":" rules"))),
           types.length?h("div",{className:"aqr-matrix-types"},types.map(t=>h("span",{className:"aqr-chip gray",key:t},t))):null
         );
       };
@@ -273817,7 +273828,8 @@ window.__PERFORMANCE_REPORT_DATA__ = {
             h("div",{className:"aqr-hero-meta"},
               h("div",{className:"aqr-hero-meta-value"},n(data.total)),
               h("div",{className:"aqr-hero-meta-label"},at("qaReviewed")),
-              h("div",{className:"aqr-hero-meta-sub"},data.sessions+" "+at("sessionsWord")+" · "+(data.dateStart||"")+" → "+(data.dateEnd||""))
+              h("div",{className:"aqr-hero-meta-sub"},data.sessions+" "+at("sessionsWord")+" · "+(data.dateStart||"")+" → "+(data.dateEnd||"")),
+              h("div",{className:"aqr-hero-meta-source"},at("dataSource"))
             )
           ),
           h("div",{className:"aqr-hero-breakdown"},
@@ -273896,7 +273908,7 @@ window.__PERFORMANCE_REPORT_DATA__ = {
               guidelineRows.map(g=>h("div",{className:"aqr-guide-row tone-"+verdictTone(g.verdict),key:g.no},
                 h("div",{className:"aqr-guide-no"},g.no),
                 h("div",{className:"aqr-guide-text"},uiLang==="th"?g.th:g.en),
-                h("div",{className:"aqr-guide-verdict"},h("span",{className:"aqr-chip "+verdictTone(g.verdict)},g.verdict)),
+                h("div",{className:"aqr-guide-verdict"},h("span",{className:"aqr-chip "+verdictTone(g.verdict),title:g.verdict},verdictLabel(g.verdict))),
                 h("div",{className:"aqr-guide-type"},g.type?h("span",{className:"aqr-chip gray"},g.type):null)
               ))
             ),
@@ -274004,7 +274016,7 @@ function QuestionCategories({rows,questions=[]}){if(!rows?.length)return h("div"
         h("article",{className:"card event-card"},h("div",{className:"event-media"},h("img",{src:eventImageFor(event),alt:`${display(event.event,"Event")} display`})),h("div",{className:"event-body"},h("h3",null,display(event.event,"Event not named")),h("div",{className:"event-detail-list"},h("div",{className:"event-detail"},h("span",null,"Date"),h("b",null,display(event.date,"Date not available"))),h("div",{className:"event-detail"},h("span",null,"Duration"),h("b",null,days?`${days} day${days===1?"":"s"}`:"Date not recorded")),h("div",{className:"event-detail"},h("span",null,"Location"),h("b",null,display(event.location,"Location not recorded"))),h("div",{className:"event-detail"},h("span",null,"Machine"),h("b",null,display(event.asset,"Machine not recorded")))),hasPerformance?h("div",{className:"event-metrics"},h("div",{className:"metric-highlight"},h("strong",null,days?(safeNumber(p.sessions)/days).toFixed(1):"—"),h("span",null,"Avg sessions / day")),h("div",null,h("strong",null,n(p.sessions)),h("span",null,"Sessions")),h("div",null,h("strong",null,n(p.questions)),h("span",null,"Questions")),h("div",null,h("strong",null,p.rating===null?"—":p.rating.toFixed(1)),h("span",null,p.rating===null?"No rating collected":"Rating"))):h("div",{className:"empty"},"No performance report was collected for this event."),h("p",{className:"subtitle"},p.rating===null&&hasPerformance?"Sessions and questions are available. Customer rating was not collected for this event.":display(event.notes,"No event note available")),eventSummary?h("div",{className:"event-summary"},h("span",{className:"icon"},h(Icon,{name:"brain",size:16})),h("span",null,eventSummary)):null)),
         hasDaily?h("div",{className:"card",style:{marginTop:"18px"}},
           h("div",{className:"card-head"},
-            h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"trend"})),h("div",null,h("h3",null,"Usage Trend by Daily"),h("p",{className:"subtitle"},"Sessions and questions for each day of this event."))),
+            h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"trend"})),h("div",null,h("h3",null,"Daily Usage Trend"),h("p",{className:"subtitle"},"Sessions and questions for each day of this event, from the kiosk's activity logs."))),
             h("div",{className:"chart-legend",style:{display:"flex",gap:"18px",alignItems:"center"}},
               h("span",{style:{display:"inline-flex",alignItems:"center",gap:"7px",fontSize:"12px",fontWeight:700,color:"#475569"}},h("i",{style:{width:"16px",height:"3px",borderRadius:"2px",background:"#2563eb",display:"inline-block"}}),"Questions"),
               h("span",{style:{display:"inline-flex",alignItems:"center",gap:"7px",fontSize:"12px",fontWeight:700,color:"#475569"}},h("i",{style:{width:"16px",height:"0",borderTop:"3px dashed #0891b2",display:"inline-block"}}),"Sessions")
@@ -274081,7 +274093,17 @@ function QuestionCategories({rows,questions=[]}){if(!rows?.length)return h("div"
       return h("div",{className:"scroll"},
         h("table",{className:"rank-table"},
           h("thead",null,
-            h("tr",null,["Rank","Machine","Sessions","Engagement","Rating","Success","Coverage","Diversity","Score"].map(x=>h("th",{key:x},x)))
+            h("tr",null,[
+              ["Rank","Position in the overall ranking below."],
+              ["Machine",""],
+              ["Sessions","Total kiosk sessions in the selected period."],
+              ["Engagement","Questions asked per session — higher means customers dig deeper, not just say hi and leave."],
+              ["Rating","Average customer rating (out of 4.00)."],
+              ["Success","Share of questions the AI answered directly, without apologizing."],
+              ["Coverage","Share of questions we actually had an answer for (100% minus the apology rate)."],
+              ["Diversity","How many different languages this kiosk handles in meaningful volume."],
+              ["Score","Overall score (0–100) blending sessions, engagement, rating, success, coverage, language diversity, and event activity into one number."]
+            ].map(([label,tip])=>h("th",{key:label,title:tip||undefined},label)))
           ),
           h("tbody",null,
             rows.map(r=>{
@@ -274719,7 +274741,7 @@ function QuestionCategories({rows,questions=[]}){if(!rows?.length)return h("div"
               h("div",{className:"scroll",style:{marginTop:"16px"}},
                 h("table",{className:"rank-table"},
                   h("thead",null,
-                    h("tr",null,[ov("Machine","เครื่อง"),ov("Questions","คำถาม"),ov("Sessions","เซสชัน"),ov("Avg users / day","ผู้ใช้เฉลี่ย/วัน"),ov("Avg questions / person","คำถามเฉลี่ย/คน"),ov("Share (full year)","ส่วนแบ่ง (ทั้งปี)")].map(x=>h("th",{key:x},x)))
+                    h("tr",null,[ov("Machine","เครื่อง"),ov("Questions","คำถาม"),ov("Sessions","เซสชัน"),ov("Avg sessions / day","เซสชันเฉลี่ย/วัน"),ov("Avg questions / session","คำถามเฉลี่ย/เซสชัน"),ov("Share (full year)","ส่วนแบ่ง (ทั้งปี)")].map(x=>h("th",{key:x},x)))
                   ),
                   h("tbody",null,
                     overviewUsageStats.map((u,i)=>{
@@ -274728,8 +274750,8 @@ function QuestionCategories({rows,questions=[]}){if(!rows?.length)return h("div"
                         h("td",null,h("i",{style:{background:compareColors[colorIndex%compareColors.length],width:"10px",height:"10px",borderRadius:"3px",display:"inline-block",marginRight:"8px",verticalAlign:"middle"}}),h("b",null,u.machine)),
                         h("td",null,n(Math.round(u.questions))),
                         h("td",null,n(Math.round(u.sessions))),
-                        h("td",null,u.avgPerDay.toFixed(1)+ov(" per day"," คน/วัน")),
-                        h("td",null,u.qps.toFixed(1)+ov(" per person"," คำถาม/คน")),
+                        h("td",null,u.avgPerDay.toFixed(1)+ov(" per day"," เซสชัน/วัน")),
+                        h("td",null,u.qps.toFixed(1)+ov(" per session"," คำถาม/เซสชัน")),
                         h("td",null,pct(u.share))
                       )
                     })
@@ -274758,14 +274780,14 @@ function QuestionCategories({rows,questions=[]}){if(!rows?.length)return h("div"
                     h("b",null,item.machine),
                     h("span",null,item.locationLabel)
                   ),
-                  h("span",{className:"score-pill",title:ov("Rank by avg users / day","จัดอันดับตามผู้ใช้เฉลี่ย/วัน")},"#"+([...overviewMachineCards].sort((a,b)=>(safeNumber(b.avgPerDay)-safeNumber(a.avgPerDay))||(safeNumber(b.sessions)-safeNumber(a.sessions))).findIndex(x=>x.assetId===item.assetId)+1))
+                  h("span",{className:"score-pill",title:ov("Rank by avg sessions / day","จัดอันดับตามเซสชันเฉลี่ย/วัน")},"#"+([...overviewMachineCards].sort((a,b)=>(safeNumber(b.avgPerDay)-safeNumber(a.avgPerDay))||(safeNumber(b.sessions)-safeNumber(a.sessions))).findIndex(x=>x.assetId===item.assetId)+1))
                 ),
                 h("div",{className:"overview-machine-metrics"},
                   h("div",null,h("strong",null,h(CountUp,{text:item.sessions})),h("span",null,ov("Sessions","เซสชัน"))),
                   h("div",null,h("strong",null,h(CountUp,{text:item.questions})),h("span",null,ov("Questions","คำถาม"))),
                   h("div",null,h("strong",null,h(CountUp,{text:String(item.success).replace("%","")}),/\d/.test(String(item.success))?h("span",{className:"metric-unit"},"%"):null),h("span",null,ov("Success","สำเร็จ"))),
                   h("div",null,h("strong",null,h(CountUp,{text:item.rating})),h("span",null,ov("Rating","คะแนน"))),
-                  h("div",{className:"metric-highlight",style:{gridColumn:"1/-1"}},h("strong",null,h(CountUp,{text:item.avgPerDay})),h("span",null,ov("Avg users / day","ผู้ใช้เฉลี่ย/วัน")))
+                  h("div",{className:"metric-highlight",style:{gridColumn:"1/-1"}},h("strong",null,h(CountUp,{text:item.avgPerDay})),h("span",null,ov("Avg sessions / day","เซสชันเฉลี่ย/วัน")))
                 )
               ))
             )
@@ -274862,7 +274884,7 @@ function QuestionCategories({rows,questions=[]}){if(!rows?.length)return h("div"
                 h("div",{className:"card-head"},
                   h("div",{className:"card-title"},
                     h("span",{className:"icon"},h(Icon,{name:"trend"})),
-                    h("div",null,h("h3",null,"Overall ranking"),h("p",{className:"subtitle"},"Highest to lowest based on a blended score, not sessions alone."))
+                    h("div",null,h("h3",null,"Overall ranking"),h("p",{className:"subtitle"},"Ranked by a combined score (traffic, engagement, answer quality, trend, event impact, and operational health) — not sessions alone, so a quiet-but-reliable kiosk can still rank above a busy-but-problematic one."))
                   )
                 ),
                 h("div",{className:"reco-ranking-list"},
@@ -274992,15 +275014,15 @@ function QuestionCategories({rows,questions=[]}){if(!rows?.length)return h("div"
             )
           );
         }
-        if(page==="machine-status") return h(PageShell,{title:"Machine Status",sub:"Operational card view for all active M Agent devices."},
+        if(page==="machine-status") return h(PageShell,{title:"Machine Status",sub:"A quick snapshot of every active kiosk — sessions, success rate, and rating for the selected month."},
           h("div",{className:"machine-status-summary"},
             h("article",{className:"card status-kpi"},h("div",{className:"status-kpi-head"},h("span",{className:"icon"},h(Icon,{name:"cpu",size:18})),h("h3",null,"Active machines")),h("div",{className:"summary-value"},h(CountUp,{text:String(activeMachineCount)})),h("div",{className:"summary-note"},`Reporting in ${monthObj.label}`)),
             h("article",{className:"card status-kpi"},h("div",{className:"status-kpi-head"},h("span",{className:"icon"},h(Icon,{name:"activity",size:18})),h("h3",null,"Sessions")),h("div",{className:"summary-value"},h(CountUp,{text:n(cur.sessions)})),h("div",{className:"summary-note"},`${n(cur.questions)} questions asked`)),
-            h("article",{className:"card status-kpi"},h("div",{className:"status-kpi-head"},h("span",{className:"icon green"},h(Icon,{name:"check",size:18})),h("h3",null,"Avg success")),h("div",{className:"summary-value"},h(CountUp,{text:pct(cur.successRate)})),h("div",{className:"summary-note"},"Answered without apology")),
+            h("article",{className:"card status-kpi"},h("div",{className:"status-kpi-head"},h("span",{className:"icon green"},h(Icon,{name:"check",size:18})),h("h3",null,"Avg success")),h("div",{className:"summary-value"},h(CountUp,{text:pct(cur.successRate)})),h("div",{className:"summary-note"},"Questions the AI answered directly, without saying sorry")),
             h("article",{className:"card status-kpi"},h("div",{className:"status-kpi-head"},h("span",{className:"icon amber"},h(Icon,{name:"gauge",size:18})),h("h3",null,"Avg rating")),h("div",{className:"summary-value"},h(CountUp,{text:`${safeNumber(cur.rating).toFixed(2)}/${(safeNumber(cur.ratingScale)||4).toFixed(2)}`})),h("div",{className:"summary-note"},"Across active machines"))
           ),
           h("div",{className:"machine-grid"},machineRows.map(x=>h(MachineCard,{key:x.row.assetId,row:x.row,prevRow:x.prevRow,kiosk:x.kiosk,days:monthObj.days,coverageStart:monthMeta?.[month]?.coverageStart,coverageEnd:authoritativeCur?.coverageEnd||monthMeta?.[month]?.coverageEnd,monthLabel:monthObj.label,previousMonthLabel:prev.label,selected:x.row.assetId===asset,onSelect:()=>{setAsset(x.row.assetId);goPage("machine-timeline");}}))),
-          h("div",{className:"card"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"cpu"})),h("div",null,h("h3",null,"Machine list"),h("p",{className:"subtitle"},"Reference list for active machines.")))),machineTable));
+          h("div",{className:"card"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"cpu"})),h("div",null,h("h3",null,"Machine list"),h("p",{className:"subtitle"},"Full details for every active kiosk, in one table.")))),machineTable));
         if(page==="machine-timeline") return h(PageShell,{title:"Event Report & Timeline",sub:"Select an event to view its performance report. Borrowing log and machine movement are in the sub-pages on the left."},
           h("div",{className:"card event-rail-card"},
             h("div",{className:"event-rail-head"},
@@ -275030,7 +275052,7 @@ function QuestionCategories({rows,questions=[]}){if(!rows?.length)return h("div"
         );
         if(page==="answer-quality") return h(PageShell,{title:aqrLang==="th"?"รีวิวคุณภาพคำตอบ":"Answer Quality Review",sub:accuracyReview?(aqrLang==="th"?`สุ่มตัวอย่าง ${n(accuracyReview.total)} คำถาม-คำตอบ (${accuracyReview.dateStart} → ${accuracyReview.dateEnd}) — ลูกค้าถามอะไร และ AI ตอบอย่างไร`:`Random ${n(accuracyReview.total)} Q&A sample (${accuracyReview.dateStart} → ${accuracyReview.dateEnd}) — what customers asked and how the AI answered.`):(aqrLang==="th"?"ตัวอย่างรีวิวความแม่นยำ":"Accuracy review sample.")},h(AnswerQualityReview,{data:accuracyReview,kiosks,lang:aqrLang}));
         if(page==="sessions") return h(PageShell,{title:"Sessions",sub:"Usage volume over time, by month and by machine."},h("div",{className:"bento"},h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"activity"})),h("div",null,h("h3",null,"Sessions trend"),h("p",{className:"subtitle"},"Dashed line tracks sessions across all 10 months.")))),h(AreaChart,{monthsData:monthRows})),h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon green"},h(Icon,{name:"check"})),h("div",null,h("h3",null,"Leaderboard"),h("p",{className:"subtitle"},"Highest traffic machines this month.")))),h(Leaderboard,{rows:filteredRows,kiosksMap:kioskMap}))));
-        if(page==="ratings") return h(PageShell,{title:"Ratings & Success",sub:"Customer satisfaction, answer quality, apology/error rate, and machine comparison in one view."},h("div",{className:"bento success-grid"},h("div",{className:"card span-3"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"gauge"})),h("div",null,h("h3",null,"Average rating"),h("p",{className:"subtitle"},authoritativeCur?.source||"Weighted by sessions.")))),h("div",{className:"kpi-value"},ratingText(cur.rating,ratingScale)),h(LineChart,{values:monthRows.map(x=>x.rating===null?0:x.rating),labels:monthRows.map(x=>x.short),color:"#2563eb"})),h("div",{className:"card span-3"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon green"},h(Icon,{name:"check"})),h("div",null,h("h3",null,"Success gauge"),h("p",{className:"subtitle"},"Answered without apology.")))),h("div",{className:"gauge-holder"},h(Gauge,{value:cur.successRate,label:"success"}))),h("div",{className:"card span-3"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon rose"},h(Icon,{name:"alert"})),h("div",null,h("h3",null,"Apology rate"),h("p",{className:"subtitle"},"Failed or apologetic answers.")))),h("div",{className:"kpi-value"},pct(cur.apologyRate)),h("p",{className:"subtitle"},"Lower is better.")),h("div",{className:"card span-3"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"trend"})),h("div",null,h("h3",null,"Success trend"),h("p",{className:"subtitle"},"10-month quality movement.")))),h(LineChart,{values:monthRows.map(x=>x.successRate),labels:monthRows.map(x=>x.short),color:"#12b76a"})),h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon green"},h(Icon,{name:"check"})),h("div",null,h("h3",null,"Ratings by machine"),h("p",{className:"subtitle"},"Ranked with usage and quality context.")))),h(RankingTable,{rows:comparison.ranking,onDrill:id=>{toggleCompare(id,true);goPage("machine-comparison")}}))));
+        if(page==="ratings") return h(PageShell,{title:ov("Ratings & Success","คะแนนความพึงพอใจ & อัตราตอบสำเร็จ"),sub:ov("How satisfied customers are, and how often the AI actually gave a helpful answer — for the selected machine and month.","ลูกค้าพึงพอใจแค่ไหน และ AI ตอบคำถามได้เป็นประโยชน์จริงบ่อยแค่ไหน — สำหรับเครื่องและเดือนที่เลือก")},h("div",{className:"bento success-grid"},h("div",{className:"card span-3"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"gauge"})),h("div",null,h("h3",null,ov("Average rating","คะแนนความพึงพอใจเฉลี่ย")),h("p",{className:"subtitle"},ov("Customers rate each answer 1–4 stars after they get a response.","ลูกค้าให้คะแนนคำตอบแต่ละครั้ง 1–4 ดาว หลังจากได้รับคำตอบ")+(authoritativeCur?.source?" "+ov("Source:","แหล่งข้อมูล:")+" "+authoritativeCur.source:""))))),h("div",{className:"kpi-value"},ratingText(cur.rating,ratingScale)),h(LineChart,{values:monthRows.map(x=>x.rating===null?0:x.rating),labels:monthRows.map(x=>x.short),color:"#2563eb"})),h("div",{className:"card span-3"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon green"},h(Icon,{name:"check"})),h("div",null,h("h3",null,ov("Success rate","อัตราตอบสำเร็จ")),h("p",{className:"subtitle"},ov("Share of questions the AI answered directly, without saying sorry or giving up.","สัดส่วนคำถามที่ AI ตอบได้ตรงประเด็น โดยไม่ขอโทษหรือตอบไม่ได้"))))),h("div",{className:"gauge-holder"},h(Gauge,{value:cur.successRate,label:"success"}))),h("div",{className:"card span-3"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon rose"},h(Icon,{name:"alert"})),h("div",null,h("h3",null,ov("Apology rate","อัตราขอโทษ")),h("p",{className:"subtitle"},ov("How often the AI said sorry / couldn't help, instead of giving a real answer.","AI ตอบว่าขอโทษ/ช่วยไม่ได้ บ่อยแค่ไหน แทนที่จะตอบคำถามได้จริง"))))),h("div",{className:"kpi-value"},pct(cur.apologyRate)),h("p",{className:"subtitle"},ov("Lower is better.","ยิ่งน้อยยิ่งดี"))),h("div",{className:"card span-3"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon"},h(Icon,{name:"trend"})),h("div",null,h("h3",null,ov("Success trend","แนวโน้มอัตราตอบสำเร็จ")),h("p",{className:"subtitle"},ov("How the success rate has moved over the last 10 months.","อัตราตอบสำเร็จเปลี่ยนแปลงอย่างไรในช่วง 10 เดือนที่ผ่านมา"))))),h(LineChart,{values:monthRows.map(x=>x.successRate),labels:monthRows.map(x=>x.short),color:"#12b76a"})),h("div",{className:"card span-12"},h("div",{className:"card-head"},h("div",{className:"card-title"},h("span",{className:"icon green"},h(Icon,{name:"check"})),h("div",null,h("h3",null,ov("Ratings by machine","คะแนนแยกตามเครื่อง")),h("p",{className:"subtitle"},ov("Every kiosk ranked by a mix of usage and answer quality — not just how many people used it.","จัดอันดับเครื่องทั้งหมดจากทั้งปริมาณการใช้งานและคุณภาพคำตอบ ไม่ใช่แค่จำนวนคนใช้งาน"))))),h(RankingTable,{rows:comparison.ranking,onDrill:id=>{toggleCompare(id,true);goPage("machine-comparison")}}))));
         return h(PageShell,{title:"Overview",sub:"Default dashboard page."});
       };
       return h("div",{className:"app-shell"},h(SidebarNav,{page,onNavigate:goPage,onSection:goOverviewSection,open:sidebarOpen,onClose:()=>setSidebarOpen(false),lang:aqrLang,onLangChange:setAqrLang}),h("div",{className:"workspace"},h(WorkspaceHeader,{meta,periodStart,setPeriodStart,periodEnd,setPeriodEnd,onApplyPeriod:applyHeaderPeriod,onApplyMonth:applyMonth,onFullHistoryPeriod:page==="machine-status"?null:applyFullHistoryPeriod,onMenu:()=>setSidebarOpen(true),showPeriod:page!=="machine-comparison"&&page!=="machine-timeline"&&page!=="event-borrowing-log"&&page!=="event-machine-movement"&&page!=="import-data"&&page!=="recommendation"&&page!=="answer-quality",periodMode:page==="machine-status"?"monthly":"date",selectedMonth:headerMonth,setSelectedMonth:setHeaderMonth,monthOptions:months}),h("main",{className:"page-view",key:page},renderPage())));

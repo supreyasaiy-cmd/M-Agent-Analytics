@@ -359,21 +359,6 @@ function createDailyBucket() {
   };
 }
 
-const categoryRules = [
-  { name: "Promotion", patterns: [/promo/i, /promotion/i, /โปร/i, /campaign/i, /coupon/i, /คูปอง/i, /discount/i, /ส่วนลด/i] },
-  { name: "M Card", patterns: [/\bm card\b/i, /\bm point\b/i, /คะแนน/i, /member/i, /สมาชิก/i, /บัตร/i, /visa/i] },
-  { name: "Directory", patterns: [/where/i, /อยู่ชั้น/i, /อยู่โซน/i, /อยู่ไหน/i, /ทางไป/i, /location/i, /directory/i, /map/i, /แผนที่/i] },
-  { name: "Parking", patterns: [/parking/i, /park/i, /จอดรถ/i, /ลานจอด/i, /stamp/i, /e-?stamp/i] },
-  { name: "Events", patterns: [/event/i, /งาน/i, /booth/i, /roadshow/i, /festival/i, /expo/i, /forum/i] },
-  { name: "Store Information", patterns: [/open/i, /close/i, /hour/i, /เวลา/i, /store/i, /branch/i, /สาขา/i, /เปิด/i, /ปิด/i] },
-  { name: "Rewards", patterns: [/redeem/i, /reward/i, /แลก/i, /สิทธิ์/i, /privilege/i] },
-  { name: "Restaurant", patterns: [/restaurant/i, /food/i, /eat/i, /coffee/i, /tea/i, /drink/i, /อาหาร/i, /ร้านอาหาร/i, /กาแฟ/i, /ชา/i] },
-  { name: "Fashion", patterns: [/uniqlo/i, /fashion/i, /clothes/i, /เสื้อ/i, /เสื้อผ้า/i] },
-  { name: "Beauty", patterns: [/beauty/i, /cosmetic/i, /skincare/i, /makeup/i, /เครื่องสำอาง/i] },
-  { name: "Sports", patterns: [/sport/i, /nike/i, /adidas/i, /รองเท้า/i] },
-  { name: "Lifestyle", patterns: [/lifestyle/i, /home/i, /living/i, /ของใช้/i] }
-];
-
 const brandRules = [
   "Uniqlo",
   "Starbucks",
@@ -389,12 +374,6 @@ const brandRules = [
   name,
   patterns: [new RegExp(name.replace(/\s+/g, "\\s*"), "i")]
 }));
-
-function detectCategory(question = "") {
-  const text = String(question || "");
-  const match = categoryRules.find(rule => rule.patterns.some(pattern => pattern.test(text)));
-  return match?.name || "Others";
-}
 
 function detectBrands(question = "") {
   const text = String(question || "");
@@ -452,7 +431,9 @@ export function buildPerformanceReportData(rootDir) {
       else rawMetricBucket.success += 1;
 
       const questionText = String(row.question || "").trim();
-      const category = detectCategory(questionText);
+      // Use the same category the report already assigns per-row (matches the Answer Quality
+      // Review page) instead of the old keyword-rule guess, so both pages agree.
+      const category = String(row.category ?? "").trim() || "Uncategorized";
       const brands = detectBrands(questionText);
       if (questionText) {
         const inputBucket = detectInput(row.question, row.audioUrl);

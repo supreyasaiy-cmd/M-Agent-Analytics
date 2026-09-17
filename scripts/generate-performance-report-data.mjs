@@ -849,13 +849,9 @@ function buildAccuracyReviewSummary(records, sessionIds) {
   });
   const dates = records.map(r => r.time.slice(0, 10)).filter(d => /^\d{4}/.test(d)).sort();
 
-  // The browsable "What customers asked" list ships only the most recent 3 months of
-  // question text (keeps the page payload light); every rate/category stat above is
-  // still computed from the FULL history across all `records`.
-  const recentMonths = [...new Set(records.map(r => r.monthId))].sort().slice(-3);
-  const visibleRows = records
-    .filter(r => recentMonths.includes(r.monthId))
-    .map(({ monthId, ...rest }) => rest);
+  // The browsable "What customers asked" list ships question text for the full history
+  // (every month), matching the rest of the dashboard's full-history default.
+  const visibleRows = records.map(({ monthId, ...rest }) => rest);
   const visibleDates = visibleRows.map(r => r.time.slice(0, 10)).filter(d => /^\d{4}/.test(d)).sort();
 
   return {

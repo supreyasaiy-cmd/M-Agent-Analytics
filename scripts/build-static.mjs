@@ -38,11 +38,14 @@ function inlinePerformanceData(filePath, dataFilePath) {
   const dataScript = readFileSync(dataFilePath, "utf8").trim().replace(/<\/script/gi, "<\\/script");
   const externalScriptPattern = /<script src="\.\/assets\/performance-report-data\.js(?:\?v=[^"]+)?"><\/script>/;
   const inlineScriptTag = `<script id="performance-report-data-inline">\n${dataScript}\n</script>`;
+  // Use a replacer FUNCTION, not a string: customer-typed question/answer text can contain
+  // literal "$&", "$1", "$`" etc., and String.replace() treats those as special replacement
+  // patterns when the replacement is a string, silently corrupting the embedded JSON.
   const updated = externalScriptPattern.test(html)
-    ? html.replace(externalScriptPattern, inlineScriptTag)
+    ? html.replace(externalScriptPattern, () => inlineScriptTag)
     : html.replace(
         /<script id="performance-report-data-inline">[\s\S]*?<\/script>/,
-        inlineScriptTag
+        () => inlineScriptTag
       );
   if (updated !== html) writeFileSync(filePath, updated, "utf8");
 }
